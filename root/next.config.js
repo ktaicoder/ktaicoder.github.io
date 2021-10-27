@@ -3,7 +3,7 @@ const isProd = process.env.NODE_ENV === 'production'
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  assetPrefix: isProd ? 'https://cdn.statically.io/gh/ktaicoder/ktaicoder.github.io/gh-pages/' : '',
+  assetPrefix: isProd ? 'https://ktaicoder.github.io' : '',
   images: {
     loader: 'imgix',
     path: 'https://ktaicoder.github.io/images'
