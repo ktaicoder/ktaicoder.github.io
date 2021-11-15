@@ -14,7 +14,7 @@ export const ICON_COLOR_ACTIVE = theme.palette.primary.main
 
 export const SIDEMENU_BORDER_COLOR_ACTIVE = theme.palette.primary.dark // 'rgba(250, 97, 4, 0.1)'
 
-export const SIDEMENU_WIDTH = 220
+export const SIDEMENU_WIDTH = 240
 // export const SIDEMENU_BG_COLOR = '#2F3243'
 export const SIDEMENU_BG_COLOR = '#fff'
 export const SIDEMENU_BG_COLOR_HOVER = theme.palette.action.hover // 'rgba(0,0,0,0.15)'

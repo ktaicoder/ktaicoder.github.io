@@ -3,11 +3,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Box, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
-import { useHistory } from 'react-router'
-import { useLocation } from 'react-router-dom'
-import Image from 'src/renderer/components/Image'
-import hist from 'src/renderer/services/history'
-import useStore from 'src/renderer/store/useStore'
+import { useRouter } from 'next/router'
+import Image from 'src/components/Image'
+import { routerPush } from 'src/lib/urls'
+import useStore from 'src/store/useStore'
 import { SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
 import DrawerHeader from '../drawer-header/DrawerHeader'
@@ -18,15 +17,13 @@ const ALL_MENUS = menus
 
 function Sidebar() {
     const theme = useTheme()
-    const { pathname: pathkey } = useLocation()
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+    const { pathname: pathkey } = useRouter()
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const { sidebarStore } = useStore()
-    const history = useHistory()
     const _onClickLink = () => {
-        if (isMobile) {
+        if (smDown) {
             sidebarStore.setOpen(false)
         }
-        // history.push("/inspect");
     }
     const isOpen = sidebarStore.isOpen
 
@@ -43,22 +40,16 @@ function Sidebar() {
             }}
         >
             <DrawerHeader sx={{ pl: 2, pr: 1, color: 'primary.main', justifyContent: 'flex-start' }}>
-                {/* <IconButton
+                <Box sx={{ flexGrow: 1 }}>AI 코딩 블록 개발자 가이드</Box>
+                <IconButton
                     size="small"
-                    onClick={() => sidebarStore.toggleOpen()}
+                    onClick={sidebarStore.toggleOpen}
                     sx={{
                         color: SIDEMENU_FG_COLOR,
                     }}
                 >
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton> */}
-
-                <Image
-                    component="img"
-                    onClick={() => hist.push('/')}
-                    sx={{ maxWidth: '80%', height: 22, objectFit: 'contain' }}
-                    src="static/images/logo1.png"
-                />
+                </IconButton>
             </DrawerHeader>
             <List disablePadding>
                 {ALL_MENUS.map((item, idx) => {
@@ -72,7 +63,7 @@ function Sidebar() {
                             />
                         )
                     } else if (item.type === 'divider') {
-                        return <Divider key={idx} />
+                        return <Divider key={idx} light />
                     } else if (item.type === 'label') {
                         return (
                             <ListItem

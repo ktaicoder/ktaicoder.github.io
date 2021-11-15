@@ -31,57 +31,37 @@ let seq = 0
 const nextSectionId = () => 'section' + ++seq
 
 const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
+    { type: 'divider' },
+
     {
         type: 'menu',
         icon: 'dashboard',
-        title: '장치 연결',
+        title: 'Home',
         href: '/',
     },
+    { type: 'divider' },
     {
         type: 'menu',
         icon: 'usb',
-        title: 'SERIAL 장치',
-        href: '/inspect-serial',
+        title: '하드웨어 가이드',
+        href: '/hw/guide',
     },
-    {
-        type: 'menu',
-        icon: 'bluetooth',
-        title: 'BLUETOOTH 장치',
-        href: '/inspect-hid',
-    },
-    {
-        type: 'menu',
-        icon: 'info',
-        title: '정보',
-        href: '/info',
-    },
-    {
-        type: 'menu',
-        icon: 'mosaic',
-        title: '블록',
-        href: '/block-factory',
-    },
-    {
-        type: 'menu',
-        icon: 'settings',
-        title: '설정',
-        href: '/settings',
-    },
+    { type: 'divider' },
 
-    // {
-    //     type: 'section',
-    //     sectionId: nextSectionId(),
-    //     icon: 'adb',
-    //     title: '전문가용',
-    //     submenus: [
-    //         {
-    //             type: 'menu',
-    //             icon: 'usb',
-    //             title: 'HID 점검',
-    //             href: '/inspect-hid',
-    //         },
-    //     ],
-    // },
+    {
+        type: 'section',
+        sectionId: nextSectionId(),
+        icon: 'adb',
+        title: '코딩팩',
+        submenus: [
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: 'OS 이미지 제작',
+                href: '/codingpack/os-image-guide',
+            },
+        ],
+    },
 
     // {
     //     type: 'menu',

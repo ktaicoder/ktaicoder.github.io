@@ -10,6 +10,7 @@ import {
     ListItemText,
 } from '@mui/material'
 import { styled } from '@mui/system'
+import React from 'react'
 import {
     DIVIDER_COLOR,
     ICON_COLOR,
@@ -72,10 +73,10 @@ export default function SectionMenu(props: Props) {
     } = props
 
     return (
-        <>
+        <React.Fragment>
             <ListItemButton onClick={onSectionClick} active={active}>
                 {section.icon && (
-                    <ListItemIcon>
+                    <ListItemIcon sx={{ display: 'none' }}>
                         <MenuIcon iconName={section.icon} />
                     </ListItemIcon>
                 )}
@@ -111,6 +112,6 @@ export default function SectionMenu(props: Props) {
                     })}
                 </List>
             </Collapse>
-        </>
+        </React.Fragment>
     )
 }

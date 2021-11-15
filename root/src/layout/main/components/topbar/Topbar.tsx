@@ -1,25 +1,24 @@
 import { Menu as MenuIcon, MenuOpen as MenuOpenIcon } from '@mui/icons-material'
-import { IconButton, InputBase, Toolbar, Typography, useTheme } from '@mui/material'
+import { IconButton, InputBase, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
-import SearchIcon from '@mui/icons-material/Search'
 import { SIDEMENU_WIDTH } from '../../main-layout-constants'
 import { styled, alpha } from '@mui/material/styles'
 import { Box } from '@mui/system'
 
 interface AppBarProps extends MuiAppBarProps {
-    open?: boolean
+    shift: boolean
 }
 
 const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
+    shouldForwardProp: (prop) => prop !== 'shift',
+})<AppBarProps>(({ theme, shift }) => ({
+    zIndex: theme.zIndex.drawer + (shift ? 1 : -1),
     transition: theme.transitions.create(['margin', 'width'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
     }),
     color: '#FFF',
-    ...(open && {
+    ...(shift && {
         width: `calc(100% - ${SIDEMENU_WIDTH}px)`,
         marginLeft: SIDEMENU_WIDTH,
         transition: theme.transitions.create(['margin', 'width'], {
@@ -27,7 +26,7 @@ const AppBar = styled(MuiAppBar, {
             duration: theme.transitions.duration.enteringScreen,
         }),
     }),
-    ...(!open && {
+    ...(!shift && {
         '& .MuiToolbar-root': {
             paddingLeft: theme.spacing(3.5),
             [theme.breakpoints.down('xs')]: {
@@ -50,10 +49,12 @@ type Props = {
 export default function Topbar(props: Props) {
     const { title = 'No title', isSidebarOpen, onClickMenuButton } = props
     const theme = useTheme()
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
 
+    const shift = isSidebarOpen && !smDown ? true : false
     return (
-        <AppBar position="fixed" open={isSidebarOpen}>
-            <Toolbar variant="dense">
+        <AppBar position="fixed" shift={shift}>
+            <Toolbar>
                 <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
                     <IconButton
                         onClick={onClickMenuButton}

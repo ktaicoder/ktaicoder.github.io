@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
-import Home from 'src/features/home/Home'
+import Head from 'next/head'
+import HwGuide from 'src/features/hw-guide/HwGuide'
 import MainLayout from 'src/layout/main/MainLayout'
 
 const Index: NextPage = () => {
     return (
-        <MainLayout title="Home">
-            <Home />
+        <MainLayout title="하드웨어 가이드">
+            <HwGuide />
         </MainLayout>
     )
 }

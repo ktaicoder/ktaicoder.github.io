@@ -1,29 +1,35 @@
+import { useMediaQuery } from '@mui/material'
 import Box from '@mui/material/Box'
-import { styled } from '@mui/material/styles'
+import Drawer from '@mui/material/Drawer'
+import { styled, useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
-import * as React from 'react'
-import useStore from 'src/renderer/store/useStore'
+import { useMemo, useState } from 'react'
+import useStore from 'src/store/useStore'
 import DrawerHeader from './components/drawer-header/DrawerHeader'
-import Drawer from './components/drawer/Drawer'
-import MainPageTopbar from './components/main-page-topbar'
 import Sidebar from './components/sidebar'
 import Topbar from './components/topbar'
-import { CONTENT_BG_COLOR } from './main-layout-constants'
+import { CONTENT_BG_COLOR, SIDEMENU_WIDTH } from './main-layout-constants'
 import MainLayoutContext from './MainLayoutContext'
 
 const Main = styled('main', {
-    shouldForwardProp: (prop) => prop !== 'open',
+    shouldForwardProp: (prop) => prop !== 'contentShift',
 })<{
-    open?: boolean
-}>(({ theme, open }) => ({
+    contentShift: number
+}>(({ theme, contentShift }) => ({
     flexGrow: 1,
     padding: theme.spacing(0, 0, 0, 0),
     transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
     }),
-    // marginLeft: `-${SIDEMENU_WIDTH}px`,
-    ...(open && {
+    ...(contentShift !== 0 && {
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginLeft: contentShift,
+    }),
+    ...(contentShift === 0 && {
         transition: theme.transitions.create('margin', {
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
@@ -38,47 +44,63 @@ const Main = styled('main', {
 
 type Props = {
     title: string
-    isMainPage?: boolean
     children?: React.ReactChild | React.ReactChild[]
 }
 
-function MainLayout(props: Props) {
-    const { title, children, isMainPage = false } = props
+const MainLayout = (props: Props) => {
+    const { title, children } = props
     const { sidebarStore } = useStore()
+    const theme = useTheme()
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const isSidebarOpen = sidebarStore.isOpen
-    const [hwKind, setHwKind] = React.useState<'all' | 'serial' | 'bluetooth'>('all')
-    const [searchQuery, setSearchQuery] = React.useState<string>()
+    const [searchQuery, setSearchQuery] = useState<string>()
+    const contextData = useMemo(() => ({ searchQuery }), [searchQuery])
 
-    const contextData = React.useMemo(
-        () => ({
-            hwKind,
-            setHwKind,
-            searchQuery,
-            setSearchQuery,
-        }),
-        [hwKind, searchQuery],
-    )
+    let contentShift = 0
+    if (smDown) {
+        contentShift = 0
+    } else {
+        // drawer가 close 상태에서도 너비를 차지하므로, 마이너스 방향으로 쉬프트
+        contentShift = isSidebarOpen ? 0 : -SIDEMENU_WIDTH
+    }
 
     return (
         <MainLayoutContext.Provider value={contextData}>
             <Box sx={{ display: 'flex', position: 'relative' }}>
-                {isMainPage ? (
-                    <MainPageTopbar
-                        title={title}
-                        isSidebarOpen={isSidebarOpen}
-                        onClickMenuButton={() => sidebarStore.toggleOpen()}
-                    />
-                ) : (
-                    <Topbar
-                        title={title}
-                        isSidebarOpen={isSidebarOpen}
-                        onClickMenuButton={() => sidebarStore.toggleOpen()}
-                    />
-                )}
-                <Drawer variant="permanent" open={isSidebarOpen}>
+                <Topbar title={title} isSidebarOpen={isSidebarOpen} onClickMenuButton={sidebarStore.toggleOpen} />
+
+                <Drawer
+                    sx={{
+                        width: SIDEMENU_WIDTH,
+                        flexShrink: 0,
+                        '& .MuiDrawer-paper': {
+                            width: SIDEMENU_WIDTH,
+                            boxSizing: 'border-box',
+                            '&::-webkit-scrollbar': {
+                                width: 10,
+                            },
+                            '&::-webkit-scrollbar-track': {
+                                boxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
+                                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
+                                borderRadius: 10,
+                            },
+                            '&::-webkit-scrollbar-thumb': {
+                                backgroundColor: 'rgba(0,0,0,.3)',
+                                // outline: '2px solid slategrey',
+                                borderRadius: 10,
+                                border: '2px solid rgba(0,0,0,.1)',
+                            },
+                        },
+                    }}
+                    variant={smDown ? 'temporary' : 'persistent'}
+                    anchor="left"
+                    open={isSidebarOpen}
+                    onClose={() => sidebarStore.setOpen(false)}
+                >
                     <Sidebar />
                 </Drawer>
-                <Main open={isSidebarOpen}>
+
+                <Main contentShift={contentShift}>
                     <DrawerHeader />
                     <Box
                         sx={{
