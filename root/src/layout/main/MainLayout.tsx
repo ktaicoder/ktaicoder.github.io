@@ -76,20 +76,20 @@ const MainLayout = (props: Props) => {
                         '& .MuiDrawer-paper': {
                             width: SIDEMENU_WIDTH,
                             boxSizing: 'border-box',
-                            '&::-webkit-scrollbar': {
-                                width: 10,
-                            },
-                            '&::-webkit-scrollbar-track': {
-                                boxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
-                                webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
-                                borderRadius: 10,
-                            },
-                            '&::-webkit-scrollbar-thumb': {
-                                backgroundColor: 'rgba(0,0,0,.3)',
-                                // outline: '2px solid slategrey',
-                                borderRadius: 10,
-                                border: '2px solid rgba(0,0,0,.1)',
-                            },
+                            // '&::-webkit-scrollbar': {
+                            //     width: 10,
+                            // },
+                            // '&::-webkit-scrollbar-track': {
+                            //     boxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
+                            //     webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
+                            //     borderRadius: 10,
+                            // },
+                            // '&::-webkit-scrollbar-thumb': {
+                            //     backgroundColor: 'rgba(0,0,0,.3)',
+                            //     // outline: '2px solid slategrey',
+                            //     borderRadius: 10,
+                            //     border: '2px solid rgba(0,0,0,.1)',
+                            // },
                         },
                     }}
                     variant={smDown ? 'temporary' : 'persistent'}
