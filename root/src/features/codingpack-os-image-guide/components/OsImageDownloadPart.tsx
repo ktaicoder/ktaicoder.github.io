@@ -1,6 +1,7 @@
 import { Box, Divider, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import ListText from './ListText'
+import ListTextBox from './ListTextBox'
 import RaspDownloadButton from './RaspDownloadButton'
 import StepTitle from './StepTitle'
 
@@ -25,8 +26,6 @@ function downloadLink(href: string) {
 
 export default function OsImageDownloadPart() {
     const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
     const down700 = useMediaQuery(theme.breakpoints.down(720))
 
     return (
@@ -90,11 +89,11 @@ export default function OsImageDownloadPart() {
                     </Box>
                 </Box>
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 6, '& > div + div': { mt: 1 } }}>
+            <ListTextBox>
                 <ListText text="버전에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다. (2GB, 약 5분소요)" />
                 <ListText text="압축 해제 시 나오는 img파일을 OS 제작 프로그램을 통해 Write 합니다." />
                 <ListText text="원격제어 시 ID는 pi이며, 암호는 kt123!@# 입니다." />
-            </Box>
+            </ListTextBox>
         </Box>
     )
 }

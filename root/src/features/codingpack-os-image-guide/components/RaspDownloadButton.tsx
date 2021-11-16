@@ -1,5 +1,5 @@
 import { Download } from '@mui/icons-material'
-import { Box, ButtonBase, ButtonProps, Icon, Typography } from '@mui/material'
+import { Box, ButtonBase, Icon, Typography } from '@mui/material'
 import { MouseEventHandler } from 'react'
 
 export default function RaspDownloadButton(props: { raspVersion: string; onClick?: MouseEventHandler }) {

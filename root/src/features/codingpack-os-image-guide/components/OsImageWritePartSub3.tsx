@@ -1,13 +1,9 @@
-import { Box, Typography, useMediaQuery } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Typography } from '@mui/material'
+import { routerUrlOf } from 'src/lib/urls'
 import ListText from './ListText'
+import ListTextBox from './ListTextBox'
 
 export default function OsImageWritePartSub3() {
-    const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const down700 = useMediaQuery(theme.breakpoints.down(720))
-
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', ml: 4, fontWeight: 600 }}>
@@ -25,7 +21,7 @@ export default function OsImageWritePartSub3() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/flash1.png"
+                    src={routerUrlOf('/images/codingpack/flash1.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -50,7 +46,7 @@ export default function OsImageWritePartSub3() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/flash2.png"
+                    src={routerUrlOf('/images/codingpack/flash2.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -60,9 +56,9 @@ export default function OsImageWritePartSub3() {
                     }}
                 />
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 1, '& > div + div': { mt: 1 } }}>
+            <ListTextBox sx={{ mt: 1 }}>
                 <ListText text="1분정도 기다리면 보라색 로딩(Flashing)이 시작됩니다. 완료까지 대략 5~10분 정도 소요됩니다." />
-            </Box>
+            </ListTextBox>
 
             <Box
                 sx={{
@@ -75,7 +71,7 @@ export default function OsImageWritePartSub3() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/flash3.png"
+                    src={routerUrlOf('/images/codingpack/flash3.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -92,7 +88,7 @@ export default function OsImageWritePartSub3() {
                 <ListText text="시간이 없다면 생략하셔도 됩니다. (Skip 버튼 클릭)" />
             </Box>
 
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 6, '& > div + div': { mt: 1 } }}>
+            <Box sx={{ background: '#F6F6F6', p: 3, mt: 6, '& > div + div': { mt: 1 } }}>
                 <Typography variant="h6" sx={{ color: 'error.main' }}>
                     혹시 이미지 굽기가 안되시나요?
                 </Typography>
@@ -119,7 +115,7 @@ export default function OsImageWritePartSub3() {
                     <Box
                         component="img"
                         className="lightbox"
-                        src="/images/codingpack/windows_defender.png"
+                        src={routerUrlOf('/images/codingpack/windows_defender.png')}
                         sx={{
                             objectFit: 'contain', //
                             maxWidth: 600,

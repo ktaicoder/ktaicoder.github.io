@@ -1,12 +1,12 @@
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
 import ListText from './ListText'
+import ListTextBox from './ListTextBox'
 
 export default function OsImageWritePartSub4() {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const down700 = useMediaQuery(theme.breakpoints.down(720))
 
     return (
         <Box>
@@ -25,7 +25,7 @@ export default function OsImageWritePartSub4() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/flash_complete.png"
+                    src={routerUrlOf('/images/codingpack/flash_complete.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -35,10 +35,10 @@ export default function OsImageWritePartSub4() {
                     }}
                 />
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 1, '& > div + div': { mt: 1 } }}>
+            <ListTextBox sx={{ mt: 1 }}>
                 <ListText text="굽기가 완료되면 Flash Complete 화면이 표시됩니다" />
                 <ListText text="이제 에처(Etcher)창을 닫고 컴퓨터에서 SD 카드를 빼주세요." />
-            </Box>
+            </ListTextBox>
 
             <Box
                 sx={{
@@ -55,7 +55,7 @@ export default function OsImageWritePartSub4() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/codingpack_sd1.png"
+                    src={routerUrlOf('/images/codingpack/codingpack_sd1.png')}
                     sx={{
                         flexBasis: smDown ? '100%' : '50%', //
                         objectFit: 'contain', //
@@ -67,7 +67,7 @@ export default function OsImageWritePartSub4() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/codingpack_sd2.png"
+                    src={routerUrlOf('/images/codingpack/codingpack_sd2.png')}
                     sx={{
                         flexBasis: smDown ? '100%' : '50%', //
                         p: 2,
@@ -78,9 +78,9 @@ export default function OsImageWritePartSub4() {
                     }}
                 />
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 6, '& > div + div': { mt: 1 } }}>
+            <ListTextBox>
                 <ListText text="코딩팩에 SD카드를 삽입한 후 전원을 넣으면, 코딩팩을 이용할 수 있습니다." />
-            </Box>
+            </ListTextBox>
         </Box>
     )
 }

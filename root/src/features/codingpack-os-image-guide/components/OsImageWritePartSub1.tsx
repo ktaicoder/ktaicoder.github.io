@@ -1,12 +1,12 @@
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
 import ListText from './ListText'
+import ListTextBox from './ListTextBox'
 
 export default function OsImageWritePartSub1() {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const down700 = useMediaQuery(theme.breakpoints.down(720))
 
     return (
         <Box>
@@ -23,7 +23,7 @@ export default function OsImageWritePartSub1() {
                     <Box
                         component="img"
                         className="lightbox"
-                        src="/images/codingpack/flash_from_file1.png"
+                        src={routerUrlOf('/images/codingpack/flash_from_file1.png')}
                         sx={{
                             objectFit: 'contain', //
                             width: '100%',
@@ -40,7 +40,7 @@ export default function OsImageWritePartSub1() {
                     <Box
                         component="img"
                         className="lightbox"
-                        src="/images/codingpack/flash_from_file2.png"
+                        src={routerUrlOf('/images/codingpack/flash_from_file2.png')}
                         sx={{
                             objectFit: 'contain', //
                             width: '100%',
@@ -50,10 +50,10 @@ export default function OsImageWritePartSub1() {
                     />
                 </Box>
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 6, '& > div + div': { mt: 1 } }}>
+            <ListTextBox>
                 <ListText text="에처(Etcher)를 실행하면 위 그림과 같은 화면이 나옵니다." />
                 <ListText text="Flash from file을 선택하여 압축 해제한 img 파일을 넣어주세요." />
-            </Box>
+            </ListTextBox>
         </Box>
     )
 }

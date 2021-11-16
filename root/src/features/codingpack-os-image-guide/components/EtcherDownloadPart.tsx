@@ -1,6 +1,7 @@
 import ChevronRight from '@mui/icons-material/ChevronRight'
 import { Box, ButtonBase, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
 import StepTitle from './StepTitle'
 
 export default function EtcherDownloadPart() {
@@ -47,16 +48,20 @@ export default function EtcherDownloadPart() {
             <Box
                 sx={{
                     background: '#213241',
-                    pl: smDown ? 3 : 5,
-                    pr: smDown ? 2 : 5,
-                    py: 3,
+                    padding: smDown ? theme.spacing(3, 2, 3, 3) : theme.spacing(3, 5),
                     borderRadius: '12px',
                     display: 'flex',
                     alignItems: 'center',
                 }}
             >
                 <Box sx={{ flex: 1, mr: 2 }}>
-                    <Box component="a" sx={{ color: '#fff' }} href="https://www.balena.io/etcher/" target="_blank">
+                    <Box
+                        component="a"
+                        sx={{ color: '#fff' }}
+                        rel="noreferrer"
+                        href="https://www.balena.io/etcher/"
+                        target="_blank"
+                    >
                         https://www.balena.io/etcher/
                     </Box>
                     <Typography sx={{ color: '#fff', mt: 2 }}>
@@ -66,7 +71,7 @@ export default function EtcherDownloadPart() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/ic_etcher_logo.png"
+                    src={routerUrlOf('/images/codingpack/ic_etcher_logo.png')}
                     sx={{ width: '70px', height: '70px', objectFit: 'contain' }}
                 />
             </Box>
@@ -85,7 +90,7 @@ export default function EtcherDownloadPart() {
                     sx={{ width: '100%', maxWidth: 460 }}
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/etcher_install1.png"
+                    src={routerUrlOf('/images/codingpack/etcher_install1.png')}
                 />
             </Box>
         </Box>

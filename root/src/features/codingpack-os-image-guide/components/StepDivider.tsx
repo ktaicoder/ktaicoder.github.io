@@ -18,7 +18,7 @@ export default function StepDivider(props: { color1: string; color2: string; hei
                     top: '50%',
                     left: 0,
                     right: 0,
-                    marginTop: `-1px`,
+                    marginTop: '-1px',
                     height: '2px',
                     background: `linear-gradient(${color1}, ${color2})`,
                 },
@@ -37,6 +37,6 @@ export default function StepDivider(props: { color1: string; color2: string; hei
                     borderLeft: `2px solid ${color1}`,
                 },
             }}
-        ></Box>
+        />
     )
 }

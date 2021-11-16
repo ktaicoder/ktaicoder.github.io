@@ -22,8 +22,6 @@ function randomNumericString() {
 export default function CodingPackOsImageGuide() {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const down700 = useMediaQuery(theme.breakpoints.down(720))
     const [lightbox, setLightbox] = useState<{ name?: string }>({})
     const containerRef = useRef<HTMLDivElement>(null)
 

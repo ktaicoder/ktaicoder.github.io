@@ -1,12 +1,12 @@
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
 import ListText from './ListText'
-import StepTitle from './StepTitle'
+import ListTextBox from './ListTextBox'
 
 export default function AfterStepPart2() {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
 
     return (
         <Box>
@@ -26,7 +26,7 @@ export default function AfterStepPart2() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/wifi1.png"
+                    src={routerUrlOf('/images/codingpack/wifi1.png')}
                     sx={{
                         objectFit: 'contain', //
                         width: '100%',
@@ -38,9 +38,9 @@ export default function AfterStepPart2() {
                     코딩팩 네트워크 설정화면
                 </Typography>
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 4, '& > div + div': { mt: 1 } }}>
+            <ListTextBox>
                 <ListText text="와이파이 또는 랜선(이더넷)을 연결해주세요." />
-            </Box>
+            </ListTextBox>
         </Box>
     )
 }

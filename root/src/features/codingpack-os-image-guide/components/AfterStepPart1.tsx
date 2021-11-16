@@ -1,12 +1,13 @@
 import { Box, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
 import ListText from './ListText'
+import ListTextBox from './ListTextBox'
 import StepTitle from './StepTitle'
 
 export default function AfterStepPart1() {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
 
     return (
         <Box sx={{ display: 'block', mt: 10 }}>
@@ -32,13 +33,13 @@ export default function AfterStepPart1() {
                     sx={{ width: '100%', maxWidth: 560 }}
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/booting1.png"
+                    src={routerUrlOf('/images/codingpack/booting1.png')}
                 />
             </Box>
 
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 2, '& > div + div': { mt: 1 } }}>
+            <ListTextBox sx={{ mt: 2 }}>
                 <ListText text="터미널 창을 열어서 sudo raspi-config 을 입력합니다." />
-            </Box>
+            </ListTextBox>
 
             <Box
                 sx={{
@@ -53,7 +54,7 @@ export default function AfterStepPart1() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/booting2.png"
+                    src={routerUrlOf('/images/codingpack/booting2.png')}
                     sx={{
                         objectFit: 'contain', //
                         width: '100%',
@@ -81,7 +82,7 @@ export default function AfterStepPart1() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/booting3.png"
+                    src={routerUrlOf('/images/codingpack/booting3.png')}
                     sx={{
                         objectFit: 'contain', //
                         width: '100%',
@@ -91,9 +92,9 @@ export default function AfterStepPart1() {
                 />
                 <Typography variant="caption">A1 Expand Filesystem 선택</Typography>
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 0, '& > div + div': { mt: 1 } }}>
+            <ListTextBox sx={{ mt: 0 }}>
                 <ListText text="위와 같이 A1 Expand Filesystem 메뉴를 선택하세요." />
-            </Box>
+            </ListTextBox>
 
             <Box
                 sx={{
@@ -108,7 +109,7 @@ export default function AfterStepPart1() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src="/images/codingpack/booting5.png"
+                    src={routerUrlOf('/images/codingpack/booting5.png')}
                     sx={{
                         objectFit: 'contain', //
                         width: '100%',
@@ -118,9 +119,9 @@ export default function AfterStepPart1() {
                 />
                 <Typography variant="caption">재부팅을 물어보면 재부팅하세요</Typography>
             </Box>
-            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 0, '& > div + div': { mt: 1 } }}>
+            <ListTextBox>
                 <ListText text="이제 SD 카드가 확장되었습니다. 재부팅 하세요." />
-            </Box>
+            </ListTextBox>
         </Box>
     )
 }
