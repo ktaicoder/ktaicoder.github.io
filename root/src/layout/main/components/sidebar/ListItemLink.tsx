@@ -8,7 +8,7 @@ const ListItemLink: React.FC<Omit<LinkProps, 'href'> & ListItemProps<'button', {
 ) => {
     const { children, href, ...restProps } = props
     const external = href.startsWith('http://') || href.startsWith('https://')
-    console.log('href', children)
+    // console.log('href', children)
     if (external) {
         return (
             <ListItem button component={MuiLink} {...restProps} href={href}>

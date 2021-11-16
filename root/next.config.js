@@ -21,10 +21,7 @@ module.exports = {
         DEBUG: !PRODUCTION,
     },
 
-    exportPathMap: async function (
-        defaultPathMap,
-        { dev, dir, outDir, distDir, buildId }
-    ) {
+    exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
         return {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
