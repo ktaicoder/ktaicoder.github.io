@@ -1,0 +1,59 @@
+import { Box, useMediaQuery } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
+import StepCircle from './StepCircle'
+import StepDivider from './StepDivider'
+
+export default function IntroStepPart() {
+    const theme = useTheme()
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
+    const down700 = useMediaQuery(theme.breakpoints.down(720))
+
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                ...(mdDown && {
+                    flexDirection: 'column',
+                }),
+                ...(!mdDown && {
+                    width: '100%',
+                    px: 10,
+                    justifyContent: 'center',
+                    alignItems: 'flex-start',
+                    flexDirection: 'row',
+                }),
+            }}
+        >
+            <StepCircle
+                title="1단계"
+                horizontal={mdDown}
+                subtitle="OS 이미지 다운로드"
+                color="#5DA7B4"
+                size={130}
+                imageSrc={routerUrlOf('/images/codingpack/step1.svg')}
+            />
+
+            {!mdDown && <StepDivider color1="#5DA7B4" color2="#228AA5" height={130} />}
+
+            <StepCircle
+                title="2단계"
+                horizontal={mdDown}
+                subtitle="에처(Etcher) 프로그램 다운로드"
+                color="#228AA5"
+                size={130}
+                imageSrc={routerUrlOf('/images/codingpack/step2.svg')}
+            />
+            {!mdDown && <StepDivider color1="#228AA5" color2="#3F617D" height={130} />}
+            <StepCircle
+                title="3단계"
+                subtitle="SD카드에 OS 이미지 굽기"
+                color="#3F617D"
+                horizontal={mdDown}
+                size={130}
+                imageSrc={routerUrlOf('/images/codingpack/step3.svg')}
+            />
+        </Box>
+    )
+}

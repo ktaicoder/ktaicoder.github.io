@@ -27,8 +27,8 @@ function StepCircleImage(props: { color: string; imageSrc: string; size: number 
                 src={imageSrc}
                 sx={{
                     objectFit: 'contain',
-                    width: size * 0.38,
-                    height: size * 0.38,
+                    width: size * 0.35,
+                    height: size * 0.35,
                 }}
             />
         </Box>
