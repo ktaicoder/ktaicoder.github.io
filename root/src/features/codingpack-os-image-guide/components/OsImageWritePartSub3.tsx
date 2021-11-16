@@ -59,7 +59,7 @@ export default function OsImageWritePartSub3() {
                 />
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 1, '& > div + div': { mt: 1 } }}>
-                <ListText text="1분정도 대기하면 보라색 로딩(Flashing)이 시작됩니다. 완료까지 약 5분소요 됩니다." />
+                <ListText text="1분정도 기다리면 보라색 로딩(Flashing)이 시작됩니다. 완료까지 대략 5~10분 정도 소요됩니다." />
             </Box>
 
             <Box
@@ -72,7 +72,7 @@ export default function OsImageWritePartSub3() {
             >
                 <Box
                     component="img"
-                    src="/images/codingpack/flash2.png"
+                    src="/images/codingpack/flash3.png"
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -83,7 +83,9 @@ export default function OsImageWritePartSub3() {
                 />
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 1, '& > div + div': { mt: 1 } }}>
-                <ListText text="연두색 로딩(Validating)은 SD 카드에 잘 복사되었는지 검사하는 과정입니다." />
+                <ListText text="연두색 로딩(Validating)은 SD 카드를 검사하는 과정입니다." />
+                <ListText text="SD 카드가 불량인 경우 이 단계에서 알 수 있습니다" />
+                <ListText text="요즘엔 불량인 경우가 별로 없어서 대부분 정상 통과합니다." />
                 <ListText text="시간이 없다면 생략하셔도 됩니다. (Skip 버튼 클릭)" />
             </Box>
 
@@ -99,6 +101,7 @@ export default function OsImageWritePartSub3() {
                 </Typography>
                 <ListText text="Windows 설정 > Windows 보안 > 랜섬웨어 방지 관리 > 제어된 폴더 액세스 끔" />
                 <ListText text="Windows 설정 > Windows 보안 > 바이러스 및 위협 방지 > 설정 관리 > 실시간 보호 끔" />
+                <ListText text="OS 이미지 굽기를 완료한 후에, 백신 프로그램을 다시 원래대로 설정하는 것을 잊지마세요" />
 
                 <Box
                     sx={{

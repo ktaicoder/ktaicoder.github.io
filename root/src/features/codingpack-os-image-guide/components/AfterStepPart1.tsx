@@ -11,7 +11,11 @@ export default function AfterStepPart1() {
     return (
         <Box sx={{ display: 'block', mt: 10 }}>
             <StepTitle step="추가 단계" title="이미지 구운 후에 해야 할 일" />
-
+            <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 2, '& > div + div': { mt: 1 } }}>
+                <ListText text="OS 이미지를 구운 직후 제일 먼저해야 할 일은 SD 카드 디스크를 확장하는 일입니다" />
+                <ListText text="16GB 또는 32GB 크기의 SD 카드인데도, OS 이미지를 구운 직후에는 8GB로 인식합니다" />
+                <ListText text="나머지 공간도 사용하려면 SD 카드를 확장해주어야 합니다" />
+            </Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', mt: 6, ml: 4, fontWeight: 600 }}>
                 +1. SD 카드 확장
             </Typography>
@@ -54,7 +58,7 @@ export default function AfterStepPart1() {
                 <Typography variant="caption">7. Advanced Options 선택</Typography>
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 0, '& > div + div': { mt: 1 } }}>
-                <ListText text="위의 이미지와 같이 7. Advanced Options 메뉴를 선택하세요." />
+                <ListText text="위와 같이 7. Advanced Options 메뉴를 선택하세요." />
                 <ListText text="마우스는 사용할 수 없고, 키보드의 화살표, 탭, 엔터키만 사용할 수 있습니다" />
             </Box>
 
@@ -81,7 +85,7 @@ export default function AfterStepPart1() {
                 <Typography variant="caption">A1 Expand Filesystem 선택</Typography>
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 0, '& > div + div': { mt: 1 } }}>
-                <ListText text="위의 이미지와 같이 A1 Expand Filesystem 메뉴를 선택하세요." />
+                <ListText text="위와 같이 A1 Expand Filesystem 메뉴를 선택하세요." />
             </Box>
 
             <Box

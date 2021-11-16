@@ -11,7 +11,7 @@ export default function OsImageWritePartSub2() {
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', ml: 4, fontWeight: 600 }}>
-                2. Select target - 이미지 파일 복사할곳 연결하기
+                2. Select target - 이미지 파일 복사할 SD카드 선택하기
             </Typography>
             <Box sx={{ display: 'flex', maxWidth: '100%', flexDirection: smDown ? 'column' : 'row' }}>
                 <Box
@@ -50,8 +50,9 @@ export default function OsImageWritePartSub2() {
                 </Box>
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 6, '& > div + div': { mt: 1 } }}>
-                <ListText text="컴퓨터에 SD카드와 연결된 리더기(USB)를 삽입하고 내PC에 연결되었는지 확인합니다." />
-                <ListText text="아직 부팅 전이라 데이터를 읽지못한다는 창이 뜨면 닫아주세요." />
+                <ListText text="컴퓨터에 SD카드 리더기(USB)를 삽입하고 내 PC에 연결되었는지 확인합니다." />
+                <ListText text="위 그림에서는 E와 G드라이브로 연결되었는데, PC 마다 드라이브 문자는 다를 수 있습니다" />
+                <ListText text="드라이브를 선택시 내용을 읽을 수는 없다는 알림은 무시하면 됩니다." />
             </Box>
 
             <Box
@@ -75,7 +76,7 @@ export default function OsImageWritePartSub2() {
                 />
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 1, '& > div + div': { mt: 1 } }}>
-                <ListText text="다시 에처(Etcher)로 돌아와서 Select target버튼을 누른 후 부팅할 파일을 선택해주세요." />
+                <ListText text="다시 에처(Etcher)로 돌아와서 Select target 버튼을 누른 후 SD 카드 드라이브를 선택해주세요." />
             </Box>
         </Box>
     )

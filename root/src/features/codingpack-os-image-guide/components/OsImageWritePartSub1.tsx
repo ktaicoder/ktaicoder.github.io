@@ -11,7 +11,7 @@ export default function OsImageWritePartSub1() {
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', ml: 4, fontWeight: 600 }}>
-                1. Flash from file - 이미지 파일 찾기
+                1. Flash from file - 이미지 파일 선택
             </Typography>
             <Box sx={{ display: 'flex', maxWidth: '100%', flexDirection: smDown ? 'column' : 'row' }}>
                 <Box

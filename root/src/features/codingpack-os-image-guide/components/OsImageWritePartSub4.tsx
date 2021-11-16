@@ -36,7 +36,7 @@ export default function OsImageWritePartSub4() {
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 1, '& > div + div': { mt: 1 } }}>
                 <ListText text="굽기가 완료되면 Flash Complete 화면이 표시됩니다" />
-                <ListText text="이제 에처(Etcher)창을 닫고 컴퓨터에서 SD카드를 빼주세요." />
+                <ListText text="이제 에처(Etcher)창을 닫고 컴퓨터에서 SD 카드를 빼주세요." />
             </Box>
 
             <Box
@@ -76,7 +76,7 @@ export default function OsImageWritePartSub4() {
                 />
             </Box>
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 6, '& > div + div': { mt: 1 } }}>
-                <ListText text="코딩팩에 SD카드를 삽입한 후 전원을 넣으면 부팅이 됩니다." />
+                <ListText text="코딩팩에 SD카드를 삽입한 후 전원을 넣으면, 코딩팩을 이용할 수 있습니다." />
             </Box>
         </Box>
     )
