@@ -2,11 +2,18 @@ import ChevronRight from '@mui/icons-material/ChevronRight'
 import { Box, ButtonBase, Container, Divider, Icon, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { routerUrlOf } from 'src/lib/urls'
+import AfterStepPart1 from './components/AfterStepPart1'
+import AfterStepPart2 from './components/AfterStepPart2'
+import AfterStepPart3 from './components/AfterStepPart3'
 import EtcherDownloadPart from './components/EtcherDownloadPart'
 import IntroStepPart from './components/IntroStepPart'
 import ListText from './components/ListText'
 import OsImageDownloadPart from './components/OsImageDownloadPart'
 import OsImageWritePart from './components/OsImageWritePart'
+import OsImageWritePartSub1 from './components/OsImageWritePartSub1'
+import OsImageWritePartSub2 from './components/OsImageWritePartSub2'
+import OsImageWritePartSub3 from './components/OsImageWritePartSub3'
+import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
 import RaspDownloadButton from './components/RaspDownloadButton'
 import RaspIntroPart from './components/RaspIntroPart'
 import StepCircle from './components/StepCircle'
@@ -74,6 +81,29 @@ export default function CodingPackOsImageGuide() {
                 {/* 3단계 SD 카드에 OS 이미지 굽기 */}
                 <Box sx={{ display: 'block', mt: 10 }}>
                     <OsImageWritePart />
+                </Box>
+
+                {/* 1. Flash from file - 이미지 파일 찾기 */}
+                <Box sx={{ mt: 10 }}>
+                    <OsImageWritePartSub1 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <OsImageWritePartSub2 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <OsImageWritePartSub3 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <OsImageWritePartSub4 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <AfterStepPart1 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <AfterStepPart2 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <AfterStepPart3 />
                 </Box>
             </Container>
         </Box>
