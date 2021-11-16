@@ -20,7 +20,7 @@ export default function MyApp(props: MyAppProps) {
     return (
         <CacheProvider value={emotionCache}>
             <Head>
-                <title>AI Coding Block 개발자 페이지</title>
+                <title>AI 코딩블록 개발자 가이드</title>
                 <meta name="viewport" content="initial-scale=1, width=device-width" />
             </Head>
             <ThemeProvider theme={theme}>

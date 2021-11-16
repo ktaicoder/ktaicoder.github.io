@@ -24,10 +24,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "14"
-      - run: |
-          yarn install
-          yarn build
-          yarn deploy
+      - run: yarn install
+      - run: yarn build
+      - run: yarn deploy
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
