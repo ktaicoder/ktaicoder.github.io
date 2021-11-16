@@ -8,13 +8,11 @@ interface Props {
     icon?: ReactNode
     title?: string
     subtitle?: string
+    children?: React.ReactChild
 }
 
-/**
- * @param param0
- * @returns
- */
-const PortletLabel: React.FC<Props> = ({ icon, title, subtitle, sx }) => {
+const PortletLabel = (props: Props) => {
+    const { icon, title, subtitle, sx } = props
     return (
         <Box
             sx={{

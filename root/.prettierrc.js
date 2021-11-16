@@ -10,7 +10,6 @@ module.exports = {
     arrowParens: 'always',
     endOfLine: 'auto',
     proseWrap: 'preserve',
-    jsxBracketSameLine: false,
     overrides: [
         {
             files: '*.json',

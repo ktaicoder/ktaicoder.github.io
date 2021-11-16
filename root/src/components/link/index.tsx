@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+/* eslint-disable react/prop-types */
 import { Button, ButtonProps } from '@mui/material'
 import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link'
 import clsx from 'clsx'

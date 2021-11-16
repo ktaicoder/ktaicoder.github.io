@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { Typography } from '@mui/material'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
@@ -21,19 +20,14 @@ export default function MarkdownView(props: Props) {
     return (
         <MarkdownStyle>
             <ReactMarkdown
-                children={markdown ?? ''}
                 remarkPlugins={[gfm]}
                 components={{
-                    code({ node, inline, className, children, ...props }) {
+                    code({ inline, className, children, ...props }) {
                         const match = /language-(\w+)/.exec(className || '')
                         return !inline && match ? (
-                            <SyntaxHighlighter
-                                children={String(children).replace(/\n$/, '')}
-                                style={dracula}
-                                language={match[1]}
-                                PreTag="div"
-                                {...props}
-                            />
+                            <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div" {...props}>
+                                {String(children).replace(/\n$/, '')}
+                            </SyntaxHighlighter>
                         ) : (
                             <code className={className} {...props}>
                                 {children}
@@ -41,7 +35,9 @@ export default function MarkdownView(props: Props) {
                         )
                     },
                 }}
-            />
+            >
+                {markdown ?? ''}
+            </ReactMarkdown>
         </MarkdownStyle>
     )
 }

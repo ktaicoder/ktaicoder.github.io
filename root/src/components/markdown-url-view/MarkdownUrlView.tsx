@@ -19,6 +19,6 @@ export default function MarkdownUrlView(props: Props) {
 
     useEffect(() => {
         reload(url)
-    }, [url])
+    }, [url, reload])
     return <MarkdownView markdown={markdown} />
 }

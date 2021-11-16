@@ -8,7 +8,8 @@ interface Props {
     children?: React.ReactChild
 }
 
-const PortletFooter: React.FC<Props> = ({ children, noDivider, noPadding, sx }) => {
+const PortletFooter = (props: Props) => {
+    const { children, noDivider, noPadding, sx } = props
     return (
         <Box
             sx={{

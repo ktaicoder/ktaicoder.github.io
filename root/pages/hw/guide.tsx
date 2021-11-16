@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import HwGuide from 'src/features/hw-guide/HwGuide'
 import MainLayout from 'src/layout/main/MainLayout'
 

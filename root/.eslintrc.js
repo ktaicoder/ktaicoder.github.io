@@ -4,7 +4,6 @@ module.exports = {
         es6: true,
         node: true,
     },
-    parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
@@ -18,24 +17,18 @@ module.exports = {
             createClass: "createReactClass",
             pragma: "React",
             version: "detect",
-        },
+        }
     },
     extends: [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:react-hooks/recommended",
-        "prettier/react",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
-        "plugin:@next/next/recommended",
-        "next/core-web-vitals",
+        "next",
+        "prettier"
     ],
     globals: {
         Atomics: "readonly",
         SharedArrayBuffer: "readonly",
     },
 
-    plugins: ["react", "react-hooks", "prettier", "workspaces"],
+    plugins: ["react", "react-hooks", "prettier"],
     rules: {
         "react/react-in-jsx-scope": "off",
         "no-useless-constructor": "off",

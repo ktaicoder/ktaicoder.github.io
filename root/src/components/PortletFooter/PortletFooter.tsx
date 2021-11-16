@@ -4,9 +4,11 @@ import { SxProps } from '@mui/system'
 interface Props {
     sx?: SxProps
     noDivider?: boolean
+    children?: React.ReactChild
 }
 
-const PortletFooter: React.FC<Props> = ({ noDivider, sx, children }) => {
+const PortletFooter = (props: Props) => {
+    const { noDivider, sx, children } = props
     return (
         <Box
             sx={{

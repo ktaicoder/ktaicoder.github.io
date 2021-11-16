@@ -2,9 +2,11 @@ import { Box } from '@mui/material'
 
 interface Props {
     noPadding?: boolean
+    children?: React.ReactNode
 }
 
-const PortletContent: React.FC<Props> = ({ noPadding, children }) => {
+const PortletContent = (props: Props) => {
+    const { noPadding, children } = props
     return (
         <Box
             sx={{
