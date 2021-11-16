@@ -28,7 +28,8 @@ module.exports = {
         return {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
-            '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide', query: { title: 'hello-nextjs' } },
+            // '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide', query: { title: 'hello-nextjs' } },
+            '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
         }
     },
 }
