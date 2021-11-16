@@ -1,17 +1,11 @@
 import { Box, Container, Divider, Typography, useMediaQuery } from '@mui/material'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
-
-import Image from 'next/image'
+import { useTheme } from '@mui/material/styles'
 import { routerUrlOf } from 'src/lib/urls'
-import { styled, useTheme } from '@mui/material/styles'
-import { SxProps } from '@mui/system'
-import { CSSProperties } from 'react'
-import StepDivider from './components/StepDivider'
-import StepCircle from './components/StepCircle'
-import StepTitle from './components/StepTitle'
-import RaspDownloadButton from './components/RaspDownloadButton'
 import ListText from './components/ListText'
+import RaspDownloadButton from './components/RaspDownloadButton'
+import StepCircle from './components/StepCircle'
+import StepDivider from './components/StepDivider'
+import StepTitle from './components/StepTitle'
 
 function downloadLink(href: string) {
     if ('download' in HTMLAnchorElement.prototype) {
@@ -79,13 +73,13 @@ export default function CodingPackOsImageGuide() {
                                     width: 90,
                                     height: 90,
                                 }),
+                                '& img': {
+                                    width: '100%',
+                                    height: '100%',
+                                },
                             }}
                         >
-                            <Image
-                                src={routerUrlOf('/images/codingpack/rasp_logo.png')}
-                                layout="fill"
-                                objectFit="contain"
-                            />
+                            <img src={routerUrlOf('/images/codingpack/rasp_logo.png')} alt="" />
                         </Box>
                         <Divider light flexItem orientation="vertical" sx={{ mx: 6, my: 0 }} />
                         <Typography variant="body2" sx={{ flex: 1, lineHeight: '1.7rem', mt: smDown ? 3 : 0 }}>
