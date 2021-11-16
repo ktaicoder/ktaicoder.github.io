@@ -22,6 +22,7 @@ export default function OsImageWritePartSub2() {
                 >
                     <Box
                         component="img"
+                        className="lightbox"
                         src="/images/codingpack/select_target1.png"
                         sx={{
                             objectFit: 'contain', //
@@ -39,6 +40,7 @@ export default function OsImageWritePartSub2() {
                 >
                     <Box
                         component="img"
+                        className="lightbox"
                         src="/images/codingpack/select_target2.png"
                         sx={{
                             objectFit: 'contain', //
@@ -65,6 +67,7 @@ export default function OsImageWritePartSub2() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/select_target3.png"
                     sx={{
                         objectFit: 'contain', //

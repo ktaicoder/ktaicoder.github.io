@@ -22,6 +22,7 @@ export default function OsImageWritePartSub1() {
                 >
                     <Box
                         component="img"
+                        className="lightbox"
                         src="/images/codingpack/flash_from_file1.png"
                         sx={{
                             objectFit: 'contain', //
@@ -38,6 +39,7 @@ export default function OsImageWritePartSub1() {
                 >
                     <Box
                         component="img"
+                        className="lightbox"
                         src="/images/codingpack/flash_from_file2.png"
                         sx={{
                             objectFit: 'contain', //

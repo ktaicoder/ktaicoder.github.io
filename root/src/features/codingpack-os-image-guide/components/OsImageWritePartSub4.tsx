@@ -24,6 +24,7 @@ export default function OsImageWritePartSub4() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/flash_complete.png"
                     sx={{
                         objectFit: 'contain', //
@@ -53,6 +54,7 @@ export default function OsImageWritePartSub4() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/codingpack_sd1.png"
                     sx={{
                         flexBasis: smDown ? '100%' : '50%', //
@@ -64,6 +66,7 @@ export default function OsImageWritePartSub4() {
                 />
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/codingpack_sd2.png"
                     sx={{
                         flexBasis: smDown ? '100%' : '50%', //

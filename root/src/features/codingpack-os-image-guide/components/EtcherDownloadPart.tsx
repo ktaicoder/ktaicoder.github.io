@@ -65,6 +65,7 @@ export default function EtcherDownloadPart() {
                 </Box>
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/ic_etcher_logo.png"
                     sx={{ width: '70px', height: '70px', objectFit: 'contain' }}
                 />
@@ -83,6 +84,7 @@ export default function EtcherDownloadPart() {
                 <Box
                     sx={{ width: '100%', maxWidth: 460 }}
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/etcher_install1.png"
                 />
             </Box>

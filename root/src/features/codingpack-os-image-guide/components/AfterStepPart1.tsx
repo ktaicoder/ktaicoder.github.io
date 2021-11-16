@@ -28,7 +28,12 @@ export default function AfterStepPart1() {
                     justifyContent: 'center',
                 }}
             >
-                <Box sx={{ width: '100%', maxWidth: 560 }} component="img" src="/images/codingpack/booting1.png" />
+                <Box
+                    sx={{ width: '100%', maxWidth: 560 }}
+                    component="img"
+                    className="lightbox"
+                    src="/images/codingpack/booting1.png"
+                />
             </Box>
 
             <Box sx={{ background: '#F6F6F6', px: 3, py: 3, mt: 2, '& > div + div': { mt: 1 } }}>
@@ -47,6 +52,7 @@ export default function AfterStepPart1() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/booting2.png"
                     sx={{
                         objectFit: 'contain', //
@@ -74,6 +80,7 @@ export default function AfterStepPart1() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/booting3.png"
                     sx={{
                         objectFit: 'contain', //
@@ -100,6 +107,7 @@ export default function AfterStepPart1() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/booting5.png"
                     sx={{
                         objectFit: 'contain', //

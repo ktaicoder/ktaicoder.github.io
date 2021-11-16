@@ -20,6 +20,7 @@ export default function RaspDownloadButton(props: { raspVersion: string; onClick
         >
             <Typography
                 variant="body2"
+                component="div"
                 sx={{
                     display: 'flex',
                     color: '#fff',

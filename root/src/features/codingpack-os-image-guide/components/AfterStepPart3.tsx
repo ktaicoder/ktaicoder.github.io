@@ -25,6 +25,7 @@ export default function AfterStepPart3() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/reset1.png"
                     sx={{
                         objectFit: 'contain', //

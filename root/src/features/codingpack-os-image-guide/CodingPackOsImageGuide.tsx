@@ -1,42 +1,22 @@
-import ChevronRight from '@mui/icons-material/ChevronRight'
-import { Box, ButtonBase, Container, Divider, Icon, Typography, useMediaQuery } from '@mui/material'
+import { useMemo, useState, useEffect, useRef } from 'react'
+import { Box, Container, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
-import { routerUrlOf } from 'src/lib/urls'
+import ImageViewerContainer from 'src/components/image-viewer-container/ImageViewerContainer'
 import AfterStepPart1 from './components/AfterStepPart1'
 import AfterStepPart2 from './components/AfterStepPart2'
 import AfterStepPart3 from './components/AfterStepPart3'
 import EtcherDownloadPart from './components/EtcherDownloadPart'
 import IntroStepPart from './components/IntroStepPart'
-import ListText from './components/ListText'
 import OsImageDownloadPart from './components/OsImageDownloadPart'
 import OsImageWritePart from './components/OsImageWritePart'
 import OsImageWritePartSub1 from './components/OsImageWritePartSub1'
 import OsImageWritePartSub2 from './components/OsImageWritePartSub2'
 import OsImageWritePartSub3 from './components/OsImageWritePartSub3'
 import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
-import RaspDownloadButton from './components/RaspDownloadButton'
 import RaspIntroPart from './components/RaspIntroPart'
-import StepCircle from './components/StepCircle'
-import StepDivider from './components/StepDivider'
-import StepTitle from './components/StepTitle'
 
-function downloadLink(href: string) {
-    if ('download' in HTMLAnchorElement.prototype) {
-        const downloadLink = document.createElement('a')
-        document.body.appendChild(downloadLink)
-        downloadLink.href = href
-        downloadLink.type = 'application/octet-stream'
-        downloadLink.click()
-        document.body.removeChild(downloadLink)
-    } else {
-        // iOS Safari, open a new page and set href to data-uri
-        let popup: Window | null = window.open('', '_blank')
-        if (popup) {
-            popup.location.href = href
-        } else {
-            console.warn('window.open() fail')
-        }
-    }
+function randomNumericString() {
+    return Math.random().toString().substring(2)
 }
 
 export default function CodingPackOsImageGuide() {
@@ -44,10 +24,20 @@ export default function CodingPackOsImageGuide() {
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const mdDown = useMediaQuery(theme.breakpoints.down('md'))
     const down700 = useMediaQuery(theme.breakpoints.down(720))
+    const [lightbox, setLightbox] = useState<{ name?: string }>({})
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const clsname = `lightbox-${randomNumericString()}`
+        if (containerRef.current) {
+            containerRef.current?.classList?.add(clsname)
+            setLightbox({ name: clsname })
+        }
+    }, [])
 
     return (
         <Box sx={{ pt: 2, mt: 5, pb: 15 }}>
-            <Container maxWidth="md">
+            <Container maxWidth="md" component="div" ref={containerRef}>
                 <Typography variant="h5" sx={{ textAlign: 'center' }}>
                     라즈베리 파이(Raspberry Pi) OS 만들기
                 </Typography>
@@ -106,6 +96,14 @@ export default function CodingPackOsImageGuide() {
                     <AfterStepPart3 />
                 </Box>
             </Container>
+            {/* 이미지 뷰어를 띄운다 */}
+            {lightbox.name && (
+                <ImageViewerContainer
+                    multiple={true}
+                    cssSelector={`.${lightbox.name} img.lightbox`}
+                    revision={lightbox}
+                />
+            )}
         </Box>
     )
 }

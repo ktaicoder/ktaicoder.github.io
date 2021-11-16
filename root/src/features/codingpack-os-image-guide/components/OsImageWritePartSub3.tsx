@@ -24,6 +24,7 @@ export default function OsImageWritePartSub3() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/flash1.png"
                     sx={{
                         objectFit: 'contain', //
@@ -48,6 +49,7 @@ export default function OsImageWritePartSub3() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/flash2.png"
                     sx={{
                         objectFit: 'contain', //
@@ -72,6 +74,7 @@ export default function OsImageWritePartSub3() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/flash3.png"
                     sx={{
                         objectFit: 'contain', //
@@ -115,6 +118,7 @@ export default function OsImageWritePartSub3() {
                 >
                     <Box
                         component="img"
+                        className="lightbox"
                         src="/images/codingpack/windows_defender.png"
                         sx={{
                             objectFit: 'contain', //

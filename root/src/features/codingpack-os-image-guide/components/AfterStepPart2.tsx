@@ -25,6 +25,7 @@ export default function AfterStepPart2() {
             >
                 <Box
                     component="img"
+                    className="lightbox"
                     src="/images/codingpack/wifi1.png"
                     sx={{
                         objectFit: 'contain', //
