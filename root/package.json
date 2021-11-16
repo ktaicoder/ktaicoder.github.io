@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--max_old_space_size=64000 next dev",
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=32000 next build",
+    "build:fast": "cross-env NODE_OPTIONS=--max_old_space_size=32000 next build --no-lint",
     "start": "next start",
     "deploy": "next export",
     "lint": "next lint"
