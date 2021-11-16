@@ -11,7 +11,6 @@ export type ImageViewLightboxProps = {
     imageUrls: string[]
     startIndex: number
     title?: string // 삭제 예정
-    caption?: string // 삭제 예정
     disableEscKeydown?: boolean
     onClose: () => void
 }
@@ -39,7 +38,7 @@ const makeLinkedList = (urls: string[]): ImageItem[] => {
 }
 
 export default function ImageViewLightbox(props: ImageViewLightboxProps) {
-    const { open, onClose, disableEscKeydown = false, title, caption, imageUrls = [], startIndex = 0 } = props
+    const { open, onClose, disableEscKeydown = false, title, imageUrls = [], startIndex = 0 } = props
     const [slidingIndex, setSlidingIndex] = useState(() => startIndex)
     const imageItems = useMemo(() => makeLinkedList(imageUrls), [imageUrls])
 
