@@ -33,7 +33,7 @@ module.exports = {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
             //'/post/hardware-pc-program-guide': { page: '/post/hardware-pc-program-guide', query: { title: 'hello-nextjs' } },
-            '/post/hardware-pc-program-guide': { page: '/post/hardware-pc-program-guide' },
+            '/post/hardware-pc-program-guide': { page: '/post/[slug]' },
             '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
             '/codingpack/system-reset': { page: '/codingpack/system-reset' },
         }
