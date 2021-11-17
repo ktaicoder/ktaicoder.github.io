@@ -92,7 +92,7 @@ export default function OsImageWritePartSub3() {
                 <Typography variant="h6" sx={{ color: 'error.main' }}>
                     혹시 이미지 굽기가 안되시나요?
                 </Typography>
-                <Typography variant="body2" sx={{ mt: 2, mb: 1 }}>
+                <Typography variant="body2" sx={{ mt: 2, mb: 1, lineHeight: '1.8rem' }}>
                     백신 프로그램이 원인일 수 있습니다. <br />
                     백신 프로그램을 잠시 중지한 후에 시도해보세요.
                     <br />

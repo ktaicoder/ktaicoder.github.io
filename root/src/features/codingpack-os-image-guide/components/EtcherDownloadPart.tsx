@@ -26,12 +26,14 @@ export default function EtcherDownloadPart() {
                 <Typography
                     variant="subtitle1"
                     sx={{
-                        fontSize: '1.3rem',
+                        fontSize: '1rem',
+                        ml: 1,
                     }}
                 >
                     에처(Etcher) 사이트
                 </Typography>
                 <ButtonBase
+                    component="div"
                     sx={{
                         display: 'flex',
                         alignItems: 'center',
@@ -39,7 +41,6 @@ export default function EtcherDownloadPart() {
                         py: 0.5,
                         color: (theme) => theme.palette.primary.main,
                     }}
-                    component="div"
                 >
                     바로가기
                     <ChevronRight />

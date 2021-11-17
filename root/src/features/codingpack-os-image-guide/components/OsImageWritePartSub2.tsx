@@ -1,4 +1,4 @@
-import { Box, Typography, useMediaQuery } from '@mui/material'
+import { Grid, Box, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { routerUrlOf } from 'src/lib/urls'
 import ListText from './ListText'
@@ -13,13 +13,9 @@ export default function OsImageWritePartSub2() {
             <Typography variant="subtitle1" sx={{ color: '#3F617D', ml: 4, fontWeight: 600 }}>
                 2. Select target - 이미지 파일 복사할 SD카드 선택하기
             </Typography>
-            <Box sx={{ display: 'flex', maxWidth: '100%', flexDirection: smDown ? 'column' : 'row' }}>
-                <Box
-                    sx={{
-                        flexBasis: smDown ? '100%' : '40%', //
-                        p: 2,
-                    }}
-                >
+
+            <Grid container spacing={1}>
+                <Grid item xs={12} sm={12} md={4} lg={4}>
                     <Box
                         component="img"
                         className="lightbox"
@@ -31,13 +27,8 @@ export default function OsImageWritePartSub2() {
                             border: '1px solid #ddd',
                         }}
                     />
-                </Box>
-                <Box
-                    sx={{
-                        flexBasis: smDown ? '100%' : '60%', //
-                        p: 2,
-                    }}
-                >
+                </Grid>
+                <Grid item xs={12} sm={12} md={8} lg={8}>
                     <Box
                         component="img"
                         className="lightbox"
@@ -49,8 +40,9 @@ export default function OsImageWritePartSub2() {
                             border: '1px solid #ddd',
                         }}
                     />
-                </Box>
-            </Box>
+                </Grid>
+            </Grid>
+
             <ListTextBox>
                 <ListText text="컴퓨터에 SD카드 리더기(USB)를 삽입하고 내 PC에 연결되었는지 확인합니다." />
                 <ListText text="위 그림에서는 E와 G드라이브로 연결되었는데, PC 마다 드라이브 문자는 다를 수 있습니다" />

@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 import { SxProps } from '@mui/system'
 
-export default function ListTextBox(props: { sx?: SxProps; children: React.ReactChild | React.ReactChild[] }) {
-    const { sx } = props
+export default function ListTextBox(props: { sx?: SxProps; children?: React.ReactChild | React.ReactChild[] }) {
+    const { sx, children } = props
     return (
         <Box
             sx={{

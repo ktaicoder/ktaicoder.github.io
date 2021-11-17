@@ -6,20 +6,18 @@ import StepDivider from './StepDivider'
 
 export default function IntroStepPart() {
     const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const down700 = useMediaQuery(theme.breakpoints.down(720))
 
     return (
         <Box
             sx={{
                 display: 'flex',
+                maxWidth: 640,
                 ...(mdDown && {
                     flexDirection: 'column',
                 }),
                 ...(!mdDown && {
                     width: '100%',
-                    px: 10,
                     justifyContent: 'center',
                     alignItems: 'flex-start',
                     flexDirection: 'row',

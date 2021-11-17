@@ -9,6 +9,7 @@ export default function StepTitle(props: { step: string; title: string; subtitle
                     variant="subtitle1"
                     sx={{
                         color: '#228AA5',
+                        whiteSpace: 'nowrap',
                         fontWeight: 700,
                         fontSize: '1.4rem',
                     }}
@@ -24,7 +25,7 @@ export default function StepTitle(props: { step: string; title: string; subtitle
                     variant="subtitle2"
                     sx={{
                         textAlign: 'center',
-                        fontWeight: 500,
+                        fontWeight: 300,
                         fontSize: '1.0rem',
                     }}
                 >

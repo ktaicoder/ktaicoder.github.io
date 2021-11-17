@@ -35,7 +35,7 @@ export default function CodingPackOsImageGuide() {
 
     return (
         <Box sx={{ pt: 2, mt: 5, pb: 15 }}>
-            <Container maxWidth="md" component="div" ref={containerRef}>
+            <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
                 <Typography variant="h5" sx={{ textAlign: 'center' }}>
                     라즈베리 파이(Raspberry Pi) OS 만들기
                 </Typography>
