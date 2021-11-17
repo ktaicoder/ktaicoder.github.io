@@ -1,0 +1,206 @@
+---
+date: '2021-04-04'
+thumbnail: /assets/sliced-tomato-and-spring-onion-salad.jpeg
+title: PC 프로그램 개발자 가이드
+description: PC 프로그램 개발자 가이드
+---
+
+# PC 프로그램 가이드
+
+하드웨어 제어를 위한 PC용 프로그램입니다. `electron` 기반으로 구현되었습니다.
+
+## 사전 준비
+
+- `yarn`을 기준으로 설명합니다.(`npm` 사용해도 됩니다)
+
+## Quick Start
+
+빠르게 실행하는 방법은 다음과 같습니다.
+
+```bash
+$  git clone https://github.com/ktaicoder/hw-pc.git
+$  cd hw-pc
+$  yarn install
+$  yarn dev
+```
+
+-   위 명령 중 빌드 또는 실행 단계에서 일부는 안되는 경우도 있습니다. 이 프로젝트는 `USB-TO-SERIAL` 장치를 제어하는 기능이 있는데, 컴퓨터의 USB 장치에 접근하므로 C/C++ 소스코드를 컴파일하는 과정이 필요하며, 컴파일을 위해 필요한 개발용 도구들이 사전에 설치되어 있어야 합니다.
+
+-   C/C++ 소스코드를 컴파일하는 것은 꽤 복잡한 과정이지만, `node-gyp`를 이용해서 비교적 쉽게 컴파일 할 수 있습니다. `node-gyp`를 설치하고, 윈도우라면 컴파일러 도구를 다운로드 받아야 합니다. (맥에서는 아직 안해봤습니다)
+
+### `node-gyp` 설치
+
+-   다음과 같이 `node-gyp`를 설치합니다.
+
+```bash
+$  npm install -g node-gyp
+```
+
+## 커스텀 하드웨어 작성
+
+-  모든 하드웨어에는 `하드웨어 ID(hwId)`를 부여합니다.
+-  `src/custom/hw` 폴더에 `hwId` 폴더를 만드세요. 
+- hwId는 원하는 것으로 결정하세요. 중복되지만 않으면 문제되지 않습니다.
+- 만약 hwId가 `awesome`인 하드웨어를 추가한다면 src/custom/hw/`awesome` 폴더를 만들면 됩니다.
+
+### `hwId` 규칙
+- `hwId`는 소문자로 시작해야 하고, 공백이 없습니다.
+- `camel case` 표기법을 권장합니다.
+
+### 작성할 내용
+
+- `hwId`가 `awesome`인 하드웨어를 예로 든다면,
+
+- 구현할 내용은  `IAwesomeControl.ts` , `AwesomeControl.ts`과 `index.ts` 파일입니다.
+    - `IAwesomeControl.ts` 은 하드웨어 인터페이스에 대한 내용이고
+    - `AwesomeControl.ts` 은 하드웨어 인터페이스의 구현체입니다. 실제로 하드웨어와 통신하는 코드가 포함됩니다.
+    - `index.ts`는 기타 부가적인 정보와 함께 인터페이스와 구현체를 `export`합니다.
+
+```javascript
+// src/custom/hw/awesome/IAwesomeControl.tsx
+
+import { HardwareDescriptor, IHwControl } from 'src/custom-types/hw-types'
+
+/**
+ * 컨트롤 인터페이스 - 클라이언트(ex: 블록코딩)에서 사용
+ * 클라이언트는 이 인터페이스를 Proxy 하여 RPC 처럼 호출
+ */
+export interface IAwesomeControl extends IHwControl {
+    analogRead(): Promise<number[]>
+    digitalRead(): Promise<number[]>
+    digitalWrite(pin: number, value: number): Promise<void>
+}
+
+/**
+ * 하드웨어 디스크립터: commands
+ * 변수이름을 hwId로 해야 함
+ */
+export const awesome: HardwareDescriptor = {
+    commands: [
+        'analogRead', //
+        'digitalRead',
+        'digitalWrite',
+    ],
+}
+```
+
+```javascript 
+// file: src/custom/hw/awesome/AwesomeControl.tsx
+
+import SerialPort, { parsers } from 'serialport'
+import { ISerialPortInfo } from 'src/custom-types/base-types'
+import { IHwContext, SerialPortHelper } from 'src/custom/serial-port'
+import { IAwesomeControl } from './IAwesomeControl'
+
+const DEBUG = true
+
+const DELIMITER = Buffer.from([0x52, 0x58, 0x3d, 0x0, 0x0e])
+
+const chr = (ch: string): number => ch.charCodeAt(0)
+
+/**
+ * 하드웨어 서비스
+ */
+export class AwesomeControl implements IAwesomeControl {
+    private _context: IHwContext | null = null
+
+    setContext = (context: IHwContext | undefined | null) => {
+        this._context = context ?? null
+    }
+
+    static createSerialPortHelper = (path: string): SerialPortHelper => {
+        const sp = new SerialPort(path, {
+            autoOpen: true,
+            baudRate: 38400,
+            lock: false,
+        })
+
+        const parser = new parsers.Delimiter({ delimiter: DELIMITER, includeDelimiter: false })
+        return SerialPortHelper.create(sp, parser)
+    }
+
+    static isMatch = (portInfo: ISerialPortInfo): boolean => {
+        return portInfo.manufacturer === 'Silicon Labs'
+    }
+
+    private get serialPortHelper(): SerialPortHelper | undefined {
+        return this._context?.provideSerialPortHelper?.()
+    }
+
+    /**
+     * @override IHwControl
+     * @returns 읽기 가능 여부
+     */
+    isReadable = (): boolean => {
+        return this.serialPortHelper?.isReadable() === true
+    }
+
+    private checkSerialPort(): SerialPortHelper {
+        if (!this.isReadable()) {
+            throw new Error('hw not open')
+        }
+
+        return this.serialPortHelper!
+    }
+
+    async analogRead(): Promise<number[]> {
+        const helper = this.checkSerialPort()
+        const values = await helper.readNext()
+
+        // [pin1 ~ pin5]
+        return new Array(5).fill(0).map((_, i) => values[i] ?? 0)
+    }
+
+    async digitalRead(): Promise<number[]> {
+        const values = await this.analogRead()
+        // [pin1 ~ pin5]
+        return values.map((v) => (v > 100 ? 1 : 0))
+    }
+
+    async digitalWrite(pin: 1 | 2 | 3 | 4 | 5, value: number): Promise<void> {
+        const helper = this.checkSerialPort()
+        value = value > 0 ? 1 : 0
+
+        const pkt = [chr('X'), chr('R'), 2, 0, 0, 0, 0, 0, chr('S')]
+        pkt[2 + pin] = value
+        if (DEBUG) console.log(`digitalWrite: pin=${pin}, value=${value}`)
+        await helper.write(pkt)
+    }
+
+}
+```
+
+
+```javascript
+// file: src/custom/hw/awesome/index.ts 
+
+import { HwKind, IHwInfo } from 'src/custom-types/hw-types'
+import { AwesomeControl } from './AwesomeControl'
+
+const info: IHwInfo = {
+    hwId: 'awesome',
+    hwKind: HwKind.serial,
+    hwName: '어썸보드',
+    category: 'module',
+    supportPlatforms: ['win32'],
+    pcDrivers: [
+        {
+            name: 'USB 드라이버',
+            'win32-ia32': 'CP210x_Universal_Windows_Driver/CP210xVCPInstaller_x86.exe',
+            'win32-x64': 'CP210x_Universal_Windows_Driver/CP210xVCPInstaller_x64.exe',
+        },
+    ],
+}
+
+export default {
+    hwId: 'awesome',
+    info,
+    operator: AwesomeControl,
+    control: () => new AwesomeControl(),
+}
+
+```
+
+### TODO 
+- 내용 추가 중
+

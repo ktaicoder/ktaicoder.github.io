@@ -3,6 +3,12 @@ const PRODUCTION = process.env.NODE_ENV === 'production'
 const ROUTER_BASE_URL = process.env.ROUTER_BASE_URL ?? ''
 const API_BASE_URL = process.env.API_BASE_URL ?? 'https://github.com/ktaicoder'
 const ASSET_PREFIX = process.env.ASSET_PREFIX ?? ''
+let SITE_URL
+if (PRODUCTION) {
+    SITE_URL = 'https://ktaicoder.github.io'
+} else {
+    SITE_URL = process.env.SITE_URL ?? 'http://localhost:3000'
+}
 
 
 /** @type {import('next').NextConfig} */
@@ -18,6 +24,7 @@ module.exports = {
     publicRuntimeConfig: {
         ROUTER_BASE_URL,
         API_BASE_URL,
+        SITE_URL,
         DEBUG: !PRODUCTION,
     },
 
@@ -25,7 +32,8 @@ module.exports = {
         return {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
-            // '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide', query: { title: 'hello-nextjs' } },
+            //'/post/hardware-pc-program-guide': { page: '/post/hardware-pc-program-guide', query: { title: 'hello-nextjs' } },
+            '/post/hardware-pc-program-guide': { page: '/post/hardware-pc-program-guide' },
             '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
         }
     },

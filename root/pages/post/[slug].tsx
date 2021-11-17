@@ -29,8 +29,8 @@ export function PostPage({ source, frontMatter }: Props) {
                 </Head>
 
                 <article className="prose prose-green">
-                    <Typography variant="h3">{frontMatter.title}</Typography>
-                    <p>{frontMatter.description}</p>
+                    {/* <Typography variant="h3">{frontMatter.title}</Typography>
+                    <p>{frontMatter.description}</p> */}
                     <MDXRemote {...source} components={MdxComponents} />
                 </article>
             </MdxPostLayout>

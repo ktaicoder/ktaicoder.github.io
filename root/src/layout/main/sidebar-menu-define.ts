@@ -43,8 +43,8 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
     {
         type: 'menu',
         icon: 'usb',
-        title: '하드웨어 가이드',
-        href: '/hw/guide',
+        title: 'PC 프로그램 가이드',
+        href: '/post/hardware-pc-program-guide',
     },
     { type: 'divider' },
 

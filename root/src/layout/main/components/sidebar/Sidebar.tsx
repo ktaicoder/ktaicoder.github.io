@@ -38,9 +38,24 @@ function Sidebar() {
                 },
             }}
         >
-            <DrawerHeader sx={{ pl: 2, pr: 1, color: 'primary.main', justifyContent: 'flex-start' }}>
-                <Box component="a" sx={{ flexGrow: 1, textDecoration: 'none' }} href={routerUrlOf('/')}>
-                    AI 코딩 블록 개발자 가이드
+            <DrawerHeader sx={{ pl: 2, pr: 1, justifyContent: 'flex-start' }}>
+                <Box
+                    component="a"
+                    sx={{ flexGrow: 1, fontSize: '1.1rem', textDecoration: 'none' }}
+                    href={routerUrlOf('/')}
+                >
+                    <Box sx={{ fontSize: '0.85rem', color: '#555', fontWeight: 300 }}>AI 코딩블록</Box>
+                    <Box
+                        sx={{
+                            flexGrow: 1,
+                            color: 'primary.main',
+                            fontSize: '1.1rem',
+                            fontFamily: 'Black Han Sans',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        개발자 가이드
+                    </Box>
                 </Box>
                 <IconButton
                     size="small"
