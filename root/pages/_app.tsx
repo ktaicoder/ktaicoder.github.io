@@ -7,6 +7,9 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 import theme from 'src/theme'
 import createEmotionCache from 'src/createEmotionCache'
 import StoreProvider from 'src/store/StoreProvider'
+import '../styles/globals.css'
+import '../styles/ok.css'
+import 'tailwindcss/tailwind.css'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()

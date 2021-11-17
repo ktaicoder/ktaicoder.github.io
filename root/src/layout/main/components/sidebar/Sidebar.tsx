@@ -4,8 +4,7 @@ import { Box, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery }
 import { useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
 import { useRouter } from 'next/router'
-import Image from 'src/components/Image'
-import { routerPush } from 'src/lib/urls'
+import { routerUrlOf } from 'src/lib/urls'
 import useStore from 'src/store/useStore'
 import { SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
@@ -40,7 +39,9 @@ function Sidebar() {
             }}
         >
             <DrawerHeader sx={{ pl: 2, pr: 1, color: 'primary.main', justifyContent: 'flex-start' }}>
-                <Box sx={{ flexGrow: 1 }}>AI 코딩 블록 개발자 가이드</Box>
+                <Box component="a" sx={{ flexGrow: 1, textDecoration: 'none' }} href={routerUrlOf('/')}>
+                    AI 코딩 블록 개발자 가이드
+                </Box>
                 <IconButton
                     size="small"
                     onClick={sidebarStore.toggleOpen}

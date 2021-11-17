@@ -47,7 +47,7 @@ type Props = {
     children?: React.ReactChild | React.ReactChild[]
 }
 
-const MainLayout = (props: Props) => {
+function MainLayout(props: Props) {
     const { title, children } = props
     const { sidebarStore } = useStore()
     const theme = useTheme()

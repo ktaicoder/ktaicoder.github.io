@@ -1,0 +1,77 @@
+---
+date: '2021-04-04'
+thumbnail: /assets/sliced-tomato-and-spring-onion-salad.jpeg
+title: 문서 스타일 샘플
+description: Example style
+yields: 2 servings
+---
+import { Typography } from '@mui/material'
+
+<Typography variant="h1">이런 것도 되나</Typography>
+
+# 제목1
+## 제목2
+### 제목3
+#### 제목4
+##### 제목5
+
+- 목록 1
+  - 목록 1.1
+  - 목록 1.2
+- 목록 2
+  - 목록 2.1
+  - 목록 2.2
+    - 목록 2.2.1
+    - 목록 2.2.2
+
+1. 목록 3
+1. 목록 3.1
+1. 목록 3.2
+
+* 목록 4
+* 목록 5
+
+** 강조 텍스트1 **
+
+`백틱 텍스트`입니다
+
+```shell
+# 쉘
+$ sudo ls
+$ ls -al
+```
+
+```bash
+# 배시쉘
+$ sudo ls
+```
+
+
+
+```js
+// JS
+
+function testFunction() {
+  console.log('hello')
+}
+```
+
+<SyntaxHighlighter language="javascript">
+  {`
+    const doStuff = () => {
+      return console.log('hey')
+    }
+  `}
+</SyntaxHighlighter>
+
+<div>
+<Button >Text 버튼</Button>
+</div>
+
+<div>
+  <Button variant="outlined">Outlined 버튼</Button>
+</div>
+
+<Box m={1}>
+  <Button variant="contained">Contained 버튼</Button>
+</Box>

@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'
 import theme from '../src/theme'
 import createEmotionCache from '../src/createEmotionCache'
+
 const googleFont =
     'https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Nanum+Gothic+Coding:wght@400;700&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap'
 export default class MyDocument extends Document {
@@ -15,7 +16,7 @@ export default class MyDocument extends Document {
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="crossOrigin" />
                     <link href={googleFont} rel="stylesheet" />
-                    <link href={'https://sindresorhus.com/github-markdown-css/github-markdown.css'} rel="stylesheet" />
+                    {/* <link href={'https://sindresorhus.com/github-markdown-css/github-markdown.css'} rel="stylesheet" /> */}
                 </Head>
                 <body>
                     <Main />

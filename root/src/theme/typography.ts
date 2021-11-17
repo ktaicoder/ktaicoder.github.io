@@ -7,7 +7,7 @@ const FONT_FAMILIES = [ //
     'Nanum Gothic Coding',
     'Do Hyeon',
     'Jua',
-    'Nanum Pen Script'
+    'Nanum Pen Script',
 ]
 
 const typography = (palette: Palette) => ({
