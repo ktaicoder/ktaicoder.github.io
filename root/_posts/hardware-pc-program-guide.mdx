@@ -66,7 +66,6 @@ import { HardwareDescriptor, IHwControl } from 'src/custom-types/hw-types'
  * 클라이언트는 이 인터페이스를 Proxy 하여 RPC 처럼 호출
  */
 export interface IAwesomeControl extends IHwControl {
-    analogRead(): Promise<number[]>
     digitalRead(): Promise<number[]>
     digitalWrite(pin: number, value: number): Promise<void>
 }
@@ -77,7 +76,6 @@ export interface IAwesomeControl extends IHwControl {
  */
 export const awesome: HardwareDescriptor = {
     commands: [
-        'analogRead', //
         'digitalRead',
         'digitalWrite',
     ],
@@ -104,10 +102,21 @@ const chr = (ch: string): number => ch.charCodeAt(0)
 export class AwesomeControl implements IAwesomeControl {
     private _context: IHwContext | null = null
 
+    /**
+     * 하드웨어 제어 컨텍스트
+     * PC 프로그램에서 이 값을 주입(Injection)해 줍니다
+     */
     setContext = (context: IHwContext | undefined | null) => {
         this._context = context ?? null
     }
 
+
+    /**
+     * 시리얼 포트 헬퍼 생성
+     * 시리얼 포트 헬퍼 = 시리얼 포트 + 패킷 구분자(Delimiter)
+     * 
+     * 시리얼 포트 헬퍼는 사용하지 않아도 됩니다
+     */
     static createSerialPortHelper = (path: string): SerialPortHelper => {
         const sp = new SerialPort(path, {
             autoOpen: true,
@@ -119,10 +128,17 @@ export class AwesomeControl implements IAwesomeControl {
         return SerialPortHelper.create(sp, parser)
     }
 
+
+    /**
+     * 시리얼 포트가 매치되는지 여부
+     */
     static isMatch = (portInfo: ISerialPortInfo): boolean => {
         return portInfo.manufacturer === 'Silicon Labs'
     }
 
+    /**
+     * 시리얼 포트 헬퍼
+     */
     private get serialPortHelper(): SerialPortHelper | undefined {
         return this._context?.provideSerialPortHelper?.()
     }
@@ -135,6 +151,9 @@ export class AwesomeControl implements IAwesomeControl {
         return this.serialPortHelper?.isReadable() === true
     }
 
+    /**
+     * 시리얼 포트가 연결되었는지 체크 
+     */
     private checkSerialPort(): SerialPortHelper {
         if (!this.isReadable()) {
             throw new Error('hw not open')
@@ -143,20 +162,19 @@ export class AwesomeControl implements IAwesomeControl {
         return this.serialPortHelper!
     }
 
-    async analogRead(): Promise<number[]> {
-        const helper = this.checkSerialPort()
-        const values = await helper.readNext()
-
-        // [pin1 ~ pin5]
-        return new Array(5).fill(0).map((_, i) => values[i] ?? 0)
-    }
-
+    /**
+     * IAwesomeControl 인터페이스 구현
+     */
     async digitalRead(): Promise<number[]> {
         const values = await this.analogRead()
         // [pin1 ~ pin5]
         return values.map((v) => (v > 100 ? 1 : 0))
     }
 
+
+    /**
+     * IAwesomeControl 인터페이스 구현
+     */
     async digitalWrite(pin: 1 | 2 | 3 | 4 | 5, value: number): Promise<void> {
         const helper = this.checkSerialPort()
         value = value > 0 ? 1 : 0
@@ -166,7 +184,6 @@ export class AwesomeControl implements IAwesomeControl {
         if (DEBUG) console.log(`digitalWrite: pin=${pin}, value=${value}`)
         await helper.write(pkt)
     }
-
 }
 ```
 

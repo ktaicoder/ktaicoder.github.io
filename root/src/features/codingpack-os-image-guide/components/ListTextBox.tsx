@@ -6,10 +6,12 @@ export default function ListTextBox(props: { sx?: SxProps; children?: React.Reac
     return (
         <Box
             sx={{
-                background: '#F6F6F6', //
-                p: 3,
+                // background: '#F6F6F6', //
+                ml: 1,
                 mt: 6,
-                '& > div + div': { mt: 1 },
+                '& > div + div': {
+                    mt: 1,
+                },
                 ...sx,
             }}
         >

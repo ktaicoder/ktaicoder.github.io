@@ -29,7 +29,7 @@ export default function OsImageDownloadPart() {
     const down700 = useMediaQuery(theme.breakpoints.down(720))
 
     return (
-        <Box sx={{ display: 'block', mt: 18 }}>
+        <Box>
             <StepTitle step="1단계" title="OS 이미지 다운로드" />
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Box
@@ -92,7 +92,7 @@ export default function OsImageDownloadPart() {
             <ListTextBox>
                 <ListText text="버전에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다. (2GB, 약 5분소요)" />
                 <ListText text="압축 해제 시 나오는 img파일을 OS 제작 프로그램을 통해 Write 합니다." />
-                <ListText text="원격제어 시 ID는 pi이며, 암호는 kt123!@# 입니다." />
+                <ListText text="코딩팩에 로그인 시 사용자 ID는 pi, 암호는 kt123!@# 입니다." />
             </ListTextBox>
         </Box>
     )

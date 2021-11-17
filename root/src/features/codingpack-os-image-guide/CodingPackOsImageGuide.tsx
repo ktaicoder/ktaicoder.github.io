@@ -14,6 +14,7 @@ import OsImageWritePartSub2 from './components/OsImageWritePartSub2'
 import OsImageWritePartSub3 from './components/OsImageWritePartSub3'
 import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
 import RaspIntroPart from './components/RaspIntroPart'
+import ShortDescPart from './components/ShortDescPart.tsx'
 
 function randomNumericString() {
     return Math.random().toString().substring(2)
@@ -37,7 +38,7 @@ export default function CodingPackOsImageGuide() {
         <Box sx={{ pt: 2, mt: 5, pb: 15 }}>
             <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
                 <Typography variant="h5" sx={{ textAlign: 'center' }}>
-                    라즈베리 파이(Raspberry Pi) OS 만들기
+                    코딩팩 OS 만들기
                 </Typography>
 
                 {/* 라즈베리 소개 부분 */}
@@ -56,18 +57,37 @@ export default function CodingPackOsImageGuide() {
                     <IntroStepPart />
                 </Box>
 
+                {/* 요약설명 */}
+                <Box sx={{ display: 'block', mt: 8 }}>
+                    <ShortDescPart />
+                </Box>
+
+                <Box style={{ borderTop: '2px dotted #ccc' }} mt={10} />
+                <Box
+                    sx={{
+                        mt: 1,
+                        color: '#666',
+                        fontSize: '0.85rem',
+                        lineHeight: 2,
+                        fontWeight: 400,
+                        textAlign: 'center',
+                    }}
+                >
+                    그림과 함께 좀더 자세히 설명합니다.
+                </Box>
+
                 {/* 1단계 OS 이미지 다운로드 */}
-                <Box sx={{ display: 'block', mt: 18 }}>
+                <Box sx={{ mt: 10 }}>
                     <OsImageDownloadPart />
                 </Box>
 
                 {/* 2단계 에처(OS 제작 프로그램) 다운로드 */}
-                <Box sx={{ display: 'block', mt: 10 }}>
+                <Box sx={{ mt: 10 }}>
                     <EtcherDownloadPart />
                 </Box>
 
                 {/* 3단계 SD 카드에 OS 이미지 굽기 */}
-                <Box sx={{ display: 'block', mt: 10 }}>
+                <Box sx={{ mt: 10 }}>
                     <OsImageWritePart />
                 </Box>
 

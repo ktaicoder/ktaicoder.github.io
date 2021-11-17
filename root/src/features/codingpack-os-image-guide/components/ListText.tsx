@@ -7,7 +7,7 @@ export default function ListText(props: { text: string }) {
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <FontAwesomeIcon icon={faCheckCircle} size="xs" />
-            <Typography variant="body1" sx={{ ml: 1, fontSize: '0.85rem' }}>
+            <Typography variant="body1" sx={{ ml: 1, fontSize: '0.95rem' }}>
                 {text}
             </Typography>
         </Box>
