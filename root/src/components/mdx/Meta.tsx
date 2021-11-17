@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-
-import { SITE_URL, SITE_NAME, TWITTER_USERNAME } from 'src/lib/mdx-constants'
+import config from 'src/config'
+import { SITE_NAME, TWITTER_USERNAME } from 'src/lib/mdx-constants'
 
 type Props = {
     pageTitle?: string
@@ -14,10 +14,10 @@ const meta = {
 
 const Meta: React.FC<Props> = ({ pageTitle }: Props) => {
     const router = useRouter()
-    const ogUrl = SITE_URL + router.asPath
+    const ogUrl = config.siteURL + router.asPath
     const ogType = router.pathname === '/' ? 'website' : 'article'
     const ogTitle = pageTitle ? pageTitle : 'Awesome food recipes'
-    const ogImage = SITE_URL + meta.ogImagePath
+    const ogImage = config.siteURL + meta.ogImagePath
 
     return (
         <Head>

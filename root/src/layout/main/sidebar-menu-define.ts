@@ -60,6 +60,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 title: 'OS 이미지 제작',
                 href: '/codingpack/os-image-guide',
             },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '시스템 초기화',
+                href: '/codingpack/system-reset',
+            },
         ],
     },
 

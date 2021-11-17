@@ -1,5 +1,4 @@
 import rehypePrism from '@mapbox/rehype-prism'
-import { Typography } from '@mui/material'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
@@ -7,9 +6,9 @@ import Head from 'next/head'
 import MdxComponents from 'src/components/mdx/MdxComponents'
 import MainLayout from 'src/layout/main/MainLayout'
 import MdxPostLayout from 'src/layout/mdx-post/MdxPostLayout'
-import { SITE_URL } from 'src/lib/mdx-constants'
 import { getAllPosts, getPost } from 'src/lib/mdxUtils'
 import { IPost } from 'src/model/IPost'
+import config from 'src/config'
 
 type Props = {
     source: MDXRemoteSerializeResult
@@ -17,7 +16,7 @@ type Props = {
 }
 
 export function PostPage({ source, frontMatter }: Props) {
-    const ogImage = SITE_URL + frontMatter.thumbnail
+    const ogImage = config.siteURL + frontMatter.thumbnail
 
     return (
         <MainLayout title="">
