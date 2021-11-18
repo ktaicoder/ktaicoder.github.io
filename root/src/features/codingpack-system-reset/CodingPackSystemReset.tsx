@@ -1,6 +1,7 @@
 import { Box, Container, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { useEffect, useRef, useState } from 'react'
+import GuideTitle from 'src/components/guide-title/GuideTitle'
 import ImageViewerContainer from 'src/components/image-viewer-container/ImageViewerContainer'
 import { routerUrlOf } from 'src/lib/urls'
 import ImageBox from '../codingpack-os-image-guide/components/ImageBox'
@@ -42,14 +43,9 @@ export default function CodingPackSystemReset() {
         >
             <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
                 <Box>
-                    <Typography variant="h4" sx={{ textAlign: 'center', fontWeight: 600 }}>
-                        시스템 초기화
-                    </Typography>
-                    <Box
-                        sx={{
-                            mt: 6,
-                        }}
-                    >
+                    <GuideTitle title="코딩팩 시스템 초기화" />
+
+                    <Box sx={{ mt: 6 }}>
                         <Box
                             component="ul"
                             sx={{

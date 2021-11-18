@@ -15,6 +15,7 @@ import OsImageWritePartSub3 from './components/OsImageWritePartSub3'
 import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
 import RaspIntroPart from './components/RaspIntroPart'
 import ShortDescPart from './components/ShortDescPart.tsx'
+import GuideTitle from 'src/components/guide-title/GuideTitle'
 
 function randomNumericString() {
     return Math.random().toString().substring(2)
@@ -37,9 +38,7 @@ export default function CodingPackOsImageGuide() {
     return (
         <Box sx={{ pt: 2, mt: 5, pb: 15 }}>
             <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
-                <Typography variant="h5" sx={{ textAlign: 'center' }}>
-                    코딩팩 OS 만들기
-                </Typography>
+                <GuideTitle title="코딩팩 OS 이미지 제작" sx={{ mb: 4 }} />
 
                 {/* 라즈베리 소개 부분 */}
                 <RaspIntroPart />

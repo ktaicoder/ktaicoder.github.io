@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material/styles'
-import { Container, useMediaQuery } from '@mui/material'
+import { Box, Container, useMediaQuery } from '@mui/material'
 import Header from 'src/components/mdx/Header'
 import Meta from 'src/components/mdx/Meta'
 
@@ -15,10 +15,10 @@ const MdxPostLayout: React.FC<Props> = ({ children, pageTitle }: Props) => {
         <>
             <Meta pageTitle={pageTitle} />
 
-            <div className={smDown ? 'max-w-md mx-auto' : 'max-w-prose mx-auto px-4'}>
+            <Box className={smDown ? 'max-w-md mx-auto' : 'max-w-prose mx-auto px-4'} sx={{ mt: 4 }}>
                 <Header />
                 <main className="pt-4 pb-12">{children}</main>
-            </div>
+            </Box>
 
             {/* <Container maxWidth="md">
                 <Header />
