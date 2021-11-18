@@ -8,7 +8,7 @@ type Props = {
     pageTitle?: string
 }
 
-const MdxPostLayout: React.FC<Props> = ({ children, pageTitle }: Props) => {
+function MdxPostLayout({ children, pageTitle }: Props) {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     // 스마트폰에서 아무리해도 pre > code 부분이 overflow 가로 스크롤이 안된다
@@ -36,8 +36,10 @@ const MdxPostLayout: React.FC<Props> = ({ children, pageTitle }: Props) => {
                 sx={{
                     color: '#111827',
                     overflow: 'hidden',
-                    maxWidth: bodyWidth <= 0 ? 'auto' : `${bodyWidth - (smDown ? 18 : 32)}px`,
 
+                    '& article.mdx-article': {
+                        maxWidth: bodyWidth <= 0 ? 'auto' : `${bodyWidth - (48 + 2)}px`,
+                    },
                     '& h1': {
                         fontSize: '1.8rem',
                         fontWeight: 900,
