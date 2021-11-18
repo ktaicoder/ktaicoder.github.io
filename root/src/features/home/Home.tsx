@@ -1,27 +1,29 @@
-import GitHubIcon from '@mui/icons-material/GitHub'
 import ChevronRight from '@mui/icons-material/ChevronRight'
-import { Box, Button, useMediaQuery, ButtonBase, Container, Grid, Typography } from '@mui/material'
-import { Link } from 'src/components/link'
-import { routerPush, routerUrlOf } from 'src/lib/urls'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import { Box, Button, Grid, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { routerUrlOf } from 'src/lib/urls'
 
 export default function Home() {
     const theme = useTheme()
     const mdDown = useMediaQuery(theme.breakpoints.down('md'))
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+
     return (
-        <Box sx={{ p: 8 }}>
+        <Box sx={{ p: smDown ? 3 : 8 }}>
             <Grid container sx={{ minHeight: '700px' }} spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={6} style={{ border: '0px solid red' }}>
                     <Box
                         sx={{
-                            height: '80vh',
+                            height: smDown ? 'auto' : '80vh',
                             position: 'relative',
-                            minHeight: '600px',
+                            minHeight: smDown ? 'auto' : '600px',
                             pl: mdDown ? 0 : 6,
-                            maxWidth: mdDown ? undefined : '560px',
+                            // maxWidth: mdDown ? undefined : '560px',
+                            maxWidth: '560px',
                             border: '0px solid blue',
                             display: 'flex',
+                            margin: theme.spacing(0, 'auto'),
                             flexDirection: 'column',
                             alignItems: 'flex-start',
                             justifyContent: 'center',
@@ -29,10 +31,11 @@ export default function Home() {
                     >
                         <Box
                             sx={{
-                                fontSize: '64px',
+                                fontSize: smDown ? '40px' : '56px',
                                 fontFamily: 'Black Han Sans',
                                 lineHeight: 1.5,
                                 display: 'flex',
+                                mt: smDown ? 4 : 0,
                                 flexDirection: 'column',
                                 alignItems: 'flex-start',
                                 justifyContent: 'center',
@@ -66,9 +69,15 @@ export default function Home() {
                             sx={{
                                 position: 'absolute',
                                 right: 0,
-                                top: '100px',
-                                width: '145px',
-                                height: '196px',
+                                top: smDown ? '90px' : '100px',
+                                ...(smDown && {
+                                    width: '100px',
+                                    height: '135px',
+                                }),
+                                ...(!smDown && {
+                                    width: '116px',
+                                    height: '156.8px',
+                                }),
                             }}
                             src={routerUrlOf('/images/codiny/3d_movement1.png')}
                         />
@@ -80,7 +89,7 @@ export default function Home() {
                                 endIcon={<ChevronRight fontSize="small" />}
                                 onClick={() => window?.open('https://aicodingblock.kt.co.kr')}
                             >
-                                AI 코딩 블록 사이트
+                                AI 코딩블록 {!smDown && '사이트'}
                             </Button>
                             <Button
                                 sx={{ ml: 2 }}
@@ -120,7 +129,7 @@ export default function Home() {
                         <Box
                             sx={{
                                 mt: 2,
-                                fontSize: mdDown ? '1.0rem' : '1.0rem',
+                                fontSize: mdDown ? '0.95rem' : '1.0rem',
                                 color: '#333',
                                 textAlign: 'center',
                                 fontWeight: 400,
@@ -128,11 +137,27 @@ export default function Home() {
                                 lineHeight: 1.8,
                             }}
                         >
-                            <Box>KT AI 코딩블록은 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을</Box>
-                            <Box>쉽게 학습하고 구현할 수 있는 소프트웨어 코딩 교육 플랫폼입니다.</Box>
-
-                            <Box>내 아이디어를 블록코딩으로 설계하고 KT AI 코딩팩을 활용해 </Box>
-                            <Box>실제 환경에서 대화하고 동작하도록 구현할 수 있습니다.</Box>
+                            {smDown ? (
+                                <Box>
+                                    <Box>
+                                        KT AI 코딩블록은 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을 쉽게
+                                        학습하고 구현할 수 있는 소프트웨어 코딩 교육 플랫폼입니다.
+                                    </Box>
+                                    <Box mt={3}>
+                                        내 아이디어를 블록코딩으로 설계하고 KT AI 코딩팩을 활용해 실제 환경에서 대화하고
+                                        동작하도록 구현할 수 있습니다.
+                                    </Box>
+                                </Box>
+                            ) : (
+                                <>
+                                    <Box>
+                                        KT AI 코딩블록은 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을
+                                    </Box>
+                                    <Box>쉽게 학습하고 구현할 수 있는 소프트웨어 코딩 교육 플랫폼입니다.</Box>
+                                    <Box>내 아이디어를 블록코딩으로 설계하고 KT AI 코딩팩을 활용해 </Box>
+                                    <Box>실제 환경에서 대화하고 동작하도록 구현할 수 있습니다.</Box>
+                                </>
+                            )}
                         </Box>
                         <Box
                             component="img"
