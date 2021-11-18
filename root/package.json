@@ -8,7 +8,8 @@
     "build:fast": "cross-env NODE_OPTIONS=--max_old_space_size=32000 next build --no-lint",
     "start": "next start",
     "deploy": "next export",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "rimraf node_modules/react-transition-group/node_modules/@types/react"
   },
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
@@ -25,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@mapbox/rehype-prism": "^0.8.0",
     "@mui/icons-material": "^5.0.3",
+    "@mui/lab": "^5.0.0-alpha.55",
     "@mui/material": "^5.1.0",
     "@mui/styles": "^5.1.0",
     "@tailwindcss/typography": "^0.4.1",

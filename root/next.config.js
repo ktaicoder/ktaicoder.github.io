@@ -12,7 +12,7 @@ if (PRODUCTION) {
 
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+const CFG = {
     reactStrictMode: true,
     assetPrefix: ASSET_PREFIX,
     // images: {
@@ -27,8 +27,12 @@ module.exports = {
         SITE_URL,
         DEBUG: !PRODUCTION,
     },
+}
 
-    exportPathMap: async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+// exportPathMap을 설정하면 mdx 변경시 새로고침이 안된다
+// 운영환경에서만 설정한다
+if (PRODUCTION) {
+    CFG.exportPathMap = async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
         return {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
@@ -37,5 +41,7 @@ module.exports = {
             '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
             '/codingpack/system-reset': { page: '/codingpack/system-reset' },
         }
-    },
+    }
 }
+
+module.exports = CFG

@@ -1,12 +1,6 @@
 module.exports = {
     "presets": [
-        ["next/babel",
-            {
-                "preset-env": {},
-                "transform-runtime": {},
-                "styled-jsx": {},
-                "class-properties": {}
-            }]
+        "next/babel",
     ],
     "plugins": [
         ["@babel/plugin-proposal-decorators", {

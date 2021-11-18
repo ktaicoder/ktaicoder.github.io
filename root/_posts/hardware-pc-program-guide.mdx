@@ -5,7 +5,7 @@ title: PC 프로그램 개발자 가이드
 description: PC 프로그램 개발자 가이드
 ---
 
-# PC 프로그램 가이드
+# PC 프로그램 개발자 가이드
 
 하드웨어 제어를 위한 PC용 프로그램입니다. `electron` 기반으로 구현되었습니다.
 
@@ -56,6 +56,10 @@ $  npm install -g node-gyp
     - `AwesomeControl.ts` 은 하드웨어 인터페이스의 구현체입니다. 실제로 하드웨어와 통신하는 코드가 포함됩니다.
     - `index.ts`는 기타 부가적인 정보와 함께 인터페이스와 구현체를 `export`합니다.
 
+### 샘플 소스코드 
+
+#### `IAwesomeControl.tsx` 파일
+
 ```javascript
 // src/custom/hw/awesome/IAwesomeControl.tsx
 
@@ -82,6 +86,10 @@ export const awesome: HardwareDescriptor = {
 }
 ```
 
+#### `AwesomeControl.tsx` 파일
+
+- `IAwesomeControl` 인터페이스의 구현(`implements`) 부분 입니다
+
 ```javascript 
 // file: src/custom/hw/awesome/AwesomeControl.tsx
 
@@ -91,9 +99,7 @@ import { IHwContext, SerialPortHelper } from 'src/custom/serial-port'
 import { IAwesomeControl } from './IAwesomeControl'
 
 const DEBUG = true
-
 const DELIMITER = Buffer.from([0x52, 0x58, 0x3d, 0x0, 0x0e])
-
 const chr = (ch: string): number => ch.charCodeAt(0)
 
 /**
@@ -114,6 +120,7 @@ export class AwesomeControl implements IAwesomeControl {
     /**
      * 시리얼 포트 헬퍼 생성
      * 시리얼 포트 헬퍼 = 시리얼 포트 + 패킷 구분자(Delimiter)
+     * 패킷 구분자를 사용하지 않는 경우 null을 입력
      * 
      * 시리얼 포트 헬퍼는 사용하지 않아도 됩니다
      */
@@ -166,8 +173,11 @@ export class AwesomeControl implements IAwesomeControl {
      * IAwesomeControl 인터페이스 구현
      */
     async digitalRead(): Promise<number[]> {
-        const values = await this.analogRead()
+        const helper = this.checkSerialPort()
+        const values = await helper.readNext()
+
         // [pin1 ~ pin5]
+        const values = new Array(5).fill(0).map((_, i) => values[i] ?? 0)
         return values.map((v) => (v > 100 ? 1 : 0))
     }
 
@@ -187,6 +197,7 @@ export class AwesomeControl implements IAwesomeControl {
 }
 ```
 
+#### `index.ts` 파일
 
 ```javascript
 // file: src/custom/hw/awesome/index.ts 
