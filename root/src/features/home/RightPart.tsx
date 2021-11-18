@@ -123,6 +123,7 @@ export default function RightPart() {
                         <Paper
                             sx={{
                                 mt: 2,
+                                p: 0,
                                 position: 'relative',
                                 borderRadius: '16px',
                                 overflow: 'hidden',
@@ -131,7 +132,7 @@ export default function RightPart() {
                         >
                             <Box
                                 component="img"
-                                sx={{ width: '100%', background: '#160A2C' }}
+                                sx={{ width: '100%', background: '#160A2C', transform: 'scale(1.05)' }}
                                 src={routerUrlOf('/images/home/ic_intro1.png')}
                             />
                             <Typography
