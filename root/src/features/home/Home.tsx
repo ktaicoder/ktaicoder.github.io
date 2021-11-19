@@ -1,7 +1,8 @@
-import { Box, Grid, useMediaQuery } from '@mui/material'
+import { Box, Container, Grid, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import LeftPart from './LeftPart'
 import RightPart from './RightPart'
+import SiteListPart from './SiteListPart'
 
 export default function Home() {
     const theme = useTheme()
@@ -17,6 +18,9 @@ export default function Home() {
                     <RightPart />
                 </Grid>
             </Grid>
+            <Container maxWidth="sm">
+                <SiteListPart />
+            </Container>
         </Box>
     )
 }
