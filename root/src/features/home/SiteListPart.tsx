@@ -1,8 +1,11 @@
-import { Box, Typography } from '@mui/material'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { routerUrlOf } from 'src/lib/urls'
 import PageLink from './components/PageLink'
 
 export default function SiteListPart() {
+    const theme = useTheme()
+    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     // const pageLinkClassName = useMemo(() => randomCssClassName('pagelink-'), [])
     const pageLinkClassName = 'pagelink'
 
@@ -11,13 +14,13 @@ export default function SiteListPart() {
             sx={{
                 position: 'relative',
                 display: 'flex',
-                py: 8,
+                pb: 8,
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
         >
-            <Typography variant="h4" sx={{ fontSize: '1.4rem', color: 'primary.main', fontWeight: 600 }}>
+            <Typography variant="h4" sx={{ mt: 8, fontSize: '1.6rem', color: 'primary.main', fontWeight: 600 }}>
                 관련 정보 및 자료
             </Typography>
 
@@ -25,10 +28,29 @@ export default function SiteListPart() {
                 mt={8}
                 sx={{
                     '& > div + div': {
-                        mt: 3,
+                        mt: 2,
                     },
                 }}
             >
+                {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
+                    <Box>
+                        <Box
+                            component="img"
+                            sx={{ width: '5rem', height: '5rem', objectFit: 'contain', display: 'block' }}
+                            src={routerUrlOf('/images/home/codiny1.png')}
+                        />
+                        <Button
+                            sx={{ mt: 1 }}
+                            component="a"
+                            href="https://aicodingblock.kt.co.kr"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            AI 코딩블록 공식 사이트
+                        </Button>
+                    </Box>
+                </Box> */}
+                {/*
                 <Typography variant="h6" sx={{ color: '#0A1929', fontWeight: 500, mt: 4, mb: 2 }}>
                     AI 코딩블록 공식 사이트
                 </Typography>
@@ -45,10 +67,10 @@ export default function SiteListPart() {
                     subtitle="지금 보고 이 사이트입니다. AI 코딩블록의 개발자 가이드를 제공합니다. "
                     imageSrc={routerUrlOf('/images/home/labtop.png')}
                     href={routerUrlOf('/')}
-                />
+                /> */}
 
-                <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
-                    코딩팩
+                <Typography variant="h6" sx={{ color: '#222', textAlign: 'center', fontWeight: 400, mt: 4, mb: 2 }}>
+                    코딩팩 소스코드
                 </Typography>
                 <PageLink
                     className={pageLinkClassName}
@@ -58,16 +80,10 @@ export default function SiteListPart() {
                     href="https://github.com/aicodingblock/reset_blockdriver"
                 />
 
-                <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
-                    PC 프로그램
+                <Typography variant="h6" sx={{ color: '#222', textAlign: 'center', fontWeight: 400, mt: 8, mb: 2 }}>
+                    PC 프로그램 설치 파일 및 소스코드
                 </Typography>
-                <PageLink
-                    className={pageLinkClassName}
-                    title="PC 프로그램 깃허브"
-                    subtitle="PC 프로그램 소스코드가 GITHUB에 공개되어 있습니다."
-                    imageSrc={routerUrlOf('/images/home/github.png')}
-                    href={'https://github.com/ktaicoder/hw-pc'}
-                />
+
                 <PageLink
                     className={pageLinkClassName}
                     title="PC 프로그램 설치파일"
@@ -75,9 +91,15 @@ export default function SiteListPart() {
                     imageSrc={routerUrlOf('/images/home/github.png')}
                     href="https://github.com/ktaicoder/hw-pc/releases"
                 />
-
-                <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
-                    하드웨어 라이브러리
+                <PageLink
+                    className={pageLinkClassName}
+                    title="PC 프로그램 소스 코드(깃허브)"
+                    subtitle="PC 프로그램 소스코드가 GITHUB에 공개되어 있습니다."
+                    imageSrc={routerUrlOf('/images/home/github.png')}
+                    href={'https://github.com/ktaicoder/hw-pc'}
+                />
+                <Typography variant="h6" sx={{ color: '#222', textAlign: 'center', fontWeight: 400, mt: 8, mb: 2 }}>
+                    하드웨어 소스코드 및 NPM
                 </Typography>
 
                 <PageLink

@@ -18,9 +18,11 @@ export default function Home() {
                     <RightPart />
                 </Grid>
             </Grid>
-            <Container maxWidth="sm">
-                <SiteListPart />
-            </Container>
+            <Box sx={{ background: '#f5f5f5' }}>
+                <Container maxWidth="sm">
+                    <SiteListPart />
+                </Container>
+            </Box>
         </Box>
     )
 }

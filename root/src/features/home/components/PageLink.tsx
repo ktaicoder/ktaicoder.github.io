@@ -21,6 +21,7 @@ export default function PageLink(props: Props) {
                 border: '1px solid #CED5DB',
                 alignItems: 'center',
                 borderRadius: 3,
+                background: '#fff',
                 px: 3,
                 py: 2,
                 '&:hover': (theme) => ({
