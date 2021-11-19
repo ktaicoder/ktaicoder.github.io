@@ -17,9 +17,9 @@ $  yarn dev
 
 ## 관련 링크
 
-### AI 코딩블록
+### AI 코딩블록 공식 사이트
 
-- 메인 사이트 https://aicodingblock.kt.co.kr
+- AI 코딩블록 https://aicodingblock.kt.co.kr
 - 개발자 가이드 https://ktaicoder.github.io
 
 ### PC 프로그램
@@ -30,7 +30,7 @@ $  yarn dev
 ### 하드웨어 라이브러리
 
 - 하드웨어 인터페이스 깃허브 https://github.com/ktaicoder/hw-proto.git
-  - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-control
+  - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-proto
 - 하드웨어 제어 라이브러리 깃허브 https://github.com/ktaicoder/hw-control.git
   - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-control
 
