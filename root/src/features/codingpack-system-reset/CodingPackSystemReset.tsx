@@ -73,7 +73,7 @@ export default function CodingPackSystemReset() {
                     </Box>
 
                     <Box mt={10}>
-                        시스템 초기화는 코딩팩 바탕화면의 <em>시스템 초기화</em> 아이콘을 선택하면 실행됩니다
+                        시스템 초기화는 코딩팩 바탕화면의 <em>시스템 초기화</em> 아이콘을 더블 클릭하면 실행됩니다
                     </Box>
 
                     <ImageBox sx={{ mt: 1 }} caption="바탕화면의 시스템 초기화 실행">

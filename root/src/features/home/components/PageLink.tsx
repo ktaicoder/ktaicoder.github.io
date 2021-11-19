@@ -25,7 +25,17 @@ export default function PageLink(props: Props) {
                 px: 3,
                 py: 2,
                 '&:hover': (theme) => ({
-                    backgroundColor: theme.palette.action.hover,
+                    backgroundColor: '#f9f9f9',
+                    '& .MuiTypography-subtitle1': {
+                        color: '#000',
+                    },
+                    '& .MuiTypography-body2': {
+                        color: '#000',
+                    },
+                    '& > img': {
+                        transition: '0.2s',
+                        transform: 'scale(1.15)',
+                    },
                 }),
                 ...sx,
             }}

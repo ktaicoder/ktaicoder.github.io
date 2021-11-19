@@ -1,5 +1,4 @@
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { routerUrlOf } from 'src/lib/urls'
 import PageLink from './components/PageLink'
 
