@@ -30,7 +30,7 @@ $  yarn dev
 ### 하드웨어 라이브러리
 
 - 하드웨어 인터페이스 깃허브 https://github.com/ktaicoder/hw-proto.git
-  - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-control
+  - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-proto
 - 하드웨어 제어 라이브러리 깃허브 https://github.com/ktaicoder/hw-control.git
   - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-control
 
