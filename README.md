@@ -5,11 +5,15 @@ AI 코딩블록 개발자 가이드 웹사이트 프로젝트입니다.
 https://ktaicoder.github.io
 
 
-## 설치
+## 다음과 같이 설치할 수 있습니다.
 
-설치 파일은 다음 링크에 있습니다.
+```bash
+$  cd ./root
+$  yarn install
+$  yarn dev
+```
 
-https://github.com/ktaicoder/hw-pc/releases
+브라우저에서 http://localhost:3000 에 접속합니다.
 
 ## 관련 링크
 
