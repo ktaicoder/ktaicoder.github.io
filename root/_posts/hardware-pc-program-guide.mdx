@@ -58,10 +58,11 @@ $  npm install -g node-gyp
 
 ### 샘플 소스코드 
 
-#### `IAwesomeControl.tsx` 파일
+#### src/custom/hw/awesome/`IAwesomeControl`.ts 파일
+
 
 ```javascript
-// src/custom/hw/awesome/IAwesomeControl.tsx
+// src/custom/hw/awesome/IAwesomeControl.ts
 
 import { HardwareDescriptor, IHwControl } from 'src/custom-types/hw-types'
 
@@ -86,12 +87,12 @@ export const awesome: HardwareDescriptor = {
 }
 ```
 
-#### `AwesomeControl.tsx` 파일
+#### src/custom/hw/awesome/`AwesomeControl`.ts 파일
 
-- `IAwesomeControl` 인터페이스의 구현(`implements`) 부분 입니다
+- src/custom/hw/awesome/`IAwesomeControl` 인터페이스의 구현 부분 입니다
 
 ```javascript 
-// file: src/custom/hw/awesome/AwesomeControl.tsx
+// file: src/custom/hw/awesome/AwesomeControl.ts
 
 import SerialPort, { parsers } from 'serialport'
 import { ISerialPortInfo } from 'src/custom-types/base-types'
@@ -197,7 +198,7 @@ export class AwesomeControl implements IAwesomeControl {
 }
 ```
 
-#### `index.ts` 파일
+#### src/custom/hw/awesome/`index`.ts 파일
 
 ```javascript
 // file: src/custom/hw/awesome/index.ts 

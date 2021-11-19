@@ -10,7 +10,7 @@ export default function AfterStepPart1() {
         <Box>
             <StepTitle step="추가 단계" title="이미지 구운 후에 해야 할 일" />
             <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="OS 이미지를 구운 직후 제일 먼저해야 할 일은 SD 카드 디스크를 확장하는 일입니다" />
+                <ListText text="OS 이미지를 구운 직후 제일 먼저해야 할 일은 SD 카드의 용량을 확장하는 일입니다" />
                 <ListText text="16GB 또는 32GB 크기의 SD 카드인데도, OS 이미지를 구운 직후에는 8GB로 인식합니다" />
                 <ListText text="나머지 공간도 사용하려면 SD 카드를 확장해주어야 합니다" />
             </ListTextBox>

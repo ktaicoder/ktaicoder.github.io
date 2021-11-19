@@ -57,6 +57,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             {
                 type: 'menu',
                 icon: 'usb',
+                title: '터미널 여는 법',
+                href: '/post/codingpack-how-to-open-terminal',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
                 title: 'OS 이미지 제작',
                 href: '/codingpack/os-image-guide',
             },

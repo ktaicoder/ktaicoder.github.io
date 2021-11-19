@@ -46,8 +46,8 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         mb: 2,
                     },
                     '& h2': {
-                        fontSize: '1.6rem',
-                        fontWeight: 800,
+                        fontSize: '1.5rem',
+                        fontWeight: 700,
                         mt: 5,
                         mb: 1,
                     },
