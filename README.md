@@ -4,6 +4,13 @@ AI 코딩블록 개발자 가이드 웹사이트 프로젝트입니다.
 
 https://ktaicoder.github.io
 
+
+## 설치
+
+설치 파일은 다음 링크에 있습니다.
+
+https://github.com/ktaicoder/hw-pc/releases
+
 ## 관련 링크
 
 ### AI 코딩블록
