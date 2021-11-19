@@ -27,7 +27,7 @@ export default function OsImageWritePartSub3() {
             </ImageBox>
 
             <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="Flash 버튼을 누르고 완료되면 KT코딩팩에 SD카드를 삽입하고, 전원을 연결해 구동합니다." />
+                <ListText text="Flash 버튼을 누르고 완료될 때까지 기다립니다." />
             </ListTextBox>
 
             <ImageBox mt={10}>
