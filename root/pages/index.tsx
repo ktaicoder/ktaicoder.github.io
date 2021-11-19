@@ -4,7 +4,7 @@ import MainLayout from 'src/layout/main/MainLayout'
 
 const Index: NextPage = () => {
     return (
-        <MainLayout title="Home">
+        <MainLayout title="AI 코딩블록 개발자 가이드">
             <Home />
         </MainLayout>
     )

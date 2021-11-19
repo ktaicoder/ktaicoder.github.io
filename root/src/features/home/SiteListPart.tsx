@@ -1,25 +1,13 @@
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import { Box, Button, Typography, useMediaQuery } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import { useMeasure } from 'react-use'
-import { randomCssClassName } from 'src/lib/randomCssClassName'
+import { Box, Typography } from '@mui/material'
 import { routerUrlOf } from 'src/lib/urls'
 import PageLink from './components/PageLink'
-import { useMemo } from 'react'
 
 export default function SiteListPart() {
-    const theme = useTheme()
-    const pageLinkClassName = useMemo(() => randomCssClassName('pagelink-'), [])
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const [containerRef, { width: containerWidth }] = useMeasure()
-
-    const isNarrow = !isNaN(containerWidth) && containerWidth > 0 && containerWidth < 520
+    // const pageLinkClassName = useMemo(() => randomCssClassName('pagelink-'), [])
+    const pageLinkClassName = 'pagelink'
 
     return (
         <Box
-            ref={containerRef}
             sx={{
                 position: 'relative',
                 display: 'flex',
@@ -30,7 +18,7 @@ export default function SiteListPart() {
             }}
         >
             <Typography variant="h4" sx={{ fontSize: '1.4rem', color: 'primary.main', fontWeight: 600 }}>
-                AI 코딩블록 정보 및 자료
+                관련 정보 및 자료
             </Typography>
 
             <Box
@@ -54,9 +42,20 @@ export default function SiteListPart() {
                 <PageLink
                     className={pageLinkClassName}
                     title="AI 코딩블록 개발자 가이드"
-                    subtitle="AI 코딩블록의 개발자 가이드를 제공하는 사이트입니다. "
+                    subtitle="지금 보고 이 사이트입니다. AI 코딩블록의 개발자 가이드를 제공합니다. "
                     imageSrc={routerUrlOf('/images/home/labtop.png')}
-                    href="https://ktaicoder.github.io"
+                    href={routerUrlOf('/')}
+                />
+
+                <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
+                    코딩팩
+                </Typography>
+                <PageLink
+                    className={pageLinkClassName}
+                    title="코딩팩 블록 드라이버"
+                    subtitle="GITHUB에 공개된 코딩팩 블록드라이버 소스코드입니다."
+                    imageSrc={routerUrlOf('/images/home/console.png')}
+                    href="https://github.com/aicodingblock/reset_blockdriver"
                 />
 
                 <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
@@ -67,7 +66,7 @@ export default function SiteListPart() {
                     title="PC 프로그램 깃허브"
                     subtitle="PC 프로그램 소스코드가 GITHUB에 공개되어 있습니다."
                     imageSrc={routerUrlOf('/images/home/github.png')}
-                    href={routerUrlOf('/')}
+                    href={'https://github.com/ktaicoder/hw-pc'}
                 />
                 <PageLink
                     className={pageLinkClassName}
@@ -77,7 +76,7 @@ export default function SiteListPart() {
                     href="https://github.com/ktaicoder/hw-pc/releases"
                 />
 
-                <Typography variant="h5" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
+                <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
                     하드웨어 라이브러리
                 </Typography>
 
@@ -109,16 +108,6 @@ export default function SiteListPart() {
                     subtitle="하드웨어 제어 라이브러리가 NPM에 등록되어 있습니다."
                     imageSrc={routerUrlOf('/images/home/nodejs2.png')}
                     href="https://www.npmjs.com/package/@ktaicoder/hw-control"
-                />
-                <Typography variant="h6" sx={{ color: '#222', fontWeight: 400, mt: 8, mb: 2 }}>
-                    코딩팩
-                </Typography>
-                <PageLink
-                    className={pageLinkClassName}
-                    title="코딩팩 블록 드라이버"
-                    subtitle="GITHUB에 공개된 코딩팩 블록드라이버 소스코드입니다."
-                    imageSrc={routerUrlOf('/images/home/console.png')}
-                    href="https://aicodingblock.kt.co.kr"
                 />
             </Box>
         </Box>

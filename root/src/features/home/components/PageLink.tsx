@@ -23,11 +23,22 @@ export default function PageLink(props: Props) {
                 borderRadius: 3,
                 px: 3,
                 py: 2,
+                '&:hover': (theme) => ({
+                    backgroundColor: theme.palette.action.hover,
+                }),
                 ...sx,
             }}
             className={className}
         >
-            <Box component="img" sx={{}} src={imageSrc} />
+            <Box
+                component="img"
+                sx={{
+                    width: '60px',
+                    height: '60px',
+                    objectFit: 'contain',
+                }}
+                src={imageSrc}
+            />
             <Box sx={{ flex: 1, ml: 4 }}>
                 <Typography variant="subtitle1" sx={{ mt: 1, fontWeight: 600 }}>
                     {title}

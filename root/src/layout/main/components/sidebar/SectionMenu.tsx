@@ -80,7 +80,15 @@ export default function SectionMenu(props: Props) {
                         <MenuIcon iconName={section.icon} />
                     </ListItemIcon>
                 )}
-                <ListItemText primary={section.title} />
+                <ListItemText
+                    primary={section.title}
+                    sx={{
+                        '& .MuiListItemText-primary': {
+                            fontWeight: active ? 700 : 500,
+                            fontSize: '0.9rem',
+                        },
+                    }}
+                />
                 {expanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </ListItemButton>
             <Collapse

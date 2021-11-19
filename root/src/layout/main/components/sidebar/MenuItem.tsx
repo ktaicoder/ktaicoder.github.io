@@ -45,7 +45,7 @@ export default function MenuItem(props: Props) {
                     color: active ? SIDEMENU_FG_COLOR_ACTIVE : SIDEMENU_FG_COLOR,
                     fontWeight: active ? 700 : 500,
                     '& .MuiListItemText-primary': {
-                        fontSize: '0.85rem',
+                        fontSize: '0.9rem',
                     },
                 },
 

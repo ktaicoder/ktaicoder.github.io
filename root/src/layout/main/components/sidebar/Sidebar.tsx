@@ -1,6 +1,6 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { Box, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
+import { Box, ButtonBase, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
 import { useRouter } from 'next/router'
@@ -38,16 +38,26 @@ function Sidebar() {
                 },
             }}
         >
-            <DrawerHeader sx={{ pl: 2, pr: 1, justifyContent: 'flex-start' }}>
+            <DrawerHeader sx={{ justifyContent: 'flex-start' }}>
                 <Box
                     component="a"
-                    sx={{ flexGrow: 1, fontSize: '1.1rem', textDecoration: 'none' }}
+                    sx={{
+                        display: 'block',
+                        flexGrow: 1,
+                        pl: 2,
+                        pr: 1,
+                        borderRadius: 1,
+                        pt: '6px',
+                        fontSize: '1.1rem',
+                        textDecoration: 'none',
+                    }}
                     href={routerUrlOf('/')}
                 >
-                    <Box sx={{ fontSize: '0.85rem', color: '#555', fontWeight: 300 }}>AI 코딩블록</Box>
+                    <Box sx={{ fontSize: '0.85rem', color: '#444', fontWeight: 400 }}>AI 코딩블록</Box>
                     <Box
                         sx={{
                             flexGrow: 1,
+                            mt: '4px',
                             color: 'primary.main',
                             fontSize: '1.1rem',
                             fontFamily: 'Black Han Sans',

@@ -1,4 +1,6 @@
 import { Box, Typography } from '@mui/material'
+import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload'
+import SdCardIcon from '@mui/icons-material/SdCard'
 
 function StepCircleImage(props: { color: string; imageSrc: string; size: number }) {
     const { color, imageSrc, size } = props
@@ -16,12 +18,17 @@ function StepCircleImage(props: { color: string; imageSrc: string; size: number 
                 '&::before': {
                     position: 'absolute',
                     content: '""',
-                    inset: 2,
+                    top: 2,
+                    left: 2,
+                    right: 2,
+                    bottom: 2,
                     borderRadius: '50%',
                     border: '10px solid #fff',
                 },
             }}
         >
+            {/* <SimCardDownloadIcon sx={{ fontSize: `${size * 0.35}px`, color: '#FFF' }} /> */}
+            {/* <SdCardIcon sx={{ fontSize: `${size * 0.35}px`, color: '#FFF' }} /> */}
             <Box
                 component="img"
                 src={imageSrc}
