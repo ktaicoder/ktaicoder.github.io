@@ -17,10 +17,10 @@ $  yarn dev
 
 ## 관련 링크
 
-### AI 코딩블록
+### AI 코딩블록 공식 사이트
 
-- 메인 사이트 https://aicodingblock.kt.co.kr
-- 개발자 가이드 https://ktaicoder.github.io
+- AI 코딩블록 https://aicodingblock.kt.co.kr
+- AI 코딩블록 개발자 가이드 https://ktaicoder.github.io
 
 ### PC 프로그램
 
