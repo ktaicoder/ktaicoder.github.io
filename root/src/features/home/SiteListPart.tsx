@@ -87,14 +87,14 @@ export default function SiteListPart() {
                     className={pageLinkClassName}
                     title="PC 프로그램 설치파일"
                     subtitle="링크를 클릭하여 PC용 프로그램을 설치해보세요."
-                    imageSrc={routerUrlOf('/images/home/github.png')}
+                    imageSrc={routerUrlOf('/images/home/github-120.png')}
                     href="https://github.com/ktaicoder/hw-pc/releases"
                 />
                 <PageLink
                     className={pageLinkClassName}
                     title="PC 프로그램 소스 코드(깃허브)"
                     subtitle="PC 프로그램 소스코드가 GITHUB에 공개되어 있습니다."
-                    imageSrc={routerUrlOf('/images/home/github.png')}
+                    imageSrc={routerUrlOf('/images/home/github-120.png')}
                     href={'https://github.com/ktaicoder/hw-pc'}
                 />
                 <Typography variant="h6" sx={{ color: '#222', textAlign: 'center', fontWeight: 400, mt: 8, mb: 2 }}>
