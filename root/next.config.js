@@ -32,16 +32,26 @@ const CFG = {
 // exportPathMap을 설정하면 mdx 변경시 새로고침이 안된다
 // 운영환경에서만 설정한다
 if (PRODUCTION) {
+    const fs = require('fs')
+    const postIds = fs.readdirSync('./_posts')
+        .filter(it => it.endsWith('.mdx'))
+        .map(filenm => filenm.replace(/\.mdx$/, ''))
+
+    // ex) '/post/hardware-pc-program-guide': { page: '/post/[slug]' }
+
     CFG.exportPathMap = async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
         return {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
-            //'/post/hardware-pc-program-guide': { page: '/post/hardware-pc-program-guide', query: { title: 'hello-nextjs' } },
-            '/post/hardware-pc-program-guide': { page: '/post/[slug]' },
-            '/post/codingpack-how-to-open-terminal': { page: '/post/[slug]' },
-            '/post/codingpack-how-to-system-reset': { page: '/post/[slug]' },
+            ...postIds.map(postId => ({
+                [`/post/${postId}`]: { page: '/post/[slug]' }
+            })),
+
+            ...postIds.map(postId => ({
+                [`/post-frame/${postId}`]: { page: '/post-frame/[slug]' }
+            })),
+
             '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
-            '/codingpack/system-reset': { page: '/codingpack/system-reset' },
         }
     }
 }

@@ -1,16 +1,16 @@
-import * as React from 'react'
-import Head from 'next/head'
-import { AppProps } from 'next/app'
-import { ThemeProvider } from '@mui/material/styles'
-import CssBaseline from '@mui/material/CssBaseline'
 import { CacheProvider, EmotionCache } from '@emotion/react'
-import theme from 'src/theme'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import * as React from 'react'
+import OpenPostDialogEventHandler from 'src/components/custom-event-handlers/OpenPostDialogEventHandler'
 import createEmotionCache from 'src/createEmotionCache'
 import StoreProvider from 'src/store/StoreProvider'
+import theme from 'src/theme'
 // import '../styles/globals.css'
-import '../styles/markdown-ocodia.css'
-import OpenDocDialogEventHandler from 'src/components/custom-event-handlers/OpenDocDialogEventHandler'
 // import 'tailwindcss/tailwind.css'
+import '../styles/markdown-ocodia.css'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -33,7 +33,7 @@ export default function MyApp(props: MyAppProps) {
                 <StoreProvider rootStoreInitialState={undefined}>
                     <>
                         <Component {...pageProps} />
-                        <OpenDocDialogEventHandler />
+                        <OpenPostDialogEventHandler />
                     </>
                 </StoreProvider>
             </ThemeProvider>

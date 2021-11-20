@@ -6,18 +6,22 @@ import React from 'react'
 import { useMeasure, useSessionStorage } from 'react-use'
 import { routerUrlOf } from 'src/lib/urls'
 
-export type DocViewDialogProps = {
-    docId: string
+export type PostViewDialogProps = {
+    postId: string
     open: boolean
     onClose: () => void
 }
 
-function getDocUrl(docId: string): string {
-    return routerUrlOf(`/post/${docId}?view=content`)
+function getPostUrl(postId: string): string {
+    return routerUrlOf(`/post/${postId}`)
 }
 
-export default function DocViewDialog(props: DocViewDialogProps) {
-    const { docId, open, onClose } = props
+function getPostFrameUrl(postId: string): string {
+    return routerUrlOf(`/post-frame/${postId}`)
+}
+
+export default function PostViewDialog(props: PostViewDialogProps) {
+    const { postId, open, onClose } = props
     const [containerRef, { height: containerHeight }] = useMeasure()
     const [expand, setExpand] = useSessionStorage('doc-dialog-expand')
 
@@ -50,7 +54,7 @@ export default function DocViewDialog(props: DocViewDialogProps) {
                         component="a"
                         target="_blank"
                         rel="noreferrer"
-                        href="https://ktaicoder.github.io/"
+                        href={getPostFrameUrl(postId)}
                         sx={{
                             ml: 2,
                             fontSize: '0.85rem',
@@ -74,15 +78,15 @@ export default function DocViewDialog(props: DocViewDialogProps) {
             <DialogContent dividers ref={containerRef}>
                 <Box
                     component="iframe"
-                    src={getDocUrl(docId)}
+                    src={getPostUrl(postId)}
                     sx={{
                         p: 0,
                         width: '100%',
-                        height: `calc( ${containerHeight}px - 10px)`,
+                        height: `calc( ${containerHeight.toFixed(0)}px - 10px)`,
                         border: 'none',
                     }}
                 ></Box>
-                {/* <iframe src={routerUrlOf(`/post/${docId}`)}></iframe> */}
+                {/* <iframe src={routerUrlOf(`/post/${postId}`)}></iframe> */}
             </DialogContent>
         </Dialog>
     )

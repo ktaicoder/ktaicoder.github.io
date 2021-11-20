@@ -1,5 +1,5 @@
 export const EventTypes = {
-    doc: {
+    post: {
         openDialog: 'doc.openDialog',
     },
 }

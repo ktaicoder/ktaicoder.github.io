@@ -45,7 +45,7 @@ export default function AfterStepPart4() {
                     <Button
                         size="large"
                         variant="outlined"
-                        onClick={() => routerPush('/post/codingpack-how-to-system-reset')}
+                        onClick={() => routerPush('/post-frame/codingpack-how-to-system-reset')}
                         endIcon={<ChevronRightIcon />}
                     >
                         `시스템 초기화 및 복구` 가이드

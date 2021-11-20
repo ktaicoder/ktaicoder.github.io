@@ -67,7 +67,9 @@ export default function RightPart() {
                         <Paper sx={{ mt: 2, flex: 1, p: 3, borderRadius: '16px' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>PC 프로그램</Typography>
-                                <Button onClick={() => routerPush('/post/hardware-pc-program-guide')}>가이드</Button>
+                                <Button onClick={() => routerPush('/post-frame/hardware-pc-program-guide')}>
+                                    가이드
+                                </Button>
                             </Box>
                             <Box sx={{ mt: 6, mb: 4, display: 'flex', justifyContent: 'center' }}>
                                 <Box

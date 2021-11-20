@@ -44,7 +44,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         type: 'menu',
         icon: 'usb',
         title: 'PC 프로그램 가이드',
-        href: '/post/hardware-pc-program-guide',
+        href: '/post-frame/hardware-pc-program-guide',
     },
     { type: 'divider' },
 
@@ -58,7 +58,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 type: 'menu',
                 icon: 'usb',
                 title: '터미널 여는 법',
-                href: '/post/codingpack-how-to-open-terminal',
+                href: '/post-frame/codingpack-how-to-open-terminal',
             },
             {
                 type: 'menu',
@@ -76,7 +76,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 type: 'menu',
                 icon: 'usb',
                 title: '시스템 초기화 및 복구',
-                href: '/post/codingpack-how-to-system-reset',
+                href: '/post-frame/codingpack-how-to-system-reset',
             },
         ],
     },

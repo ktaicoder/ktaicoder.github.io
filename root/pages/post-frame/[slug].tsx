@@ -5,6 +5,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
 import MdxComponents from 'src/components/mdx/MdxComponents'
+import MainLayout from 'src/layout/main/MainLayout'
 import MdxPostLayout from 'src/layout/mdx-post/MdxPostLayout'
 import { getAllPosts, getPost } from 'src/lib/mdxUtils'
 import { IPost } from 'src/model/IPost'
@@ -14,27 +15,29 @@ type Props = {
     frontMatter: Omit<IPost, 'slug'>
 }
 
-export function PostPage({ source, frontMatter }: Props) {
+export function PostFramePage({ source, frontMatter }: Props) {
     // const ogImage = config.siteURL + frontMatter.thumbnail
 
     return (
-        <MdxPostLayout pageTitle={frontMatter.title}>
-            <Head>
-                <meta name="description" content={frontMatter.description} key="description" />
-                <meta property="og:description" content={frontMatter.description} key="ogDescription" />
-                {/* <meta property="og:image" content={ogImage} key="ogImage" /> */}
-            </Head>
+        <MainLayout title={frontMatter.title}>
+            <MdxPostLayout pageTitle={frontMatter.title}>
+                <Head>
+                    <meta name="description" content={frontMatter.description} key="description" />
+                    <meta property="og:description" content={frontMatter.description} key="ogDescription" />
+                    {/* <meta property="og:image" content={ogImage} key="ogImage" /> */}
+                </Head>
 
-            <Box component="article" className="mdx-article">
-                {/* <Typography variant="h3">{frontMatter.title}</Typography>
+                <Box component="article" className="mdx-article">
+                    {/* <Typography variant="h3">{frontMatter.title}</Typography>
                     <p>{frontMatter.description}</p> */}
-                <MDXRemote {...source} components={MdxComponents} />
-            </Box>
-        </MdxPostLayout>
+                    <MDXRemote {...source} components={MdxComponents} />
+                </Box>
+            </MdxPostLayout>
+        </MainLayout>
     )
 }
 
-export default PostPage
+export default PostFramePage
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { content, data } = getPost(params?.slug as string)

@@ -5,19 +5,19 @@ import { routerPush, routerUrlOf } from 'src/lib/urls'
 
 type Props = {
     children: React.ReactNode | React.ReactNode[]
-    docId: string
+    postId: string
     type: '_new' | '_page' | '_dialog'
 } & BoxProps
 
-export default function DocLink(props: Props) {
-    const { children, sx, type = '_dialog', docId, ...restProps } = props
+export default function PostLink(props: Props) {
+    const { children, sx, type = '_dialog', postId, ...restProps } = props
     const openLink = () => {
         if (type === '_dialog') {
-            CustomEvents.doc.openDialog.send({ docId })
+            CustomEvents.post.openDialog.send({ postId })
         } else if (type === '_new') {
-            window?.open(routerUrlOf(`/post/${docId}?view=content`), '_blank')
+            window?.open(routerUrlOf(`/post-frame/${postId}`), '_blank')
         } else {
-            routerPush(`/post/${docId}?view=content`)
+            routerPush(`/post-frame/${postId}`)
         }
     }
     return (

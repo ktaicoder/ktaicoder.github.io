@@ -44,12 +44,11 @@ const Main = styled('main', {
 
 type Props = {
     title: string
-    withoutLayout?: boolean
     children?: React.ReactChild | React.ReactChild[]
 }
 
 function MainLayout(props: Props) {
-    const { title, children, withoutLayout } = props
+    const { title, children } = props
     const { sidebarStore } = useStore()
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
@@ -63,10 +62,6 @@ function MainLayout(props: Props) {
     } else {
         // drawer가 close 상태에서도 너비를 차지하므로, 마이너스 방향으로 쉬프트
         contentShift = isSidebarOpen ? 0 : -SIDEMENU_WIDTH
-    }
-
-    if (withoutLayout) {
-        return <Box>{children}</Box>
     }
 
     return (
