@@ -132,9 +132,7 @@ export const isCurrentSection = (sectionId: string, pathkey: string | null | und
         .some((it) => {
             const section = it as ISection
             const isYes = section.submenus.some((sub) => sub.type === 'menu' && isCurrentMenu(sub.href, pathkey))
-            if (isYes) {
-                console.log(`current sectionId = ${sectionId} , pathkey = ${pathkey}`)
-            }
+            // if (isYes) console.log(`current sectionId = ${sectionId} , pathkey = ${pathkey}`)
             return isYes
         })
 }

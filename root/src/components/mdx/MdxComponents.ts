@@ -6,6 +6,7 @@ import Ingredients from 'src/components/mdx/Ingredients'
 import MdxImageView from 'src/components/mdx-image-view/MdxImageView'
 import MdxTextBox from 'src/components/mdx-text-box/MdxTextBox'
 import PostLink from 'src/components/post-link/PostLink'
+import { Typography } from '@mui/material'
 
 const MdxComponents = {
     Ingredients,
@@ -17,6 +18,7 @@ const MdxComponents = {
     MdxImageView,
     MdxTextBox,
     PostLink,
+    Typography,
 }
 
 export default MdxComponents
