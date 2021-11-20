@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import DocViewDialog, { DocViewDialogProps } from 'src/dialogs/doc-view/DocViewDialog'
 import { CustomEvents } from 'src/lib/custom-events/CustomEvents'
 
-type DialogId = 'DocViewDialog' | 'ProfileViewDialog'
+type DialogId = 'DocViewDialog'
 
 export default function OpenDocDialogEventHandler() {
     const [docViewDialogProps, setDocViewDialogProps] = useState<Omit<DocViewDialogProps, 'open'>>()

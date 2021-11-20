@@ -37,7 +37,7 @@ export default function AfterStepPart4() {
                         lineHeight: '1.4rem',
                     }}
                 >
-                    복구가 필요한 대표적인 예는 시스템 초기화 중에 실수로 전원을 끈 경우입니다.
+                    시스템 초기화 중에 실수로 전원을 꺼서 복구를 해야 하는 경우가 간혹있습니다.
                     <br />
                     아래 문서를 참고하여 시스템 복구를 해주세요.
                 </Typography>
