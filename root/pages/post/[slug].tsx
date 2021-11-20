@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import MdxComponents from 'src/components/mdx/MdxComponents'
 import config from 'src/config'
@@ -27,6 +28,9 @@ function wrapSnippet(pre: Element) {
 }
 
 export function PostPage({ source, frontMatter }: Props) {
+    const { asPath: pathkey, query } = useRouter()
+    const withoutLayout = query['view'] === 'content'
+
     const ogImage = config.siteURL + frontMatter.thumbnail
 
     useEffect(() => {
@@ -38,7 +42,7 @@ export function PostPage({ source, frontMatter }: Props) {
     }, [])
 
     return (
-        <MainLayout title={frontMatter.title}>
+        <MainLayout title={frontMatter.title} withoutLayout={withoutLayout}>
             <MdxPostLayout pageTitle={frontMatter.title}>
                 <Head>
                     <meta name="description" content={frontMatter.description} key="description" />

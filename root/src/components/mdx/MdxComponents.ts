@@ -5,6 +5,7 @@ import Directions from 'src/components/mdx/Directions'
 import Ingredients from 'src/components/mdx/Ingredients'
 import MdxImageView from 'src/components/mdx-image-view/MdxImageView'
 import MdxTextBox from 'src/components/mdx-text-box/MdxTextBox'
+import DocLink from 'src/components/doc-link/DocLink'
 
 const MdxComponents = {
     Ingredients,
@@ -15,6 +16,7 @@ const MdxComponents = {
     Box,
     MdxImageView,
     MdxTextBox,
+    DocLink,
 }
 
 export default MdxComponents

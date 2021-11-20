@@ -9,6 +9,7 @@ import createEmotionCache from 'src/createEmotionCache'
 import StoreProvider from 'src/store/StoreProvider'
 // import '../styles/globals.css'
 import '../styles/markdown-ocodia.css'
+import OpenDocDialogEventHandler from 'src/components/custom-event-handlers/OpenDocDialogEventHandler'
 // import 'tailwindcss/tailwind.css'
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -30,7 +31,10 @@ export default function MyApp(props: MyAppProps) {
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
                 <StoreProvider rootStoreInitialState={undefined}>
-                    <Component {...pageProps} />
+                    <>
+                        <Component {...pageProps} />
+                        <OpenDocDialogEventHandler />
+                    </>
                 </StoreProvider>
             </ThemeProvider>
         </CacheProvider>
