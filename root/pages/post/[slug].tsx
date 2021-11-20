@@ -30,11 +30,11 @@ export function PostPage({ source, frontMatter }: Props) {
     const ogImage = config.siteURL + frontMatter.thumbnail
 
     useEffect(() => {
-        const preTags = document.querySelectorAll('article.mdx-article > pre')
-        const preTagArray = Array.prototype.slice.call(preTags)
-        preTagArray.forEach((node) => {
-            wrapSnippet(node)
-        })
+        // const preTags = document.querySelectorAll('article.mdx-article > pre')
+        // const preTagArray = Array.prototype.slice.call(preTags)
+        // preTagArray.forEach((node) => {
+        //     wrapSnippet(node)
+        // })
     }, [])
 
     return (

@@ -90,9 +90,23 @@ export default function OsImageDownloadPart() {
                 </Box>
             </Box>
             <ListTextBox>
-                <ListText text="버전에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다. (2GB, 약 5분소요)" />
+                <ListText
+                    text={
+                        <>
+                            버전에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
+                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.5GB)</span>{' '}
+                        </>
+                    }
+                />
                 <ListText text="압축 해제 시 나오는 img파일을 OS 제작 프로그램을 통해 Write 합니다." />
-                <ListText text="코딩팩에 로그인 시 사용자 ID는 pi, 암호는 kt123!@# 입니다." />
+                <ListText
+                    text={
+                        <>
+                            코딩팩에 로그인 시 사용자 ID는 pi, 암호는{' '}
+                            <span style={{ whiteSpace: 'nowrap' }}>kt123!@#</span> 입니다.
+                        </>
+                    }
+                />
             </ListTextBox>
         </Box>
     )

@@ -75,11 +75,12 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     '& p': {
                         m: 0,
                         mt: '0.5rem',
+                        mb: '0.5rem',
                         fontSize: '0.95rem',
                         fontWeight: 400,
                         lineHeight: '1.8rem',
                     },
-                    '& div.code-snippet-wrap': {
+                    '& > pre': {
                         overflow: 'auto',
                         position: 'relative',
                         wordWrap: 'break-word',
