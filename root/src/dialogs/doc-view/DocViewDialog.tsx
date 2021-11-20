@@ -1,6 +1,7 @@
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import AspectRatioIcon from '@mui/icons-material/AspectRatio'
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Dialog, DialogContent, DialogTitle, IconButton, Typography } from '@mui/material'
+import { Box, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
 import React from 'react'
 import { useMeasure, useSessionStorage } from 'react-use'
 import { routerUrlOf } from 'src/lib/urls'
@@ -39,19 +40,31 @@ export default function DocViewDialog(props: DocViewDialogProps) {
                 },
             }}
         >
-            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', pt: 1, pb: 1, px: 1 }}>
+            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', p: 1 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconButton size="small" onClick={() => setExpand((p) => !p)}>
                         <AspectRatioIcon />
                     </IconButton>
+
                     <Box
                         component="a"
                         target="_blank"
                         rel="noreferrer"
                         href="https://ktaicoder.github.io/"
-                        sx={{ ml: 2, fontSize: '0.85rem', color: '#888', textDecoration: 'none' }}
+                        sx={{
+                            ml: 2,
+                            fontSize: '0.85rem',
+                            color: '#888',
+                            display: 'flex',
+                            alignItems: 'center',
+                            textDecoration: 'none',
+                            ':hover': {
+                                color: '#000',
+                            },
+                        }}
                     >
-                        @ktaicoder
+                        <span>@ktaicoder</span>
+                        <ArrowDropDownIcon sx={{ ml: 1, fontSize: '1rem' }} />
                     </Box>
                 </Box>
                 <IconButton size="small" onClick={onClose}>

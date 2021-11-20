@@ -1,10 +1,12 @@
-import { useMemo, useState, useEffect, useRef } from 'react'
-import { Box, Container, Typography, useMediaQuery } from '@mui/material'
+import { Box, Container, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { useEffect, useRef, useState } from 'react'
+import GuideTitle from 'src/components/guide-title/GuideTitle'
 import ImageViewerContainer from 'src/components/image-viewer-container/ImageViewerContainer'
 import AfterStepPart1 from './components/AfterStepPart1'
 import AfterStepPart2 from './components/AfterStepPart2'
 import AfterStepPart3 from './components/AfterStepPart3'
+import AfterStepPart4 from './components/AfterStepPart4'
 import EtcherDownloadPart from './components/EtcherDownloadPart'
 import IntroStepPart from './components/IntroStepPart'
 import OsImageDownloadPart from './components/OsImageDownloadPart'
@@ -15,7 +17,6 @@ import OsImageWritePartSub3 from './components/OsImageWritePartSub3'
 import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
 import RaspIntroPart from './components/RaspIntroPart'
 import ShortDescPart from './components/ShortDescPart.tsx'
-import GuideTitle from 'src/components/guide-title/GuideTitle'
 
 function randomNumericString() {
     return Math.random().toString().substring(2)
@@ -72,7 +73,7 @@ export default function CodingPackOsImageGuide() {
                         textAlign: 'center',
                     }}
                 >
-                    그림과 함께 좀더 자세히 설명합니다.
+                    아래는 좀 더 자세한 설명입니다.
                 </Box>
 
                 {/* 1단계 OS 이미지 다운로드 */}
@@ -111,6 +112,9 @@ export default function CodingPackOsImageGuide() {
                 </Box>
                 <Box sx={{ mt: 10 }}>
                     <AfterStepPart3 />
+                </Box>
+                <Box sx={{ mt: 10 }}>
+                    <AfterStepPart4 />
                 </Box>
             </Container>
             {/* 이미지 뷰어를 띄운다 */}
