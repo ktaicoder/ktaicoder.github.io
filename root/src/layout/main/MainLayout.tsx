@@ -66,17 +66,7 @@ function MainLayout(props: Props) {
     }
 
     if (withoutLayout) {
-        return (
-            <Main>
-                <Box
-                    sx={{
-                        flexGrow: 1,
-                    }}
-                >
-                    {children}
-                </Box>
-            </Main>
-        )
+        return <Box>{children}</Box>
     }
 
     return (
