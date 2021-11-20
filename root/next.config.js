@@ -38,20 +38,18 @@ if (PRODUCTION) {
         .map(filenm => filenm.replace(/\.mdx$/, ''))
 
     // ex) '/post/hardware-pc-program-guide': { page: '/post/[slug]' }
-
+    const posts = {}
+    postIds.forEach(postId => {
+        posts[`/post/${postId}`] = { page: '/post/[slug]' }
+        posts[`/post-frame/${postId}`] = { page: '/post-frame/[slug]' }
+    })
     CFG.exportPathMap = async function (defaultPathMap, { dev, dir, outDir, distDir, buildId }) {
+
         return {
             '/': { page: '/' },
             '/hw/guide': { page: '/hw/guide' },
-            ...postIds.map(postId => ({
-                [`/post/${postId}`]: { page: '/post/[slug]' }
-            })),
-
-            ...postIds.map(postId => ({
-                [`/post-frame/${postId}`]: { page: '/post-frame/[slug]' }
-            })),
-
             '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
+            ...posts
         }
     }
 }
