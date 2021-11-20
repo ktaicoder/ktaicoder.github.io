@@ -44,9 +44,8 @@ export default function ImageViewerContainer(props: Props) {
     const [imageElements, setImageElements] = useState<HTMLImageElement[]>([])
 
     useEffect(() => {
-        const imgs: NodeListOf<Element> = document.querySelectorAll(cssSelector)
+        let imgs: NodeListOf<Element> = document.querySelectorAll(cssSelector)
         const imgElements = Array.prototype.slice.call(imgs)
-        console.log(imgElements)
         setImageElements(imgElements as HTMLImageElement[])
     }, [cssSelector, revision])
 

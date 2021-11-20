@@ -53,13 +53,11 @@ export default function LeftPart() {
                         lineHeight: 1.5,
                         display: 'flex',
                         ...(isNarrow && {
-                            mt: '8vh',
-                            // fontSize: '40px',
-                            fontSize: 'clamp(2rem, 8vw, 3rem)',
+                            mt: 8,
+                            fontSize: '40px',
                         }),
                         ...(!isNarrow && {
-                            // fontSize: '56px',
-                            fontSize: 'clamp(2.5rem, 5vw, 3rem)',
+                            fontSize: '56px',
                         }),
 
                         flexDirection: 'column',
@@ -97,13 +95,13 @@ export default function LeftPart() {
                         position: 'absolute',
                         right: '1rem',
                         ...(isNarrow && {
-                            top: '16vh',
+                            top: '120px',
+                            width: '90px',
                         }),
                         ...(!isNarrow && {
-                            top: '180px',
+                            top: '160px',
+                            width: '116px',
                         }),
-
-                        width: 'clamp(80px, 13vw, 110px)',
                     }}
                     src={routerUrlOf('/images/codiny/3d_movement1.png')}
                 />

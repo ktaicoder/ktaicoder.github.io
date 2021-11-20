@@ -39,6 +39,7 @@ if (PRODUCTION) {
             //'/post/hardware-pc-program-guide': { page: '/post/hardware-pc-program-guide', query: { title: 'hello-nextjs' } },
             '/post/hardware-pc-program-guide': { page: '/post/[slug]' },
             '/post/codingpack-how-to-open-terminal': { page: '/post/[slug]' },
+            '/post/codingpack-how-to-system-reset': { page: '/post/[slug]' },
             '/codingpack/os-image-guide': { page: '/codingpack/os-image-guide' },
             '/codingpack/system-reset': { page: '/codingpack/system-reset' },
         }

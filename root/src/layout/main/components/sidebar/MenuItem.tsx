@@ -32,7 +32,7 @@ export default function MenuItem(props: Props) {
             onClick={() => onLinkClick?.(href)}
             sx={{
                 display: 'flex',
-                paddingLeft: `${active ? 20 : 24}px`,
+                // paddingLeft: '24px',
                 pr: 1,
                 '&:hover': {
                     backgroundColor: SIDEMENU_BG_COLOR_HOVER,
@@ -44,6 +44,7 @@ export default function MenuItem(props: Props) {
                 '& .MuiListItemText-root': {
                     color: active ? SIDEMENU_FG_COLOR_ACTIVE : SIDEMENU_FG_COLOR,
                     fontWeight: active ? 700 : 500,
+                    marginLeft: active ? '-4px' : 0,
                     '& .MuiListItemText-primary': {
                         fontSize: '0.9rem',
                     },
@@ -57,11 +58,11 @@ export default function MenuItem(props: Props) {
                 }),
             }}
         >
-            {icon && (
+            {/* {icon && (
                 <ListItemIcon sx={{ display: 'none' }}>
                     <MenuIcon iconName={icon} />
                 </ListItemIcon>
-            )}
+            )} */}
             <ListItemText primary={title} />
         </ListItemLink>
     )

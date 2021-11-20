@@ -1,6 +1,6 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { Box, ButtonBase, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
+import { Box, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
 import { useRouter } from 'next/router'
@@ -16,7 +16,7 @@ const ALL_MENUS = menus
 
 function Sidebar() {
     const theme = useTheme()
-    const { pathname: pathkey } = useRouter()
+    const { asPath: pathkey } = useRouter()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const { sidebarStore } = useStore()
     const _onClickLink = () => {
@@ -44,17 +44,27 @@ function Sidebar() {
                     sx={{
                         display: 'block',
                         flexGrow: 1,
-                        pl: 2,
+                        pl: 1,
                         pr: 1,
                         borderRadius: 1,
                         pt: '6px',
                         fontSize: '1.1rem',
                         textDecoration: 'none',
+                        ':hover .title1': {
+                            color: '#005CB8',
+                            fontWeight: 500,
+                        },
+                        ':hover .title2': {
+                            color: '#005CB8',
+                        },
                     }}
                     href={routerUrlOf('/')}
                 >
-                    <Box sx={{ fontSize: '0.85rem', color: '#444', fontWeight: 400 }}>AI 코딩블록</Box>
+                    <Box className="title1" sx={{ fontSize: '0.85rem', color: '#444', fontWeight: 400 }}>
+                        AI 코딩블록
+                    </Box>
                     <Box
+                        className="title2"
                         sx={{
                             flexGrow: 1,
                             mt: '4px',

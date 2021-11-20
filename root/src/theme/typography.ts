@@ -1,6 +1,6 @@
-import { Palette } from "@mui/material"
+import { Palette } from '@mui/material'
 
-const FONT_FAMILIES = [ //
+const FONT_FAMILIES = [
     'Noto Sans KR',
     'Black Han Sans',
     'sans-serif',

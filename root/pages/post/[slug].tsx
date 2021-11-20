@@ -17,12 +17,12 @@ type Props = {
     frontMatter: Omit<IPost, 'slug'>
 }
 
+// pre 태그를 code-snippet-wrap으로 감싼다
 function wrapSnippet(pre: Element) {
-    console.log('wrapSnippet element=', pre)
     const wrap = document.createElement('div')
     wrap.classList.add('code-snippet-wrap')
     pre.parentNode?.insertBefore(wrap, pre)
-    pre.remove()
+    // pre.remove()
     wrap.appendChild(pre)
 }
 
@@ -35,7 +35,6 @@ export function PostPage({ source, frontMatter }: Props) {
         preTagArray.forEach((node) => {
             wrapSnippet(node)
         })
-        console.log({ preTags })
     }, [])
 
     return (

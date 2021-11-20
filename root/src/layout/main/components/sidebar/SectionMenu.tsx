@@ -74,7 +74,7 @@ export default function SectionMenu(props: Props) {
 
     return (
         <React.Fragment>
-            <ListItemButton onClick={onSectionClick} active={active}>
+            <ListItemButton onClick={onSectionClick} active={active} sx={{ pl: 1 }}>
                 {section.icon && (
                     <ListItemIcon sx={{ display: 'none' }}>
                         <MenuIcon iconName={section.icon} />
@@ -89,7 +89,11 @@ export default function SectionMenu(props: Props) {
                         },
                     }}
                 />
-                {expanded ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                {expanded ? (
+                    <KeyboardArrowUpIcon sx={{ color: active ? 'primary.main' : '#bbb' }} />
+                ) : (
+                    <KeyboardArrowDownIcon sx={{ color: active ? 'primary.main' : '#bbb' }} />
+                )}
             </ListItemButton>
             <Collapse
                 in={expanded}
@@ -98,13 +102,16 @@ export default function SectionMenu(props: Props) {
                 sx={{
                     boxSizing: 'border-box',
                     borderBottom: `1px solid ${DIVIDER_COLOR}`,
-
-                    '& .MuiCollapse-wrapper .MuiListItem-root': {
-                        pl: 6,
-                    },
                 }}
             >
-                <List disablePadding>
+                <List
+                    disablePadding
+                    sx={{
+                        '& > .MuiListItem-root': {
+                            pl: 4,
+                        },
+                    }}
+                >
                     {section.submenus?.map((menu, idx) => {
                         if (menu.type === 'divider') {
                             return <Divider key={idx} />
