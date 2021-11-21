@@ -7,6 +7,8 @@ type Props = {
     pageTitle?: string
 }
 
+const MAX_WIDTH = 840
+
 function MdxPostLayout({ children, pageTitle }: Props) {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
@@ -14,7 +16,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
 
     let bodyWidth = 0
     if (!isNaN(containerWidth) && containerWidth > 0) {
-        bodyWidth = Math.min(+containerWidth.toFixed(0), 840)
+        bodyWidth = Math.min(+containerWidth.toFixed(0), MAX_WIDTH)
     }
 
     return (
@@ -150,8 +152,8 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                 >
                     <Box
                         sx={{
-                            display: 'block',
-                            maxWidth: '840px',
+                            display: bodyWidth <= 0 ? 'none' : 'block',
+                            maxWidth: `${MAX_WIDTH}px`,
                             marginLeft: 'auto',
                             marginRight: 'auto',
                         }}
