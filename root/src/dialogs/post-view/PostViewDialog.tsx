@@ -23,7 +23,7 @@ function getPostFrameUrl(postId: string): string {
 export default function PostViewDialog(props: PostViewDialogProps) {
     const { postId, open, onClose } = props
     const [containerRef, { height: containerHeight }] = useMeasure()
-    const [expand, setExpand] = useSessionStorage('doc-dialog-expand')
+    const [expand, setExpand] = useSessionStorage('doc-dialog-expand', true)
 
     return (
         <Dialog
