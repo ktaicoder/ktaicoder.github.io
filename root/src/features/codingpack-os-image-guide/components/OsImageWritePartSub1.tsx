@@ -37,7 +37,7 @@ export default function OsImageWritePartSub1() {
                             className="lightbox"
                             src={routerUrlOf('/images/codingpack/flash_from_file2.png')}
                             sx={{
-                                width: '280px',
+                                width: '300px',
                                 maxWidth: '100%',
                                 objectFit: 'contain',
                             }}
