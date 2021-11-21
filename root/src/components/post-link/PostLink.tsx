@@ -29,6 +29,11 @@ export default function PostLink(props: Props) {
                 cursor: 'pointer',
                 display: 'inline-block',
                 px: 0.2,
+                ':hover': {
+                    color: 'secondary.main',
+                    backgroundColor: 'rgba(0,0,0,0.05)',
+                    borderRadius: '4px',
+                },
                 ...sx,
             }}
             {...restProps}

@@ -39,6 +39,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         mb: 4,
                         pb: 1,
                         pl: 0,
+                        textAlign: 'center',
                         borderBottom: '1px solid #ccc',
                     },
                     '& h2': {
@@ -63,13 +64,13 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     '& h5': {
                         m: 0,
                         mt: 1,
-                        fontSize: '1.05rem',
+                        fontSize: '1.0rem',
                         fontWeight: 600,
                     },
                     '& h6': {
                         m: 0,
                         mt: 1,
-                        fontSize: '1rem',
+                        fontSize: '0.95rem',
                         fontWeight: 600,
                     },
                     '& p': {

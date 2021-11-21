@@ -24,16 +24,25 @@ export default function OsImageWritePartSub1() {
                 </Grid>
                 <Grid item xs={12} sm={12} md={5} lg={5}>
                     <Box
-                        component="img"
-                        className="lightbox"
-                        src={routerUrlOf('/images/codingpack/flash_from_file2.png')}
                         sx={{
-                            objectFit: 'contain', //
-                            width: '100%',
-                            height: '100%',
                             border: '1px solid #ddd',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            background: '#fff',
+                            p: 2,
                         }}
-                    />
+                    >
+                        <Box
+                            component="img"
+                            className="lightbox"
+                            src={routerUrlOf('/images/codingpack/flash_from_file2.png')}
+                            sx={{
+                                width: '280px',
+                                maxWidth: '100%',
+                                objectFit: 'contain',
+                            }}
+                        />
+                    </Box>
                 </Grid>
             </Grid>
 
