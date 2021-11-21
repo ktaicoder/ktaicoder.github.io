@@ -23,7 +23,7 @@ function getPostFrameUrl(postId: string): string {
 export default function PostViewDialog(props: PostViewDialogProps) {
     const { postId, open, onClose } = props
     const [containerRef, { height: containerHeight }] = useMeasure()
-    const [expand, setExpand] = useSessionStorage('doc-dialog-expand', true)
+    const [expand, setExpand] = useSessionStorage('post.dialog-expand', true)
 
     return (
         <Dialog
@@ -46,7 +46,7 @@ export default function PostViewDialog(props: PostViewDialogProps) {
         >
             <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', p: 1 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <IconButton size="small" onClick={() => setExpand((p) => !p)}>
+                    <IconButton size="small" onClick={() => setExpand(!expand)}>
                         <AspectRatioIcon />
                     </IconButton>
 
