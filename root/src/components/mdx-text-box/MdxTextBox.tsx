@@ -15,6 +15,10 @@ export default function MdxTextBox(props: Props) {
                 px: 3,
                 py: 2,
                 borderRadius: 2,
+                '& > ul': {
+                    pl: 2,
+                    pr: 0,
+                },
                 ...sx,
             }}
             {...rest}

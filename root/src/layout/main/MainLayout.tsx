@@ -68,7 +68,6 @@ function MainLayout(props: Props) {
         <MainLayoutContext.Provider value={contextData}>
             <Box sx={{ display: 'flex', position: 'relative' }}>
                 <Topbar title={title} isSidebarOpen={isSidebarOpen} onClickMenuButton={sidebarStore.toggleOpen} />
-
                 <Drawer
                     sx={{
                         width: SIDEMENU_WIDTH,
@@ -110,21 +109,6 @@ function MainLayout(props: Props) {
                         {children}
                     </Box>
                 </Main>
-
-                {/* top divider */}
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        content: '""',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        width: '100%',
-                        height: '1px',
-                        zIndex: 9999,
-                        background: 'rgba(0,0,0,0.05)',
-                    }}
-                />
             </Box>
         </MainLayoutContext.Provider>
     )

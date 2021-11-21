@@ -1,6 +1,5 @@
-import { Box, Container, useMediaQuery, useTheme } from '@mui/material'
-import { useEffect, useState } from 'react'
-import { useWindowSize } from 'react-use'
+import { Box, useMediaQuery, useTheme } from '@mui/material'
+import { useMeasure } from 'react-use'
 import Meta from 'src/components/mdx/Meta'
 
 type Props = {
@@ -11,16 +10,12 @@ type Props = {
 function MdxPostLayout({ children, pageTitle }: Props) {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    // 스마트폰에서 아무리해도 pre > code 부분이 overflow 가로 스크롤이 안된다
-    // 그래서 윈도우 크기를 기준으로 최대 너비를 고정했다
-    const { width: windowWidth } = useWindowSize()
-    const [bodyWidth, setBodyWidth] = useState(0)
+    const [containerRef, { width: containerWidth }] = useMeasure()
 
-    useEffect(() => {
-        if (windowWidth && !isNaN(windowWidth) && windowWidth > 0) {
-            setBodyWidth(windowWidth)
-        }
-    }, [windowWidth])
+    let bodyWidth = 0
+    if (!isNaN(containerWidth) && containerWidth > 0) {
+        bodyWidth = Math.min(+containerWidth.toFixed(0), 840)
+    }
 
     return (
         <>
@@ -31,10 +26,12 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     overflow: 'hidden',
                     pb: 10,
                     '& article.mdx-article': {
-                        maxWidth: bodyWidth <= 0 ? 'auto' : `${bodyWidth - (48 + 2)}px`,
+                        maxWidth: bodyWidth <= 0 ? 0 : `${bodyWidth - 56}px`,
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
                     },
                     '& h1': {
-                        fontSize: '1.8rem',
+                        fontSize: '1.65rem',
                         fontWeight: 900,
                         mb: 4,
                         pb: 1,
@@ -43,7 +40,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         borderBottom: '1px solid #ccc',
                     },
                     '& h2': {
-                        fontSize: '1.5rem',
+                        fontSize: '1.45rem',
                         fontWeight: 700,
                         mt: 4,
                         mb: 1,
@@ -51,6 +48,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     '& h3': {
                         fontSize: '1.3rem',
                         fontWeight: 600,
+                        color: '#000',
                         mt: 4,
                         mb: 1,
                     },
@@ -58,28 +56,33 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     '& h4': {
                         mt: 3,
                         mb: 1,
+                        color: '#111',
                         fontSize: '1.15rem',
                         fontWeight: 600,
                     },
                     '& h5': {
                         m: 0,
                         mt: 1,
+                        color: '#333',
                         fontSize: '1.0rem',
                         fontWeight: 600,
                     },
                     '& h6': {
                         m: 0,
                         mt: 1,
+                        color: '#444',
                         fontSize: '0.95rem',
                         fontWeight: 600,
+                        lineHeight: '1.9rem',
                     },
                     '& p': {
                         m: 0,
+                        color: '#444',
                         mt: '0.5rem',
                         mb: '0.5rem',
                         fontSize: '0.95rem',
                         fontWeight: 400,
-                        lineHeight: '1.8rem',
+                        lineHeight: '1.75rem',
                     },
                     '& > pre': {
                         overflow: 'auto',
@@ -105,6 +108,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         fontSize: '85%',
                         lineHeight: 1.5,
                         wordBreak: 'break-word',
+                        whiteSpace: 'nowrap',
                         '&::before': {
                             position: 'absolute',
                             content: '""',
@@ -135,7 +139,26 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     },
                 }}
             >
-                <Container maxWidth="md">{children}</Container>
+                <Box
+                    ref={containerRef}
+                    sx={{
+                        position: 'relative',
+                        width: '100vw',
+                        maxWidth: '100vw',
+                        overflowX: 'hidden',
+                    }}
+                >
+                    <Box
+                        sx={{
+                            display: 'block',
+                            maxWidth: '840px',
+                            marginLeft: 'auto',
+                            marginRight: 'auto',
+                        }}
+                    >
+                        {children}
+                    </Box>
+                </Box>
             </Box>
         </>
     )

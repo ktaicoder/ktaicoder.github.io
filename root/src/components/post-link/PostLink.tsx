@@ -23,6 +23,7 @@ export default function PostLink(props: Props) {
     return (
         <Box
             onClick={openLink}
+            component="span"
             sx={{
                 position: 'relative',
                 color: 'blue',
@@ -40,6 +41,7 @@ export default function PostLink(props: Props) {
         >
             {children}
             <Box
+                component="span"
                 sx={{
                     position: 'absolute',
                     top: 0,
@@ -50,7 +52,7 @@ export default function PostLink(props: Props) {
                     borderRadius: '50%',
                     content: '""',
                 }}
-            ></Box>
+            />
         </Box>
     )
 }
