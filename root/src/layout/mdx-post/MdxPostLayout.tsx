@@ -1,6 +1,7 @@
 import { Box, useMediaQuery, useTheme } from '@mui/material'
 import { useMeasure } from 'react-use'
 import Meta from 'src/components/mdx/Meta'
+import { useMainLayoutContext } from '../main/MainLayoutContext'
 
 type Props = {
     children: React.ReactNode
@@ -13,6 +14,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const [containerRef, { width: containerWidth }] = useMeasure()
+    const { sidebarWidth = 0 } = useMainLayoutContext() ?? {}
 
     let bodyWidth = 0
     if (!isNaN(containerWidth) && containerWidth > 0) {
@@ -145,8 +147,8 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     ref={containerRef}
                     sx={{
                         position: 'relative',
-                        width: '100vw',
-                        maxWidth: '100vw',
+                        width: `calc(100vw - ${sidebarWidth}px)`,
+                        maxWidth: `calc(100vw - ${sidebarWidth}px)`,
                         overflowX: 'hidden',
                     }}
                 >

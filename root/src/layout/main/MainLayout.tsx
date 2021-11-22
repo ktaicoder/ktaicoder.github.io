@@ -54,15 +54,19 @@ function MainLayout(props: Props) {
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const isSidebarOpen = sidebarStore.isOpen
     const [searchQuery, setSearchQuery] = useState<string>()
-    const contextData = useMemo(() => ({ searchQuery }), [searchQuery])
-
     let contentShift = 0
+
     if (smDown) {
         contentShift = 0
     } else {
         // drawer가 close 상태에서도 너비를 차지하므로, 마이너스 방향으로 쉬프트
         contentShift = isSidebarOpen ? 0 : -SIDEMENU_WIDTH
     }
+
+    const contextData = useMemo(
+        () => ({ searchQuery, sidebarWidth: isSidebarOpen ? SIDEMENU_WIDTH : 0 }),
+        [searchQuery, isSidebarOpen],
+    )
 
     return (
         <MainLayoutContext.Provider value={contextData}>

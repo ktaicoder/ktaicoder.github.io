@@ -11,11 +11,11 @@ export default function MdxTextBox(props: Props) {
         <Box
             ref={boxRef}
             sx={{
+                display: 'block',
                 background: '#eee',
                 px: 3,
                 py: 2,
-                mt: 1,
-                mb: 2,
+                my: 2,
                 borderRadius: 2,
                 '& > ul': {
                     pl: 2,
