@@ -56,6 +56,7 @@ export default function ImageViewerContainer(props: Props) {
 
     // 이미지 뷰어 열기
     const _openImageViewDialog = (clickedImageUrl: string, allImageUrls: string[]) => {
+        // console.log({ window_self: window.self.location.href, window_top: window.top?.location.href })
         if (multiple) {
             // 이전/다음을 지원하는 이미지 뷰어
             setDialogId('ImageViewLightbox')
