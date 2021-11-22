@@ -13,7 +13,11 @@ export default function PostLink(props: Props) {
     const { children, sx, type = '_dialog', postId, ...restProps } = props
     const openLink = () => {
         if (type === '_dialog') {
-            CustomEvents.post.openDialog.send({ postId })
+            if (window.self === window.top || window.parent === window.top) {
+                CustomEvents.post.openDialog.send({ postId })
+            } else {
+                routerPush(`/post/${postId}`)
+            }
         } else if (type === '_new') {
             window?.open(routerUrlOf(`/post-frame/${postId}`), '_blank')
         } else {

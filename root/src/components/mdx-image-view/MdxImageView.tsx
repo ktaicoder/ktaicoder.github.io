@@ -10,6 +10,7 @@ export default function MdxImageView(props: Props) {
     const { src, caption, sx, ...rest } = props
     const boxRef = useRef()
     const [rootClassName, setRootClassName] = useState<string>()
+    const [enabled, setEnabled] = useState(false)
 
     useEffect(() => {
         if (!boxRef.current) return
@@ -17,6 +18,8 @@ export default function MdxImageView(props: Props) {
         const className = randomCssClassName('imageBox')
         root.classList.add(className)
         setRootClassName(className)
+
+        setEnabled(window.self === window.top || window.parent === window.top)
     }, [])
 
     return (
@@ -51,7 +54,7 @@ export default function MdxImageView(props: Props) {
                 </Typography>
             )}
 
-            {rootClassName && (
+            {enabled && rootClassName && (
                 <ImageViewerContainer
                     revision={boxRef.current}
                     cssSelector={`.${rootClassName} > .lightbox`}
