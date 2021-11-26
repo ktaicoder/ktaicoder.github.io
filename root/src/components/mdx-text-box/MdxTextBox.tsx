@@ -21,6 +21,29 @@ export default function MdxTextBox(props: Props) {
                     pl: 2,
                     pr: 0,
                 },
+                '& > em': {
+                    position: 'relative',
+                    color: 'secondary.main',
+                    fontStyle: 'normal',
+                    fontWeight: 'bold',
+                    display: 'inline-block',
+                    pl: '2px',
+                    pr: '2px',
+                    mr: '2px',
+                    lineHeight: '1.05em',
+                    '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        zIndex: 100,
+                        top: -2,
+                        left: -2,
+                        right: -2,
+                        bottom: -2,
+                        background: 'rgba(0,0,0, 0.1)',
+                        borderRadius: '4px',
+                    },
+                },
+
                 ...sx,
             }}
             {...rest}

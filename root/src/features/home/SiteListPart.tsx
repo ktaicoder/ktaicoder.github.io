@@ -12,20 +12,17 @@ export default function SiteListPart() {
         <Box
             sx={{
                 position: 'relative',
-                display: 'flex',
-                pb: 8,
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
+                py: 8,
             }}
         >
-            <Typography variant="h4" sx={{ mt: 8, fontSize: '1.6rem', color: 'primary.main', fontWeight: 600 }}>
+            <Typography variant="h3" sx={{ textAlign: 'center', color: 'primary.main' }}>
                 관련 정보 및 자료
             </Typography>
 
             <Box
                 mt={8}
                 sx={{
+                    width: '100%',
                     '& > div + div': {
                         mt: 2,
                     },

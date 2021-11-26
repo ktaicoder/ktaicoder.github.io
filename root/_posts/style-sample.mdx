@@ -1,11 +1,13 @@
 ---
-date: '2021-04-04'
-thumbnail: /assets/sliced-tomato-and-spring-onion-salad.jpeg
+date: '2021-11-27'
+thumbnail: thumbnail.jpg
 title: 문서 스타일 샘플
-description: Example style
-yields: 2 servings
+description: 문서 스타일
 ---
-<Typography variant="h1">이런 것도 되나</Typography>
+
+# 스타일 샘플
+
+## Markdown 스타일
 
 # 제목1
 ## 제목2
@@ -29,9 +31,16 @@ yields: 2 servings
 * 목록 4
 * 목록 5
 
-** 강조 텍스트1 **
+**강조 텍스트1**
 
 `백틱 텍스트`입니다
+
+장문의 텍스트. 청포도가 익어가는 시절 이 마을 전설이 주저리 주저리 열리고 
+먼데 하늘이 꿈꾸며 알알이 들어와 박혀 하늘밑 푸른 바다가 가슴을 열고
+흰 돛단 배가 곱게 밀려서 오면 내가 바라는 손님은 고달픈 몸으로
+청포를 입고 찾아 온다고 했으니 내 그를 맞아 이 포도를 따 먹으면
+두 손은 함뿍 적셔도 좋으련 아이야 우리 식탁엔 은쟁반에
+하이얀 모시 수건을 마련해 두렴.
 
 ```shell
 # 쉘
@@ -54,6 +63,109 @@ function testFunction() {
 }
 ```
 
+## 머티리얼 스타일
+
+#### Typography 스타일
+
+<Box ml={4}>
+  <Typography variant="h1">Typography h1 가나다라마바사</Typography>
+  <Typography variant="h2">Typography h2 가나다라마바사</Typography>
+  <Typography variant="h3">Typography h3 가나다라마바사</Typography>
+  <Typography variant="h4">Typography h4 가나다라마바사</Typography>
+  <Typography variant="h5">Typography h5 가나다라마바사</Typography>
+  <Typography variant="h6">Typography h6 가나다라마바사</Typography>
+  <Typography variant="subtitle1">subtitle1 가나다라마바사</Typography>
+  <Typography variant="subtitle2">subtitle2 가나다라마바사</Typography>
+  <Typography variant="body1">body1 가나다라마바사</Typography>
+  <Typography variant="body2">body2 가나다라마바사</Typography>
+  <Typography variant="button"    style={{display:'block'}}>button 가나다라마바사</Typography>
+  <Typography variant="overline"  style={{display:'block'}}>overline 가나다라마바사</Typography>
+  <Typography variant="caption"   style={{display:'block'}}>caption 가나다라마바사</Typography>
+</Box> 
+
+#### Typography 테스트
+<Typography variant="h4" sx={{mt: 2, ml:4}}>
+  시인 이육사
+</Typography>
+
+<Typography variant="subtitle1" sx={{mt: 2, ml:4}}>
+  청포도 - 이육사
+</Typography>
+<Typography variant="body1" sx={{ mt:1, ml:4 }}>
+내 고장 칠월(七月)은 청포도가 익어가는 시절 이 마을 전설이 주저리 주저리 열리고 
+먼데 하늘이 꿈꾸며 알알이 들어와 박혀 하늘밑 푸른 바다가 가슴을 열고
+흰 돛단 배가 곱게 밀려서 오면 내가 바라는 손님은 고달픈 몸으로
+청포를 입고 찾아 온다고 했으니 내 그를 맞아 이 포도를 따 먹으면
+두 손은 함뿍 적셔도 좋으련 아이야 우리 식탁엔 은쟁반에
+하이얀 모시 수건을 마련해 두렴.
+</Typography>
+
+
+#### Button 스타일
+
+<Box sx={{ ml:2, display:'flex', justifyContent:'space-around' }}>
+    <Typography variant="subtitle1">large size</Typography>
+    <Button size="large">Text 버튼</Button>
+    <Button size="large" variant="outlined">Outlined 버튼</Button>
+    <Button size="large" variant="contained">Contained 버튼</Button>
+</Box>
+
+
+<Box sx={{ mt:4, ml:2, display:'flex', justifyContent:'space-around' }}>
+    <Typography variant="subtitle1">mediaum size</Typography>
+    <Button>Text 버튼</Button>
+    <Button variant="outlined">Outlined 버튼</Button>
+    <Button variant="contained">Contained 버튼</Button>
+</Box>
+
+
+<Box sx={{ mt:4, ml:2, display:'flex', justifyContent:'space-around' }}>
+    <Typography variant="subtitle1">small size</Typography>
+    <Button size="small">Text 버튼</Button>
+    <Button size="small" variant="outlined">Outlined 버튼</Button>
+    <Button size="small" variant="contained">Contained 버튼</Button>
+</Box>
+
+
+### 아이콘
+<Box sx={{ml: 4 }}>
+<Icon>star</Icon>
+<Icon>home</Icon>
+<Icon>search</Icon>
+<Icon>settings</Icon>
+<Icon>account_circle</Icon>
+<Icon>info</Icon>
+<Icon>check_circle</Icon>
+<Icon>delete</Icon>
+<Icon>favorite</Icon>
+<Icon>visibility</Icon>
+<Icon>logout</Icon>
+<Icon>description</Icon>
+<Icon>lock</Icon>
+</Box> 
+
+<Box ml={4}>
+  <Icon color="inherit">add_circle</Icon>
+  <Icon color="primary">add_circle</Icon>
+  <Icon color="secondary">add_circle</Icon>
+  <Icon color="error">add_circle</Icon>
+  <Icon color="action">add_circle</Icon>
+  <Icon color="disabled">add_circle</Icon>
+  <Icon color="info">add_circle</Icon>
+  <Icon color="success">add_circle</Icon>
+  <Icon color="warning">add_circle</Icon>
+</Box>
+<Box ml={4}>
+  <Icon fontSize="small">add_circle</Icon>
+  <Icon fontSize="medium">add_circle</Icon>
+  <Icon fontSize="large">add_circle</Icon>
+  <Icon sx={{ fontSize: 60 }}>add_circle</Icon>
+</Box>
+
+### 커스텀 컴포넌트
+
+#### SyntaxHighlighter
+
 <SyntaxHighlighter language="javascript">
   {`
     const doStuff = () => {
@@ -62,14 +174,17 @@ function testFunction() {
   `}
 </SyntaxHighlighter>
 
-<div>
-<Button >Text 버튼</Button>
-</div>
+#### 텍스트 박스 MdxImageView
+<MdxTextBox>
+내 고장 칠월(七月)은 <em>청포도</em>가 익어가는 시절 이 마을 전설이 주저리 주저리 열리고 
+먼데 하늘이 꿈꾸며 알알이 들어와 박혀 하늘밑 푸른 바다가 가슴을 열고
+흰 돛단 배가 곱게 밀려서 오면 내가 바라는 손님은 고달픈 몸으로
+<em>청포</em>를 입고 찾아 온다고 했으니 내 그를 맞아 이 포도를 따 먹으면
+두 손은 함뿍 적셔도 좋으련 <em>아이야 우리 식탁엔 은쟁반에
+하이얀 모시 수건을</em> 마련해 두렴.
+</MdxTextBox>
 
-<div>
-  <Button variant="outlined">Outlined 버튼</Button>
-</div>
 
-<Box m={1}>
-  <Button variant="contained">Contained 버튼</Button>
-</Box>
+#### 이미지 MdxImageView
+
+<MdxImageView src="https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" caption="from unsplash.com"/>

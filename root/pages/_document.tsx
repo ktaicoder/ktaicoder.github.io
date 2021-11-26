@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
                     <meta name="theme-color" content={theme.palette.primary.main} />
                     <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="crossOrigin" />
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                     <link href={googleFont} rel="stylesheet" />
                     {/* <link href={'https://sindresorhus.com/github-markdown-css/github-markdown.css'} rel="stylesheet" /> */}
                 </Head>

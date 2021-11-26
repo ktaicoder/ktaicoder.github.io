@@ -29,27 +29,31 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     color: '#111827',
                     overflow: 'hidden',
                     pb: 10,
+                    pt: 3,
+                    fontSize: '1rem',
                     '& article.mdx-article': {
                         maxWidth: bodyWidth <= 0 ? 0 : `${bodyWidth - 56}px`,
                         marginLeft: 'auto',
                         marginRight: 'auto',
                     },
-                    '& h1': {
+                    '& h1:not(.MuiTypography-root)': {
                         fontSize: '1.65rem',
                         fontWeight: 900,
+                        lineHeight: '2.8rem',
                         mb: 4,
                         pb: 1,
                         pl: 0,
                         textAlign: 'center',
                         borderBottom: '1px solid #ccc',
                     },
-                    '& h2': {
+                    '& h2:not(.MuiTypography-root)': {
                         fontSize: '1.45rem',
+                        lineHeight: '2rem',
                         fontWeight: 700,
                         mt: 4,
                         mb: 1,
                     },
-                    '& h3': {
+                    '& h3:not(.MuiTypography-root)': {
                         fontSize: '1.3rem',
                         fontWeight: 600,
                         color: '#000',
@@ -57,21 +61,21 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         mb: 1,
                     },
 
-                    '& h4': {
+                    '& h4:not(.MuiTypography-root)': {
                         mt: 3,
                         mb: 1,
                         color: '#111',
                         fontSize: '1.15rem',
                         fontWeight: 600,
                     },
-                    '& h5': {
+                    '& h5:not(.MuiTypography-root)': {
                         m: 0,
                         mt: 1,
                         color: '#333',
                         fontSize: '1.0rem',
                         fontWeight: 600,
                     },
-                    '& h6': {
+                    '& h6:not(.MuiTypography-root)': {
                         m: 0,
                         mt: 1,
                         color: '#444',
@@ -79,14 +83,14 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         fontWeight: 600,
                         lineHeight: '1.9rem',
                     },
-                    '& p': {
+                    '& > article > p:not(.MuiTypography-root)': {
                         m: 0,
                         color: '#444',
                         mt: '0.5rem',
                         mb: '0.5rem',
                         fontSize: '0.95rem',
                         fontWeight: 400,
-                        lineHeight: '1.75rem',
+                        lineHeight: '1.45rem',
                     },
                     '& > pre': {
                         overflow: 'auto',
@@ -136,7 +140,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     },
 
                     '& ul > li,& ol > li': {
-                        lineHeight: 1.8,
+                        lineHeight: '1.7rem',
                     },
                     '& ul > li + li,& ol > li + li': {
                         mt: 0.5,
