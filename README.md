@@ -1,9 +1,8 @@
-# AI 코딩블록 개발자 가이드
+# AI 코딩블록 사용자 가이드
 
-AI 코딩블록 개발자 가이드 웹사이트 프로젝트입니다.
+AI 코딩블록 사용자 가이드 웹사이트 프로젝트입니다.
 
 https://ktaicoder.github.io
-
 
 ## 다음과 같이 설치할 수 있습니다.
 
@@ -20,7 +19,7 @@ $  yarn dev
 ### AI 코딩블록 공식 사이트
 
 - AI 코딩블록 https://aicodingblock.kt.co.kr
-- 개발자 가이드 https://ktaicoder.github.io
+- 사용자 가이드 https://ktaicoder.github.io
 
 ### PC 프로그램
 

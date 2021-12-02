@@ -67,7 +67,7 @@ export default function LeftPart() {
                     }}
                 >
                     <Box>AI 코딩블록</Box>
-                    <Box sx={{ color: '#005CB8' }}>개발자</Box>
+                    <Box sx={{ color: '#005CB8' }}>사용자</Box>
                     <Box>가이드</Box>
                 </Box>
                 <Box
@@ -81,7 +81,7 @@ export default function LeftPart() {
                     }}
                 >
                     <Box sx={{ color: '#555', fontSize: '1rem', fontWeight: 400, mt: mdDown ? 8 : 2 }}>
-                        AI 코딩블록 개발자 가이드 사이트입니다.
+                        AI 코딩블록 사용자 가이드 사이트입니다.
                         <em>AI 코딩블록 사이트</em>의 기술적인 설명을 정리하고 있습니다.
                     </Box>
                     <Box sx={{ color: '#555', fontSize: '1rem', fontWeight: 400, mt: 2 }}>

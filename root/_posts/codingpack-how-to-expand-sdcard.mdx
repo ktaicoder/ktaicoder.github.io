@@ -1,0 +1,68 @@
+---
+date: '2021-12-01'
+thumbnail: thumbnail.jpg
+title: 코딩팩 SD 카드 확장
+description: 코딩팩에서 SD 카드를 확장하는 방법을 설명합니다.
+---
+
+# 코딩팩 SD 카드 확장
+
+- OS 이미지를 구훈 후에 가장 먼저 해야할 일은 SD 카드의 용량을 확장하는 일입니다.
+- 구매한 SD 카드의 용량이 16GB 라도, OS 이미지를 구운 직후에는 약 6GB 정도로 인식합니다.
+- 나머지 공간도 사용하려면 SD 카드를 `확장`해주어야 합니다.
+
+<CodingpackSetupStepLinks currentStep={2} next={false} sx={{my:10}}/>
+
+## SD 카드 용량 확인
+
+- 확장하기 전에 현재 상태를 먼저 살펴봅니다. 
+- <PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>에서 
+`df -h` 명령으로 확인할 수 있습니다.
+
+<MdxImageView src="/images/codingpack/sdcard_expand1.png" caption="확장하기 전 SD 카드 용량 확인"/>
+
+- 위의 출력 결과를 읽으려면 사전 지식이 필요합니다만, 여기서는 필요한 것만 설명드리겠습니다.
+- SD 카드의 전체 용량은 위 그림의 `Mounted On` 컬럼에 슬래시(`/`)로 되어 있는 줄만 보면됩니다.
+- 위의 출력 결과는 전체 용량을 5.6GB로 인식하고 있음을 보여줍니다. 실제로는 16GB SD카드인데도 5.6GB로 인식하고 있는 상태입니다.
+    - 위 이미지는 라즈베리파이 4에서 실행한 명령이며, 
+    - 라즈베라파이 3에서는 크기가 조금 다릅니다. 
+
+## SD 카드 확장 명령 실행
+
+- SD 카드 확장은 <PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>에서 해야 합니다.
+- 터미널을 열어서 `sudo raspi-config` 명령을 입력합니다.
+
+<MdxImageView src="/images/codingpack/booting1.png" />
+
+- 그러면 다음과 같은 터미널용 메뉴가 표시됩니다.
+- 마우스는 사용할 수 없고, 키보드의 화살표, 탭, 엔터키만 사용할 수 있습니다.
+
+<MdxImageView src="/images/codingpack/booting2.png" caption="7. Advanced Options 선택"/>
+
+- 위의 메뉴에서 `7. Advanced Options` 메뉴를 선택하세요.
+- 메뉴를 선택하면, 다음 메뉴가 나타납니다.
+
+<MdxImageView src="/images/codingpack/booting3.png" caption="A1 Expand Filesystem 선택"/>
+
+- 이제 위와 같이 `A1 Expand Filesystem` 메뉴를 선택하세요.
+
+<MdxImageView src="/images/codingpack/booting5.png" caption="재부팅을 물어보면 재부팅하세요"/>
+
+- 이제 SD 카드가 확장되었습니다. 재부팅 하세요.
+
+## 재부팅 후 용량 확인
+
+- 재부팅이 완료된 후에 다시 한번 용량을 살펴봅니다.
+- `df -h` 명령을 입력해주세요.
+
+<MdxImageView src="/images/codingpack/sdcard_expand2.png" caption="확장한 후의 SD 카드 용량 확인"/>
+
+- 위의 출력 결과는 전체 용량을 15GB로 인식하고 있음을 보여줍니다. 
+- 이 정도면, 16GB에 가깝께 인식하고 있으니 정상적으로 보입니다.
+- 남은 공간도 8.7GB나 되니까 충분해보입니다.
+- 이제 코딩팩 업데이트나 시스템 초기화를 실행해도 괜찮습니다.
+
+<CodingpackSetupStepLinks currentStep={2} next sx={{my:10}}/>
+
+
+End.

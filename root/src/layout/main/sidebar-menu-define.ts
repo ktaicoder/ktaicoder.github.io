@@ -40,31 +40,49 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         href: '/',
     },
     { type: 'divider' },
-    {
-        type: 'menu',
-        icon: 'usb',
-        title: 'PC 프로그램 가이드',
-        href: '/post-frame/hardware-pc-program-guide',
-    },
-    { type: 'divider' },
+    { type: 'label', title: '일반 사용자용' },
 
     {
         type: 'section',
         sectionId: nextSectionId(),
         icon: 'adb',
-        title: '코딩팩',
+        title: '코딩팩 OS 이미지 제작',
         submenus: [
             {
                 type: 'menu',
                 icon: 'usb',
-                title: '터미널 여는 법',
+                title: '0. 터미널 여는 법',
                 href: '/post-frame/codingpack-how-to-open-terminal',
             },
             {
                 type: 'menu',
                 icon: 'usb',
-                title: 'OS 이미지 제작',
+                title: '1. OS 이미지 굽기',
                 href: '/codingpack/os-image-guide',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '2. SD 카드 확장하기',
+                href: '/post-frame/codingpack-how-to-expand-sdcard',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '3. 네트워크 연결하기',
+                href: '/post-frame/codingpack-how-to-config-network',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '4. 코딩팩 업데이트 하기',
+                href: '/post-frame/codingpack-how-to-codingpack-update',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '5. 시스템 초기화',
+                href: '/post-frame/codingpack-how-to-system-reset',
             },
             // {
             //     type: 'menu',
@@ -75,18 +93,60 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             {
                 type: 'menu',
                 icon: 'usb',
-                title: '시스템 초기화 및 복구',
-                href: '/post-frame/codingpack-how-to-system-reset',
+                title: '6. 시스템 복구',
+                href: '/post-frame/codingpack-how-to-system-rescue',
             },
         ],
     },
 
-    // {
-    //     type: 'menu',
-    //     icon: 'logout',
-    //     title: '로그아웃',
-    //     href: '/logout',
-    // },
+    {
+        type: 'section',
+        sectionId: nextSectionId(),
+        icon: 'adb',
+        title: 'PC 프로그램',
+        submenus: [
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '코딩팩 설정하기',
+                href: '/post-frame/hw-pc-how-to-codingpack-setup',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '코딩팩 연결용 PC 드라이버 설치',
+                href: '/post-frame/hw-pc-how-to-install-pc-driver',
+            },
+        ],
+    },
+    { type: 'divider' },
+    { type: 'label', title: '개발자용' },
+    {
+        type: 'section',
+        sectionId: nextSectionId(),
+        icon: 'adb',
+        title: 'PC 프로그램 개발자',
+        submenus: [
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '개발환경 및 개요',
+                href: '/post-frame/hw-pc-dev-how-to-setup-environment',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '하드웨어 추가 절차',
+                href: '/post-frame/hw-pc-dev-how-to-add-new-hw',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '소프트웨어 배포 안내',
+                href: '/post-frame/hw-pc-dev-how-to-publish',
+            },
+        ],
+    },
 ]
 
 // 라우터 URL로 수정하고, 섹션의 메뉴에는 sectionId를 설정한다

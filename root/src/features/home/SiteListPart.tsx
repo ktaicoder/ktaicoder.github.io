@@ -59,8 +59,8 @@ export default function SiteListPart() {
                 />
                 <PageLink
                     className={pageLinkClassName}
-                    title="AI 코딩블록 개발자 가이드"
-                    subtitle="지금 보고 이 사이트입니다. AI 코딩블록의 개발자 가이드를 제공합니다. "
+                    title="AI 코딩블록 사용자 가이드"
+                    subtitle="지금 보고 이 사이트입니다. AI 코딩블록의 사용자 가이드를 제공합니다. "
                     imageSrc={routerUrlOf('/images/home/labtop.png')}
                     href={routerUrlOf('/')}
                 /> */}

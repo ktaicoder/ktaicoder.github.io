@@ -1,6 +1,7 @@
 import { Box, Button } from '@mui/material'
 import dynamic from 'next/dynamic'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import CodingpackSetupStepLinks from 'src/components/codingpack-setup-step-links/CodingpackSetupStepLinks'
 import MdxImageView from 'src/components/mdx-image-view/MdxImageView'
 import MdxTextBox from 'src/components/mdx-text-box/MdxTextBox'
 import PostLink from 'src/components/post-link/PostLink'
@@ -16,7 +17,7 @@ const MdxComponents = {
     MdxTextBox,
     PostLink,
     Typography,
-
+    CodingpackSetupStepLinks,
     // 아이콘 목록 https://fonts.google.com/icons
     Icon,
 }

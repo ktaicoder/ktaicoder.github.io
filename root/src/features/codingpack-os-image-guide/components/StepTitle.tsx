@@ -24,6 +24,7 @@ export default function StepTitle(props: { step: string; title: string; subtitle
                 <Typography
                     variant="subtitle2"
                     sx={{
+                        mt: 1,
                         textAlign: 'center',
                         fontWeight: 300,
                         fontSize: '1.0rem',

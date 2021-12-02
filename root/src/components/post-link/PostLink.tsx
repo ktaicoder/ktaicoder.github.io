@@ -30,9 +30,12 @@ export default function PostLink(props: Props) {
             component="span"
             sx={{
                 position: 'relative',
-                color: 'blue',
+                color: '#0054cb',
                 cursor: 'pointer',
                 display: 'inline-block',
+                ...(type !== '_dialog' && {
+                    textDecoration: 'underline',
+                }),
                 px: 0.2,
                 ':hover': {
                     color: 'secondary.main',
@@ -44,19 +47,21 @@ export default function PostLink(props: Props) {
             {...restProps}
         >
             {children}
-            <Box
-                component="span"
-                sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: -2,
-                    width: '4px',
-                    height: '4px',
-                    bgcolor: 'secondary.main',
-                    borderRadius: '50%',
-                    content: '""',
-                }}
-            />
+            {type === '_dialog' && (
+                <Box
+                    component="span"
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: -2,
+                        width: '4px',
+                        height: '4px',
+                        bgcolor: 'secondary.main',
+                        borderRadius: '50%',
+                        content: '""',
+                    }}
+                />
+            )}
         </Box>
     )
 }

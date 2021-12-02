@@ -1,5 +1,5 @@
 ---
-date: '2021-04-04'
+date: '2021-12-02'
 thumbnail: thumbnail.jpg
 title: 코딩팩 시스템 초기화 및 복구
 description: 코딩팩 시스템 초기화 및 복구
@@ -29,6 +29,8 @@ description: 코딩팩 시스템 초기화 및 복구
 </MdxTextBox>
 
 
+<CodingpackSetupStepLinks currentStep={5} next={false} sx={{my:10}}/>
+
 
 ### 시스템 초기화 실행
 
@@ -57,44 +59,8 @@ description: 코딩팩 시스템 초기화 및 복구
     </Box>
 </MdxTextBox>
 
-<MdxTextBox>
-    <Box sx={{color:'secondary.main', fontWeight:600, mb:1}}>
-        복구 후에 다시 초기화해야 하나요?
-    </Box>
-    <Box>
-        복구는 시스템을 최신 버전으로 업그래이드 하는 과정이 포함되어 있습니다. 
-        추가적인 초기화나 업데이트는 필요하지 않습니다
-    </Box>
-</MdxTextBox>
+<PostLink postId="codingpack-how-to-system-rescue" type="_page">시스템 복구 가이드</PostLink>를 확인해주세요
 
-### 복구하는 방법
-
-- 복구하는 과정은 <PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>에서 이루어지는 것이라 조금 성가신 작업입니다. 
-- 개발자들에겐 익숙하지만, 일반 사용자들에겐 조금 어려울 수 있습니다.
-
-<PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>을 열고 아래의 명령을 실행하면 됩니다. 
-
-#### 복구 명령어 실행
-
-```bash
-curl https://raw.githubusercontent.com/aicodingblock/reset_blockdriver/release/blockDriver/rescue.sh | bash
-```
-
-위의 명령을 복사, 붙여넣기, 실행(엔터) 하면 됩니다. 아래와 같이 붙여넣기 해주세요.
-<MdxImageView src="/images/doc/rasp_system_rescue1.png" caption="복구 명령어 입력"/>
-
-##### TIP! 터미널에서 복사와 붙여넣기 단축기
-
-보통 복사할때 `CTRL + C`, `CTRL + V` 하시죠? 하지만, <PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>에서는 이 단축키를 이용할 수 없습니다.
-- 터미널에서 복사는 `CTRL + INSERT`, 붙여넣기는 `SHIFT + INSERT` 입니다.
-- 참고로 터미널에서 `CTRL + C`는 취소(cancel)입니다. 실행중인 명령을 중지할 때 사용합니다.
-
-#### 복구 시작
-복구 명령을 실행하면 다음과 같이 실행됩니다.
-<MdxImageView src="/images/doc/rasp_system_rescue2.png" caption="복구 시작"/>
-
-#### 복구 완료
-아래는 복구 명령이 실행 완료된 후의 터미널 모습입니다. 완료 후 재부팅을 하는 중이라 터미널은 종료되었습니다
-<MdxImageView src="/images/doc/rasp_system_rescue3.png" caption="복구 완료 후 재부팅"/>
+<CodingpackSetupStepLinks currentStep={5} next={true} sx={{my:10}}/>
 
 End.

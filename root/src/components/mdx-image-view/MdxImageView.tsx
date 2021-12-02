@@ -49,7 +49,7 @@ export default function MdxImageView(props: Props) {
             />
 
             {caption && (
-                <Typography variant="caption" sx={{ mt: 1 }}>
+                <Typography variant="caption" sx={{ mt: 1, color: '#666' }}>
                     {caption}
                 </Typography>
             )}

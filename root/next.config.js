@@ -37,7 +37,7 @@ if (PRODUCTION) {
         .filter(it => it.endsWith('.mdx'))
         .map(filenm => filenm.replace(/\.mdx$/, ''))
 
-    // ex) '/post/hardware-pc-program-guide': { page: '/post/[slug]' }
+    // ex) '/post/hw-pc-program-guide': { page: '/post/[slug]' }
     const posts = {}
     postIds.forEach(postId => {
         posts[`/post/${postId}`] = { page: '/post/[slug]' }

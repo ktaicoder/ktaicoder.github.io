@@ -60,21 +60,18 @@ function Sidebar() {
                     }}
                     href={routerUrlOf('/')}
                 >
-                    <Box className="title1" sx={{ fontSize: '0.85rem', color: '#444', fontWeight: 400 }}>
-                        AI 코딩블록
-                    </Box>
                     <Box
                         className="title2"
                         sx={{
                             flexGrow: 1,
-                            mt: '4px',
                             color: 'primary.main',
                             fontSize: '1.1rem',
-                            fontFamily: 'Black Han Sans',
+                            fontFamily: 'Noto Sans KR',
+                            fontWeight: 900,
                             textDecoration: 'none',
                         }}
                     >
-                        개발자 가이드
+                        AI 코딩블록 가이드
                     </Box>
                 </Box>
                 <IconButton
@@ -106,9 +103,11 @@ function Sidebar() {
                                 key={idx}
                                 sx={{
                                     pl: 2,
+                                    mt: 2,
                                     '& .MuiListItemText-root .MuiTypography-root': {
-                                        color: SIDEMENU_FG_COLOR,
-                                        opacity: 0.8,
+                                        // color: SIDEMENU_FG_COLOR,
+                                        color: '#4599ed',
+                                        fontSize: '0.75rem',
                                     },
                                 }}
                                 dense

@@ -3,10 +3,7 @@ import { useTheme } from '@mui/material/styles'
 import { useEffect, useRef, useState } from 'react'
 import GuideTitle from 'src/components/guide-title/GuideTitle'
 import ImageViewerContainer from 'src/components/image-viewer-container/ImageViewerContainer'
-import AfterStepPart1 from './components/AfterStepPart1'
-import AfterStepPart2 from './components/AfterStepPart2'
-import AfterStepPart3 from './components/AfterStepPart3'
-import AfterStepPart4 from './components/AfterStepPart4'
+import CodingpackSetupStepLinks from 'src/components/codingpack-setup-step-links/CodingpackSetupStepLinks'
 import EtcherDownloadPart from './components/EtcherDownloadPart'
 import IntroStepPart from './components/IntroStepPart'
 import OsImageDownloadPart from './components/OsImageDownloadPart'
@@ -39,7 +36,7 @@ export default function CodingPackOsImageGuide() {
     return (
         <Box sx={{ pt: 2, mt: 5, pb: 15 }}>
             <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
-                <GuideTitle title="코딩팩 OS 이미지 제작" sx={{ mb: 4 }} />
+                <GuideTitle title="코딩팩 OS 이미지 굽기" sx={{ mb: 4 }} />
 
                 {/* 라즈베리 소개 부분 */}
                 <RaspIntroPart />
@@ -75,7 +72,9 @@ export default function CodingPackOsImageGuide() {
                 >
                     아래는 좀 더 자세한 설명입니다.
                 </Box>
-
+                <Box sx={{ mt: 10 }}>
+                    <CodingpackSetupStepLinks currentStep={1} next={false} />
+                </Box>
                 {/* 1단계 OS 이미지 다운로드 */}
                 <Box sx={{ mt: 10 }}>
                     <OsImageDownloadPart />
@@ -104,7 +103,12 @@ export default function CodingPackOsImageGuide() {
                 <Box sx={{ mt: 10 }}>
                     <OsImageWritePartSub4 />
                 </Box>
+
                 <Box sx={{ mt: 10 }}>
+                    <CodingpackSetupStepLinks currentStep={1} next />
+                </Box>
+
+                {/* <Box sx={{ mt: 10 }}>
                     <AfterStepPart1 />
                 </Box>
                 <Box sx={{ mt: 10 }}>
@@ -115,7 +119,7 @@ export default function CodingPackOsImageGuide() {
                 </Box>
                 <Box sx={{ mt: 10 }}>
                     <AfterStepPart4 />
-                </Box>
+                </Box> */}
             </Container>
             {/* 이미지 뷰어를 띄운다 */}
             {lightbox.name && (
