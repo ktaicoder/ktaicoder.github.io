@@ -8,7 +8,7 @@ import useStore from 'src/store/useStore'
 import DrawerHeader from './components/drawer-header/DrawerHeader'
 import Sidebar from './components/sidebar'
 import Topbar from './components/topbar'
-import { CONTENT_BG_COLOR, SIDEMENU_WIDTH } from './main-layout-constants'
+import { CONTENT_BG_COLOR, SIDEMENU_BG_COLOR, SIDEMENU_WIDTH } from './main-layout-constants'
 import MainLayoutContext from './MainLayoutContext'
 
 const Main = styled('main', {
@@ -79,6 +79,8 @@ function MainLayout(props: Props) {
                         '& .MuiDrawer-paper': {
                             width: SIDEMENU_WIDTH,
                             boxSizing: 'border-box',
+                            backgroundColor: SIDEMENU_BG_COLOR,
+                            color: 'white',
                             // '&::-webkit-scrollbar': {
                             //     width: 10,
                             // },

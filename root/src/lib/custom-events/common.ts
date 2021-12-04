@@ -2,6 +2,11 @@ export const EventTypes = {
     post: {
         openDialog: 'doc.openDialog',
     },
+
+    video: {
+        openDialog: 'video.openDialog',
+    },
+
 }
 
 export const dispatch = (eventName: string, eventDetail?: any) => {

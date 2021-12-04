@@ -65,7 +65,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         mt: 3,
                         mb: 1,
                         color: '#111',
-                        fontSize: '1.15rem',
+                        fontSize: '1.10rem',
                         fontWeight: 600,
                     },
                     '& h5:not(.MuiTypography-root)': {

@@ -9,6 +9,7 @@ import useStore from 'src/store/useStore'
 import { SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
 import DrawerHeader from '../drawer-header/DrawerHeader'
+import MenuIcon from './MenuIcon'
 import MenuItem from './MenuItem'
 import SectionMenu from './SectionMenu'
 
@@ -30,11 +31,26 @@ function Sidebar() {
         <Box
             component="nav"
             sx={{
+                position: 'relative',
                 color: SIDEMENU_FG_COLOR,
                 '& > .MuiDivider-root': {
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
                     marginTop: 8,
                     marginBottom: 8,
+                },
+                height: '100%',
+                '::before': {
+                    position: 'absolute',
+                    content: "''",
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: 0,
+                    background: `url(${routerUrlOf('/images/sidebar/bg_sidebar.jpg')})`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
+                    // filter: 'blur(0.5px)',
                 },
             }}
         >
@@ -47,24 +63,21 @@ function Sidebar() {
                         pl: 1,
                         pr: 1,
                         borderRadius: 1,
+                        zIndex: 1,
                         pt: '6px',
                         fontSize: '1.1rem',
                         textDecoration: 'none',
-                        ':hover .title1': {
-                            color: '#005CB8',
-                            fontWeight: 500,
-                        },
-                        ':hover .title2': {
-                            color: '#005CB8',
+                        ':hover .title': {
+                            color: '#fff',
                         },
                     }}
                     href={routerUrlOf('/')}
                 >
                     <Box
-                        className="title2"
+                        className="title"
                         sx={{
                             flexGrow: 1,
-                            color: 'primary.main',
+                            color: '#ccc',
                             fontSize: '1.1rem',
                             fontFamily: 'Noto Sans KR',
                             fontWeight: 900,
@@ -102,16 +115,28 @@ function Sidebar() {
                             <ListItem
                                 key={idx}
                                 sx={{
-                                    pl: 2,
-                                    mt: 2,
+                                    pl: 1,
+                                    pt: 0,
+                                    pb: 0,
+                                    mb: -0.5,
+                                    mt: item.mt,
+
                                     '& .MuiListItemText-root .MuiTypography-root': {
                                         // color: SIDEMENU_FG_COLOR,
-                                        color: '#4599ed',
+                                        color: '#bbb',
                                         fontSize: '0.75rem',
+                                        display: 'block',
+                                        px: 1,
+                                        py: 0.5,
+                                        borderRadius: '4px',
                                     },
                                 }}
                                 dense
                             >
+                                {item.icon && (
+                                    <MenuIcon iconName={item.icon} sx={{ fontSize: '0.9rem', color: '#bbb' }} />
+                                )}
+
                                 <ListItemText>{item.title}</ListItemText>
                             </ListItem>
                         )

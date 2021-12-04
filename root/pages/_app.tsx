@@ -5,6 +5,7 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 import * as React from 'react'
 import OpenPostDialogEventHandler from 'src/components/custom-event-handlers/OpenPostDialogEventHandler'
+import OpenVideoDialogEventHandler from 'src/components/custom-event-handlers/OpenVideoDialogEventHandler'
 import createEmotionCache from 'src/createEmotionCache'
 import StoreProvider from 'src/store/StoreProvider'
 import theme from 'src/theme'
@@ -33,6 +34,7 @@ export default function MyApp(props: MyAppProps) {
                 <StoreProvider rootStoreInitialState={undefined}>
                     <>
                         <Component {...pageProps} />
+                        <OpenVideoDialogEventHandler />
                         <OpenPostDialogEventHandler />
                     </>
                 </StoreProvider>

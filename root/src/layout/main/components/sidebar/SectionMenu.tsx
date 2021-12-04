@@ -32,8 +32,8 @@ type Props = {
     onClickLink?: () => void
 }
 const ListItemButton = styled(MuiListItemButton, {
-    shouldForwardProp: (p) => p !== 'active',
-})<MuiListItemButtonProps & { active: boolean }>(({ theme, active }) => {
+    shouldForwardProp: (p) => p !== 'active' && p !== 'expand',
+})<MuiListItemButtonProps & { active: boolean; expand: boolean }>(({ theme, active, expand }) => {
     return {
         '&:hover': {
             backgroundColor: SIDEMENU_BG_COLOR_HOVER,
@@ -45,10 +45,11 @@ const ListItemButton = styled(MuiListItemButton, {
         '& .MuiListItemIcon-root': {
             color: ICON_COLOR,
         },
-        ...(active && {
-            borderTop: `1px solid ${DIVIDER_COLOR}`,
-            backgroundColor: 'rgba(0, 0, 0, 0)',
-        }),
+        ...(active &&
+            expand && {
+                borderTop: `1px solid ${DIVIDER_COLOR}`,
+                backgroundColor: 'rgba(0, 0, 0, 0.05)',
+            }),
 
         '& .MuiIcon-root.sectionIndicator': {
             color: active ? ICON_COLOR_ACTIVE : 'rgba(255,255,255,0.5)',
@@ -74,7 +75,14 @@ export default function SectionMenu(props: Props) {
 
     return (
         <React.Fragment>
-            <ListItemButton onClick={onSectionClick} active={active} sx={{ pl: 1 }}>
+            <ListItemButton
+                onClick={onSectionClick}
+                active={active}
+                expand={expanded}
+                sx={{
+                    pl: 1,
+                }}
+            >
                 {section.icon && (
                     <ListItemIcon sx={{ display: 'none' }}>
                         <MenuIcon iconName={section.icon} />
@@ -84,8 +92,9 @@ export default function SectionMenu(props: Props) {
                     primary={section.title}
                     sx={{
                         '& .MuiListItemText-primary': {
-                            fontWeight: active ? 700 : 500,
+                            fontWeight: active ? 600 : 400,
                             fontSize: '0.9rem',
+                            color: active ? '#4fc3f7' : '#e1f5fe',
                         },
                     }}
                 />
@@ -101,7 +110,7 @@ export default function SectionMenu(props: Props) {
                 unmountOnExit
                 sx={{
                     boxSizing: 'border-box',
-                    borderBottom: `1px solid ${DIVIDER_COLOR}`,
+                    ...(expanded && active && { borderBottom: `1px solid ${DIVIDER_COLOR}` }),
                 }}
             >
                 <List

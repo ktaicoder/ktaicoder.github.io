@@ -6,6 +6,7 @@ export interface ILabel {
     type: 'label'
     icon?: string
     title: string
+    mt?: number
     sectionId?: string
 }
 
@@ -40,7 +41,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         href: '/',
     },
     { type: 'divider' },
-    { type: 'label', title: '일반 사용자용' },
+    { type: 'label', icon: 'description', title: '사용자 가이드' },
 
     {
         type: 'section',
@@ -48,6 +49,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         icon: 'adb',
         title: '코딩팩 OS 이미지 제작',
         submenus: [
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '0. 코딩팩 소개 및 조립',
+                href: '/post-frame/codingpack-how-to-intro',
+            },
             {
                 type: 'menu',
                 icon: 'usb',
@@ -119,8 +126,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
         ],
     },
-    { type: 'divider' },
-    { type: 'label', title: '개발자용' },
+    { type: 'label', icon: 'terminal', title: '개발자 가이드', mt: 4 },
     {
         type: 'section',
         sectionId: nextSectionId(),
