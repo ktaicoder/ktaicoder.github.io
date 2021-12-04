@@ -121,12 +121,6 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             {
                 type: 'menu',
                 icon: 'usb',
-                title: '코딩팩 연결용 PC 드라이버 설치',
-                href: '/post-frame/hw-pc-how-to-install-pc-driver',
-            },
-            {
-                type: 'menu',
-                icon: 'usb',
                 title: '코딩팩 설정시 문제 해결',
                 href: '/post-frame/hw-pc-codingpack-setup-help',
             },

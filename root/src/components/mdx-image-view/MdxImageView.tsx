@@ -37,7 +37,19 @@ export default function MdxImageView(props: Props) {
                 justifyContent: 'center',
             }}
         >
-            <Box sx={{ pt: 2, pb: 1, px: 2, background: transparentBg ? 'transparent' : '#f0f0f0', borderRadius: 2 }}>
+            <Box
+                sx={{
+                    pt: 2,
+                    pb: 1,
+                    px: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%',
+                    background: transparentBg ? 'transparent' : '#f0f0f0',
+                    borderRadius: 2,
+                }}
+            >
                 <Box
                     component="img"
                     className="lightbox"
