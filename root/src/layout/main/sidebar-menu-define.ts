@@ -41,7 +41,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         href: '/',
     },
     { type: 'divider' },
-    { type: 'label', icon: 'description', title: '사용자 가이드' },
+    { type: 'label', icon: 'description', title: '사용자 가이드', mt: 4 },
 
     {
         type: 'section',
@@ -123,6 +123,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 icon: 'usb',
                 title: '코딩팩 연결용 PC 드라이버 설치',
                 href: '/post-frame/hw-pc-how-to-install-pc-driver',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
+                title: '코딩팩 설정시 문제 해결',
+                href: '/post-frame/hw-pc-codingpack-setup-help',
             },
         ],
     },

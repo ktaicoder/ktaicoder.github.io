@@ -57,8 +57,7 @@ const ListItemButton = styled(MuiListItemButton, {
         },
 
         '& + &': {
-            marginBottom: theme.spacing(1),
-            marginTop: theme.spacing(1),
+            my: '1px',
         },
     }
 })

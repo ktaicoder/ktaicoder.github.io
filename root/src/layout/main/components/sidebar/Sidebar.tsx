@@ -115,7 +115,7 @@ function Sidebar() {
                             <ListItem
                                 key={idx}
                                 sx={{
-                                    pl: 1,
+                                    pl: 2,
                                     pt: 0,
                                     pb: 0,
                                     mb: -0.5,
