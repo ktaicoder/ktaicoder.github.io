@@ -25,7 +25,7 @@ export default function IntroStepPart() {
             }}
         >
             <StepCircle
-                title="1단계"
+                title="첫번째"
                 horizontal={mdDown}
                 subtitle="OS 이미지 다운로드"
                 color="#5DA7B4"
@@ -36,7 +36,7 @@ export default function IntroStepPart() {
             {!mdDown && <StepDivider color1="#5DA7B4" color2="#228AA5" height={130} />}
 
             <StepCircle
-                title="2단계"
+                title="두번째"
                 horizontal={mdDown}
                 subtitle="에처(Etcher) 프로그램 다운로드"
                 color="#228AA5"
@@ -45,7 +45,7 @@ export default function IntroStepPart() {
             />
             {!mdDown && <StepDivider color1="#228AA5" color2="#3F617D" height={130} />}
             <StepCircle
-                title="3단계"
+                title="세번째"
                 subtitle="SD카드에 OS 이미지 굽기"
                 color="#3F617D"
                 horizontal={mdDown}
