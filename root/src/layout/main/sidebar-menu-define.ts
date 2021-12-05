@@ -115,6 +115,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             {
                 type: 'menu',
                 icon: 'usb',
+                title: 'PC 프로그램 소개',
+                href: '/post-frame/hw-pc-intro',
+            },
+            {
+                type: 'menu',
+                icon: 'usb',
                 title: '코딩팩 설정하기',
                 href: '/post-frame/hw-pc-how-to-codingpack-setup',
             },

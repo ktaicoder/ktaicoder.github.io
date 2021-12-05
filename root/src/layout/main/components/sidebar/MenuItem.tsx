@@ -1,6 +1,5 @@
-import { ListItemIcon, ListItemText } from '@mui/material'
+import { ListItemText } from '@mui/material'
 import React from 'react'
-import { Link, LinkProps } from 'src/components/link'
 import {
     ICON_COLOR,
     ICON_COLOR_ACTIVE,
@@ -12,14 +11,12 @@ import {
 } from '../../main-layout-constants'
 import { IMenu } from '../../sidebar-menu-define'
 import ListItemLink from './ListItemLink'
-import MenuIcon from './MenuIcon'
+
 type Props = {
     menu: IMenu
     active: boolean
     onLinkClick?: (href: string) => void
 }
-
-const MyLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => <Link {...props} ref={ref} />)
 
 export default function MenuItem(props: Props) {
     const { menu, active, onLinkClick } = props
