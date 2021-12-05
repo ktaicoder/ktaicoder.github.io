@@ -6,7 +6,6 @@ import ReactPlayer from 'react-player'
 import VideoPlayerDialog, { VideoPlayerDialogProps } from 'src/dialogs/video-player/VideoPlayerDialog'
 import MainLayout from 'src/layout/main/MainLayout'
 import { useRef } from 'react'
-import { findDOMNode } from 'react-dom'
 
 type SimplePlayerProps = {
     title?: string
@@ -21,8 +20,8 @@ function SimplePlayer(props: SimplePlayerProps) {
     const _handleFullscreen = () => {
         if (!playerRef.current) return
 
-        // @ts-ignore
-        const elem = findDOMNode(playerRef.current)
+        // eslint-disable-next-line react/no-find-dom-node
+        // const elem = findDOMNode(playerRef.current)
         // if (screenfull.isEnabled && elem) {
         //     screenfull.request(elem as Element)
         // }

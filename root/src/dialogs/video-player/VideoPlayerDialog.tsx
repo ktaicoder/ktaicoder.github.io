@@ -1,7 +1,6 @@
 import CloseIcon from '@mui/icons-material/Close'
 import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from '@mui/material'
 import React, { useRef, useState } from 'react'
-import { findDOMNode } from 'react-dom'
 import ReactPlayer from 'react-player'
 // import screenfull from 'screenfull'
 import ClipboardButton from './ClipboardButton'
@@ -25,8 +24,8 @@ export default function VideoPlayerDialog(props: VideoPlayerDialogProps) {
     const _handleFullscreen = () => {
         if (!playerRef.current) return
 
-        // @ts-ignore
-        const elem = findDOMNode(playerRef.current)
+        // eslint-disable-next-line react/no-find-dom-node
+        // const elem = findDOMNode(playerRef.current)
         // if (screenfull.isEnabled && elem) {
         //     screenfull.request(elem as Element)
         // }
