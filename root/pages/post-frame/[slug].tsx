@@ -4,6 +4,8 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import MdxComponents from 'src/components/mdx/MdxComponents'
 import MainLayout from 'src/layout/main/MainLayout'
 import MdxPostLayout from 'src/layout/mdx-post/MdxPostLayout'
@@ -17,6 +19,15 @@ type Props = {
 
 export function PostFramePage({ source, frontMatter }: Props) {
     // const ogImage = config.siteURL + frontMatter.thumbnail
+    const { query = {} } = useRouter()
+
+    useEffect(() => {
+        if ('_access' in query && query['_access']) {
+            localStorage.setItem('_access', `${query['_access']}`)
+        } else {
+            localStorage.removeItem('_access')
+        }
+    }, [query])
 
     return (
         <MainLayout title={frontMatter.title}>

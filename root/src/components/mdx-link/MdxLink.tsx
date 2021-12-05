@@ -1,5 +1,6 @@
 import { Box, BoxProps } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useLocalStorage } from 'react-use'
 
 type Props = {
     children: React.ReactNode | React.ReactNode[]
@@ -8,12 +9,14 @@ type Props = {
 } & BoxProps
 
 export default function MdxLink(props: Props) {
-    const { children, href, sx, ...restProps } = props
+    const { children, href, target, sx, ...restProps } = props
+    const [access] = useLocalStorage('_access', '')
 
     return (
         <Box
             component="a"
             href={href}
+            target={access === 'pc' ? '_self' : target}
             sx={{
                 position: 'relative',
                 color: '#0054cb',

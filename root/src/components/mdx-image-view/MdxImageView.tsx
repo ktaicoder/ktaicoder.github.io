@@ -40,7 +40,7 @@ export default function MdxImageView(props: Props) {
             <Box
                 sx={{
                     pt: 2,
-                    pb: 1,
+                    pb: 2,
                     px: 2,
                     display: 'flex',
                     alignItems: 'center',
@@ -54,7 +54,7 @@ export default function MdxImageView(props: Props) {
                     component="img"
                     className="lightbox"
                     src={routerUrlOf(src)}
-                    sx={{ maxWidth: '100%', ...sx }}
+                    sx={{ maxWidth: '100%', ...sx, objectFit: 'contain' }}
                     {...rest}
                     alt={caption ?? ''}
                 />
