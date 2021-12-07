@@ -119,7 +119,7 @@ function Sidebar() {
                                     mb: 0,
                                     mt: item.mt,
                                     ml: 1,
-                                    posistion: 'relative',
+                                    position: 'relative',
                                     '& .MuiListItemText-root .MuiTypography-root': {
                                         // color: SIDEMENU_FG_COLOR,
                                         color: 'rgba(255,255,255,0.5)',
