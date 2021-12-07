@@ -4,6 +4,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Box, Button, ButtonBase, ButtonBaseProps, Grid, useMediaQuery } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import { useState } from 'react'
+import { CODINGPACK } from 'src/lib/codingpack-version'
 import { routerPush, routerUrlOf } from 'src/lib/urls'
 
 const LinkButton = (props: { title: string; href: string } & ButtonBaseProps) => {
@@ -102,12 +103,12 @@ export default function ShortDescPart() {
                                 />
                             </Box>
                             <Box mt={1} mb={3}>
-                                OS가 하나의 파일에 담겨 있으므로 <em>용량이 매우 큽니다.</em> 그래서 압축된 파일로
-                                다운로드 합니다. 복사할 때는 압축을 풀어서 복사하게 됩니다.
+                                OS가 하나의 파일에 담겨 있으므로 <em>용량이 매우 큽니다.</em> 그래서 압축 파일로
+                                다운로드 하고, SD 카드에 구울 때는 압축을 풀어서 구워야 합니다.
                             </Box>
 
                             <Box mt={1} mb={3}>
-                                OS 이미지는 약 8GB 정도되며, <em>압축하면 2.5GB</em> 정도입니다. SD 카드에는 압축을
+                                OS 이미지는 약 8GB 정도되며, <em>압축하면 2.6GB</em> 정도입니다. SD 카드에는 압축을
                                 풀어서 복사하므로, 최소 8GB 이상의 공간이 필요합니다. 원활한 이용을 위해{' '}
                                 <em>SD 카드 용량은 16GB 이상</em>을 권장합니다.
                             </Box>
@@ -171,18 +172,18 @@ export default function ShortDescPart() {
                             기본 사용자 ID는 <em>pi</em>이며, 암호는 <em>kt123!@#</em> 입니다.
                         </li>
                         <li>
-                            라즈베리파이 3B+ <em>ver 2.1.4</em>
+                            라즈베리파이 3B+ <em>{CODINGPACK.rp3.version}</em>
                             <span>
                                 <i></i>
                             </span>
-                            2021.4.30
+                            {CODINGPACK.rp3.date}
                         </li>
                         <li>
-                            라즈베리파이 4B <em>ver 3.2</em>
+                            라즈베리파이 4B <em>{CODINGPACK.rp4.version}</em>
                             <span>
                                 <i></i>
                             </span>
-                            2021.9.15
+                            {CODINGPACK.rp4.date}
                         </li>
                     </Box>
                     <Box mt={4}>
@@ -191,14 +192,14 @@ export default function ShortDescPart() {
                                 <LinkButton
                                     style={{ width: '100%' }}
                                     title="라즈베리파이 3B+ OS 이미지 다운로드"
-                                    href="https://aicodingblock.kt.co.kr/_static/codingpack/aicodingpack_2.1.4.zip"
+                                    href={`https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp3.fileName}`}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <LinkButton
                                     style={{ width: '100%' }}
                                     title="라즈베리파이 4B OS 이미지 다운로드"
-                                    href="https://aicodingblock.kt.co.kr/_static/codingpack/kt_acp_rpi4__v3.2.zip"
+                                    href={`https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp4.fileName}`}
                                 />
                             </Grid>
                         </Grid>

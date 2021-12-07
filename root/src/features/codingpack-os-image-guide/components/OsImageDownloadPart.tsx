@@ -1,5 +1,6 @@
 import { Box, Divider, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { CODINGPACK } from 'src/lib/codingpack-version'
 import ListText from './ListText'
 import ListTextBox from './ListTextBox'
 import RaspDownloadButton from './RaspDownloadButton'
@@ -50,11 +51,18 @@ export default function OsImageDownloadPart() {
                             alignItems: 'center',
                         }}
                     >
-                        <Typography variant="overline">라즈베리파이 3B+</Typography>
+                        <Typography variant="body1" sx={{ fontSize: '0.8rem' }}>
+                            {CODINGPACK.rp3.version}
+                            <Box component="span" ml={1} sx={{ color: '#888' }}>
+                                {CODINGPACK.rp3.date}
+                            </Box>
+                        </Typography>
                         <RaspDownloadButton
                             raspVersion="3B+"
                             onClick={() =>
-                                downloadLink('https://aicodingblock.kt.co.kr/_static/codingpack/aicodingpack_2.1.4.zip')
+                                downloadLink(
+                                    `https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp3.fileName}`,
+                                )
                             }
                         />
                     </Box>
@@ -79,11 +87,18 @@ export default function OsImageDownloadPart() {
                             alignItems: 'center',
                         }}
                     >
-                        <Typography variant="overline">라즈베리파이 4B</Typography>
+                        <Typography variant="body1" sx={{ fontSize: '0.8rem' }}>
+                            {CODINGPACK.rp4.version}
+                            <Box component="span" ml={1} sx={{ color: '#888' }}>
+                                {CODINGPACK.rp4.date}
+                            </Box>
+                        </Typography>
                         <RaspDownloadButton
                             raspVersion="4B"
                             onClick={() =>
-                                downloadLink('https://aicodingblock.kt.co.kr/_static/codingpack/kt_acp_rpi4__v3.2.zip')
+                                downloadLink(
+                                    `https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp4.fileName}`,
+                                )
                             }
                         />
                     </Box>
@@ -93,8 +108,8 @@ export default function OsImageDownloadPart() {
                 <ListText
                     text={
                         <>
-                            버전에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
-                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.5GB)</span>{' '}
+                            코딩팩에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
+                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.6GB)</span>{' '}
                         </>
                     }
                 />
@@ -102,8 +117,15 @@ export default function OsImageDownloadPart() {
                 <ListText
                     text={
                         <>
-                            코딩팩에 로그인 시 사용자 ID는 pi, 암호는{' '}
-                            <span style={{ whiteSpace: 'nowrap' }}>kt123!@#</span> 입니다.
+                            코딩팩에 로그인 시 사용자 ID는{' '}
+                            <Box component="span" sx={{ whiteSpace: 'nowrap', fontWeight: 600, color: 'primary.dark' }}>
+                                pi
+                            </Box>{' '}
+                            , 암호는{' '}
+                            <Box component="span" sx={{ whiteSpace: 'nowrap', fontWeight: 600, color: 'primary.dark' }}>
+                                kt123!@#
+                            </Box>
+                            입니다.
                         </>
                     }
                 />
