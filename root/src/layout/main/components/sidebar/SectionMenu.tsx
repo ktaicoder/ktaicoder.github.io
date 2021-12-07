@@ -3,6 +3,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import {
     Collapse,
     Divider,
+    Box,
     List,
     ListItemButton as MuiListItemButton,
     ListItemButtonProps as MuiListItemButtonProps,
@@ -73,26 +74,33 @@ export default function SectionMenu(props: Props) {
     } = props
 
     return (
-        <React.Fragment>
+        <>
             <ListItemButton
                 onClick={onSectionClick}
                 active={active}
                 expand={expanded}
                 sx={{
-                    pl: 1,
+                    pl: 2,
+
+                    ...(expanded && {
+                        background: 'rgba(0,0,0,0.1)',
+                    }),
                 }}
             >
                 {section.icon && (
-                    <ListItemIcon sx={{ display: 'none' }}>
-                        <MenuIcon iconName={section.icon} />
+                    <ListItemIcon sx={{ minWidth: 32 }}>
+                        <MenuIcon
+                            iconName={section.icon}
+                            sx={{ fontSize: '1.3rem', color: expanded ? '#4fc3f7' : '#e1f5fe' }}
+                        />
                     </ListItemIcon>
                 )}
                 <ListItemText
                     primary={section.title}
                     sx={{
+                        fontWeight: active ? 600 : 400,
                         '& .MuiListItemText-primary': {
-                            fontWeight: active ? 600 : 400,
-                            fontSize: '0.9rem',
+                            fontSize: '0.85rem',
                             color: active ? '#4fc3f7' : '#e1f5fe',
                         },
                     }}
@@ -109,14 +117,17 @@ export default function SectionMenu(props: Props) {
                 unmountOnExit
                 sx={{
                     boxSizing: 'border-box',
-                    ...(expanded && active && { borderBottom: `1px solid ${DIVIDER_COLOR}` }),
+                    mr: 1,
+                    ...(expanded && {
+                        background: 'rgba(0,0,0,0.15)',
+                    }),
                 }}
             >
                 <List
                     disablePadding
                     sx={{
                         '& > .MuiListItem-root': {
-                            pl: 4,
+                            pl: 5,
                         },
                     }}
                 >
@@ -135,6 +146,6 @@ export default function SectionMenu(props: Props) {
                     })}
                 </List>
             </Collapse>
-        </React.Fragment>
+        </>
     )
 }

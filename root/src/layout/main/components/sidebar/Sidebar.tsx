@@ -6,7 +6,7 @@ import { observer } from 'mobx-react'
 import { useRouter } from 'next/router'
 import { routerUrlOf } from 'src/lib/urls'
 import useStore from 'src/store/useStore'
-import { SIDEMENU_FG_COLOR } from '../../main-layout-constants'
+import { SIDEMENU_BG_COLOR, SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
 import DrawerHeader from '../drawer-header/DrawerHeader'
 import MenuIcon from './MenuIcon'
@@ -47,7 +47,7 @@ function Sidebar() {
                     width: '100%',
                     height: '100%',
                     zIndex: 0,
-                    background: `url(${routerUrlOf('/images/sidebar/bg_sidebar.jpg')})`,
+                    background: '#002C4E',
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     // filter: 'blur(0.5px)',
@@ -109,26 +109,37 @@ function Sidebar() {
                             />
                         )
                     } else if (item.type === 'divider') {
-                        return <Divider key={idx} light />
+                        return <Box key={idx} sx={{ height: '0px', borderTop: '1px solid rgba(255,255,255,0.1)' }} />
                     } else if (item.type === 'label') {
                         return (
                             <ListItem
                                 key={idx}
                                 sx={{
-                                    pl: 2,
-                                    pt: 0,
-                                    pb: 0,
-                                    mb: -0.5,
+                                    p: 0,
+                                    mb: 0,
                                     mt: item.mt,
-
+                                    ml: 1,
+                                    posistion: 'relative',
                                     '& .MuiListItemText-root .MuiTypography-root': {
                                         // color: SIDEMENU_FG_COLOR,
-                                        color: '#bbb',
+                                        color: 'rgba(255,255,255,0.5)',
                                         fontSize: '0.75rem',
-                                        display: 'block',
-                                        px: 1,
-                                        py: 0.5,
+                                        display: 'inline-block',
+                                        pl: 6,
+                                        pt: '2px',
+                                        pb: '0px',
+                                        border: '1px solid rgba(255,255,255,0.0)',
                                         borderRadius: '4px',
+                                    },
+                                    '&:before': {
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '0px',
+                                        width: '16px',
+                                        height: '0px',
+                                        border: '0px dashed rgba(255,255,255,0.5)',
+                                        zIndex: 1,
+                                        content: '""',
                                     },
                                 }}
                                 dense

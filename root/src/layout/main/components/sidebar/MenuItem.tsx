@@ -1,4 +1,4 @@
-import { ListItemText } from '@mui/material'
+import { ListItemIcon, ListItemText } from '@mui/material'
 import React from 'react'
 import {
     ICON_COLOR,
@@ -11,6 +11,7 @@ import {
 } from '../../main-layout-constants'
 import { IMenu } from '../../sidebar-menu-define'
 import ListItemLink from './ListItemLink'
+import MenuIcon from './MenuIcon'
 
 type Props = {
     menu: IMenu
@@ -29,37 +30,41 @@ export default function MenuItem(props: Props) {
             onClick={() => onLinkClick?.(href)}
             sx={{
                 display: 'flex',
-                // paddingLeft: '24px',
+                pl: 2,
                 pr: 1,
                 '&:hover': {
                     backgroundColor: SIDEMENU_BG_COLOR_HOVER,
                 },
 
-                '& .MuiListItemIcon-root': {
-                    color: active ? ICON_COLOR_ACTIVE : ICON_COLOR,
-                },
                 '& .MuiListItemText-root': {
                     color: active ? SIDEMENU_FG_COLOR_ACTIVE : SIDEMENU_FG_COLOR,
                     fontWeight: active ? 700 : 500,
-                    marginLeft: active ? '-4px' : 0,
+                    // marginLeft: active ? '-4px' : 0,
+                    ml: 0,
                     '& .MuiListItemText-primary': {
-                        fontSize: '0.9rem',
+                        fontSize: '0.85rem',
                     },
                 },
 
                 ...(active && {
                     backgroundColor: SIDEMENU_BG_COLOR_ACTIVE,
-                    borderLeft: `4px solid ${SIDEMENU_BORDER_COLOR_ACTIVE}`,
+                    borderLeft: `0px solid ${SIDEMENU_BORDER_COLOR_ACTIVE}`,
                     borderTopLeftRadius: 0,
                     borderBottomLeftRadius: 0,
+                    borderTopRightRadius: '8px',
+                    borderBottomRightRadius: '8px',
+                    mr: 2,
                 }),
             }}
         >
-            {/* {icon && (
-                <ListItemIcon sx={{ display: 'none' }}>
-                    <MenuIcon iconName={icon} />
+            {icon && (
+                <ListItemIcon sx={{ minWidth: 32 }}>
+                    <MenuIcon
+                        iconName={icon}
+                        sx={{ fontSize: '1.1rem', color: active ? ICON_COLOR_ACTIVE : ICON_COLOR }}
+                    />
                 </ListItemIcon>
-            )} */}
+            )}
             <ListItemText primary={title} />
         </ListItemLink>
     )

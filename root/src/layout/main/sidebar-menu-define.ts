@@ -37,11 +37,11 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
     {
         type: 'menu',
         icon: 'dashboard',
-        title: 'Home',
+        title: 'HOME',
         href: '/',
     },
-    { type: 'divider' },
-    { type: 'label', icon: 'description', title: '사용자 가이드', mt: 4 },
+
+    { type: 'label', title: '사용자 가이드', mt: 1 },
 
     {
         type: 'section',
@@ -51,43 +51,36 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         submenus: [
             {
                 type: 'menu',
-                icon: 'usb',
-                title: '0. 코딩팩 소개 및 조립',
+                title: '코딩팩 소개 및 조립',
                 href: '/post-frame/codingpack-how-to-intro',
             },
             {
                 type: 'menu',
-                icon: 'usb',
-                title: '0. 터미널 여는 법',
+                title: '터미널 여는 법',
                 href: '/post-frame/codingpack-how-to-open-terminal',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '1. OS 이미지 굽기',
                 href: '/codingpack/os-image-guide',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '2. SD 카드 확장하기',
                 href: '/post-frame/codingpack-how-to-expand-sdcard',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '3. 네트워크 연결하기',
                 href: '/post-frame/codingpack-how-to-config-network',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '4. 코딩팩 업데이트 하기',
                 href: '/post-frame/codingpack-how-to-codingpack-update',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '5. 시스템 초기화',
                 href: '/post-frame/codingpack-how-to-system-reset',
             },
@@ -99,8 +92,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             // },
             {
                 type: 'menu',
-                icon: 'usb',
-                title: '6. 시스템 복구',
+                title: '시스템 복구',
                 href: '/post-frame/codingpack-how-to-system-rescue',
             },
         ],
@@ -109,51 +101,45 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
     {
         type: 'section',
         sectionId: nextSectionId(),
-        icon: 'adb',
+        icon: 'desktop',
         title: 'PC 프로그램',
         submenus: [
             {
                 type: 'menu',
-                icon: 'usb',
                 title: 'PC 프로그램 소개',
                 href: '/post-frame/hw-pc-intro',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '코딩팩 설정하기',
                 href: '/post-frame/hw-pc-how-to-codingpack-setup',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '코딩팩 설정시 문제 해결',
                 href: '/post-frame/hw-pc-codingpack-setup-help',
             },
         ],
     },
-    { type: 'label', icon: 'terminal', title: '개발자 가이드', mt: 4 },
+    { type: 'label', title: '개발자 가이드', mt: 1 },
     {
         type: 'section',
         sectionId: nextSectionId(),
-        icon: 'adb',
+        icon: 'terminal',
         title: 'PC 프로그램 개발자',
         submenus: [
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '개발환경 및 개요',
                 href: '/post-frame/hw-pc-dev-how-to-setup-environment',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '하드웨어 추가 절차',
                 href: '/post-frame/hw-pc-dev-how-to-add-new-hw',
             },
             {
                 type: 'menu',
-                icon: 'usb',
                 title: '소프트웨어 배포 안내',
                 href: '/post-frame/hw-pc-dev-how-to-publish',
             },
