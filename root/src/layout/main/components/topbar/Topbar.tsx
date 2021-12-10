@@ -55,7 +55,7 @@ export default function Topbar(props: Props) {
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const { y: windowScrollY } = useWindowScroll()
     const shift = isSidebarOpen && !smDown ? true : false
-    console.log('windowScrollY=', windowScrollY)
+    // console.log('windowScrollY=', windowScrollY)
     const elevation = windowScrollY > 10 ? 1 : 0
     return (
         <AppBar

@@ -85,7 +85,7 @@ export class AwesomeControl implements IAwesomeControl {
 
     /**
      * 하드웨어 제어 컨텍스트
-     * PC 프로그램에서 이 값을 주입(Injection)해 줍니다
+     * (필수 구현) 라이브러리에서 이 함수를 호출해줍니다.
      */
     setContext = (context: IHwContext | undefined | null) => {
         this._context = context ?? null
@@ -94,10 +94,12 @@ export class AwesomeControl implements IAwesomeControl {
 
     /**
      * 시리얼 포트 헬퍼 생성
+     * (필수 구현) 라이브러리에서 이 함수를 호출합니다.
+     * 
      * 시리얼 포트 헬퍼 = 시리얼 포트 + 패킷 구분자(Delimiter)
      * 패킷 구분자를 사용하지 않는 경우 null을 입력
      * 
-     * 시리얼 포트 헬퍼는 사용하지 않아도 됩니다
+     * 시리얼 포트 헬퍼는 사용하지 않아도 됩니다     
      */
     static createSerialPortHelper = (path: string): SerialPortHelper => {
         const sp = new SerialPort(path, {
@@ -113,6 +115,7 @@ export class AwesomeControl implements IAwesomeControl {
 
     /**
      * 시리얼 포트가 매치되는지 여부
+     * (필수 구현) 라이브러리에서 이 함수를 호출합니다.
      */
     static isMatch = (portInfo: ISerialPortInfo): boolean => {
         return portInfo.manufacturer === 'Silicon Labs'
@@ -126,6 +129,7 @@ export class AwesomeControl implements IAwesomeControl {
     }
 
     /**
+     * (필수 구현) 라이브러리에서 이 함수를 호출합니다.
      * @override IHwControl
      * @returns 읽기 가능 여부
      */
@@ -203,7 +207,4 @@ export default {
 }
 
 ```
-
-### TODO 
-- 내용 추가 중
 

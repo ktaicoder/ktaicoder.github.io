@@ -117,9 +117,9 @@ export default function SectionMenu(props: Props) {
                 unmountOnExit
                 sx={{
                     boxSizing: 'border-box',
-                    mr: 1,
+                    mr: 0,
                     ...(expanded && {
-                        background: 'rgba(0,0,0,0.15)',
+                        background: 'rgba(0,0,0,0.05)',
                     }),
                 }}
             >
