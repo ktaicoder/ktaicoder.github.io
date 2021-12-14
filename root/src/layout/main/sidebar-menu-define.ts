@@ -119,6 +119,11 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 title: '코딩팩 설정시 문제 해결',
                 href: '/post-frame/hw-pc-codingpack-setup-help',
             },
+            {
+                type: 'menu',
+                title: '오토런 가이드',
+                href: '/post-frame/hw-pc-how-to-autorun',
+            },
         ],
     },
     { type: 'label', title: '개발자 가이드', mt: 1 },

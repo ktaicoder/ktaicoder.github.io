@@ -146,6 +146,18 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     '& ul > li + li,& ol > li + li': {
                         mt: 0.5,
                     },
+                    '& ul': {
+                        marginTop: '0.5em',
+                        marginBottom: '0.25em',
+                    },
+                    '& ul ul': {
+                        marginTop: '0.3em',
+                        marginBottom: '0.25em',
+                    },
+                    '& p': {
+                        marginTop: '0.7em',
+                        marginBottom: '0.25em',
+                    },
                 }}
             >
                 <Box

@@ -125,7 +125,7 @@ function Sidebar() {
                                         color: 'rgba(255,255,255,0.5)',
                                         fontSize: '0.75rem',
                                         display: 'inline-block',
-                                        pl: 6,
+                                        pl: 1,
                                         pt: '2px',
                                         pb: '0px',
                                         border: '1px solid rgba(255,255,255,0.0)',
