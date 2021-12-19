@@ -1,6 +1,6 @@
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { Box, Divider, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
+import { Box, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
 import { useRouter } from 'next/router'
@@ -47,7 +47,7 @@ function Sidebar() {
                     width: '100%',
                     height: '100%',
                     zIndex: 0,
-                    background: '#002C4E',
+                    background: SIDEMENU_BG_COLOR,
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     // filter: 'blur(0.5px)',
@@ -77,7 +77,7 @@ function Sidebar() {
                         className="title"
                         sx={{
                             flexGrow: 1,
-                            color: '#ccc',
+                            color: '#fff',
                             fontSize: '1.1rem',
                             fontFamily: 'Noto Sans KR',
                             fontWeight: 900,
@@ -122,7 +122,7 @@ function Sidebar() {
                                     position: 'relative',
                                     '& .MuiListItemText-root .MuiTypography-root': {
                                         // color: SIDEMENU_FG_COLOR,
-                                        color: 'rgba(255,255,255,0.5)',
+                                        color: '#EA5504',
                                         fontSize: '0.75rem',
                                         display: 'inline-block',
                                         pl: 1,

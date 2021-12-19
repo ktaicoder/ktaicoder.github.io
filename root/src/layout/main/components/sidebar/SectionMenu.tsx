@@ -127,7 +127,7 @@ export default function SectionMenu(props: Props) {
                     disablePadding
                     sx={{
                         '& > .MuiListItem-root': {
-                            pl: 5,
+                            pl: 7,
                         },
                     }}
                 >

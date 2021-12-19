@@ -1,3 +1,5 @@
+import React from 'react'
+
 export interface IDivider {
     type: 'divider'
 }
@@ -12,7 +14,7 @@ export interface ILabel {
 
 export interface IMenu {
     type: 'menu'
-    title: string
+    title: React.ReactNode
     href: string
     icon?: string
     sectionId?: string
@@ -61,27 +63,47 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
             {
                 type: 'menu',
-                title: '1. OS 이미지 굽기',
+                title: (
+                    <>
+                        <em>1</em> OS 이미지 굽기
+                    </>
+                ),
                 href: '/codingpack/os-image-guide',
             },
             {
                 type: 'menu',
-                title: '2. SD 카드 확장하기',
+                title: (
+                    <>
+                        <em>2</em> SD 카드 확장하기
+                    </>
+                ),
                 href: '/post-frame/codingpack-how-to-expand-sdcard',
             },
             {
                 type: 'menu',
-                title: '3. 네트워크 연결하기',
+                title: (
+                    <>
+                        <em>3</em> 네트워크 연결하기
+                    </>
+                ),
                 href: '/post-frame/codingpack-how-to-config-network',
             },
             {
                 type: 'menu',
-                title: '4. 코딩팩 업데이트 하기',
+                title: (
+                    <>
+                        <em>4</em> 코딩팩 업데이트 하기
+                    </>
+                ),
                 href: '/post-frame/codingpack-how-to-codingpack-update',
             },
             {
                 type: 'menu',
-                title: '5. 시스템 초기화',
+                title: (
+                    <>
+                        <em>5</em> 시스템 초기화
+                    </>
+                ),
                 href: '/post-frame/codingpack-how-to-system-reset',
             },
             // {

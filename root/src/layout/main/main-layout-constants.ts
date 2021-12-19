@@ -13,7 +13,8 @@ export const ICON_COLOR_ACTIVE = '#039be5'
 export const SIDEMENU_BORDER_COLOR_ACTIVE = '#039be5'
 
 export const SIDEMENU_WIDTH = 270
-export const SIDEMENU_BG_COLOR = '#002C4E'
+// export const SIDEMENU_BG_COLOR = '#002C4E'
+export const SIDEMENU_BG_COLOR = '#002456'
 // export const SIDEMENU_BG_COLOR = 'primary.main'
 export const SIDEMENU_BG_COLOR_HOVER = 'rgba(0, 127, 255,0.2)'
 // export const SIDEMENU_BG_COLOR_ACTIVE = 'rgba(255,255,255,0.2)'

@@ -32,6 +32,11 @@ export default function MenuItem(props: Props) {
                 display: 'flex',
                 pl: 2,
                 pr: 1,
+                '& em': {
+                    fontStyle: 'normal',
+                    color: 'yellow',
+                    mr: 0.5,
+                },
                 '&:hover': {
                     backgroundColor: SIDEMENU_BG_COLOR_HOVER,
                 },
