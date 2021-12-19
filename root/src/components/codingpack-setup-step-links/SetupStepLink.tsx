@@ -1,6 +1,5 @@
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight'
 import { Box, ButtonBase } from '@mui/material'
 
 type Props = {

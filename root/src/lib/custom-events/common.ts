@@ -6,7 +6,6 @@ export const EventTypes = {
     video: {
         openDialog: 'video.openDialog',
     },
-
 }
 
 export const dispatch = (eventName: string, eventDetail?: any) => {
