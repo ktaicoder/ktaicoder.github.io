@@ -1,14 +1,13 @@
 import useImageViewerByImageElements from 'src/hooks/useImageViewerByImageElements'
+import { pnumber } from '@cp949/pjs'
 import { useEffect, useState } from 'react'
 import ImageViewLightbox, { ImageViewLightboxProps } from '../image-view-lightbox/ImageViewLightbox'
-
-function clamp(num: number, min: number, max: number): number {
-    return Math.min(Math.max(num, min), max)
-}
 
 type DialogId = 'ImageViewLightbox'
 
 type Props = {
+    parentElement?: HTMLElement
+
     /**
      * 해당 셀렉터로 이미지를 찾는다.
      * img 태그 셀렉터만 지원한다
@@ -38,16 +37,16 @@ type Props = {
  * @returns
  */
 export default function ImageViewerContainer(props: Props) {
-    const { cssSelector, multiple, onOpen, revision = 0 } = props
+    const { parentElement, cssSelector, multiple, onOpen, revision = 0 } = props
     const [imageViewDialogProps, setImageViewDialogProps] = useState<Omit<ImageViewLightboxProps, 'open'>>()
     const [dialogId, setDialogId] = useState<DialogId>()
     const [imageElements, setImageElements] = useState<HTMLImageElement[]>([])
 
     useEffect(() => {
-        let imgs: NodeListOf<Element> = document.querySelectorAll(cssSelector)
+        const imgs: NodeListOf<Element> = (parentElement ?? document).querySelectorAll(cssSelector)
         const imgElements = Array.prototype.slice.call(imgs)
         setImageElements(imgElements as HTMLImageElement[])
-    }, [cssSelector, revision])
+    }, [parentElement, cssSelector, revision])
 
     const _closeDialog = () => {
         setDialogId(undefined)
@@ -56,14 +55,13 @@ export default function ImageViewerContainer(props: Props) {
 
     // 이미지 뷰어 열기
     const _openImageViewDialog = (clickedImageUrl: string, allImageUrls: string[]) => {
-        // console.log({ window_self: window.self.location.href, window_top: window.top?.location.href })
         if (multiple) {
             // 이전/다음을 지원하는 이미지 뷰어
             setDialogId('ImageViewLightbox')
             const startIndex = allImageUrls.indexOf(clickedImageUrl)
             setImageViewDialogProps({
                 imageUrls: allImageUrls,
-                startIndex: clamp(startIndex, 0, allImageUrls.length - 1),
+                startIndex: pnumber.clamp(startIndex, 0, allImageUrls.length - 1),
                 onClose: _closeDialog,
             })
         } else {
@@ -88,5 +86,5 @@ export default function ImageViewerContainer(props: Props) {
         return <ImageViewLightbox open={true} {...imageViewDialogProps} />
     }
 
-    return null
+    return <></>
 }

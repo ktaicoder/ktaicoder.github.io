@@ -1,11 +1,8 @@
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { routerUrlOf } from 'src/lib/urls'
 import PageLink from './components/PageLink'
 
 export default function SiteListPart() {
-    const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    // const pageLinkClassName = useMemo(() => randomCssClassName('pagelink-'), [])
     const pageLinkClassName = 'pagelink'
 
     return (

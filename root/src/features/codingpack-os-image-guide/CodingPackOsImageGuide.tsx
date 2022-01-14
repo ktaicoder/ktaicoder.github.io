@@ -1,9 +1,8 @@
-import { Box, Container, useMediaQuery } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Container } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
+import CodingpackSetupStepLinks from 'src/components/codingpack-setup-step-links/CodingpackSetupStepLinks'
 import GuideTitle from 'src/components/guide-title/GuideTitle'
 import ImageViewerContainer from 'src/components/image-viewer-container/ImageViewerContainer'
-import CodingpackSetupStepLinks from 'src/components/codingpack-setup-step-links/CodingpackSetupStepLinks'
 import EtcherDownloadPart from './components/EtcherDownloadPart'
 import IntroStepPart from './components/IntroStepPart'
 import OsImageDownloadPart from './components/OsImageDownloadPart'
@@ -15,27 +14,25 @@ import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
 import RaspIntroPart from './components/RaspIntroPart'
 import ShortDescPart from './components/ShortDescPart.tsx'
 
-function randomNumericString() {
-    return Math.random().toString().substring(2)
-}
-
 export default function CodingPackOsImageGuide() {
-    const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const [lightbox, setLightbox] = useState<{ name?: string }>({})
-    const containerRef = useRef<HTMLDivElement>(null)
+    const [revision, setRevision] = useState(0)
+    const rootRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        const clsname = `lightbox-${randomNumericString()}`
-        if (containerRef.current) {
-            containerRef.current?.classList?.add(clsname)
-            setLightbox({ name: clsname })
+        if (rootRef.current) {
+            // 이미지 뷰어를 갱신하기 위해 한번더 리로드
+            setRevision(Date.now())
         }
     }, [])
 
     return (
-        <Box sx={{ pt: 2, mt: 5, pb: 15 }}>
-            <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
+        <Box sx={{ pt: 2, mt: 5, pb: 15 }} className="CodingPackOsImageGuide-root" ref={rootRef}>
+            <Container
+                maxWidth="md"
+                component="div"
+                style={{ maxWidth: 760 }}
+                className="CodingPackOsImageGuide-container"
+            >
                 <GuideTitle title="코딩팩 OS 이미지 굽기" sx={{ mb: 4 }} />
 
                 {/* 라즈베리 소개 부분 */}
@@ -47,7 +44,10 @@ export default function CodingPackOsImageGuide() {
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        mt: smDown ? 2 : 10,
+                        mt: {
+                            xs: 2,
+                            md: 10,
+                        },
                         width: '100%',
                     }}
                 >
@@ -122,11 +122,12 @@ export default function CodingPackOsImageGuide() {
                 </Box> */}
             </Container>
             {/* 이미지 뷰어를 띄운다 */}
-            {lightbox.name && (
+            {rootRef.current && (
                 <ImageViewerContainer
                     multiple={true}
-                    cssSelector={`.${lightbox.name} img.lightbox`}
-                    revision={lightbox}
+                    parentElement={rootRef.current}
+                    cssSelector=".CodingPackOsImageGuide-container img.lightbox"
+                    revision={revision}
                 />
             )}
         </Box>

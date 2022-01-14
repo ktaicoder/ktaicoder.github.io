@@ -1,55 +1,81 @@
 import { Box, BoxProps, Typography } from '@mui/material'
-import { useEffect, useState, useRef } from 'react'
-import { randomCssClassName } from 'src/lib/randomCssClassName'
+import clsx from 'clsx'
+import { useEffect, useRef, useState } from 'react'
+import { SimpleSxProps } from 'src/lib/sx-props'
 import { routerUrlOf } from 'src/lib/urls'
 import ImageViewerContainer from '../image-viewer-container/ImageViewerContainer'
 
-type Props = { src: string; transparentBg?: boolean; caption?: string } & Omit<BoxProps, 'src'>
+type Props = {
+    src: string
+    transparentBg?: boolean
+    caption?: string
+    source?: string
+} & Omit<BoxProps, 'src'>
+
+const rootSx: SimpleSxProps = {
+    mt: 2,
+    mb: 4,
+    pt: 2,
+    pb: 1,
+    px: 2,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    '&.MdxImageView-transparentBg': {
+        pt: 0,
+        pb: 0,
+        px: 0,
+        '& .MdxImageView-imageBox': {
+            backgroundColor: 'transparent',
+        },
+        '& .MdxImageView-caption': {
+            mt: 1,
+        },
+    },
+
+    '& .MdxImageView-imageBox': {
+        pt: 2,
+        pb: 2,
+        px: 2,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        backgroundColor: '#f0f0f0',
+        borderRadius: 2,
+    },
+
+    '& .MdxImageView-caption': {
+        mt: 1,
+        color: '#666',
+    },
+}
 
 export default function MdxImageView(props: Props) {
-    const { src, caption, transparentBg = false, sx, ...rest } = props
-    const boxRef = useRef()
-    const [rootClassName, setRootClassName] = useState<string>()
+    const { src, caption, transparentBg = false, sx, source, ...rest } = props
+    const rootRef = useRef<HTMLDivElement>()
     const [enabled, setEnabled] = useState(false)
+    const [revision, setRevision] = useState(0)
 
     useEffect(() => {
-        if (!boxRef.current) return
-        const root = boxRef.current as HTMLElement
-        const className = randomCssClassName('imageBox')
-        root.classList.add(className)
-        setRootClassName(className)
-
+        if (!rootRef.current) return
+        const root = rootRef.current as HTMLElement | null
+        if (!root) return
+        setRevision(Date.now())
         setEnabled(window.self === window.top || window.parent === window.top)
     }, [])
 
     return (
         <Box
-            ref={boxRef}
-            sx={{
-                pt: transparentBg ? 0 : 2,
-                pb: transparentBg ? 0 : 1,
-                px: transparentBg ? 0 : 2,
-                mt: 2,
-                mb: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-            }}
+            ref={rootRef}
+            className={clsx('MdxImageView-root', {
+                'MdxImageView-transparentBg': transparentBg,
+            })}
+            sx={rootSx}
         >
-            <Box
-                sx={{
-                    pt: 2,
-                    pb: 2,
-                    px: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '100%',
-                    background: transparentBg ? 'transparent' : '#f0f0f0',
-                    borderRadius: 2,
-                }}
-            >
+            <Box className="MdxImageView-imageBox">
                 <Box
                     component="img"
                     className="lightbox"
@@ -61,15 +87,16 @@ export default function MdxImageView(props: Props) {
             </Box>
 
             {caption && (
-                <Typography variant="caption" sx={{ mt: transparentBg ? 0 : 1, color: '#666' }}>
+                <Typography variant="caption" className="MdxImageView-caption">
                     {caption}
                 </Typography>
             )}
 
-            {enabled && rootClassName && (
+            {enabled && rootRef.current && (
                 <ImageViewerContainer
-                    revision={boxRef.current}
-                    cssSelector={`.${rootClassName} .lightbox`}
+                    revision={revision}
+                    parentElement={rootRef.current}
+                    cssSelector="img.lightbox"
                     multiple={false}
                 />
             )}

@@ -31,8 +31,9 @@ export const routerPush = (path: string): void => {
     if (path.startsWith('http://') || path.startsWith('https://')) {
         Router.push(path)
     } else {
-        const url = routerUrlOf(path)
-        Router.push(path, url)
+        // const url = routerUrlOf(path)
+        // Router.push(path, url)
+        Router.push(path, path)
     }
 }
 

@@ -1,4 +1,5 @@
 import React from 'react'
+type MatchFn = (path: string) => boolean
 
 export interface IDivider {
     type: 'divider'
@@ -18,6 +19,7 @@ export interface IMenu {
     href: string
     icon?: string
     sectionId?: string
+    match?: MatchFn
 }
 
 export interface ISection {
@@ -38,9 +40,15 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
 
     {
         type: 'menu',
-        icon: 'dashboard',
+        icon: 'home',
         title: 'HOME',
         href: '/',
+    },
+    {
+        type: 'menu',
+        icon: 'dashboard',
+        title: 'AI 코딩블록 소개',
+        href: '/coding-block-intro',
     },
 
     { type: 'label', title: '사용자 가이드', mt: 1 },
@@ -179,8 +187,8 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
     },
 ]
 
-// 라우터 URL로 수정하고, 섹션의 메뉴에는 sectionId를 설정한다
-function fixHref(item: ISideMenuItem): ISideMenuItem {
+// 섹션의 메뉴에는 sectionId를 설정한다
+function fixSectionId(item: ISideMenuItem): ISideMenuItem {
     if (item.type === 'section') {
         item.submenus.forEach((sub) => {
             if (sub.type === 'menu') {
@@ -192,36 +200,32 @@ function fixHref(item: ISideMenuItem): ISideMenuItem {
 }
 
 // 전체 링크를 라우터 URL로 수정
-menusTemp.forEach((it) => fixHref(it))
-
-// assign section ids
-// 섹션 제목을 섹션의 ID로 설정한다.
-// const menus: ISideMenuItem[] = menusTemp.map((menu) => {
-//     if (menu.type === 'section') {
-//         return { ...menu, sectionId: menu.title }
-//     }
-//     return menu
-// })
+menusTemp.forEach((it) => fixSectionId(it))
 
 const menus: ISideMenuItem[] = menusTemp
 
-export const isCurrentMenu = (menuHref: string, currentPath: string | undefined | null): boolean => {
-    // routerPath:/           일때, menuHref:/jobs             path:/faq
-    // routerPath:/aimk-admin 일때, menuHref:/aimk-admin/jobs  path:/faq
-    if (!currentPath) return false
+export const isCurrentMenu = (menuHref: string, path: string | undefined | null, matchFn?: MatchFn): boolean => {
+    if (!path) {
+        return false
+    }
+    if (path === menuHref) return true
 
-    if (currentPath === '/') return menuHref === '/'
-    if (menuHref === '/') return menuHref === currentPath
-    return currentPath.startsWith(menuHref)
+    // console.log('isCurrentMenu', { menuHref, path })
+    if (matchFn) {
+        return matchFn(path)
+    }
+    return path.startsWith(menuHref + '/')
 }
 
 export const isCurrentSection = (sectionId: string, pathkey: string | null | undefined): boolean => {
     if (!pathkey) return false
-    return menusTemp
+    return menus
         .filter((it) => it.type === 'section' && it.sectionId === sectionId)
         .some((it) => {
             const section = it as ISection
-            const isYes = section.submenus.some((sub) => sub.type === 'menu' && isCurrentMenu(sub.href, pathkey))
+            const isYes = section.submenus.some(
+                (sub) => sub.type === 'menu' && isCurrentMenu(sub.href, pathkey, sub.match),
+            )
             // if (isYes) console.log(`current sectionId = ${sectionId} , pathkey = ${pathkey}`)
             return isYes
         })

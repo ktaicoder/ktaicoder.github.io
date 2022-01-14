@@ -1,4 +1,4 @@
-import { Box, useMediaQuery, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { useMeasure } from 'react-use'
 import Meta from 'src/components/mdx/Meta'
 import { useMainLayoutContext } from '../main/MainLayoutContext'
@@ -11,8 +11,6 @@ type Props = {
 const MAX_WIDTH = 840
 
 function MdxPostLayout({ children, pageTitle }: Props) {
-    const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const [containerRef, { width: containerWidth }] = useMeasure()
     const { sidebarWidth = 0 } = useMainLayoutContext() ?? {}
 
@@ -22,7 +20,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
     }
 
     return (
-        <>
+        <Box className="MdxPostLayout-root">
             <Meta pageTitle={pageTitle} />
             <Box
                 sx={{
@@ -33,8 +31,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     fontSize: '1rem',
                     '& article.mdx-article': {
                         maxWidth: bodyWidth <= 0 ? 0 : `${bodyWidth - 56}px`,
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
+                        mx: 'auto',
                     },
                     '& h1:not(.MuiTypography-root)': {
                         fontSize: '1.65rem',
@@ -164,7 +161,7 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                     ref={containerRef}
                     sx={{
                         position: 'relative',
-                        width: `calc(100vw - ${sidebarWidth}px)`,
+                        width: 'auto',
                         maxWidth: `calc(100vw - ${sidebarWidth}px)`,
                         overflowX: 'hidden',
                     }}
@@ -173,15 +170,14 @@ function MdxPostLayout({ children, pageTitle }: Props) {
                         sx={{
                             display: bodyWidth <= 0 ? 'none' : 'block',
                             maxWidth: `${MAX_WIDTH}px`,
-                            marginLeft: 'auto',
-                            marginRight: 'auto',
+                            mx: 'auto',
                         }}
                     >
                         {children}
                     </Box>
                 </Box>
             </Box>
-        </>
+        </Box>
     )
 }
 

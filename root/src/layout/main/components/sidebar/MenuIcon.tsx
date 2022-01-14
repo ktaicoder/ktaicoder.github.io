@@ -1,3 +1,4 @@
+import HomeIcon from '@mui/icons-material/Home'
 import AdbIcon from '@mui/icons-material/Adb'
 import DesktopWindowsIcon from '@mui/icons-material/DesktopWindows'
 import AutoAwesomeMosaicIcon from '@mui/icons-material/AutoAwesomeMosaic'
@@ -67,6 +68,8 @@ export default function MenuIcon(props: Props) {
             return <DesktopWindowsIcon {...restProps} />
         case 'mosaic':
             return <AutoAwesomeMosaicIcon {...restProps} />
+        case 'home':
+            return <HomeIcon {...restProps} />
     }
-    return <HardwareIcon />
+    return <HardwareIcon className="MenuIcon-root" />
 }

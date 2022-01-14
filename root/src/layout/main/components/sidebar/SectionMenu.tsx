@@ -1,17 +1,9 @@
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import {
-    Collapse,
-    Divider,
-    Box,
-    List,
-    ListItemButton as MuiListItemButton,
-    ListItemButtonProps as MuiListItemButtonProps,
-    ListItemIcon,
-    ListItemText,
-} from '@mui/material'
-import { styled } from '@mui/system'
+import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
+import clsx from 'clsx'
 import React from 'react'
+import { SimpleSxProps } from 'src/lib/sx-props'
 import {
     DIVIDER_COLOR,
     ICON_COLOR,
@@ -32,36 +24,71 @@ type Props = {
     onClickSection?: () => void
     onClickLink?: () => void
 }
-const ListItemButton = styled(MuiListItemButton, {
-    shouldForwardProp: (p) => p !== 'active' && p !== 'expand',
-})<MuiListItemButtonProps & { active: boolean; expand: boolean }>(({ theme, active, expand }) => {
-    return {
-        '&:hover': {
-            backgroundColor: SIDEMENU_BG_COLOR_HOVER,
-        },
-        '& .MuiListItemText-root': {
-            color: SIDEMENU_FG_COLOR,
-            marginLeft: theme.spacing(1),
-        },
-        '& .MuiListItemIcon-root': {
-            color: ICON_COLOR,
-        },
-        ...(active &&
-            expand && {
-                borderTop: `1px solid ${DIVIDER_COLOR}`,
-                backgroundColor: 'rgba(0, 0, 0, 0.05)',
-            }),
 
-        '& .MuiIcon-root.sectionIndicator': {
-            color: active ? ICON_COLOR_ACTIVE : 'rgba(255,255,255,0.5)',
-            marginRight: theme.spacing(1),
-        },
+const rootSx: SimpleSxProps = {
+    pl: 2,
+    '&.SectionMenu-expand': {
+        backgroundColor: 'rgba(0,0,0,0.1)',
+    },
 
-        '& + &': {
-            my: '1px',
+    '&.SectionMenu-active.SectionMenu-expand': {
+        borderTop: `1px solid ${DIVIDER_COLOR}`,
+        backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    },
+
+    '&:hover': {
+        backgroundColor: SIDEMENU_BG_COLOR_HOVER,
+    },
+
+    '& .MuiListItemText-root': {
+        color: SIDEMENU_FG_COLOR,
+        ml: 1,
+    },
+
+    '& .SectionMenu-indicator.MuiSvgIcon-root': {
+        color: 'rgba(255,255,255,0.5)',
+    },
+
+    '& .SectionMenu-iconBox': {
+        minWidth: 32,
+        '& .SectionMenu-icon': {
+            fontSize: '1.3rem',
+            color: ICON_COLOR, // '#e1f5fe',
         },
-    }
-})
+    },
+
+    '&.SectionMenu-expand .SectionMenu-iconBox .SectionMenu-icon': {
+        color: '#4fc3f7',
+    },
+
+    '& .SectionMenu-title': {
+        fontWeight: 400,
+        '& .MuiTypography-root': {
+            fontSize: '0.85rem',
+            color: '#e1f5fe',
+        },
+    },
+
+    '&.SectionMenu-active': {
+        '& .SectionMenu-indicator.MuiSvgIcon-root': {
+            color: ICON_COLOR_ACTIVE,
+        },
+        '& .SectionMenu-title': {
+            fontWeight: 600,
+            '& .MuiTypography-root': {
+                color: '#4fc3f7',
+            },
+        },
+    },
+}
+
+const collapseRootSx: SimpleSxProps = {
+    boxSizing: 'border-box',
+    mr: 0,
+    '&.SectionMenu-expand': {
+        background: 'rgba(0,0,0,0.05)',
+    },
+}
 
 export default function SectionMenu(props: Props) {
     const {
@@ -77,60 +104,34 @@ export default function SectionMenu(props: Props) {
         <>
             <ListItemButton
                 onClick={onSectionClick}
-                active={active}
-                expand={expanded}
-                sx={{
-                    pl: 2,
-
-                    ...(expanded && {
-                        background: 'rgba(0,0,0,0.1)',
-                    }),
-                }}
+                className={clsx('SectionMenu-root', {
+                    'SectionMenu-active': active,
+                    'SectionMenu-expand': expanded,
+                })}
+                sx={rootSx}
             >
                 {section.icon && (
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                        <MenuIcon
-                            iconName={section.icon}
-                            sx={{ fontSize: '1.3rem', color: expanded ? '#4fc3f7' : '#e1f5fe' }}
-                        />
+                    <ListItemIcon className="SectionMenu-iconBox">
+                        <MenuIcon className="SectionMenu-icon" iconName={section.icon} />
                     </ListItemIcon>
                 )}
-                <ListItemText
-                    primary={section.title}
-                    sx={{
-                        fontWeight: active ? 600 : 400,
-                        '& .MuiListItemText-primary': {
-                            fontSize: '0.85rem',
-                            color: active ? '#4fc3f7' : '#e1f5fe',
-                        },
-                    }}
-                />
+                <ListItemText primary={section.title} className="SectionMenu-title" />
                 {expanded ? (
-                    <KeyboardArrowUpIcon sx={{ color: active ? 'primary.main' : '#bbb' }} />
+                    <KeyboardArrowUpIcon className="SectionMenu-indicator" />
                 ) : (
-                    <KeyboardArrowDownIcon sx={{ color: active ? 'primary.main' : '#bbb' }} />
+                    <KeyboardArrowDownIcon className="SectionMenu-indicator" />
                 )}
             </ListItemButton>
             <Collapse
                 in={expanded}
                 timeout="auto"
                 unmountOnExit
-                sx={{
-                    boxSizing: 'border-box',
-                    mr: 0,
-                    ...(expanded && {
-                        background: 'rgba(0,0,0,0.05)',
-                    }),
-                }}
+                className={clsx('SectionMenuCollapse-collapse', {
+                    'SectionMenu-expand': expanded,
+                })}
+                sx={collapseRootSx}
             >
-                <List
-                    disablePadding
-                    sx={{
-                        '& > .MuiListItem-root': {
-                            pl: 7,
-                        },
-                    }}
-                >
+                <List disablePadding>
                     {section.submenus?.map((menu, idx) => {
                         if (menu.type === 'divider') {
                             return <Divider key={idx} />
@@ -139,6 +140,7 @@ export default function SectionMenu(props: Props) {
                             <MenuItem
                                 key={menu.href + idx}
                                 menu={menu}
+                                sx={{ pl: 7 }}
                                 onLinkClick={onLinkClick}
                                 active={isCurrentMenu(menu.href, currentHref)}
                             />
