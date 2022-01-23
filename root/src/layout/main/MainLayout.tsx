@@ -44,14 +44,14 @@ const Main = styled('main', {
 
 type Props = {
     title: string
-    children?: React.ReactChild | React.ReactChild[]
+    children?: React.ReactNode
 }
 
 function MainLayout(props: Props) {
     const { title, children } = props
     const { sidebarStore } = useStore()
     const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
+    const smDown = useMediaQuery(theme.breakpoints.down('md'))
     const isSidebarOpen = sidebarStore.isOpen
     const [searchQuery, setSearchQuery] = useState<string>()
     let contentShift = 0
@@ -81,20 +81,6 @@ function MainLayout(props: Props) {
                             boxSizing: 'border-box',
                             backgroundColor: SIDEMENU_BG_COLOR,
                             color: 'white',
-                            // '&::-webkit-scrollbar': {
-                            //     width: 10,
-                            // },
-                            // '&::-webkit-scrollbar-track': {
-                            //     boxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
-                            //     webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
-                            //     borderRadius: 10,
-                            // },
-                            // '&::-webkit-scrollbar-thumb': {
-                            //     backgroundColor: 'rgba(0,0,0,.3)',
-                            //     // outline: '2px solid slategrey',
-                            //     borderRadius: 10,
-                            //     border: '2px solid rgba(0,0,0,.1)',
-                            // },
                         },
                     }}
                     variant={smDown ? 'temporary' : 'persistent'}

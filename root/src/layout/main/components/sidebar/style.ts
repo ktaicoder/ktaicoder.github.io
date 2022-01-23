@@ -6,11 +6,29 @@ export const rootSx: SimpleSxProps = {
     color: SIDEMENU_FG_COLOR,
     overflowX: 'hidden',
 
+    '&::-webkit-scrollbar': {
+        width: 10,
+    },
+
+    '&::-webkit-scrollbar-track': {
+        boxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
+        webkitBoxShadow: 'inset 0 0 6px rgba(0,0,0,0)',
+        borderRadius: '10px',
+    },
+
+    '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'rgba(0,0,0,.3)',
+        // outline: '2px solid slategrey',
+        borderRadius: '10px',
+        border: '2px solid rgba(0,0,0,.1)',
+    },
+
     '& > .MuiDivider-root': {
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         my: 1,
     },
     height: '100%',
+
     '::before': {
         position: 'absolute',
         content: "''",

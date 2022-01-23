@@ -6,7 +6,6 @@ import { observer } from 'mobx-react'
 import { useRouter } from 'next/router'
 import { routerUrlOf } from 'src/lib/urls'
 import useStore from 'src/store/useStore'
-import { SIDEMENU_BG_COLOR, SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
 import DrawerHeader from '../drawer-header/DrawerHeader'
 import MenuIcon from './MenuIcon'
@@ -37,7 +36,7 @@ function Sidebar() {
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                 </IconButton>
             </DrawerHeader>
-            <List disablePadding className="Sidebar-list">
+            <List disablePadding className="Sidebar-list" sx={{ overflowX: 'hidden' }}>
                 {ALL_MENUS.map((item, idx) => {
                     if (item.type === 'menu') {
                         return (

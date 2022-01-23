@@ -1,11 +1,9 @@
 import { Menu as MenuIcon, MenuOpen as MenuOpenIcon } from '@mui/icons-material'
-import { IconButton, InputBase, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
-import { SIDEMENU_WIDTH } from '../../main-layout-constants'
-import { styled, alpha } from '@mui/material/styles'
-import { Box } from '@mui/system'
-import { useEffect } from 'react-transition-group/node_modules/@types/react'
+import { styled } from '@mui/material/styles'
 import { useWindowScroll } from 'react-use'
+import { SIDEMENU_WIDTH } from '../../main-layout-constants'
 
 interface AppBarProps extends MuiAppBarProps {
     shift: boolean
