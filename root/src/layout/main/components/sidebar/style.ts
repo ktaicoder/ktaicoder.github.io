@@ -71,7 +71,7 @@ export const rootSx: SimpleSxProps = {
         position: 'relative',
         '& .MuiListItemText-root .MuiTypography-root': {
             // color: SIDEMENU_FG_COLOR,
-            color: '#EA5504',
+            color: '#F2B149',
             fontSize: '0.75rem',
             display: 'inline-block',
             pl: 1,

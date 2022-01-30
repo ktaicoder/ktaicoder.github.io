@@ -30,7 +30,23 @@ function Sidebar() {
         <Box component="nav" className="Sidebar-root" sx={rootSx}>
             <DrawerHeader sx={{ justifyContent: 'flex-start' }}>
                 <Box component="a" className="Sidebar-drawerHeader" href={routerUrlOf('/')}>
-                    <Box className="Sidebar-drawerHeaderText">AI 코딩블록 가이드</Box>
+                    <Box className="Sidebar-drawerHeaderText">
+                        <Box component="span" sx={{ display: 'inline-block', color: 'rgba(255,255,255,0.7)' }}>
+                            A
+                        </Box>
+                        <Box
+                            component="span"
+                            sx={{ display: 'inline-block', ml: '2px', color: 'rgba(255,255,255,0.7)' }}
+                        >
+                            I
+                        </Box>
+                        <Box component="span" sx={{ display: 'inline-block', ml: 1, color: 'rgba(255,255,255,0.7)' }}>
+                            코딩 블록
+                        </Box>
+                        <Box component="span" sx={{ display: 'inline-block', ml: 1, color: 'rgba(255,255,255,0.7)' }}>
+                            가이드
+                        </Box>
+                    </Box>
                 </Box>
                 <IconButton size="small" className="Sidebar-drawerHeaderChevronIcon" onClick={sidebarStore.toggleOpen}>
                     {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
