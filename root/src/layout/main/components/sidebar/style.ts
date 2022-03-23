@@ -5,6 +5,8 @@ export const rootSx: SimpleSxProps = {
     position: 'relative',
     color: SIDEMENU_FG_COLOR,
     overflowX: 'hidden',
+    height: '100vh',
+    pb: 10,
 
     '&::-webkit-scrollbar': {
         width: 10,
@@ -27,7 +29,6 @@ export const rootSx: SimpleSxProps = {
         backgroundColor: 'rgba(255, 255, 255, 0.2)',
         my: 1,
     },
-    height: '100%',
 
     '::before': {
         position: 'absolute',
@@ -71,7 +72,7 @@ export const rootSx: SimpleSxProps = {
         position: 'relative',
         '& .MuiListItemText-root .MuiTypography-root': {
             // color: SIDEMENU_FG_COLOR,
-            color: '#F2B149',
+            color: 'primary.main',
             fontSize: '0.75rem',
             display: 'inline-block',
             pl: 1,

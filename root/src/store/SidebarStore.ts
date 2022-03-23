@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import { allSectionIds } from 'src/layout/main/sidebar-menu-define'
 import log from 'src/log'
 
 /**
@@ -22,7 +23,7 @@ export default class SidebarStore {
     /**
      * 펼쳐진 sectionId 목록
      */
-    expandedSectionIds: string[] = []
+    expandedSectionIds: string[] = [...allSectionIds]
 
     /**
      * 사이드바 열림 상태 변경

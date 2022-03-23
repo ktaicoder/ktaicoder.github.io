@@ -199,10 +199,20 @@ function fixSectionId(item: ISideMenuItem): ISideMenuItem {
     return item
 }
 
-// 전체 링크를 라우터 URL로 수정
+// fix section id
 menusTemp.forEach((it) => fixSectionId(it))
 
 const menus: ISideMenuItem[] = menusTemp
+const allSectionIds = menus
+    .map((it) => {
+        if (it.type === 'section') {
+            return it.sectionId
+        } else {
+            return null
+        }
+    })
+    .filter((it) => it)
+    .map((it) => it as string)
 
 export const isCurrentMenu = (menuHref: string, path: string | undefined | null, matchFn?: MatchFn): boolean => {
     if (!path) {
@@ -231,4 +241,4 @@ export const isCurrentSection = (sectionId: string, pathkey: string | null | und
         })
 }
 
-export { menus }
+export { menus, allSectionIds }
