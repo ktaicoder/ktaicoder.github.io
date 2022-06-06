@@ -1,81 +1,124 @@
+const path = require('path')
 module.exports = {
     env: {
         browser: true,
-        es6: true,
         node: true,
     },
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true,
-        },
-        ecmaVersion: 2020,
-        sourceType: "module",
-    },
-
-    settings: {
-        react: {
-            createClass: "createReactClass",
-            pragma: "React",
-            version: "detect",
-        }
-    },
     extends: [
-        "next",
-        "prettier"
+        'next',
+        'airbnb',
+        'airbnb-typescript',
+        'plugin:import/recommended',
+        'plugin:import/typescript',
+        'prettier',
+        'plugin:react-hooks/recommended',
     ],
-    globals: {
-        Atomics: "readonly",
-        SharedArrayBuffer: "readonly",
+    plugins: ['@typescript-eslint', 'import'],
+    settings: {
+        next: {
+            rootDir: '.',
+        },
+        'import/parsers': {
+            '@typescript-eslint/parser': ['.ts', '.tsx'],
+        },
+        'import/resolver': {
+            typescript: {
+                alwaysTryTypes: true,
+                project: [path.join(__dirname, 'tsconfig.json')],
+            },
+        },
     },
-
-    plugins: ["react", "react-hooks", "prettier"],
+    parserOptions: {
+        root: true,
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json']
+    },
     rules: {
-        "react/react-in-jsx-scope": "off",
-        "no-useless-constructor": "off",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/ban-ts-comment": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/ban-types": "off",
-        "@typescript-eslint/no-var-requires": "off",
-        "no-constant-condition": "warn",
-        "typescript-eslint/no-this-alias": "off",
-        "@next/next/no-img-element": "off",
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
-        "prettier/prettier": [
-            "warn",
+        // react
+        'react/function-component-definition': [
+            0,
             {
-                endOfLine: "auto",
-            },
-        ],
-        "react/display-name": [0],
-        "react/prop-types": [1],
-        "no-unused-vars": [1],
-        "no-console": "off",
-        "no-empty": [0],
-        quotes: [1, "single", { avoidEscape: true, allowTemplateLiterals: false }],
-        semi: [1, "never"],
-        "max-len": [
-            1,
-            {
-                code: 120,
-                ignoreUrls: true,
-                ignoreComments: true,
-                ignoreTemplateLiterals: true,
-                ignoreStrings: true,
+                namedComponents: 'arrow-function',
             },
         ],
 
-        indent: "off",
-        "no-restricted-syntax": [
-            "warn",
+        // next
+        '@next/next/no-html-link-for-pages': 'off',
+        "import/no-extraneous-dependencies": 'off',
+        'import/prefer-default-export': 'off',
+        'react/require-default-props': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'warn', // or error
             {
-                selector: "SequenceExpression",
-                message: "The comma operator is confusing and a common mistake. Don’t use it!",
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+                caughtErrorsIgnorePattern: '^_',
             },
         ],
+        'react/destructuring-assignment': 'off',
+        'consistent-return': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'no-empty': 'off',
+        'max-classes-per-file': 'off',
+        'no-underscore-dangle': 'off',
+        'no-nested-ternary': 'off',
+        '@typescript-eslint/dot-notation': 'off',
+        'no-plusplus': 'off',
+        '@typescript-eslint/naming-convention': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'no-console': 'warn',
+        '@typescript-eslint/no-shadow': 'off',
+        'react/no-array-index-key': 'warn',
+        'no-alert': 'off',
+        'no-restricted-globals': 'off',
+        'no-restricted-exports': 'off',
+        'no-restricted-properties': 'off',
+        'prefer-destructuring': 'off',
+        'arrow-body-style': 'off',
+        'react/jsx-boolean-value': 'warn',
+        'react/self-closing-comp': 'warn',
+        'prefer-exponentiation-operator': 'off',
+        'spaced-comment': 'warn',
+        '@typescript-eslint/lines-between-class-members': 'warn',
+        'prefer-template': 'warn',
+        'no-else-return': 'warn',
+        'no-await-in-loop': 'warn',
+        'operator-assignment': 'warn',
+        'class-methods-use-this': 'warn',
+        'react/no-unused-class-component-methods': 'warn',
+        'react/default-props-match-prop-types': 'warn',
+        '@typescript-eslint/return-await': 'warn',
+        '@typescript-eslint/no-use-before-define': 'off',
+        'import/newline-after-import': 'warn',
+        'no-restricted-syntax': 'off',
+        'react/jsx-curly-brace-presence': 'warn',
+        'jsx-a11y/alt-text': 'warn',
     },
-};
+    overrides: [
+        {
+            // 3) Now we enable eslint-plugin-testing-library rules or preset only for matching files!
+            env: {
+                jest: true,
+            },
+            files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+            extends: ['plugin:testing-library/react', 'plugin:jest/recommended'],
+            rules: {
+                'import/no-extraneous-dependencies': [
+                    'off',
+                    { devDependencies: ['**/?(*.)+(spec|test).[jt]s?(x)'] },
+                ],
+            },
+        },
+    ],
+    ignorePatterns: [
+        '**/*.js',
+        '**/*.json',
+        'node_modules',
+        'public',
+        'styles',
+        '.next',
+        'coverage',
+        'dist',
+        'build',
+    ],
+}

@@ -1,47 +1,61 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "build/dist",
+    "module": "esnext",
     "target": "es5",
     "lib": [
       "esnext",
       "dom",
-      "dom.iterable",
+      "esnext"
     ],
-    "baseUrl": ".",
-    "outDir": "build/dist",
+    "sourceMap": true,
+    "allowJs": true,
+    "moduleResolution": "node",
     "paths": {
       "src/*": [
         "src/*"
-      ]
+      ],
+      "crypto": [
+        "node_modules/crypto-js"
+      ],
     },
-    "module": "esnext",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "allowJs": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noImplicitAny": false ,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "skipLibCheck": true,
     "strict": false,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": false,
-    "noImplicitThis": false,
-    "noImplicitAny": false ,
-    "strictNullChecks": true,
     "typeRoots": ["typings", "node_modules/@types"]
   },
-
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts",
+    "typings",
+    "out"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "**/*.js",
+    "**/*.jsx",
     "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+ ]
 }
