@@ -1,5 +1,15 @@
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from '@mui/material'
+import {
+    Box,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    IconButton,
+    Stack,
+    Typography,
+} from '@mui/material'
 import React, { useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 // import screenfull from 'screenfull'
@@ -37,7 +47,7 @@ export default function VideoPlayerDialog(props: VideoPlayerDialogProps) {
 
     return (
         <Dialog
-            aria-labelledby="bbs-view-dialog"
+            aria-labelledby="video-player-view-dialog"
             open={open}
             maxWidth="md"
             fullWidth
@@ -56,7 +66,7 @@ export default function VideoPlayerDialog(props: VideoPlayerDialogProps) {
             }}
         >
             {title && (
-                <DialogTitle>
+                <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={1} minHeight={64}>
                     <Box
                         sx={{
                             display: 'flex',
@@ -68,12 +78,12 @@ export default function VideoPlayerDialog(props: VideoPlayerDialogProps) {
                             },
                         }}
                     >
-                        <h2>{title}</h2>
+                        <Typography variant="h5">{title}</Typography>
                         <IconButton onClick={_handleDialogClose} size="small">
                             <CloseIcon />
                         </IconButton>
                     </Box>
-                </DialogTitle>
+                </Stack>
             )}
 
             <DialogContent dividers={Boolean(title)}>

@@ -44,12 +44,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         title: 'HOME',
         href: '/',
     },
-    {
-        type: 'menu',
-        icon: 'dashboard',
-        title: 'AI 코딩블록 소개',
-        href: '/coding-block-intro',
-    },
+    // {
+    //     type: 'menu',
+    //     icon: 'dashboard',
+    //     title: 'AI 코딩블록 소개',
+    //     href: '/coding-block-intro',
+    // },
 
     { type: 'label', title: '사용자 가이드', mt: 1 },
 
@@ -127,7 +127,19 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
         ],
     },
-
+    {
+        type: 'section',
+        sectionId: nextSectionId(),
+        icon: 'adb',
+        title: '코딩팩 사용팁',
+        submenus: [
+            {
+                type: 'menu',
+                title: '파이썬 개발 환경',
+                href: '/post-frame/codingpack-how-to-python-env',
+            },
+        ],
+    },
     {
         type: 'section',
         sectionId: nextSectionId(),

@@ -108,7 +108,7 @@ export default function ShortDescPart() {
                             </Box>
 
                             <Box mt={1} mb={3}>
-                                OS 이미지는 약 8GB 정도되며, <em>압축하면 2.6GB</em> 정도입니다. SD 카드에는 압축을
+                                OS 이미지는 약 8GB 정도되며, <em>압축하면 2.8GB</em> 정도입니다. SD 카드에는 압축을
                                 풀어서 복사하므로, 최소 8GB 이상의 공간이 필요합니다. 원활한 이용을 위해{' '}
                                 <em>SD 카드 용량은 16GB 이상</em>을 권장합니다.
                             </Box>

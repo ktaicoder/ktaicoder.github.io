@@ -1,7 +1,7 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import AspectRatioIcon from '@mui/icons-material/AspectRatio'
 import CloseIcon from '@mui/icons-material/Close'
-import { Box, Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material'
+import { Box, Dialog, DialogContent, IconButton, Stack } from '@mui/material'
 import React from 'react'
 import { useMeasure, useSessionStorage } from 'react-use'
 import { routerUrlOf } from 'src/lib/urls'
@@ -36,7 +36,7 @@ export default function PostViewDialog(props: PostViewDialogProps) {
                     background: '#FAFAFA',
                 },
                 '& .MuiDialog-paperScrollPaper': {
-                    minHeight: 'calc(100vh - 70px)',
+                    minHeight: 'calc(100% - 68px)',
                 },
                 '& .MuiDialogContent-root': {
                     p: 0,
@@ -44,7 +44,7 @@ export default function PostViewDialog(props: PostViewDialogProps) {
                 },
             }}
         >
-            <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', p: 1 }}>
+            <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center" p={1} minHeight={56}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <IconButton size="small" onClick={() => setExpand(!expand)}>
                         <AspectRatioIcon />
@@ -74,7 +74,7 @@ export default function PostViewDialog(props: PostViewDialogProps) {
                 <IconButton size="small" onClick={onClose}>
                     <CloseIcon />
                 </IconButton>
-            </DialogTitle>
+            </Stack>
             <DialogContent dividers ref={containerRef}>
                 <Box
                     component="iframe"
