@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
-import CodingPackOsImageGuide from 'src/features/codingpack-os-image-guide/CodingPackOsImageGuide'
-import MainLayout from 'src/layout/main/MainLayout'
+import dynamic from 'next/dynamic'
+
+const CodingPackOsImageGuide = dynamic(() => import('src/features/codingpack-os-image-guide/CodingPackOsImageGuide'))
+const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
 const Index: NextPage = () => {
     return (

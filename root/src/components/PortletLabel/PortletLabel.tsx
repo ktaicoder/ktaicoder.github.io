@@ -1,18 +1,18 @@
-import { Box } from '@mui/material'
-import { Typography } from '@mui/material'
-import { SxProps } from '@mui/system'
-import { ReactNode } from 'react'
+import { Box, SxProps, Typography } from '@mui/material'
+import React from 'react'
 
 interface Props {
     sx?: SxProps
-    icon?: ReactNode
+    icon?: JSX.Element
     title?: string
     subtitle?: string
-    children?: React.ReactChild
 }
 
-const PortletLabel = (props: Props) => {
-    const { icon, title, subtitle, sx } = props
+/**
+ * @param param0
+ * @returns
+ */
+export default function PortletLabel({ icon, title, subtitle, sx }: Props) {
     return (
         <Box
             sx={{
@@ -61,5 +61,3 @@ const PortletLabel = (props: Props) => {
         </Box>
     )
 }
-
-export default PortletLabel

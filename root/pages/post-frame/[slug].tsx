@@ -1,84 +1,34 @@
-import rehypePrism from '@mapbox/rehype-prism'
-import { Box } from '@mui/system'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import MdxComponents from 'src/components/mdx/MdxComponents'
-import MainLayout from 'src/layout/main/MainLayout'
-import MdxPostLayout from 'src/layout/mdx-post/MdxPostLayout'
-import { getAllPosts, getPost } from 'src/lib/mdxUtils'
-import { IPost } from 'src/model/IPost'
+import { allPosts, Post } from 'contentlayer/generated'
+import dynamic from 'next/dynamic'
 
-type Props = {
-    source: MDXRemoteSerializeResult
-    frontMatter: Omit<IPost, 'slug'>
-}
+const MdxPost = dynamic(() => import('src/components/MdxPost/MdxPost'))
+const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
-export function PostFramePage({ source, frontMatter }: Props) {
-    // const ogImage = config.siteURL + frontMatter.thumbnail
-    const { query = {} } = useRouter()
-
-    useEffect(() => {
-        if ('_access' in query && query['_access']) {
-            localStorage.setItem('_access', `${query['_access']}`)
-        } else {
-            localStorage.removeItem('_access')
-        }
-    }, [query])
-
-    return (
-        <MainLayout title={frontMatter.title}>
-            <MdxPostLayout pageTitle={frontMatter.title}>
-                <Head>
-                    <meta name="description" content={frontMatter.description} key="description" />
-                    <meta property="og:description" content={frontMatter.description} key="ogDescription" />
-                    {/* <meta property="og:image" content={ogImage} key="ogImage" /> */}
-                </Head>
-
-                <Box component="article" className="mdx-article">
-                    {/* <Typography variant="h3">{frontMatter.title}</Typography>
-                    <p>{frontMatter.description}</p> */}
-                    <MDXRemote {...source} components={MdxComponents} />
-                </Box>
-            </MdxPostLayout>
-        </MainLayout>
-    )
-}
-
-export default PostFramePage
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const { content, data } = getPost(params?.slug as string)
-
-    const mdxSource = await serialize(content, {
-        scope: data,
-        mdxOptions: {
-            rehypePlugins: [rehypePrism],
-        },
-    })
-
-    return {
-        props: {
-            source: mdxSource,
-            frontMatter: data,
-        },
-    }
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    const posts = getAllPosts(['slug'])
-
-    const paths = posts.map((post) => ({
-        params: {
-            slug: post.slug,
-        },
-    }))
-
+export async function getStaticPaths() {
+    const paths: string[] = allPosts.map((post) => post.url)
     return {
         paths,
         fallback: false,
     }
 }
+
+export async function getStaticProps({ params }) {
+    const post = allPosts.find((post) => post._raw.flattenedPath === params.slug) as Post
+    return {
+        props: {
+            post,
+        },
+    }
+}
+
+const PostLayout = ({ post }: { post: Post }) => {
+    const { title } = post
+
+    return (
+        <MainLayout title={title}>
+            <MdxPost post={post} />
+        </MainLayout>
+    )
+}
+
+export default PostLayout

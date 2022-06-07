@@ -1,22 +1,33 @@
-import { Box } from '@mui/material'
+import { Box, SxProps } from '@mui/material'
+import clsx from 'clsx'
+import React from 'react'
 
-interface Props {
+type Props = {
     noPadding?: boolean
-    children?: React.ReactNode
+    sx?: SxProps
+    className?: string
+    children?: React.ReactNode | React.ReactNode[]
 }
 
-const PortletContent = (props: Props) => {
-    const { noPadding, children } = props
+const PortletContent = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
+    const { noPadding = false, className, sx, children } = props
     return (
         <Box
-            sx={{
-                ...(noPadding ? { p: 0 } : { px: 3, py: 2 }),
-                flexGrow: 1,
-            }}
+            className={clsx('PortletContent-root', className)}
+            ref={ref}
+            sx={[
+                {
+                    flexGrow: 1,
+                    px: noPadding ? 0 : 3,
+                    py: noPadding ? 0 : 2,
+                },
+                ...(Array.isArray(sx) ? sx : [sx ?? false]),
+            ]}
         >
             {children}
         </Box>
     )
-}
+})
 
+PortletContent.displayName = 'PortletContent'
 export default PortletContent

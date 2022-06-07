@@ -1,7 +1,6 @@
-import { routerPush, routerFullUrlOf } from 'src/lib/urls'
-import { Box, Stack, Typography } from '@mui/material'
-import { SxProps } from '@mui/system'
+import { Box, Stack, SxProps, Typography } from '@mui/material'
 import SetupStepLink from 'src/components/codingpack-setup-step-links/SetupStepLink'
+import { routerFullUrlOf, routerPush } from 'src/lib/urls'
 
 const DATA = [
     {

@@ -1,28 +1,34 @@
-import { Box } from '@mui/material'
-import { SxProps } from '@mui/system'
+import { Box, SxProps } from '@mui/material'
+import clsx from 'clsx'
+import React, { HTMLAttributes } from 'react'
 
-interface Props {
+type Props = {
     sx?: SxProps
     noDivider?: boolean
-    children?: React.ReactChild
-}
+} & HTMLAttributes<HTMLDivElement>
 
-const PortletFooter = (props: Props) => {
-    const { noDivider, sx, children } = props
+const PortletFooter = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
+    const { noDivider, sx, className, children, ...rest } = props
     return (
         <Box
-            sx={{
-                py: 1,
-                px: 2,
-                borderTop: noDivider ? 'none' : '1px solid #ddd',
-                borderBottomLeftRadius: '2px',
-                borderBottomRightRadius: '2px',
-                ...sx,
-            }}
+            {...rest}
+            className={clsx('PortletFooter-root', className)}
+            ref={ref}
+            sx={[
+                {
+                    py: 1,
+                    px: 2,
+                    borderTop: noDivider ? 'none' : '1px solid #ddd',
+                    borderBottomLeftRadius: '2px',
+                    borderBottomRightRadius: '2px',
+                },
+                ...(Array.isArray(sx) ? sx : [sx ?? false]),
+            ]}
         >
             {children}
         </Box>
     )
-}
+})
 
+PortletFooter.displayName = 'PortletFooter'
 export default PortletFooter

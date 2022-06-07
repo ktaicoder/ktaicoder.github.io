@@ -1,6 +1,5 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { Box, Button, Typography } from '@mui/material'
-import { SxProps } from '@mui/system'
+import { Box, Button, SxProps, Typography } from '@mui/material'
 
 type Props = {
     imageSrc: string

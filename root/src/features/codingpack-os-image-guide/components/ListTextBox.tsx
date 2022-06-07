@@ -1,5 +1,5 @@
-import { Box } from '@mui/material'
-import { SxProps } from '@mui/system'
+import { Box, SxProps } from '@mui/material';
+import React from 'react'
 
 export default function ListTextBox(props: { sx?: SxProps; children?: React.ReactChild | React.ReactChild[] }) {
     const { sx, children } = props

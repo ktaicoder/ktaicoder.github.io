@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
-import CodingBlockIntro from 'src/features/codingblock-intro/CodingBlockIntro'
-import MainLayout from 'src/layout/main/MainLayout'
+import dynamic from 'next/dynamic'
+
+const CodingBlockIntro = dynamic(() => import('src/features/codingblock-intro/CodingBlockIntro'))
+const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
 const Index: NextPage = () => {
     return (

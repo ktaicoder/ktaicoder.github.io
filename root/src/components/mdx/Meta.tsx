@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import config from 'src/config'
 import { SITE_NAME, TWITTER_USERNAME } from 'src/lib/mdx-constants'
+import React from 'react'
 
 type Props = {
     pageTitle?: string

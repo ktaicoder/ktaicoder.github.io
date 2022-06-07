@@ -1,15 +1,31 @@
-import { PaperProps } from '@mui/material'
-import Paper from '../Paper'
+import React from 'react'
+import { Paper, PaperProps } from '@mui/material'
+import clsx from 'clsx'
 
-/**
- * @component
- */
-const Portlet = ({ children, ...rest }: PaperProps) => {
+type Props = Omit<PaperProps, 'elevation' | 'component'>
+
+const Portlet = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
+    const { sx, className, children, ...restProps } = props
     return (
-        <Paper {...rest} elevation={0} outlined squared={false} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Paper
+            {...restProps}
+            elevation={0}
+            ref={ref}
+            component="div"
+            className={clsx('Portlet-root', className)}
+            sx={[
+                {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    border: '1px solid #ddd',
+                },
+                ...(Array.isArray(sx) ? sx : [sx ?? false]),
+            ]}
+        >
             {children}
         </Paper>
     )
-}
+})
 
+Portlet.displayName = 'Portlet'
 export default Portlet

@@ -1,10 +1,11 @@
+import React from 'react'
 import { Box } from '@mui/material'
 import { useMeasure } from 'react-use'
 import Meta from 'src/components/mdx/Meta'
 import { useMainLayoutContext } from '../main/MainLayoutContext'
 
 type Props = {
-    children: React.ReactNode
+    children?: React.ReactNode|React.ReactNode[]
     pageTitle?: string
 }
 

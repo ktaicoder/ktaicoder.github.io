@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
-import HwGuide from 'src/features/hw-guide/HwGuide'
-import MainLayout from 'src/layout/main/MainLayout'
+import dynamic from 'next/dynamic'
+
+const HwGuide = dynamic(() => import('src/features/hw-guide/HwGuide'))
+const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
 const Index: NextPage = () => {
     return (

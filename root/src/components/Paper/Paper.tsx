@@ -1,5 +1,4 @@
-import { Paper, PaperProps } from '@mui/material'
-import { SxProps } from '@mui/system'
+import { Paper, PaperProps, SxProps } from '@mui/material'
 import React from 'react'
 
 interface Props {

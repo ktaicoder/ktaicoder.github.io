@@ -1,5 +1,4 @@
-import { fromEvent, Observable } from 'rxjs'
-import { filter, map } from 'rxjs/operators'
+import { filter, fromEvent, map, Observable } from 'rxjs'
 import { dispatch, EventTypes } from './common'
 
 type Payload = {

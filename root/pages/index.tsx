@@ -1,6 +1,8 @@
 import type { NextPage } from 'next'
-import Home from 'src/features/home/Home'
-import MainLayout from 'src/layout/main/MainLayout'
+import dynamic from 'next/dynamic'
+
+const Home = dynamic(() => import('src/features/home/Home'))
+const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
 const Index: NextPage = () => {
     return (

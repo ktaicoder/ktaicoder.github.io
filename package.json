@@ -2,10 +2,7 @@
   "name": "ktaicoder.github.io",
   "version": "1.0.82",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "yarn --cwd root dev"
-  },
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ktaicoder/ktaicoder.github.io.git"

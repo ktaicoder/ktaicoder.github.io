@@ -1,5 +1,4 @@
-import { Container } from '@mui/material'
-import { Box, SxProps } from '@mui/system'
+import { Box, Container, SxProps } from '@mui/material'
 import { useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 

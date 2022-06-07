@@ -93,6 +93,7 @@ module.exports = {
         'no-restricted-syntax': 'off',
         'react/jsx-curly-brace-presence': 'warn',
         'jsx-a11y/alt-text': 'warn',
+        'import/no-unresolved': 'warn',
     },
     overrides: [
         {
