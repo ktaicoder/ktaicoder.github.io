@@ -94,6 +94,10 @@ module.exports = {
         'react/jsx-curly-brace-presence': 'warn',
         'jsx-a11y/alt-text': 'warn',
         'import/no-unresolved': 'warn',
+        'no-param-reassign': 'warn',
+        'react/jsx-no-useless-fragment': 'warn',
+        'jsx-a11y/anchor-has-content': 'warn',
+        'jsx-a11y/anchor-is-valid': 'warn',
     },
     overrides: [
         {

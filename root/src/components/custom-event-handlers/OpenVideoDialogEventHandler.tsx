@@ -36,8 +36,8 @@ export default function OpenVideoDialogEventHandler() {
     }, [_openPostDialog])
 
     if (dialogId === 'VideoPlayerDialog' && videoPlayerDialogProps) {
-        return <VideoPlayerDialog open={true} {...videoPlayerDialogProps} />
-    } else {
+        return <VideoPlayerDialog open {...videoPlayerDialogProps} />
+    } 
         return null
-    }
+    
 }

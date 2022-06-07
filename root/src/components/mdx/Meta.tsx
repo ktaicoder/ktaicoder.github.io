@@ -17,7 +17,7 @@ const Meta: React.FC<Props> = ({ pageTitle }: Props) => {
     const router = useRouter()
     const ogUrl = config.siteURL + router.asPath
     const ogType = router.pathname === '/' ? 'website' : 'article'
-    const ogTitle = pageTitle ? pageTitle : 'Awesome food recipes'
+    const ogTitle = pageTitle || 'Awesome food recipes'
     const ogImage = config.siteURL + meta.ogImagePath
 
     return (

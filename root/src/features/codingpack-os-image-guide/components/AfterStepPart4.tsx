@@ -1,11 +1,8 @@
-import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import { Box, Button, Typography } from '@mui/material'
 import { routerPush } from 'src/lib/urls'
 
 export default function AfterStepPart4() {
-    const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', mt: 6, fontWeight: 600 }}>

@@ -1,4 +1,5 @@
-import { fromEvent, Observable,filter, map } from 'rxjs'
+import { filter, fromEvent, map, Observable } from 'rxjs'
+import log from 'src/log'
 import { dispatch, EventTypes } from './common'
 
 type Payload = {
@@ -29,7 +30,7 @@ export class OpenPostDialogEvent {
             }
         }
 
-        console.warn('unknown event payload', event)
+        log.warn('unknown event payload', event)
         return null
     }
 

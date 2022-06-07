@@ -6,7 +6,7 @@ export default function StepDivider(props: { color1: string; color2: string; hei
         <Box
             sx={{
                 width: '100%',
-                height: height,
+                height,
                 position: 'relative',
                 display: 'flex',
                 justifyContent: 'center',

@@ -85,7 +85,7 @@ export default function PostViewDialog(props: PostViewDialogProps) {
                         height: `calc( ${containerHeight.toFixed(0)}px - 10px)`,
                         border: 'none',
                     }}
-                ></Box>
+                 />
                 {/* <iframe src={routerUrlOf(`/post/${postId}`)}></iframe> */}
             </DialogContent>
         </Dialog>

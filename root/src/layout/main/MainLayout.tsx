@@ -3,13 +3,13 @@ import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import { styled } from '@mui/material/styles'
 import { observer } from 'mobx-react'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import useStore from 'src/store/useStore'
 import DrawerHeader from './components/drawer-header/DrawerHeader'
 import Sidebar from './components/sidebar'
 import Topbar from './components/topbar'
 import { CONTENT_BG_COLOR, SIDEMENU_BG_COLOR, SIDEMENU_WIDTH } from './main-layout-constants'
-import MainLayoutContext from './MainLayoutContext'
+import MainLayoutContext, { MainLayoutContextData } from './MainLayoutContext'
 
 const Main = styled('main', {
     shouldForwardProp: (prop) => prop !== 'contentShift',
@@ -53,7 +53,6 @@ function MainLayout(props: Props) {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('md'))
     const isSidebarOpen = sidebarStore.isOpen
-    const [searchQuery, setSearchQuery] = useState<string>()
     let contentShift = 0
 
     if (smDown) {
@@ -63,9 +62,9 @@ function MainLayout(props: Props) {
         contentShift = isSidebarOpen ? 0 : -SIDEMENU_WIDTH
     }
 
-    const contextData = useMemo(
-        () => ({ searchQuery, sidebarWidth: isSidebarOpen ? SIDEMENU_WIDTH : 0 }),
-        [searchQuery, isSidebarOpen],
+    const contextData = useMemo<MainLayoutContextData>(
+        () => ({ sidebarWidth: isSidebarOpen ? SIDEMENU_WIDTH : 0 }),
+        [isSidebarOpen],
     )
 
     return (

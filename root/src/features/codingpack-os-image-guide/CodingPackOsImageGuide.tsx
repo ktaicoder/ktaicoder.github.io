@@ -124,7 +124,7 @@ export default function CodingPackOsImageGuide() {
             {/* 이미지 뷰어를 띄운다 */}
             {rootRef.current && (
                 <ImageViewerContainer
-                    multiple={true}
+                    multiple
                     parentElement={rootRef.current}
                     cssSelector=".CodingPackOsImageGuide-container img.lightbox"
                     revision={revision}

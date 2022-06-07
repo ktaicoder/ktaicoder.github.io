@@ -2,6 +2,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import clsx from 'clsx'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import { SimpleSxProps } from 'src/lib/sx-props'
 import {
@@ -12,15 +13,15 @@ import {
     SIDEMENU_FG_COLOR,
 } from '../../main-layout-constants'
 import { isCurrentMenu, ISection } from '../../sidebar-menu-define'
-import MenuIcon from './MenuIcon'
 import MenuItem from './MenuItem'
+
+const MenuIcon = dynamic(() => import('./MenuIcon'))
 
 type Props = {
     section: ISection
     expanded: boolean
     currentHref?: string
     active: boolean
-    indent?: boolean
     onClickSection?: () => void
     onClickLink?: () => void
 }
@@ -134,10 +135,12 @@ export default function SectionMenu(props: Props) {
                 <List disablePadding>
                     {section.submenus?.map((menu, idx) => {
                         if (menu.type === 'divider') {
+                            // eslint-disable-next-line react/no-array-index-key
                             return <Divider key={idx} />
                         }
                         return (
                             <MenuItem
+                                // eslint-disable-next-line react/no-array-index-key
                                 key={menu.href + idx}
                                 menu={menu}
                                 sx={{ pl: 7 }}

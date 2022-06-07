@@ -11,7 +11,7 @@ function generateString(length: number) {
 }
 
 export function randomCssClassName(prefix?: string | null) {
-    const pre = prefix ?? generateString(5) + '-'
+    const pre = prefix ?? `${generateString(5)  }-`
     const numeric1 = Math.random().toString().substring(2, 7)
     const numeric2 = Math.random().toString().substring(2, 7)
     return `${pre}${numeric1}${numeric2}`

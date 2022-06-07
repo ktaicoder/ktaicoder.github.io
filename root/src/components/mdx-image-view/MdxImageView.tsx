@@ -54,7 +54,7 @@ const rootSx: SimpleSxProps = {
 }
 
 export default function MdxImageView(props: Props) {
-    const { src, caption, transparentBg = false, sx, source, ...rest } = props
+    const { src, caption, transparentBg = false, sx, ...rest } = props
     const rootRef = useRef<HTMLDivElement>()
     const [enabled, setEnabled] = useState(false)
     const [revision, setRevision] = useState(0)

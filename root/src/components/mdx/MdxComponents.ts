@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
 
 const MdxComponents = {
-    Tips: dynamic(() => import('src/components/mdx/Tips')),
     SyntaxHighlighter: dynamic(() => import('react-syntax-highlighter').then((m) => m.Prism)),
     Button: dynamic(() => import('@mui/material/Button')),
     Box: dynamic(() => import('@mui/material/Box')),

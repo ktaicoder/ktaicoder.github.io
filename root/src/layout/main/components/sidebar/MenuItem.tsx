@@ -1,5 +1,6 @@
 import { ListItemIcon, ListItemText, SxProps } from '@mui/material'
 import clsx from 'clsx'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import { SimpleSxProps } from 'src/lib/sx-props'
 import {
@@ -13,7 +14,8 @@ import {
 } from '../../main-layout-constants'
 import { IMenu } from '../../sidebar-menu-define'
 import ListItemLink from './ListItemLink'
-import MenuIcon from './MenuIcon'
+
+const MenuIcon = dynamic(() => import('./MenuIcon'))
 
 type Props = {
     sx?: SxProps

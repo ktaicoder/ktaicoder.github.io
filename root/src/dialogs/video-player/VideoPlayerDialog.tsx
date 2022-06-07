@@ -1,19 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close'
-import {
-    Box,
-    Button,
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    IconButton,
-    Stack,
-    Typography,
-} from '@mui/material'
-import React, { useRef, useState } from 'react'
+import { Box, Button, Dialog, DialogActions, DialogContent, IconButton, Stack, Typography } from '@mui/material'
+import React, { useRef } from 'react'
 import ReactPlayer from 'react-player'
-// import screenfull from 'screenfull'
-import ClipboardButton from './ClipboardButton'
 
 export type VideoPlayerDialogProps = {
     open: boolean
@@ -25,24 +13,9 @@ export type VideoPlayerDialogProps = {
 export default function VideoPlayerDialog(props: VideoPlayerDialogProps) {
     const { open, onClose, title, videoUrl } = props
     const playerRef = useRef<ReactPlayer>(null)
-    const [playing, setPlaying] = useState(false)
 
     const _handleDialogClose = () => {
         onClose?.()
-    }
-
-    const _handleFullscreen = () => {
-        if (!playerRef.current) return
-
-        // eslint-disable-next-line react/no-find-dom-node
-        // const elem = findDOMNode(playerRef.current)
-        // if (screenfull.isEnabled && elem) {
-        //     screenfull.request(elem as Element)
-        // }
-    }
-
-    const _handleOnReady = () => {
-        // setTimeout(() => setPlaying(true), 100)
     }
 
     return (
@@ -87,7 +60,7 @@ export default function VideoPlayerDialog(props: VideoPlayerDialogProps) {
             )}
 
             <DialogContent dividers={Boolean(title)}>
-                <ReactPlayer ref={playerRef} width="100%" url={videoUrl} controls onReady={_handleOnReady} />
+                <ReactPlayer ref={playerRef} width="100%" url={videoUrl} controls />
             </DialogContent>
             <DialogActions>
                 <Box

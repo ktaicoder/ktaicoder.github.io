@@ -62,7 +62,7 @@ export const clauseUrls = {
     /**
      * 약관 정보 URL
      */
-    //view: (clauseId: number) => apiUrl(`/p/m/clause/${clauseId}.html?verbose=true`),
+    // view: (clauseId: number) => apiUrl(`/p/m/clause/${clauseId}.html?verbose=true`),
     view: (clauseId: number): string => apiUrlOf(`/p/m/clause/${clauseId}.html`),
 
     // 이용약관

@@ -21,6 +21,7 @@ import UsbIcon from '@mui/icons-material/Usb'
 import { SvgIconProps } from '@mui/material'
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'
 import LogoDevIcon from '@mui/icons-material/LogoDev'
+
 type Props = {
     iconName: string
 } & SvgIconProps
@@ -70,6 +71,8 @@ export default function MenuIcon(props: Props) {
             return <AutoAwesomeMosaicIcon {...restProps} />
         case 'home':
             return <HomeIcon {...restProps} />
+        default:
+            break
     }
     return <HardwareIcon className="MenuIcon-root" />
 }

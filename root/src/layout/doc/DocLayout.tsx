@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link'
 import Head from 'next/head'
 import { useState } from 'react'
@@ -82,6 +83,7 @@ export default function Layout(props: Props) {
             <div id="skip">
                 <article
                     className="prose lg:prose-xl px-8 m-auto my-4 sm:my-16"
+                    // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{ __html: children ?? '' }}
                 />
             </div>

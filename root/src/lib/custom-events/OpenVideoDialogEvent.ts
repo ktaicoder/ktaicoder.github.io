@@ -1,3 +1,4 @@
+import log from 'src/log'
 import { filter, fromEvent, map, Observable } from 'rxjs'
 import { dispatch, EventTypes } from './common'
 
@@ -29,7 +30,7 @@ export class OpenVideoDialogEvent {
             }
         }
 
-        console.warn('unknown event payload', event)
+        log.warn('unknown event payload', event)
         return null
     }
 

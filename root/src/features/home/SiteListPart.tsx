@@ -89,7 +89,7 @@ export default function SiteListPart() {
                     title="PC 프로그램 소스 코드(깃허브)"
                     subtitle="PC 프로그램 소스코드가 GITHUB에 공개되어 있습니다."
                     imageSrc={routerUrlOf('/images/home/github-120.png')}
-                    href={'https://github.com/ktaicoder/hw-pc'}
+                    href="https://github.com/ktaicoder/hw-pc"
                 />
                 <Typography variant="h6" sx={{ color: '#222', textAlign: 'center', fontWeight: 400, mt: 8, mb: 2 }}>
                     하드웨어 소스코드 및 NPM

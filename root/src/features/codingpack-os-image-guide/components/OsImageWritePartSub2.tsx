@@ -1,14 +1,10 @@
-import { Grid, Box, Typography, useMediaQuery } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Grid, Typography } from '@mui/material'
 import { routerUrlOf } from 'src/lib/urls'
 import ImageBox from './ImageBox'
 import ListText from './ListText'
 import ListTextBox from './ListTextBox'
 
 export default function OsImageWritePartSub2() {
-    const theme = useTheme()
-    const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', fontWeight: 600 }}>

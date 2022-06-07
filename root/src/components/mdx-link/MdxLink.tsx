@@ -1,5 +1,5 @@
 import { Box, BoxProps } from '@mui/material'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useLocalStorage } from 'react-use'
 
 type Props = {

@@ -14,11 +14,9 @@ class RootStore {
     /**
      * hydrate
      */
+    // eslint-disable-next-line class-methods-use-this
     hydrate = (data: RootStoreInitialState | null | undefined) => {
         log.debug('store hydrate:', data)
-        if (!data) return
-        // this.intlStore.hydrate(data?.intlStoreData)
-        // add other stores
     }
 }
 

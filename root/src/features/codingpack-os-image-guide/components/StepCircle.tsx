@@ -1,6 +1,4 @@
 import { Box, Typography } from '@mui/material'
-import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload'
-import SdCardIcon from '@mui/icons-material/SdCard'
 
 function StepCircleImage(props: { color: string; imageSrc: string; size: number }) {
     const { color, imageSrc, size } = props

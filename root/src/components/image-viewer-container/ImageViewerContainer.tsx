@@ -83,8 +83,8 @@ export default function ImageViewerContainer(props: Props) {
     }, [opened, onOpen])
 
     if (imageElements.length > 0 && dialogId === 'ImageViewLightbox' && imageViewDialogProps) {
-        return <ImageViewLightbox open={true} {...imageViewDialogProps} />
+        return <ImageViewLightbox open {...imageViewDialogProps} />
     }
 
-    return <></>
+    return null
 }

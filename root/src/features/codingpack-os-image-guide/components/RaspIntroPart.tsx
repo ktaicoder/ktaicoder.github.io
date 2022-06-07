@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Box, Divider, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { routerUrlOf } from 'src/lib/urls'
@@ -5,8 +6,6 @@ import { routerUrlOf } from 'src/lib/urls'
 export default function RaspIntroPart() {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const mdDown = useMediaQuery(theme.breakpoints.down('md'))
-    const down700 = useMediaQuery(theme.breakpoints.down(720))
 
     return (
         <Box

@@ -3,15 +3,17 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Box, IconButton, List, ListItem, ListItemText, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { observer } from 'mobx-react'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { routerUrlOf } from 'src/lib/urls'
 import useStore from 'src/store/useStore'
 import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
 import DrawerHeader from '../drawer-header/DrawerHeader'
-import MenuIcon from './MenuIcon'
 import MenuItem from './MenuItem'
 import SectionMenu from './SectionMenu'
 import { rootSx } from './style'
+
+const MenuIcon = dynamic(() => import('./MenuIcon'))
 
 const ALL_MENUS = menus
 
@@ -63,7 +65,8 @@ function Sidebar() {
                                 active={isCurrentMenu(item.href, pathkey)}
                             />
                         )
-                    } else if (item.type === 'divider') {
+                    }
+                    if (item.type === 'divider') {
                         return (
                             <Box
                                 key={idx}
@@ -71,7 +74,8 @@ function Sidebar() {
                                 sx={{ height: '0px', borderTop: '1px solid rgba(255,255,255,0.1)' }}
                             />
                         )
-                    } else if (item.type === 'label') {
+                    }
+                    if (item.type === 'label') {
                         return (
                             <ListItem
                                 key={idx}
@@ -88,7 +92,8 @@ function Sidebar() {
                                 <ListItemText>{item.title}</ListItemText>
                             </ListItem>
                         )
-                    } else if (item.type === 'section') {
+                    }
+                    if (item.type === 'section') {
                         const section = item as ISection
                         return (
                             <SectionMenu
@@ -101,9 +106,8 @@ function Sidebar() {
                                 onClickSection={() => sidebarStore.toggleExpandSection(section.sectionId)}
                             />
                         )
-                    } else {
-                        return <div>{JSON.stringify(item)}</div>
                     }
+                    return <div>{JSON.stringify(item)}</div>
                 })}
             </List>
         </Box>

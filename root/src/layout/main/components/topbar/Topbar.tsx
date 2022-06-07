@@ -42,7 +42,6 @@ const AppBar = styled(MuiAppBar, {
  */
 type Props = {
     title: string
-    className?: string
     isSidebarOpen: boolean
     onClickMenuButton?: any
 }
@@ -52,7 +51,7 @@ export default function Topbar(props: Props) {
     const theme = useTheme()
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
     const { y: windowScrollY } = useWindowScroll()
-    const shift = isSidebarOpen && !smDown ? true : false
+    const shift = !!(isSidebarOpen && !smDown)
     // console.log('windowScrollY=', windowScrollY)
     const elevation = windowScrollY > 10 ? 1 : 0
     return (

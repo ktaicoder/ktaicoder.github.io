@@ -1,5 +1,5 @@
-import { SIDEMENU_BG_COLOR, SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 import { SimpleSxProps } from 'src/lib/sx-props'
+import { SIDEMENU_BG_COLOR, SIDEMENU_FG_COLOR } from '../../main-layout-constants'
 
 export const rootSx: SimpleSxProps = {
     position: 'relative',

@@ -49,7 +49,8 @@ export default function CodingpackSetupStepLinks(props: Props) {
         }
     }
 
-    const _openLink = (href: string) => {
+    const _openLink = (aHref: string) => {
+        let href = aHref
         let linkStyle = ''
         if (window.self === window.top || window.parent === window.top) {
             linkStyle = 'page'

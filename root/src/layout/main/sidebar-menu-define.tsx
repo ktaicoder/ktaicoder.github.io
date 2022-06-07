@@ -1,4 +1,5 @@
 import React from 'react'
+
 type MatchFn = (path: string) => boolean
 
 export interface IDivider {
@@ -33,7 +34,7 @@ export interface ISection {
 export type ISideMenuItem = ILabel | IDivider | IMenu | ISection
 
 let seq = 0
-const nextSectionId = () => 'section' + ++seq
+const nextSectionId = () => `section${++seq}`
 
 const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
     { type: 'divider' },
@@ -204,6 +205,7 @@ function fixSectionId(item: ISideMenuItem): ISideMenuItem {
     if (item.type === 'section') {
         item.submenus.forEach((sub) => {
             if (sub.type === 'menu') {
+                // eslint-disable-next-line no-param-reassign
                 sub.sectionId = item.sectionId
             }
         })
@@ -219,9 +221,8 @@ const allSectionIds = menus
     .map((it) => {
         if (it.type === 'section') {
             return it.sectionId
-        } else {
-            return null
         }
+        return null
     })
     .filter((it) => it)
     .map((it) => it as string)
@@ -236,7 +237,7 @@ export const isCurrentMenu = (menuHref: string, path: string | undefined | null,
     if (matchFn) {
         return matchFn(path)
     }
-    return path.startsWith(menuHref + '/')
+    return path.startsWith(`${menuHref}/`)
 }
 
 export const isCurrentSection = (sectionId: string, pathkey: string | null | undefined): boolean => {

@@ -1,5 +1,6 @@
 import { Box } from '@mui/material'
 import { Post } from 'contentlayer/generated'
+// eslint-disable-next-line import/no-unresolved
 import { useMDXComponent } from 'next-contentlayer/hooks'
 import Head from 'next/head'
 import MdxComponents from 'src/components/mdx/MdxComponents'

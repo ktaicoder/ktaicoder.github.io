@@ -82,20 +82,18 @@ export default function ImageViewLightbox(props: ImageViewLightboxProps) {
     const currentItem: ImageItem = imageItems[slidingIndex]
     const pageNumText = imageItems.length > 1 ? `${slidingIndex + 1} / ${imageItems.length}` : undefined
     return (
-        <>
-            {currentItem && (
-                <Lightbox
-                    mainSrc={currentItem.url}
-                    prevSrc={currentItem.prev}
-                    nextSrc={currentItem.next}
-                    onMoveNextRequest={_handleMoveNextRequest}
-                    onMovePrevRequest={_handleMovePrevRequest}
-                    imageTitle={title}
-                    imageCaption={pageNumText}
-                    onCloseRequest={_handleClose}
-                    reactModalStyle={{ overlay: { zIndex: 1500 } }}
-                />
-            )}
-        </>
+        currentItem && (
+            <Lightbox
+                mainSrc={currentItem.url}
+                prevSrc={currentItem.prev}
+                nextSrc={currentItem.next}
+                onMoveNextRequest={_handleMoveNextRequest}
+                onMovePrevRequest={_handleMovePrevRequest}
+                imageTitle={title}
+                imageCaption={pageNumText}
+                onCloseRequest={_handleClose}
+                reactModalStyle={{ overlay: { zIndex: 1500 } }}
+            />
+        )
     )
 }

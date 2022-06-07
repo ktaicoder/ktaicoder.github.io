@@ -1,7 +1,6 @@
 import { createContext, useContext } from 'react'
 
-type MainLayoutContextData = {
-    searchQuery?: string
+export type MainLayoutContextData = {
     sidebarWidth: number
 }
 

@@ -36,8 +36,8 @@ export default function OpenPostDialogEventHandler() {
     }, [_openPostDialog])
 
     if (dialogId === 'PostViewDialog' && postViewDialogProps) {
-        return <PostViewDialog open={true} {...postViewDialogProps} />
-    } else {
+        return <PostViewDialog open {...postViewDialogProps} />
+    } 
         return null
-    }
+    
 }

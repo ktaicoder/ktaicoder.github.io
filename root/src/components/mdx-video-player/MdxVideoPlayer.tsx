@@ -1,5 +1,5 @@
 import { Box, Container, SxProps } from '@mui/material'
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import ReactPlayer from 'react-player'
 
 type Props = {
@@ -12,7 +12,6 @@ type Props = {
 export default function MdxVideoPlayer(props: Props) {
     const { sx, title, caption, videoUrl } = props
     const playerRef = useRef<ReactPlayer>(null)
-    const [playing, setPlaying] = useState(false)
 
     const _handleOnReady = () => {
         // setTimeout(() => setPlaying(true), 100)

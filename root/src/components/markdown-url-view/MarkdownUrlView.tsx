@@ -1,5 +1,6 @@
-import MarkdownView from '../markdown-view/MarkdownView'
+import log from 'src/log'
 import { useState, useCallback, useEffect } from 'react'
+import MarkdownView from '../markdown-view/MarkdownView'
 
 type Props = {
     url: string
@@ -13,7 +14,7 @@ export default function MarkdownUrlView(props: Props) {
             const markdownText = await fetch(url).then((res) => res.text())
             setMarkdown(markdownText ?? '')
         } catch (err) {
-            console.log(err)
+            log.debug(err)
         }
     }, [])
 

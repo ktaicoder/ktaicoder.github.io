@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
 import { Button, ButtonProps } from '@mui/material'

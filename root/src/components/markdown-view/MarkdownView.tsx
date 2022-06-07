@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import styled from '@emotion/styled'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -9,7 +10,7 @@ const MarkdownStyle = styled.div`
     line-height: 2rem;
     font-family: 'Nanum Gothic Coding', 'Noto Sans KR', monospace;
 `
-//const markdown = `Just a link: https://reactjs.com.`
+// const markdown = `Just a link: https://reactjs.com.`
 
 type Props = {
     markdown?: string
