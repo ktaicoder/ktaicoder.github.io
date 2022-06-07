@@ -1,3 +1,4 @@
+import log from 'src/log'
 import { Box, Divider, Typography, useMediaQuery } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { CODINGPACK } from 'src/lib/codingpack-version'
@@ -16,11 +17,11 @@ function downloadLink(href: string) {
         document.body.removeChild(downloadLink)
     } else {
         // iOS Safari, open a new page and set href to data-uri
-        let popup: Window | null = window.open('', '_blank')
+        const popup: Window | null = window.open('', '_blank')
         if (popup) {
             popup.location.href = href
         } else {
-            console.warn('window.open() fail')
+            log.warn('window.open() fail')
         }
     }
 }
@@ -57,14 +58,7 @@ export default function OsImageDownloadPart() {
                                 {CODINGPACK.rp3.date}
                             </Box>
                         </Typography>
-                        <RaspDownloadButton
-                            raspVersion="3B+"
-                            onClick={() =>
-                                downloadLink(
-                                    `https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp3.fileName}`,
-                                )
-                            }
-                        />
+                        <RaspDownloadButton raspVersion="3B+" onClick={() => downloadLink(CODINGPACK.rp3.url)} />
                     </Box>
                     {!down700 && (
                         <Divider
@@ -93,14 +87,7 @@ export default function OsImageDownloadPart() {
                                 {CODINGPACK.rp4.date}
                             </Box>
                         </Typography>
-                        <RaspDownloadButton
-                            raspVersion="4B"
-                            onClick={() =>
-                                downloadLink(
-                                    `https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp4.fileName}`,
-                                )
-                            }
-                        />
+                        <RaspDownloadButton raspVersion="4B" onClick={() => downloadLink(CODINGPACK.rp4.url)} />
                     </Box>
                 </Box>
             </Box>

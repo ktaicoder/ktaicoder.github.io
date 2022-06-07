@@ -174,14 +174,14 @@ export default function ShortDescPart() {
                         <li>
                             라즈베리파이 3B+ <em>{CODINGPACK.rp3.version}</em>
                             <span>
-                                <i></i>
+                                <i />
                             </span>
                             {CODINGPACK.rp3.date}
                         </li>
                         <li>
                             라즈베리파이 4B <em>{CODINGPACK.rp4.version}</em>
                             <span>
-                                <i></i>
+                                <i />
                             </span>
                             {CODINGPACK.rp4.date}
                         </li>
