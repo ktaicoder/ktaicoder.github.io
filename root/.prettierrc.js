@@ -1,5 +1,4 @@
 module.exports = {
-    parser: 'typescript',
     printWidth: 120,
     tabWidth: 4,
     trailingComma: 'all',
@@ -8,8 +7,9 @@ module.exports = {
     semi: false,
     useTabs: false,
     arrowParens: 'always',
-    endOfLine: 'auto',
+    endOfLine: 'lf',
     proseWrap: 'preserve',
+    bracketSameLine: false,
     overrides: [
         {
             files: '*.json',
@@ -18,5 +18,11 @@ module.exports = {
                 tabWidth: 2,
             },
         },
+        {
+            "files": ["*.mts", "*.cts", "*.ts", "*.tsx"],
+            "options": {
+                "parser": "typescript"
+            }
+        }
     ], // 특정 파일별로 옵션을 다르게 지정함, ESLint 방식 사용
 }
