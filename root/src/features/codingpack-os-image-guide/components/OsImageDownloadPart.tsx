@@ -95,7 +95,7 @@ export default function OsImageDownloadPart() {
                 <ListText
                     text={
                         <>
-                            코딩팩에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
+                            KT AI Codiny Pack에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
                             <span style={{ whiteSpace: 'nowrap' }}>(약 2.6GB)</span>{' '}
                         </>
                     }
@@ -104,7 +104,7 @@ export default function OsImageDownloadPart() {
                 <ListText
                     text={
                         <>
-                            코딩팩에 로그인 시 사용자 ID는{' '}
+                            KT AI Codiny Pack에 로그인 시 사용자 ID는{' '}
                             <Box component="span" sx={{ whiteSpace: 'nowrap', fontWeight: 600, color: 'primary.dark' }}>
                                 pi
                             </Box>{' '}

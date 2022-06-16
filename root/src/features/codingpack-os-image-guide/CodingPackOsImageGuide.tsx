@@ -12,7 +12,7 @@ import OsImageWritePartSub2 from './components/OsImageWritePartSub2'
 import OsImageWritePartSub3 from './components/OsImageWritePartSub3'
 import OsImageWritePartSub4 from './components/OsImageWritePartSub4'
 import RaspIntroPart from './components/RaspIntroPart'
-import ShortDescPart from './components/ShortDescPart.tsx'
+import ShortDescPart from './components/ShortDescPart'
 
 export default function CodingPackOsImageGuide() {
     const [revision, setRevision] = useState(0)
@@ -33,7 +33,7 @@ export default function CodingPackOsImageGuide() {
                 style={{ maxWidth: 760 }}
                 className="CodingPackOsImageGuide-container"
             >
-                <GuideTitle title="코딩팩 OS 이미지 굽기" sx={{ mb: 4 }} />
+                <GuideTitle title="KT AI Codiny Pack OS 이미지 굽기" sx={{ mb: 4 }} />
 
                 {/* 라즈베리 소개 부분 */}
                 <RaspIntroPart />

@@ -35,40 +35,40 @@ export default function SiteListPart() {
                         <Button
                             sx={{ mt: 1 }}
                             component="a"
-                            href="https://aicodingblock.kt.co.kr"
+                            href="https://aicodiny.com"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            AI 코딩블록 공식 사이트
+                            AI 코디니 공식 사이트
                         </Button>
                     </Box>
                 </Box> */}
                 {/*
                 <Typography variant="h6" sx={{ color: '#0A1929', fontWeight: 500, mt: 4, mb: 2 }}>
-                    AI 코딩블록 공식 사이트
+                    AI 코디니 공식 사이트
                 </Typography>
                 <PageLink
                     className={pageLinkClassName}
-                    title="AI 코딩블록 공식 사이트"
+                    title="AI 코디니 공식 사이트"
                     subtitle="블록 코딩 공식 사이트입니다. 블록 코딩과 관련된 다양한 정보들을 포함하고 있습니다."
                     imageSrc={routerUrlOf('/images/home/codiny1.png')}
-                    href="https://aicodingblock.kt.co.kr"
+                    href="https://aicodiny.com"
                 />
                 <PageLink
                     className={pageLinkClassName}
-                    title="AI 코딩블록 사용자 가이드"
-                    subtitle="지금 보고 이 사이트입니다. AI 코딩블록의 사용자 가이드를 제공합니다. "
+                    title="AI 코디니 사용자 가이드"
+                    subtitle="지금 보고 이 사이트입니다. AI 코디니의 사용자 가이드를 제공합니다. "
                     imageSrc={routerUrlOf('/images/home/labtop.png')}
                     href={routerUrlOf('/')}
                 /> */}
 
                 <Typography variant="h6" sx={{ color: '#222', textAlign: 'center', fontWeight: 400, mt: 4, mb: 2 }}>
-                    코딩팩 소스코드
+                    KT AI Codiny Pack 소스코드
                 </Typography>
                 <PageLink
                     className={pageLinkClassName}
-                    title="코딩팩 블록 드라이버"
-                    subtitle="GITHUB에 공개된 코딩팩 블록드라이버 소스코드입니다."
+                    title="KT AI Codiny Pack 블록 드라이버"
+                    subtitle="GITHUB에 공개된 KT AI Codiny Pack 블록드라이버 소스코드입니다."
                     imageSrc={routerUrlOf('/images/home/console.png')}
                     href="https://github.com/aicodingblock/reset_blockdriver"
                 />

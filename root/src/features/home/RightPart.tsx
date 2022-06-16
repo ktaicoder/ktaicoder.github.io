@@ -35,9 +35,9 @@ export default function RightPart() {
                             flexDirection: 'column',
                             ...(lgUp &&
                                 !isNarrow && {
-                                    minHeight: '700px',
-                                    height: 'calc(100vh - 200px)',
-                                }),
+                                minHeight: '700px',
+                                height: 'calc(100vh - 200px)',
+                            }),
                             alignItems: 'center',
                             '& > div': {
                                 maxWidth: '500px',
@@ -47,12 +47,12 @@ export default function RightPart() {
                     >
                         <Paper sx={{ mt: 0, p: 3, borderRadius: '16px', color: '#fff', background: '#007FFF' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>KT AI 코딩블록이란?</Typography>
+                                <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>KT AI 코디니이란?</Typography>
                                 {/* <Button sx={{ color: '#fff' }}>더 보기</Button> */}
                             </Box>
 
                             <Typography sx={{ mt: 3, fontWeight: 400, fontSize: '1rem' }}>
-                                KT AI 코딩블록은 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을 쉽게 학습하고
+                                KT AI 코디니은 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을 쉽게 학습하고
                                 구현할 수 있는 소프트웨어 코딩 교육 플랫폼입니다.
                             </Typography>
                             <Box sx={{ mt: 2, mb: 1, display: 'flex', justifyContent: 'center' }}>
@@ -88,9 +88,9 @@ export default function RightPart() {
                             border: '0px solid red',
                             ...(lgUp &&
                                 !isNarrow && {
-                                    minHeight: '700px',
-                                    height: 'calc(100vh - 200px)',
-                                }),
+                                minHeight: '700px',
+                                height: 'calc(100vh - 200px)',
+                            }),
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -103,7 +103,7 @@ export default function RightPart() {
                         <Paper sx={{ mt: 0, flex: 1, p: 3, borderRadius: '16px' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>
-                                    코딩팩 OS 이미지 굽기
+                                    KT AI Codiny Pack OS 이미지 굽기
                                 </Typography>
                                 <Button onClick={() => routerPush('/codingpack/os-image-guide')}>가이드</Button>
                             </Box>
@@ -115,7 +115,7 @@ export default function RightPart() {
                                 />
                             </Box>
                             <Typography sx={{ p: 2, fontWeight: 400, fontSize: '1rem' }}>
-                                라즈베리 파이라는 소형 컴퓨터와 KT AI 코딩팩의 인공지능 기반으로 누구나 쉽고 저렴하게
+                                라즈베리 파이라는 소형 컴퓨터와 KT AI Codiny Pack의 인공지능 기반으로 누구나 쉽고 저렴하게
                                 다양한 콘텐츠를 재미있게 즐기도록 개발하였습니다.
                             </Typography>
                         </Paper>
@@ -147,7 +147,7 @@ export default function RightPart() {
                                     color: '#fff',
                                 }}
                             >
-                                AI 코딩블록
+                                AI 코디니
                             </Typography>
                         </Paper>
                     </Box>

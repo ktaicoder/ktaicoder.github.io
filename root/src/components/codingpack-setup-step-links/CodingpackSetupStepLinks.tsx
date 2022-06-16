@@ -20,7 +20,7 @@ const DATA = [
     },
     {
         stepNumber: 4,
-        title: '코딩팩 업데이트 하기',
+        title: 'KT AI Codiny Pack 업데이트',
         href: '/post-frame/codingpack-how-to-codingpack-update',
     },
     {
@@ -87,7 +87,7 @@ export default function CodingpackSetupStepLinks(props: Props) {
             >
                 <Box mb={1}>
                     <Typography sx={{ fontSize: '0.85rem', color: 'text.main', textAlign: 'center', fontWeight: 600 }}>
-                        • 코딩팩 OS 이미지 제작 순서 •
+                        • KT AI Codiny Pack OS 이미지 제작 순서 •
                     </Typography>
                     {guideMsg && (
                         <Typography

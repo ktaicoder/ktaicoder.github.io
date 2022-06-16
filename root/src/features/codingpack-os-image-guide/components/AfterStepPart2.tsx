@@ -10,7 +10,7 @@ export default function AfterStepPart2() {
             <Typography variant="subtitle1" sx={{ color: '#3F617D', fontWeight: 600 }}>
                 2. 인터넷 연결
             </Typography>
-            <ImageBox mt={4} caption="코딩팩 네트워크 설정화면">
+            <ImageBox mt={4} caption="KT AI Codiny Pack 네트워크 설정화면">
                 <Box
                     component="img"
                     className="lightbox"

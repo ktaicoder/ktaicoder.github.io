@@ -48,7 +48,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
     // {
     //     type: 'menu',
     //     icon: 'dashboard',
-    //     title: 'AI 코딩블록 소개',
+    //     title: 'AI 코디니 소개',
     //     href: '/coding-block-intro',
     // },
 
@@ -58,11 +58,11 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         type: 'section',
         sectionId: nextSectionId(),
         icon: 'adb',
-        title: '코딩팩 OS 이미지 제작',
+        title: 'Codiny Pack OS 이미지 제작',
         submenus: [
             {
                 type: 'menu',
-                title: '코딩팩 소개 및 조립',
+                title: 'Codiny Pack 소개 및 조립',
                 href: '/post-frame/codingpack-how-to-intro',
             },
             {
@@ -101,7 +101,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 type: 'menu',
                 title: (
                     <>
-                        <em>4</em> 코딩팩 업데이트 하기
+                        <em>4</em> Codiny Pack 업데이트 하기
                     </>
                 ),
                 href: '/post-frame/codingpack-how-to-codingpack-update',
@@ -132,7 +132,7 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         type: 'section',
         sectionId: nextSectionId(),
         icon: 'adb',
-        title: '코딩팩 사용팁',
+        title: 'Codiny Pack 사용팁',
         submenus: [
             {
                 type: 'menu',
@@ -154,12 +154,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
             {
                 type: 'menu',
-                title: '코딩팩 설정하기',
+                title: 'Codiny Pack 설정하기',
                 href: '/post-frame/hw-pc-how-to-codingpack-setup',
             },
             {
                 type: 'menu',
-                title: '코딩팩 설정시 문제 해결',
+                title: 'Codiny Pack 설정시 문제 해결',
                 href: '/post-frame/hw-pc-codingpack-setup-help',
             },
             {

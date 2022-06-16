@@ -1,6 +1,6 @@
-# AI 코딩블록 사용자 가이드
+# AI 코디니 사용자 가이드
 
-AI 코딩블록 사용자 가이드 웹사이트 프로젝트입니다.
+AI 코디니 사용자 가이드 웹사이트 프로젝트입니다.
 
 https://ktaicoder.github.io
 
@@ -16,9 +16,9 @@ $  yarn dev
 
 ## 관련 링크
 
-### AI 코딩블록 공식 사이트
+### AI 코디니 공식 사이트
 
-- AI 코딩블록 https://aicodingblock.kt.co.kr
+- AI 코디니 https://aicodiny.com
 - 사용자 가이드 https://ktaicoder.github.io
 
 ### PC 프로그램
@@ -33,6 +33,6 @@ $  yarn dev
 - 하드웨어 제어 라이브러리 깃허브 https://github.com/ktaicoder/hw-control.git
   - NPM 링크: https://www.npmjs.com/package/@ktaicoder/hw-control
 
-### 코딩팩
+### KT AI Codiny Pack
 
-- 코딩팩 드라이버 깃허브 https://github.com/aicodingblock/reset_blockdriver
+- KT AI Codiny Pack 드라이버 깃허브 https://github.com/aicodingblock/reset_blockdriver

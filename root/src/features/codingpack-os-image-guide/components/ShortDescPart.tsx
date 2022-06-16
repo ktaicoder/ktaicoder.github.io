@@ -73,7 +73,7 @@ export default function ShortDescPart() {
             <Box>
                 <Box my={2}>
                     <Box mt={1} mb={2}>
-                        <em>OS 이미지란?</em> KT 코딩팩을 구동하려면 운영체제가 필요합니다. 이 운영 체제를{' '}
+                        <em>OS 이미지란?</em> KT AI Codiny Pack을 구동하려면 운영체제가 필요합니다. 이 운영 체제를{' '}
                         <em>하나의 파일</em>에 넣어둔 것을 OS 이미지라고 합니다.
                     </Box>
                 </Box>
@@ -192,14 +192,14 @@ export default function ShortDescPart() {
                                 <LinkButton
                                     style={{ width: '100%' }}
                                     title="라즈베리파이 3B+ OS 이미지 다운로드"
-                                    href={`https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp3.fileName}`}
+                                    href={`https://aicodiny.com/_static/codingpack/${CODINGPACK.rp3.fileName}`}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={12} md={6} lg={6}>
                                 <LinkButton
                                     style={{ width: '100%' }}
                                     title="라즈베리파이 4B OS 이미지 다운로드"
-                                    href={`https://aicodingblock.kt.co.kr/_static/codingpack/${CODINGPACK.rp4.fileName}`}
+                                    href={`https://aicodiny.com/_static/codingpack/${CODINGPACK.rp4.fileName}`}
                                 />
                             </Grid>
                         </Grid>
@@ -228,7 +228,7 @@ export default function ShortDescPart() {
                             <li>에처(etcher)를 실행하고 다운로드 받은 OS 이미지 파일을 선택합니다.</li>
                             <li>컴퓨터에 SD 카드를 삽입하고 해당 SD카드로 디스크를 설정합니다.</li>
                             <li>
-                                Flash 버튼을 누르고 완료되면 KT코딩팩에 SD 카드를 삽입하고, 전원을 연결해 구동합니다.
+                                Flash 버튼을 누르고 완료되면 KT AI Codiny Pack에 SD 카드를 삽입하고, 전원을 연결해 구동합니다.
                             </li>
                         </Box>
                     </Box>
@@ -251,7 +251,7 @@ export default function ShortDescPart() {
                         >
                             <li>raspi-config 명령을 통해 디스크를 확장해야 합니다.</li>
                             <li>인터넷 연결을 설정하세요.</li>
-                            <li>인터넷이 연결된 후에 코딩팩 바탕화면의 시스템 초기화을 실행해주세요</li>
+                            <li>인터넷이 연결된 후에 KT AI Codiny Pack 바탕화면의 시스템 초기화을 실행해주세요</li>
                         </Box>
                     </Box>
                 </Box>

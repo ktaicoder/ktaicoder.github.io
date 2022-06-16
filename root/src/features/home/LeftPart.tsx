@@ -66,7 +66,7 @@ export default function LeftPart() {
                         color: '#0A1929',
                     }}
                 >
-                    <Box>AI 코딩블록</Box>
+                    <Box>AI 코디니</Box>
                     <Box sx={{ color: '#005CB8' }}>사용자</Box>
                     <Box>가이드</Box>
                 </Box>
@@ -81,11 +81,11 @@ export default function LeftPart() {
                     }}
                 >
                     <Box sx={{ color: '#555', fontSize: '1rem', fontWeight: 400, mt: mdDown ? 8 : 2 }}>
-                        AI 코딩블록 사용자 가이드 사이트입니다.
-                        <em>AI 코딩블록 사이트</em>의 기술적인 설명을 정리하고 있습니다.
+                        AI 코디니 사용자 가이드 사이트입니다.
+                        <em>AI 코디니 사이트</em>의 기술적인 설명을 정리하고 있습니다.
                     </Box>
                     <Box sx={{ color: '#555', fontSize: '1rem', fontWeight: 400, mt: 2 }}>
-                        KT의 AI 코딩블록은 많은 부분을 <em>오픈 소스</em>로 진행하고 있습니다. <em>GITHUB</em>에 공개된
+                        KT의 AI 코디니은 많은 부분을 <em>오픈 소스</em>로 진행하고 있습니다. <em>GITHUB</em>에 공개된
                         소스코드를 확인할 수 있습니다.
                     </Box>
                 </Box>
@@ -111,9 +111,9 @@ export default function LeftPart() {
                         variant="contained"
                         size="large"
                         endIcon={<ChevronRight fontSize="small" />}
-                        onClick={() => window?.open('https://aicodingblock.kt.co.kr')}
+                        onClick={() => window?.open('https://aicodiny.com')}
                     >
-                        AI 코딩블록 {!smDown && '사이트'}
+                        AI 코디니 {!smDown && '사이트'}
                     </Button>
                     <Button
                         sx={{ ml: 2 }}
@@ -126,7 +126,7 @@ export default function LeftPart() {
                     </Button>
                 </Box>
                 <Box sx={{ mt: 6, color: '#555', fontSize: '0.85rem', fontWeight: 400 }}>
-                    아직 부족한 점이 많지만 점점 발전하는 KT의 AI 코딩블록을 지켜봐주세요.
+                    아직 부족한 점이 많지만 점점 발전하는 KT의 AI 코디니을 지켜봐주세요.
                 </Box>
             </Box>
         </Box>

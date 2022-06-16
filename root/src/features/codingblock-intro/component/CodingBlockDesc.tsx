@@ -9,7 +9,7 @@ export default function CodingBlockDesc(props: Props) {
     const { sx } = props
     return (
         <Box className="CodingBlockDesc-root" sx={[...(Array.isArray(sx) ? sx : [sx ?? false])]}>
-            <h3>KT AI 코딩블록으로 프로그래밍해 보자.</h3>
+            <h3>KT AI 코디니으로 프로그래밍해 보자.</h3>
             <section>
                 <h5>프로그램을 만들려면 무엇이 필요할까요?</h5>
                 <p>
@@ -25,7 +25,7 @@ export default function CodingBlockDesc(props: Props) {
                     합니다.
                 </p>
                 <p>
-                    KT AI 코딩블록도 프로그래밍 언어의 한 종류로 <em>블록형 프로그래밍 언어</em>입니다.
+                    KT AI 코디니도 프로그래밍 언어의 한 종류로 <em>블록형 프로그래밍 언어</em>입니다.
                 </p>
                 <Box className="CodingBlockIntro-imageBox">
                     <MdxImageView src="/images/intro/codingblock1.png" transparentBg />

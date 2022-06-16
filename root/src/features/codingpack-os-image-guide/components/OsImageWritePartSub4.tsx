@@ -11,7 +11,7 @@ export default function OsImageWritePartSub4() {
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', fontWeight: 600 }}>
-                4. 코딩팩 연결
+                4. KT AI Codiny Pack 연결
             </Typography>
 
             <ImageBox mt={2}>
@@ -66,7 +66,7 @@ export default function OsImageWritePartSub4() {
                 </Grid>
             </ImageBox>
             <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="코딩팩에 SD카드를 삽입한 후 전원을 넣으면, 코딩팩을 이용할 수 있습니다." />
+                <ListText text="KT AI Codiny Pack에 SD카드를 삽입한 후 전원을 넣으면, 이용할 수 있습니다." />
             </ListTextBox>
         </Box>
     )

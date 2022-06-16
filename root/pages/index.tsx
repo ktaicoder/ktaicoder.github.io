@@ -6,7 +6,7 @@ const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
 const Index: NextPage = () => {
     return (
-        <MainLayout title="AI 코딩블록 사용자 가이드">
+        <MainLayout title="AI 코디니 사용자 가이드">
             <Home />
         </MainLayout>
     )
