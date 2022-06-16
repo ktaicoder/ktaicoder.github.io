@@ -31,6 +31,7 @@ yarn build:fast
 popd
 
 export ACCESS_TOKEN
+echo "node deploy.mjs"
 time node deploy.mjs
 
 echo "deploy success!"
