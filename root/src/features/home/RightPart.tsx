@@ -47,12 +47,12 @@ export default function RightPart() {
                     >
                         <Paper sx={{ mt: 0, p: 3, borderRadius: '16px', color: '#fff', background: '#007FFF' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>KT AI 코디니이란?</Typography>
+                                <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>KT AI 코디니란?</Typography>
                                 {/* <Button sx={{ color: '#fff' }}>더 보기</Button> */}
                             </Box>
 
                             <Typography sx={{ mt: 3, fontWeight: 400, fontSize: '1rem' }}>
-                                KT AI 코디니은 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을 쉽게 학습하고
+                                KT AI 코디니는 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을 쉽게 학습하고
                                 구현할 수 있는 소프트웨어 코딩 교육 플랫폼입니다.
                             </Typography>
                             <Box sx={{ mt: 2, mb: 1, display: 'flex', justifyContent: 'center' }}>

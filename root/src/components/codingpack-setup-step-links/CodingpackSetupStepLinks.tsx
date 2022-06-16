@@ -78,7 +78,7 @@ export default function CodingpackSetupStepLinks(props: Props) {
                 direction="column"
                 spacing={0}
                 sx={{
-                    minWidth: '320px',
+                    minWidth: '340px',
                     border: '1px solid #ddd',
                     borderRadius: '8px',
                     px: 1,

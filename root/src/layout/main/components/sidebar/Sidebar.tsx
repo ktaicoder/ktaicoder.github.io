@@ -43,7 +43,7 @@ function Sidebar() {
                             I
                         </Box>
                         <Box component="span" sx={{ display: 'inline-block', ml: 1, color: 'rgba(255,255,255,0.7)' }}>
-                            코딩 블록
+                            코디니
                         </Box>
                         <Box component="span" sx={{ display: 'inline-block', ml: 1, color: 'rgba(255,255,255,0.7)' }}>
                             가이드

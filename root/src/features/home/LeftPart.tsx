@@ -85,7 +85,7 @@ export default function LeftPart() {
                         <em>AI 코디니 사이트</em>의 기술적인 설명을 정리하고 있습니다.
                     </Box>
                     <Box sx={{ color: '#555', fontSize: '1rem', fontWeight: 400, mt: 2 }}>
-                        KT의 AI 코디니은 많은 부분을 <em>오픈 소스</em>로 진행하고 있습니다. <em>GITHUB</em>에 공개된
+                        KT의 AI 코디니는 많은 부분을 <em>오픈 소스</em>로 진행하고 있습니다. <em>GITHUB</em>에 공개된
                         소스코드를 확인할 수 있습니다.
                     </Box>
                 </Box>
@@ -126,7 +126,7 @@ export default function LeftPart() {
                     </Button>
                 </Box>
                 <Box sx={{ mt: 6, color: '#555', fontSize: '0.85rem', fontWeight: 400 }}>
-                    아직 부족한 점이 많지만 점점 발전하는 KT의 AI 코디니을 지켜봐주세요.
+                    아직 부족한 점이 많지만 점점 발전하는 KT의 AI 코디니를 지켜봐주세요.
                 </Box>
             </Box>
         </Box>
