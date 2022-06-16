@@ -10,10 +10,10 @@ export default function CodingBlockIntro() {
     return (
         <Box sx={rootSx} className="CodingBlockIntro-root">
             <Container maxWidth="md" component="div" ref={containerRef} style={{ maxWidth: 760 }}>
-                <h3>KT AI 코디니란?</h3>
+                <h3>AI 코디니란?</h3>
                 <section>
                     <p>
-                        KT AI 코디니는 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을
+                        AI 코디니는 ‘인공지능’, ‘사물인터넷’, ‘빅데이터’ 등의 세상의 기술들을
                         <br />
                         쉽게 학습하고 구현할 수 있는 소프트웨어 코딩 교육 플랫폼입니다.
                         <br />
