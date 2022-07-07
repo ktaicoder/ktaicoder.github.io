@@ -6,7 +6,7 @@ const MainLayout = dynamic(() => import('src/layout/main/MainLayout'))
 
 const Index: NextPage = () => {
     return (
-        <MainLayout title="KT AI Codiny Pack OS 이미지 굽기">
+        <MainLayout title="코디니팩 OS 이미지 굽기">
             <CodingPackOsImageGuide />
         </MainLayout>
     )

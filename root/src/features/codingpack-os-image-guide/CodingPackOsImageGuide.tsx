@@ -33,7 +33,7 @@ export default function CodingPackOsImageGuide() {
                 style={{ maxWidth: 760 }}
                 className="CodingPackOsImageGuide-container"
             >
-                <GuideTitle title="KT AI Codiny Pack OS 이미지 굽기" sx={{ mb: 4 }} />
+                <GuideTitle title="코디니팩 OS 이미지 굽기" sx={{ mb: 4 }} />
 
                 {/* 라즈베리 소개 부분 */}
                 <RaspIntroPart />

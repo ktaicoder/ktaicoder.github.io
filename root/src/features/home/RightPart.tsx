@@ -103,7 +103,7 @@ export default function RightPart() {
                         <Paper sx={{ mt: 0, flex: 1, p: 3, borderRadius: '16px' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>
-                                    KT AI Codiny Pack OS 이미지 굽기
+                                    코디니팩 OS 이미지 굽기
                                 </Typography>
                                 <Button onClick={() => routerPush('/codingpack/os-image-guide')}>가이드</Button>
                             </Box>
@@ -115,7 +115,7 @@ export default function RightPart() {
                                 />
                             </Box>
                             <Typography sx={{ p: 2, fontWeight: 400, fontSize: '1rem' }}>
-                                라즈베리 파이라는 소형 컴퓨터와 KT AI Codiny Pack의 인공지능 기반으로 누구나 쉽고 저렴하게
+                                라즈베리 파이라는 소형 컴퓨터와 코디니팩의 인공지능 기반으로 누구나 쉽고 저렴하게
                                 다양한 콘텐츠를 재미있게 즐기도록 개발하였습니다.
                             </Typography>
                         </Paper>
