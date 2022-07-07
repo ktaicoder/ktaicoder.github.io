@@ -1,0 +1,97 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩의 파이썬 개발 환경
+description: 코디니팩에서 파이썬 개발 환경을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제3
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 파이썬 예제3</b>의 소스코드와 실행화면입니다.
+    </Box>
+</MdxTextBox>
+
+## 예제3 TTS
+
+음성인식이 음성을 문자로 바꾸는 기술이라면, 음성 합성(Voice Synthesis)은 문자를 음성으
+로 바꾸는 기술입니다.
+
+-   컴퓨터가 결과로 돌려주는 데이터는 과연 어떤 형태로 되어있을까요? 당연히 문자로 되어있습니다.
+-   인공지능 스피커는 결과를 음성으로 출력해야 하는데 결과가 문자로 되어있으니
+    다시 음성으로 변환을 해 주어야 합니다.
+-   이처럼 사용자의 질문에 대한 답변 혹은 사용자의 요청에 대한 결과를 음성으로 알려주기 위해 음성합성 기술을 사용합니다.
+
+<MdxImageView src="/images/codinypack-py/tts1.png" caption="TTS" transparentBg />
+
+## 예제3 소스코드
+
+-   아래는 `/home/pi/ai-makers-kit/python3/ex3_getText2VoiceUrl.py` 파일입니다.
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Example 3: TTS - getText2VoiceUrl"""
+
+from __future__ import print_function
+
+import grpc
+import gigagenieRPC_pb2
+import gigagenieRPC_pb2_grpc
+import user_auth as UA
+import os
+
+HOST = 'gate.gigagenie.ai'
+PORT = 4080
+
+# TTS : getText2VoiceUrl
+def getText2VoiceUrl(inText):
+    channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), UA.getCredentials())
+    stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
+
+    message = gigagenieRPC_pb2.reqText()
+    message.lang = 0
+    message.mode = 0
+    message.text = inText
+    response = stub.getText2VoiceUrl(message)
+
+    print ("\n\nresultCd: %d" % (response.resultCd))
+    if response.resultCd == 200:
+        print ("TTS 생성에 성공하였습니다.\n\n\n아래 URL을 웹브라우져에 넣어보세요.")
+        print ("Stream Url: %s\n\n" % (response.url))
+    else:
+        print ("TTS 생성에 실패하였습니다.")
+        print ("Fail: %d" % (response.resultCd))
+
+def main():
+    getText2VoiceUrl("안녕하세요. 반갑습니다.")
+
+if __name__ == '__main__':
+    main()
+
+```
+
+## 실행
+
+-   아래와 같이 실행하세요.
+
+```bash
+$ python3.7 ex3_getText2VoiceUrl.py
+```
+
+-   아래는 터미널에서 실행한 모습입니다.
+-   출력결과에 있는 Stream URL은 텍스트가 음성으로 변환된 mp3 URL입니다.
+-   브라우저에 mp3 URL을 붙여넣기 하면 재생됩니다.
+    <MdxImageView src="/images/codinypack-py/ex3_out1.png" caption="예제 실행" />
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        현재 mp3 URL은 정상적으로 재생되지 않습니다. 곧 수정하겠습니다.
+    </Box>
+</MdxTextBox>
+
+<PyExampleLinkBox exampleId="ex3" />
+
+End.

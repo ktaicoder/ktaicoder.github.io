@@ -132,8 +132,13 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         type: 'section',
         sectionId: nextSectionId(),
         icon: 'adb',
-        title: '코디니팩 사용팁',
+        title: '코디니팩 파이썬',
         submenus: [
+            {
+                type: 'menu',
+                title: '파이썬 예제',
+                href: '/post-frame/codingpack-how-to-python-ex0',
+            },
             {
                 type: 'menu',
                 title: '파이썬 개발 환경',

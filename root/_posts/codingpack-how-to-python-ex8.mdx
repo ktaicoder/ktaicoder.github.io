@@ -1,0 +1,81 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩의 파이썬 개발 환경
+description: 코디니팩에서 파이썬 개발 환경을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제8
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 파이썬 예제8</b>의 소스코드와 실행화면입니다.
+    </Box>
+</MdxTextBox>
+
+## 예제8 음성인식 TTS 대화 결합 예제
+
+-   예제8은 TTS와 대화를 결합한 예제입니다.
+
+## 예제8 소스코드
+
+-   아래는 `/home/pi/ai-makers-kit/python3/ex8_kwssttdss.py` 파일입니다.
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Date:2019.02.18
+Example 8: 음성인식 TTS 대화 결합 예제
+"""
+
+from __future__ import print_function
+
+import MicrophoneStream as MS
+import ex1_kwstest as kws
+import ex4_getText2VoiceStream as tts
+import ex6_queryVoice as dss
+import time
+
+def main():
+    #Example8 KWS+STT+DSS
+
+    KWSID = ['기가지니', '지니야', '친구야', '자기야']
+    while 1:
+        recog=kws.test(KWSID[0])
+        if recog == 200:
+            print('KWS Dectected ...\n')
+            dss_answer = dss.queryByVoice()
+            if dss_answer == '':
+                print('질의한 내용이 없습니다.\n\n\n')
+            else:
+                MS.play_file("result_mesg.wav")
+            time.sleep(2)
+        else:
+            print('KWS Not Dectected ...')
+
+if __name__ == '__main__':
+    main()
+
+```
+
+## 실행
+
+-   아래와 같이 실행하세요.
+
+```bash
+$ python3.7 ex8_kwssttdss.py
+```
+
+-   아래는 터미널에서 실행한 모습입니다.
+    1.  호출어를 인식한 후에,
+    1.  STT로 질의할 음성을 말하고,
+    1.  음성을 텍스트로 변환하여 질의합니다.
+-   이 과정을 무한 반복합니다.
+
+    <MdxImageView src="/images/codinypack-py/ex8_out1.png" caption="예제 실행" />
+
+<PyExampleLinkBox exampleId="ex8" />
+
+End.

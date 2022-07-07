@@ -1,0 +1,74 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩의 파이썬 개발 환경
+description: 코디니팩에서 파이썬 개발 환경을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제7
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 파이썬 예제7</b>의 소스코드와 실행화면입니다.
+    </Box>
+</MdxTextBox>
+
+## 예제7 KWS와 STT 조합 예제
+
+-   이번 예제는 앞에서 예제1의 KWS와 예제2의 STT를 조합한 예제입니다.
+
+## 예제7 소스코드
+
+-   아래는 `/home/pi/ai-makers-kit/python3/ex7_kwsstt.py` 파일입니다.
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Date:2019.02.18
+Example 7: 호출어 음성인식 결합 예제
+"""
+from __future__ import print_function
+
+import time
+import ex2_getVoice2Text as gv2t
+import ex1_kwstest as kws
+
+def main():
+    #Example7 KWS+STT
+
+    KWSID = ['기가지니', '지니야', '친구야', '자기야']
+    while 1:
+        recog=kws.test(KWSID[0])
+        if recog == 200:
+            print('KWS Dectected ...\n Start STT...')
+            text = gv2t.getVoice2Text()
+            print('Recognized Text: '+ text)
+            time.sleep(2)
+
+        else:
+            print('KWS Not Dectected ...')
+
+if __name__ == '__main__':
+    main()
+```
+
+## 실행
+
+-   아래와 같이 실행하세요.
+
+```bash
+$ python3.7 ex7_kwsstt.py
+```
+
+-   아래는 터미널에서 실행한 모습입니다.
+-   실행되면 호출어 대기 상태가 됩니다. 이때 `기가지니`를 불러주세요.
+-   호출어가 인식된 후에는 자동으로 STT 인식을 시작합니다.
+-   아래 예제에서는 STT에 `안녕`이라고 말했고, 이를 인식했습니다.
+
+    <MdxImageView src="/images/codinypack-py/ex4_out1.png" caption="예제 실행" transparentBg />
+
+<PyExampleLinkBox exampleId="ex7" />
+
+End.

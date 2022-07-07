@@ -1,0 +1,66 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩의 파이썬 예제 실행 준비 과정
+description: 코디니팩의 파이썬 예제를 실행하기 위한 실행 준비 과정을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제 실행 준비 과정
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 라즈베리파이 4</b>의 <b>파이썬 예제</b>를 실행하기 위한 준비 과정에 대한 설명입니다.
+    </Box>
+    <ul>
+        <li>예제를 실행하기에 앞서 필요한 기본적인 내용을 설명합니다.</li>
+    </ul>
+</MdxTextBox>
+
+예제를 먼저 보시려면 아래 예제를 클릭해주세요.
+
+<PyExampleLinkBox exampleId="ex0" />
+
+## 시스템 환경 확인
+
+-   개발을 하기 전에 코디니팩의 정보를 확인해보겠습니다.
+-   아래는 터미널에서 코디니팩의 정보를 확인하는 예시 화면입니다. 터미널을 열어서 `aimk-inspect.sh`을 실행해보세요.
+
+    <MdxImageView src="/images/codinypack-py/inspect.png" caption="시스템 정보 확인" />
+
+## 파이썬 버전 확인
+
+-   아래는 시스템에 파이썬 3.7이 설치되어 있는지 확인하는 예시 화면입니다.
+    <MdxImageView src="/images/codinypack-py/check-py37.png" caption="파이썬 버전 확인" />
+
+## API 키 준비
+
+-   예제 파이썬들중 일부는 KT의 인공지능 API를 호출합니다.
+-   인공지능 API는 아무나 호출할 수 있는 것은 아니고, API 키를 발급받은 후에 호출할 수 있습니다.
+
+### API 키 발급 받기
+
+-   아래와 같이, 바탕화면의 `API 키발급`을 실행하여 키를 발급 받아주세요.
+-   발급받은 키는 `/home/pi/Downloads/clientKey.json` 파일에 저장됩니다.
+-   두 번 실행해도 괜찮습니다. 이미 발급받은 키가 있는 경우 다시 발급받지 않습니다.
+-   강제로 다시 발급받으려면 `clientKey.json`을 삭제한 후에 실행하면 됩니다.
+
+    <MdxImageView src="/images/codinypack-py/issue-api-key.png" caption="API 키 발급" />
+
+### API 키를 소스코드에 붙여넣기
+
+-   발급받은 키를 소스코드에 복사해야, 소스코드에서 API를 호출할 수 있습니다.
+-   아래와 같이 `clientKey.json` 파일을 열어주세요.
+    <MdxImageView src="/images/codinypack-py/copy-key-step1.png" caption="clientKey.json 파일 열기" />
+-   터미널이 편한 분들은 아래와 같이 `clientKey.json` 파일을 확인할 수 있습니다.
+    <MdxImageView src="/images/codinypack-py/copy-key-step2.png" caption="터미널에서 clientKey.json 파일 열기" />
+-   이제 아래와 같이 `user_auth.py` 파이썬 파일을 열어주세요.
+    <MdxImageView src="/images/codinypack-py/copy-key-step3.png" caption="user_auth.py 파일 열기" />
+-   파이썬 파일을 더블클릭하면 `Thonny` 파이썬 에디터가 실행됩니다.
+-   `clientKey.json`에서 내용을 복사해서, 아래와 같이 `user_auth.py` 파이썬 파일에 붙여넣기 해주세요.
+    <MdxImageView src="/images/codinypack-py/copy-key-step4.png" caption="user_auth.py 파일 열기" />
+
+이제 파이썬 예제를 실행할 준비가 되었습니다. 첫번째 예제부터 하나씩 실행해보세요.
+
+<PyExampleLinkBox exampleId="ex0" />
+
+End.
