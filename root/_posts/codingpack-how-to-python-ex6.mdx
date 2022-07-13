@@ -100,21 +100,12 @@ def queryByVoice():
     else:
         print("\n\nresultCd: %d\n" % (response.resultCd))
         print("정상적인 음성인식이 되지 않았습니다.")
-    tts.getText2VoiceStream(resultText, "result_mesg.wav")
-    #MS.play_file("result_mesg.wav")
     return resultText
 
 def main():
-    result = queryByVoice()
-    tts.getText2VoiceStream(result, "result_mesg.wav")
-    MS.play_file("result_mesg.wav")
-    #print(tts_result)
-
-    '''
-    time.sleep(5)
-    tts_result = tts.getText2VoiceStream(result, "result_mesg.wav")
+    queryByVoice()
     time.sleep(0.5)
-    '''
+
 if __name__ == '__main__':
     main()
 ```
