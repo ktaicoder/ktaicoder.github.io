@@ -95,8 +95,8 @@ export default function OsImageDownloadPart() {
                 <ListText
                     text={
                         <>
-                            코디니팩에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
-                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.6GB)</span><br />
+                            보유하고 있는 코디니팩에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
+                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.7GB)</span><br />
                             아래 사이트에서 다운로드 할 수 있습니다.<br />
                             <a href="https://aicodiny.com/download" target="_new">https://aicodiny.com/download</a>
                         </>
@@ -110,11 +110,11 @@ export default function OsImageDownloadPart() {
                             <Box component="span" sx={{ whiteSpace: 'nowrap', fontWeight: 600, color: 'primary.dark' }}>
                                 pi
                             </Box>{' '}
-                            , 암호는{' '}
+                            , 초기 비밀번호는{' '}
                             <Box component="span" sx={{ whiteSpace: 'nowrap', fontWeight: 600, color: 'primary.dark' }}>
                                 kt123!@#
                             </Box>
-                            입니다.
+                            입니다. 초기 비밀번호는 변경 후에 사용하는 것이 좋습니다.
                         </>
                     }
                 />

@@ -52,7 +52,7 @@ export default function ImagerDownloadPart() {
                         https://www.raspberrypi.com/software/
                     </Box>
                     <Typography sx={{ color: '#fff', mt: 2 }}>
-                        라즈베리 사이트에 방문하여 본인의 운영체제에 맞는 버전을 선택하여 다운로드 해주세요.
+                        라즈베리 사이트에 방문하여 본인의 컴퓨터에 맞는 프로그램을 다운로드 해주세요.
                     </Typography>
                 </Box>
                 <Box

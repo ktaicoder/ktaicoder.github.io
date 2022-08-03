@@ -1,6 +1,5 @@
 import { Box, Grid, Typography } from '@mui/material'
 import { routerUrlOf } from 'src/lib/urls'
-import ImageBox from './ImageBox'
 import ListText from './ListText'
 import ListTextBox from './ListTextBox'
 
@@ -42,8 +41,8 @@ export default function OsImageWritePartSub2() {
             <ListTextBox sx={{ mt: 4 }}>
                 <ListText text="컴퓨터에 SD카드 리더기(USB)를 삽입하고 내 PC에 연결되었는지 확인합니다." />
                 <ListText text="SD카드를 꽂으면 탐색기가 실행될 수도 있는데, 그냥 닫으면 됩니다." />
-                <ListText text="이 과정에서 아래의 오류 또는 경고창이 발생할 수 있는데, 무시하면 됩니다." />
-                <ListText text="이미지를 굽는 과정에서 경고창들이 또 표시될 수 있습니다. OS 이미지는 특수한 방식으로 만들기 때문에 이런 경고창들이 뜨는 것으로 이해하고, 무시하면 됩니다." />
+                <ListText text="탐색기 외에도 아래 그림과 같은 오류 또는 경고창들이 표시될 수 있는데, 무시하면 됩니다." />
+                <ListText text="또 이 후의 과정에서도 표시될 수 있습니다. OS 이미지는 특수한 방식으로 만들기 때문에 이런 경고창들이 뜨는 것으로 이해하고, 계속 무시하면 됩니다." />
             </ListTextBox>
             <Box
                 sx={{
