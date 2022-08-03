@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import CodingpackSetupStepLinks from 'src/components/codingpack-setup-step-links/CodingpackSetupStepLinks'
 import GuideTitle from 'src/components/guide-title/GuideTitle'
 import ImageViewerContainer from 'src/components/image-viewer-container/ImageViewerContainer'
-import EtcherDownloadPart from './components/EtcherDownloadPart'
+import ImagerDownloadPart from './components/ImagerDownloadPart'
 import IntroStepPart from './components/IntroStepPart'
 import OsImageDownloadPart from './components/OsImageDownloadPart'
 import OsImageWritePart from './components/OsImageWritePart'
@@ -82,7 +82,7 @@ export default function CodingPackOsImageGuide() {
 
                 {/* 2단계 에처(OS 제작 프로그램) 다운로드 */}
                 <Box sx={{ mt: 10 }}>
-                    <EtcherDownloadPart />
+                    <ImagerDownloadPart />
                 </Box>
 
                 {/* 3단계 SD 카드에 OS 이미지 굽기 */}

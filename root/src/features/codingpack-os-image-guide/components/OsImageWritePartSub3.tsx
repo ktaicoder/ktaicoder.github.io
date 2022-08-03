@@ -15,7 +15,7 @@ export default function OsImageWritePartSub3() {
                 <Box
                     component="img"
                     className="lightbox"
-                    src={routerUrlOf('/images/codingpack/flash1.png')}
+                    src={routerUrlOf('/images/codingpack/imager_flashing.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -27,14 +27,15 @@ export default function OsImageWritePartSub3() {
             </ImageBox>
 
             <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="Flash 버튼을 누르고 완료될 때까지 기다립니다." />
+                <ListText text="쓰기 버튼을 누르고 완료될 때까지 기다립니다." />
+                <ListText text="잠시 기다리면 흰색 로딩(`쓰는 중`)이 시작됩니다. 완료까지 대략 5~10분 정도 소요됩니다." />
             </ListTextBox>
 
             <ImageBox mt={10}>
                 <Box
                     component="img"
                     className="lightbox"
-                    src={routerUrlOf('/images/codingpack/flash2.png')}
+                    src={routerUrlOf('/images/codingpack/imager_verifying.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -45,28 +46,10 @@ export default function OsImageWritePartSub3() {
                 />
             </ImageBox>
             <ListTextBox sx={{ mt: 1 }}>
-                <ListText text="1분정도 기다리면 보라색 로딩(Flashing)이 시작됩니다. 완료까지 대략 5~10분 정도 소요됩니다." />
-            </ListTextBox>
-
-            <ImageBox mt={10}>
-                <Box
-                    component="img"
-                    className="lightbox"
-                    src={routerUrlOf('/images/codingpack/flash3.png')}
-                    sx={{
-                        objectFit: 'contain', //
-                        maxWidth: 600,
-                        width: '100%',
-                        height: '100%',
-                        border: '1px solid #ddd',
-                    }}
-                />
-            </ImageBox>
-            <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="연두색 로딩(Validating)은 SD 카드를 검사하는 과정입니다." />
+                <ListText text="녹색 로딩(`확인 중`)은 쓰기가 완료된 후 SD 카드를 검사하는 과정입니다." />
                 <ListText text="SD 카드가 불량인 경우 이 단계에서 알 수 있습니다" />
                 <ListText text="요즘엔 불량인 경우가 별로 없어서 대부분 정상 통과합니다." />
-                <ListText text="시간이 없다면 생략하셔도 됩니다. (Skip 버튼 클릭)" />
+                <ListText text="시간이 없다면 생략하셔도 됩니다. (확인 취소 클릭)" />
             </ListTextBox>
 
             <Box sx={{ background: '#F6F6F6', p: 3, mt: 6, '& > div + div': { mt: 1 } }}>

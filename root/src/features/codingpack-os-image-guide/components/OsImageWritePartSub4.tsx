@@ -11,14 +11,14 @@ export default function OsImageWritePartSub4() {
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', fontWeight: 600 }}>
-                4. KT AI Codiny Pack 연결
+                4. 코디니팩에 SD 카드 삽입
             </Typography>
 
             <ImageBox mt={2}>
                 <Box
                     component="img"
                     className="lightbox"
-                    src={routerUrlOf('/images/codingpack/flash_complete.png')}
+                    src={routerUrlOf('/images/codingpack/imager_completed.png')}
                     sx={{
                         objectFit: 'contain', //
                         maxWidth: 600,
@@ -29,8 +29,8 @@ export default function OsImageWritePartSub4() {
                 />
             </ImageBox>
             <ListTextBox sx={{ mt: 1 }}>
-                <ListText text="굽기가 완료되면 Flash Complete 화면이 표시됩니다" />
-                <ListText text="이제 에처(Etcher)창을 닫고 컴퓨터에서 SD 카드를 빼주세요." />
+                <ListText text="굽기가 완료되면 위와 같이 `쓰기 완료` 알림이 표시됩니다." />
+                <ListText text="이제 이미저(Imager)를 닫고 컴퓨터에서 SD 카드를 빼주세요." />
             </ListTextBox>
 
             <ImageBox mt={8}>
@@ -66,7 +66,7 @@ export default function OsImageWritePartSub4() {
                 </Grid>
             </ImageBox>
             <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="KT AI Codiny Pack에 SD카드를 삽입한 후 전원을 넣으면, 이용할 수 있습니다." />
+                <ListText text="코디니팩에 SD카드를 삽입한 후 전원을 넣으면, 이용할 수 있습니다." />
             </ListTextBox>
         </Box>
     )

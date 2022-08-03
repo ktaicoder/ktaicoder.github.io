@@ -8,11 +8,11 @@ export default function OsImageWritePartSub2() {
     return (
         <Box>
             <Typography variant="subtitle1" sx={{ color: '#3F617D', fontWeight: 600 }}>
-                2. Select target - 이미지 파일 복사할 SD카드 선택하기
+                2. 대상 SD 카드 선택
             </Typography>
 
             <Grid container spacing={1} sx={{ mt: 1 }}>
-                <Grid item xs={12} sm={12} md={5} lg={5}>
+                <Grid item xs={12} md={5} >
                     <Box
                         sx={{
                             width: '100%',
@@ -37,56 +37,65 @@ export default function OsImageWritePartSub2() {
                         />
                     </Box>
                 </Grid>
-                <Grid item xs={12} sm={12} md={7} lg={7}>
-                    <Box
-                        sx={{
-                            width: '100%',
-                            height: '100%',
-                            border: '1px solid #ddd',
-                            display: 'flex',
-                            background: '#fff',
-                            p: 2,
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Box
-                            component="img"
-                            className="lightbox"
-                            src={routerUrlOf('/images/codingpack/select_target2.png')}
-                            sx={{
-                                objectFit: 'contain',
-                                width: '400px',
-                                maxWidth: '100%',
-                            }}
-                            alt=""
-                        />
-                    </Box>
-                </Grid>
-            </Grid>
 
+            </Grid>
             <ListTextBox sx={{ mt: 4 }}>
                 <ListText text="컴퓨터에 SD카드 리더기(USB)를 삽입하고 내 PC에 연결되었는지 확인합니다." />
-                <ListText text="위 그림에서는 E와 G드라이브로 연결되었는데, PC 마다 드라이브 문자는 다를 수 있습니다" />
-                <ListText text="탐색기에서 드라이브 선택시 내용을 읽을 수 없다는 알림은 무시하면 됩니다." />
+                <ListText text="SD카드를 꽂으면 탐색기가 실행될 수도 있는데, 그냥 닫으면 됩니다." />
+                <ListText text="이 과정에서 아래의 오류 또는 경고창이 발생할 수 있는데, 무시하면 됩니다." />
+                <ListText text="이미지를 굽는 과정에서 경고창들이 또 표시될 수 있습니다. OS 이미지는 특수한 방식으로 만들기 때문에 이런 경고창들이 뜨는 것으로 이해하고, 무시하면 됩니다." />
             </ListTextBox>
-
-            <ImageBox mt={8}>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    p: 2,
+                    justifyContent: 'center',
+                }}
+            >
                 <Box
                     component="img"
                     className="lightbox"
-                    src={routerUrlOf('/images/codingpack/select_target3.png')}
+                    src={routerUrlOf('/images/codingpack/imager_ignoremessages.png')}
                     sx={{
-                        objectFit: 'contain', //
-                        maxWidth: 600,
-                        width: '100%',
-                        height: '100%',
-                        border: '1px solid #ddd',
+                        objectFit: 'contain',
+                        mt: 2,
+                        width: '500px',
+                        maxWidth: '100%',
                     }}
+                    alt=""
                 />
-            </ImageBox>
+            </Box>
+
             <ListTextBox sx={{ mt: 4 }}>
-                <ListText text="다시 에처(Etcher)로 돌아와서 Select target 버튼을 누른 후 SD 카드 드라이브를 선택해주세요." />
+                <ListText text="이미저(Imager)에서 `저장소 선택`을 클릭하여 SD카드를 선택합니다." />
             </ListTextBox>
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    p: 2,
+                    justifyContent: 'center',
+                }}
+            >
+                <Box
+                    component="img"
+                    className="lightbox"
+                    src={routerUrlOf('/images/codingpack/imager_sdcardselect.png')}
+                    sx={{
+                        objectFit: 'contain',
+                        width: '600px',
+                        maxWidth: '100%',
+                    }}
+                    alt=""
+                />
+            </Box>
+            <ListTextBox sx={{ mt: 4 }}>
+                <ListText text="이제 다음 단계에서 이미지 파일을 굽게 됩니다." />
+            </ListTextBox>
+
         </Box>
     )
 }

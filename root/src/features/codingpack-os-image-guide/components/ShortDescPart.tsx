@@ -122,7 +122,7 @@ export default function ShortDescPart() {
                             <Box mt={1} mb={2}>
                                 OS 이미지는 일반적인 파일과는 형태가 달라서, SD 카드에 복사할 때{' '}
                                 <em>특수한 방법으로 복사</em>
-                                해야 합니다. <em>에처(etcher)</em>라는 프로그램을 이용해서 복사합니다.
+                                해야 합니다. 라즈베리 사이트에서 제공하는 <em>이미저(Imager)</em> 프로그램을 이용해서 복사합니다.
                             </Box>
                         </Box>
                     </Box>
@@ -172,40 +172,14 @@ export default function ShortDescPart() {
                             기본 사용자 ID는 <em>pi</em>이며, 암호는 <em>kt123!@#</em> 입니다.
                         </li>
                         <li>
-                            라즈베리파이 3B+ <em>{CODINGPACK.rp3.version}</em>
-                            <span>
-                                <i />
-                            </span>
-                            {CODINGPACK.rp3.date}
+                            아래 사이트에서 다운로드 할 수 있습니다.<br />
+                            <a href="https://aicodiny.com/download" target="_new">https://aicodiny.com/download</a>
                         </li>
-                        <li>
-                            라즈베리파이 4B <em>{CODINGPACK.rp4.version}</em>
-                            <span>
-                                <i />
-                            </span>
-                            {CODINGPACK.rp4.date}
-                        </li>
+
                     </Box>
+
                     <Box mt={4}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <LinkButton
-                                    style={{ width: '100%' }}
-                                    title="라즈베리파이 3B+ OS 이미지 다운로드"
-                                    href={`https://aicodiny.com/_static/codingpack/${CODINGPACK.rp3.fileName}`}
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={6} lg={6}>
-                                <LinkButton
-                                    style={{ width: '100%' }}
-                                    title="라즈베리파이 4B OS 이미지 다운로드"
-                                    href={`https://aicodiny.com/_static/codingpack/${CODINGPACK.rp4.fileName}`}
-                                />
-                            </Grid>
-                        </Grid>
-                    </Box>
-                    <Box mt={4}>
-                        <Subtitle>2. 에처(etcher)를 이용해 SD 카드에 OS 이미지를 굽기</Subtitle>
+                        <Subtitle>2. 이미저(Imager)를 이용해 SD 카드에 OS 이미지 굽기</Subtitle>
 
                         <Box
                             component="ul"
@@ -223,12 +197,12 @@ export default function ShortDescPart() {
                         >
                             <li>OS 이미지 다운로드 후 압축 해제하여 나온 img 파일을 준비합니다.</li>
                             <li>
-                                OS 제작프로그램(<em>etcher</em>)를 다운로드 합니다.
+                                OS 제작프로그램(<em>Imager</em>)를 다운로드 합니다.
                             </li>
-                            <li>에처(etcher)를 실행하고 다운로드 받은 OS 이미지 파일을 선택합니다.</li>
+                            <li>이미저(Imager)를 실행하고 다운로드 받은 OS 이미지 파일을 선택합니다.</li>
                             <li>컴퓨터에 SD 카드를 삽입하고 해당 SD카드로 디스크를 설정합니다.</li>
                             <li>
-                                Flash 버튼을 누르고 완료되면 KT AI Codiny Pack에 SD 카드를 삽입하고, 전원을 연결해 구동합니다.
+                                쓰기 버튼을 누르고 완료되면 코디니팩에 SD 카드를 삽입하고, 전원을 연결해 구동합니다.
                             </li>
                         </Box>
                     </Box>
@@ -251,7 +225,7 @@ export default function ShortDescPart() {
                         >
                             <li>raspi-config 명령을 통해 디스크를 확장해야 합니다.</li>
                             <li>인터넷 연결을 설정하세요.</li>
-                            <li>인터넷이 연결된 후에 KT AI Codiny Pack 바탕화면의 시스템 초기화을 실행해주세요</li>
+                            <li>인터넷이 연결된 후에 코디니팩 바탕화면의 시스템 초기화을 실행해주세요</li>
                         </Box>
                     </Box>
                 </Box>

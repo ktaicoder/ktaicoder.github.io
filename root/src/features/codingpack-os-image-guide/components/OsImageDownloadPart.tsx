@@ -33,7 +33,7 @@ export default function OsImageDownloadPart() {
     return (
         <Box>
             <StepTitle step="1단계" title="OS 이미지 다운로드" />
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {/* <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Box
                     sx={{
                         mt: 4,
@@ -90,13 +90,15 @@ export default function OsImageDownloadPart() {
                         <RaspDownloadButton raspVersion="4B" onClick={() => downloadLink(CODINGPACK.rp4.url)} />
                     </Box>
                 </Box>
-            </Box>
+            </Box> */}
             <ListTextBox>
                 <ListText
                     text={
                         <>
-                            KT AI Codiny Pack에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
-                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.6GB)</span>{' '}
+                            코디니팩에 맞는 OS 이미지를 다운로드 후 압축을 해제합니다.{' '}
+                            <span style={{ whiteSpace: 'nowrap' }}>(약 2.6GB)</span><br />
+                            아래 사이트에서 다운로드 할 수 있습니다.<br />
+                            <a href="https://aicodiny.com/download" target="_new">https://aicodiny.com/download</a>
                         </>
                     }
                 />
@@ -104,7 +106,7 @@ export default function OsImageDownloadPart() {
                 <ListText
                     text={
                         <>
-                            KT AI Codiny Pack에 로그인 시 사용자 ID는{' '}
+                            코디니팩 로그인 시 사용자 ID는{' '}
                             <Box component="span" sx={{ whiteSpace: 'nowrap', fontWeight: 600, color: 'primary.dark' }}>
                                 pi
                             </Box>{' '}
