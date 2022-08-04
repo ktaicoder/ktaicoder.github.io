@@ -1,11 +1,11 @@
 ---
-date: '2021-12-01'
+date: '2022-08-05'
 thumbnail: thumbnail.jpg
 title: KT AI Codiny Pack SD 카드 확장
 description: KT AI Codiny Pack에서 SD 카드를 확장하는 방법을 설명합니다.
 ---
 
-# KT AI Codiny Pack SD 카드 확장
+# 코디니팩 SD 카드 확장
 
 -   OS 이미지를 구훈 후에 가장 먼저 해야할 일은 SD 카드의 용량을 확장하는 일입니다.
 -   구매한 SD 카드의 용량이 16GB 라도, OS 이미지를 구운 직후에는 약 6GB 정도로 인식합니다.
@@ -26,10 +26,40 @@ description: KT AI Codiny Pack에서 SD 카드를 확장하는 방법을 설명�
     -   위 이미지는 라즈베리파이 4에서 실행한 명령이며,
     -   라즈베라파이 3에서는 크기가 조금 다릅니다.
 
-## SD 카드 확장 명령 실행
+## SD 카드 확장하기
 
--   SD 카드 확장은 <PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>에서 해야 합니다.
--   터미널을 열어서 `sudo raspi-config` 명령을 입력합니다.
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>SD카드 확장 버튼 추가</Box>
+    <ul>
+        <li>예전의 OS 이미지에서는 수동으로 SD카드를 확장했었습니다.</li>
+        <li>2022년 8월 3일 이후에 배포된 OS 이미지에는 바탕화면에 `SD카드 확장` 버튼을 클릭하여 확장합니다.</li>
+        <li>또, PC 프로그램에서도 SD카드를 확장할 수 있습니다.</li>
+    </ul>
+</MdxTextBox>
+
+<MdxImageView src="/images/codingpack/sdcard_expand3.png" caption="SD카드 확장 버튼" />
+
+-   `SD카드 확장` 버튼을 클릭하면 SD 카드를 확장 한 후에 자동으로 재부팅됩니다.
+
+<MdxImageView src="/images/codingpack/sdcard_expand4.png" caption="SD카드 확장 실행 후 자동 재부팅" />
+
+## 재부팅 후 용량 확인
+
+-   재부팅이 완료된 후에 다시 한번 용량을 살펴봅니다.
+-   `df -h` 명령을 입력해주세요.
+
+<MdxImageView src="/images/codingpack/sdcard_expand2.png" caption="확장한 후의 SD 카드 용량 확인" />
+
+-   위의 출력 결과는 전체 용량을 15GB로 인식하고 있음을 보여줍니다.
+-   이 정도면, 16GB에 가깝께 인식하고 있으니 정상적으로 보입니다.
+-   남은 공간도 8.7GB나 되니까 충분해보입니다.
+-   이제 코디니팩 업데이트나 시스템 초기화를 실행해도 괜찮습니다.
+
+## 수동으로 SD 카드 확장하기
+
+아래는 터미널에서 수동으로 실행하고 싶은 분만 보시면 됩니다.
+
+-   <PostLink postId="codingpack-how-to-open-terminal">터미널</PostLink>을 열어서 `sudo raspi-config` 명령을 입력합니다.
 
 <MdxImageView src="/images/codingpack/booting1.png" />
 
@@ -48,18 +78,6 @@ description: KT AI Codiny Pack에서 SD 카드를 확장하는 방법을 설명�
 <MdxImageView src="/images/codingpack/booting5.png" caption="재부팅을 물어보면 재부팅하세요" />
 
 -   이제 SD 카드가 확장되었습니다. 재부팅 하세요.
-
-## 재부팅 후 용량 확인
-
--   재부팅이 완료된 후에 다시 한번 용량을 살펴봅니다.
--   `df -h` 명령을 입력해주세요.
-
-<MdxImageView src="/images/codingpack/sdcard_expand2.png" caption="확장한 후의 SD 카드 용량 확인" />
-
--   위의 출력 결과는 전체 용량을 15GB로 인식하고 있음을 보여줍니다.
--   이 정도면, 16GB에 가깝께 인식하고 있으니 정상적으로 보입니다.
--   남은 공간도 8.7GB나 되니까 충분해보입니다.
--   이제 KT AI Codiny Pack 업데이트나 시스템 초기화를 실행해도 괜찮습니다.
 
 <CodingpackSetupStepLinks currentStep={2} next sx={{ my: 10 }} />
 
