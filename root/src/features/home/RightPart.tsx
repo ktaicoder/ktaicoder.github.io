@@ -35,9 +35,9 @@ export default function RightPart() {
                             flexDirection: 'column',
                             ...(lgUp &&
                                 !isNarrow && {
-                                minHeight: '700px',
-                                height: 'calc(100vh - 200px)',
-                            }),
+                                    minHeight: '700px',
+                                    height: 'calc(100vh - 200px)',
+                                }),
                             alignItems: 'center',
                             '& > div': {
                                 maxWidth: '500px',
@@ -67,7 +67,7 @@ export default function RightPart() {
                         <Paper sx={{ mt: 2, flex: 1, p: 3, borderRadius: '16px' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                 <Typography sx={{ fontWeight: 600, fontSize: '1rem' }}>PC 프로그램</Typography>
-                                <Button onClick={() => routerPush('/post-frame/hw-pc-program-guide')}>가이드</Button>
+                                <Button onClick={() => routerPush('/post-frame/hw-pc-intro')}>가이드</Button>
                             </Box>
                             <Box sx={{ mt: 6, mb: 4, display: 'flex', justifyContent: 'center' }}>
                                 <Box
@@ -88,9 +88,9 @@ export default function RightPart() {
                             border: '0px solid red',
                             ...(lgUp &&
                                 !isNarrow && {
-                                minHeight: '700px',
-                                height: 'calc(100vh - 200px)',
-                            }),
+                                    minHeight: '700px',
+                                    height: 'calc(100vh - 200px)',
+                                }),
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
@@ -115,8 +115,8 @@ export default function RightPart() {
                                 />
                             </Box>
                             <Typography sx={{ p: 2, fontWeight: 400, fontSize: '1rem' }}>
-                                라즈베리 파이라는 소형 컴퓨터와 코디니팩의 인공지능 기반으로 누구나 쉽고 저렴하게
-                                다양한 콘텐츠를 재미있게 즐기도록 개발하였습니다.
+                                라즈베리 파이라는 소형 컴퓨터와 코디니팩의 인공지능 기반으로 누구나 쉽고 저렴하게 다양한
+                                콘텐츠를 재미있게 즐기도록 개발하였습니다.
                             </Typography>
                         </Paper>
 

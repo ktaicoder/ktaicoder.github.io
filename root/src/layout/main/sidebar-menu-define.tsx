@@ -136,7 +136,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
         submenus: [
             {
                 type: 'menu',
-                title: '파이썬 예제',
+                title: '파이썬 예제 (NEW)',
+                href: '/post-frame/codingpack-how-to-inside-python-ex0',
+            },
+            {
+                type: 'menu',
+                title: '파이썬 예제 (OLD)',
                 href: '/post-frame/codingpack-how-to-python-ex0',
             },
             {

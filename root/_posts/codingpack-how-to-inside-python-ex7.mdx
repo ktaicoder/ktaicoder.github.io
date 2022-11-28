@@ -1,16 +1,19 @@
 ---
 date: '2022-06-07'
 thumbnail: thumbnail.jpg
-title: 코디니팩의 파이썬 개발 환경
-description: 코디니팩에서 파이썬 개발 환경을 설명합니다
+title: 코디니팩 파이썬 예제 7번
+description: 코디니팩 파이썬 예제 7번을 설명합니다
 ---
 
 # 코디니팩의 파이썬 예제7
 
 <MdxTextBox>
     <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
-        이 문서는 <b>코디니팩 파이썬 예제7</b>의 소스코드와 실행화면입니다.
+        이 문서는 <b>코디니팩 INSIDE 파이썬 예제7</b>의 소스코드와 실행화면입니다.
     </Box>
+    <Typography sx={{ color: '#666', mb: 1 }} variant="body1">
+        예제 파일 위치: /home/pi/ai-makers-kit/inside_python3
+    </Typography>
 </MdxTextBox>
 
 ## 예제7 KWS와 STT 조합 예제
@@ -19,7 +22,7 @@ description: 코디니팩에서 파이썬 개발 환경을 설명합니다
 
 ## 예제7 소스코드
 
--   아래는 `/home/pi/ai-makers-kit/python3/ex7_kwsstt.py` 파일입니다.
+-   아래는 `/home/pi/ai-makers-kit/inside_python3/ex7_kwsstt.py` 파일입니다.
 
 ```python
 #!/usr/bin/env python
@@ -32,26 +35,30 @@ Example 7: 호출어 음성인식 결합 예제
 from __future__ import print_function
 
 import time
-import ex2_getVoice2Text as gv2t
+
 import ex1_kwstest as kws
+import ex2_getVoice2Text as gv2t
+
 
 def main():
-    #Example7 KWS+STT
+    # Example7 KWS+STT
 
     KWSID = ['기가지니', '지니야', '친구야', '자기야']
     while 1:
-        recog=kws.test(KWSID[0])
+        recog = kws.test(KWSID[0])
         if recog == 200:
             print('KWS Dectected ...\n Start STT...')
             text = gv2t.getVoice2Text()
-            print('Recognized Text: '+ text)
+            print('Recognized Text: ' + text)
             time.sleep(2)
 
         else:
             print('KWS Not Dectected ...')
 
+
 if __name__ == '__main__':
     main()
+
 ```
 
 ## 실행
@@ -59,7 +66,7 @@ if __name__ == '__main__':
 -   아래와 같이 실행하세요.
 
 ```bash
-$ python3.7 ex7_kwsstt.py
+$ python3 ex7_kwsstt.py
 ```
 
 -   아래는 터미널에서 실행한 모습입니다.
@@ -67,8 +74,8 @@ $ python3.7 ex7_kwsstt.py
 -   호출어가 인식된 후에는 자동으로 STT 인식을 시작합니다.
 -   아래 예제에서는 STT에 `안녕`이라고 말했고, 이를 인식했습니다.
 
-    <MdxImageView src="/images/codinypack-py/ex7_out1.png" caption="예제 실행" transparentBg />
+    <MdxImageView src="/images/codinypack-py/inside-python3/ex7_out1.png" caption="예제 실행" transparentBg />
 
-<PyExampleLinkBox exampleId="ex7" />
+<PyInsideExampleLinkBox exampleId="ex7" />
 
 End.

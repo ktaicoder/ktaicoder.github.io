@@ -61,14 +61,19 @@ const list: Omit<PyExample, 'link'>[] = [
         title: 'ex9_btnSttDss.py',
         description: '?? 예제입니다',
     },
-    // {
-    //     id: 'env',
-    //     label: '기타',
-    //     title: '파이썬 버전에 대한 이해',
-    //     description: '여러 버전의 파이썬 버전을 사용할 때 주의할 점에 대한 설명입니다'
-    // },
+    {
+        id: 'env',
+        label: '기타',
+        title: '파이썬 버전에 대한 이해',
+        description: '여러 버전의 파이썬 버전을 사용할 때 주의할 점에 대한 설명입니다',
+    },
 ]
 
-const linkUrl = (id: string) => `/post-frame/codingpack-how-to-python-${id}`
+const linkUrl = (id: string) => {
+    if (id === 'env') {
+        return '/post-frame/codingpack-how-to-python-env'
+    }
+    return `/post-frame/codingpack-how-to-inside-python-${id}`
+}
 
 export const EXAMPLE_DATAS: PyExample[] = list.map((it) => ({ ...it, link: linkUrl(it.id) }))

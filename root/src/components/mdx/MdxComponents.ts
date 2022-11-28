@@ -14,6 +14,7 @@ const MdxComponents = {
     MdxLink: dynamic(() => import('src/components/mdx-link/MdxLink')),
     MdxVideoPlayer: dynamic(() => import('src/components/mdx-video-player/MdxVideoPlayer')),
     PyExampleLinkBox: dynamic(() => import('src/components/PyExampleLinkBox')),
+    PyInsideExampleLinkBox: dynamic(() => import('src/components/PyInsideExampleLinkBox')),
     PyGinsideLimit: dynamic(() => import('src/components/PyGinsideLimit')),
 
     // 아이콘 목록 https://fonts.google.com/icons

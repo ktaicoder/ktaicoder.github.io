@@ -1,0 +1,123 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩 파이썬 예제 4번
+description: 코디니팩 파이썬 예제 4번을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제4
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 INSIDE 파이썬 예제4</b>의 소스코드와 실행화면입니다.
+    </Box>
+    <Typography sx={{ color: '#666', mb: 1 }} variant="body1">
+        예제 파일 위치: /home/pi/ai-makers-kit/inside_python3
+    </Typography>
+</MdxTextBox>
+
+## 예제4 TTS 스트림 방식
+
+-   예제4는 예제3 TTS와 마찬가지로 텍스트를 음성으로 변환하는 예제입니다.
+-   예제3에서는 음성으로 변환된 결과물이 MP3 URL이라서 브라우저에서 MP3 URL을 PLAY하는 방식입니다.
+-   예제4에서는 음성을 직접 다운로드하여 파일로 저장합니다. MP3가 아닌 WAV 파일로 저장합니다.
+
+## 예제4 소스코드
+
+-   아래는 `/home/pi/ai-makers-kit/inside_python3/ex4_getText2VoiceStream.py` 파일입니다.
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Example 4: TTS - getText2VoiceStream"""
+
+from __future__ import print_function
+
+from ctypes import *
+
+import MicrophoneStream as MS
+import gigagenieRPC_pb2
+import gigagenieRPC_pb2_grpc
+import grpc
+import user_auth as UA
+
+HOST = 'openapi.gigagenie.ai'
+PORT = 50051
+
+ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
+
+
+def py_error_handler(filename, line, function, err, fmt):
+    dummy_var = 0
+
+
+c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
+asound = cdll.LoadLibrary('libasound.so')
+asound.snd_lib_error_set_handler(c_error_handler)
+
+
+# TTS : getText2VoiceStream
+def getText2VoiceStream(input_text, input_filename):
+    channel = grpc.secure_channel('{}:{}'.format(HOST, PORT), UA.getCredentials())
+    stub = gigagenieRPC_pb2_grpc.GigagenieStub(channel)
+
+    message = gigagenieRPC_pb2.reqText()
+    message.lang = 0
+    message.mode = 0
+    message.text = input_text
+    output_file = open(input_filename, 'wb')
+    for response in stub.getText2VoiceStream(message):
+        if response.HasField("resOptions"):
+            print("\n\nResVoiceResult: %d" % response.resOptions.resultCd)
+        if response.HasField("audioContent"):
+            print("Audio Stream\n\n")
+            output_file.write(response.audioContent)
+    output_file.close()
+    return response.resOptions.resultCd
+
+
+def main():
+    output_file = "testtts.wav"
+    getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)
+    MS.play_file(output_file)
+    print(output_file + "이 생성되었으니 파일을 확인바랍니다. \n\n\n")
+
+
+if __name__ == '__main__':
+    main()
+
+```
+
+## 실행
+
+-   아래와 같이 실행하세요.
+-   음성으로 변환하기를 원하는 텍스트가 소스코드에 하드코딩되어 있습니다.
+    `main()`의 `getText2VoiceStream("안녕하세요. 반갑습니다.", output_file)` 부분입니다.
+-   그래서 `안녕하세요. 반갑습니다.` 텍스트를 음성으로 변환합니다.
+
+```bash
+$ python3 ex4_getText2VoiceStream.py
+```
+
+-   아래는 터미널에서 실행한 모습입니다.
+-   텍스트를 음성으로 변환하여 `testtts.wav` 파일에 저장합니다.
+-   그리고 저장된 `testtts.wav` 파일을 재생하고 프로그램이 종료됩니다.
+
+    <MdxImageView src="/images/codinypack-py/inside-python3/ex4_out1.png" caption="예제 실행" transparentBg />
+
+### Tip!
+
+-   터미널에서도 `testtts.wav` 파일을 재생할 수 있습니다.
+-   이미 예제 프로그램에서 `wav` 파일을 재생했지만,
+    터미널에서 `wav` 파일을 재생하는 방법도 참고로 알아두시면 좋을 것 같습니다.
+-   방금 프로그램을 실행했으므로, 현재 폴더에 `testtts.wav` 파일이 있을 것입니다.
+    다음과 같이 실행하면 `testtts.wav` 파일의 음성이 스피커에 출력됩니다.
+
+```bash
+$ aplay -q -D plughw:0 testtts.wav
+```
+
+<PyInsideExampleLinkBox exampleId="ex4" />
+
+End.

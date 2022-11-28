@@ -1,0 +1,172 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩 파이썬 예제 1번
+description: 코디니팩 파이썬 예제 1번을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제1
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 INSIDE 파이썬 예제1</b>의 소스코드와 실행화면입니다.
+    </Box>
+    <Typography sx={{ color: '#666', mb: 1 }} variant="body1">
+        예제 파일 위치: /home/pi/ai-makers-kit/inside_python3
+    </Typography>
+</MdxTextBox>
+
+## 예제1 호출어 감지
+
+인공지능 스피커에게 무엇인가를 부탁하고 물어볼 때 가장 먼저 하는 일이 무엇일까요? 아마 인공지능 스피커를 부르는 일일 것입니다.
+
+-   우리는 코디니팩을 `기가지니` 혹은 `지니야`, `친구야`, `자기야` 중 한 가지를 선택해서 부를 수 있고,
+-   코디니팩을 호출할 때 사용하는 단어라고 해서 호출어(Wake-up word) 라고 부릅니다.
+-   코디니팩은 호출어를 감지하기 위해 핵심어 검출(Keyword spotting) 이라는 기술을 사용합니다.
+-   핵심어 검출은 연속으로 입력되는 음성 데이터에서 미리 정해놓은 핵심어를 찾아내는 기술로,
+-   입력되는 음성 데이터를 소리의 기본 단위인 음소로 나누어 학습된 음성 데이터와 비교함으로써 핵심어가 입력되었는지를 판단합니다.
+
+<MdxImageView src="/images/codinypack-py/kws1.png" caption="호출어 개념" />
+
+## 예제1 소스코드
+
+-   아래는 `/home/pi/ai-makers-kit/inside_python3/ex1_kwstest.py` 파일입니다.
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Example 1: GiGA Genie Keyword Spotting"""
+
+from __future__ import print_function
+
+import audioop
+from ctypes import *
+
+import MicrophoneStream as MS
+import RPi.GPIO as GPIO
+import ktkws  # KWS
+
+KWSID = ['기가지니', '지니야', '친구야', '자기야']
+RATE = 16000
+CHUNK = 512
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(29, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(31, GPIO.OUT)
+btn_status = False
+
+
+def callback(channel):
+    print("falling edge detected from pin {}".format(channel))
+    global btn_status
+    btn_status = True
+    print(btn_status)
+
+
+GPIO.add_event_detect(29, GPIO.FALLING, callback=callback, bouncetime=10)
+
+ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
+
+
+def py_error_handler(filename, line, function, err, fmt):
+    dummy_var = 0
+
+
+c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
+asound = cdll.LoadLibrary('libasound.so')
+asound.snd_lib_error_set_handler(c_error_handler)
+
+
+def detect():
+    with MS.MicrophoneStream(RATE, CHUNK) as stream:
+        audio_generator = stream.generator()
+
+        for content in audio_generator:
+
+            rc = ktkws.detect(content)
+            rms = audioop.rms(content, 2)
+            # print('audio rms = %d' % (rms))
+
+            if rc == 1:
+                MS.play_file("../data/sample_sound.wav")
+                return 200
+
+
+def btn_detect():
+    global btn_status
+    with MS.MicrophoneStream(RATE, CHUNK) as stream:
+        audio_generator = stream.generator()
+
+        for content in audio_generator:
+            GPIO.output(31, GPIO.HIGH)
+            rc = ktkws.detect(content)
+            rms = audioop.rms(content, 2)
+            # print('audio rms = %d' % (rms))
+            GPIO.output(31, GPIO.LOW)
+            if btn_status:
+                rc = 1
+                btn_status = False
+            if rc == 1:
+                GPIO.output(31, GPIO.HIGH)
+                # MS.play_file("../data/sample_sound.wav")
+                return 200
+
+
+def test(key_word='기가지니'):
+    rc = ktkws.init("../data/kwsmodel.pack")
+    print('init rc = %d' % rc)
+    rc = ktkws.start()
+    print('start rc = %d' % rc)
+    print('\n호출어를 불러보세요~\n')
+    ktkws.set_keyword(KWSID.index(key_word))
+    rc = detect()
+    print('detect rc = %d' % rc)
+    print('\n\n호출어가 정상적으로 인식되었습니다.\n\n')
+    ktkws.stop()
+    return rc
+
+
+def btn_test(key_word='기가지니'):
+    global btn_status
+    rc = ktkws.init("../data/kwsmodel.pack")
+    print('init rc = %d' % rc)
+    rc = ktkws.start()
+    print('start rc = %d' % rc)
+    print('\n버튼을 눌러보세요~\n')
+    ktkws.set_keyword(KWSID.index(key_word))
+    rc = btn_detect()
+    print('detect rc = %d' % rc)
+    print('\n\n호출어가 정상적으로 인식되었습니다.\n\n')
+    ktkws.stop()
+    return rc
+
+
+def main():
+    test()
+
+
+if __name__ == '__main__':
+    main()
+
+```
+
+## 실행
+
+-   아래와 같이 실행하세요.
+
+```bash
+$ python3 ex1_kwstest.py
+```
+
+-   아래는 터미널에서 실행한 모습입니다.
+-   사용자가 호출어 `기가지니`를 부를때가지 기다리고 있다가
+-   `기가지니`를 부르면 `띠링` 소리가 나면서 인식 결과 코드를 출력합니다.
+-   결과 코드가 200이면 정상적으로 인식되었음을 의미합니다.
+
+<MdxImageView src="/images/codinypack-py/inside-python3/ex1_out1.png" caption="예제 실행" />
+
+<PyInsideExampleLinkBox exampleId="ex1" />
+
+End.

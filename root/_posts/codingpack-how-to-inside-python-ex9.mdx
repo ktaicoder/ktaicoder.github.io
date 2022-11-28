@@ -1,0 +1,87 @@
+---
+date: '2022-06-07'
+thumbnail: thumbnail.jpg
+title: 코디니팩 파이썬 예제 9번
+description: 코디니팩 파이썬 예제 9번을 설명합니다
+---
+
+# 코디니팩의 파이썬 예제9
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
+        이 문서는 <b>코디니팩 INSIDE 파이썬 예제9</b>의 소스코드와 실행화면입니다.
+    </Box>
+    <Typography sx={{ color: '#666', mb: 1 }} variant="body1">
+        예제 파일 위치: /home/pi/ai-makers-kit/inside_python3
+    </Typography>
+</MdxTextBox>
+
+## 예제9 버튼 음성인식 대화 결합 예제
+
+-   예제9는 호출어 대신 버튼을 눌러서 음성 질의를 하는 결합 예제입니다.
+
+    <MdxImageView src="/images/codinypack-py/ex9_out2.png" caption="아케이드 스위치 누르기" />
+
+## 예제9 소스코드
+
+-   아래는 `/home/pi/ai-makers-kit/inside_python3/ex9_btnSttDss.py` 파일입니다.
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Date:2019.02.18
+Example 9: 버튼 음성인식 대화 결합 예제
+"""
+
+from __future__ import print_function
+
+import MicrophoneStream as MS
+import ex1_kwstest as kws
+import ex6_queryVoice as dss
+
+
+def main():
+    # Example8 Button+STT+DSS
+    KWSID = ['기가지니', '지니야', '친구야', '자기야']
+    while 1:
+        recog = kws.btn_test(KWSID[0])
+        if recog == 200:
+            print('KWS Dectected ...\n Start STT...')
+            text = dss.queryByVoice()
+            if text == '':
+                print('질의한 내용이 없습니다.')
+            else:
+                MS.play_file("result_mesg.wav")
+        # time.sleep(2)
+        else:
+            print('KWS Not Dectected ...')
+
+
+if __name__ == '__main__':
+    main()
+
+```
+
+## 실행
+
+-   아래와 같이 실행하세요.
+
+```bash
+$ python3.7 ex9_btnSttDss.py
+```
+
+-   아래는 터미널에서 실행한 모습입니다.
+    1.  버튼을 눌러 호출어가 인식된 것으로 처리한 후에,
+    1.  STT로 질의할 음성을 말하고,
+    1.  음성을 텍스트로 변환하여 질의합니다.
+-   이 과정을 무한 반복합니다.
+
+    <MdxImageView src="/images/codinypack-py/inside-python3/ex9_out1.png" caption="예제 실행" />
+
+<PyGinsideLimit />
+
+<PyInsideExampleLinkBox exampleId="ex9" />
+
+End.
