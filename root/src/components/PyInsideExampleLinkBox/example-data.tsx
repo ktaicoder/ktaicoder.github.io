@@ -4,8 +4,8 @@ const list: Omit<PyExample, 'link'>[] = [
     {
         id: 'ex0',
         label: '기본',
-        title: '환경 설정 및 API 키발급',
-        description: '호출어 테스트 예제입니다',
+        title: '환경 설정',
+        description: '환경 설정',
     },
     {
         id: 'ex1',

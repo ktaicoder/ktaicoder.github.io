@@ -8,10 +8,10 @@ export const rootSx: SimpleSxProps = {
     display: 'block',
     mx: 'auto',
     p: 1,
-    '& .PyExampleRow-root': {
+    '& .PyInsideExampleRow-root': {
         py: 1,
         width: '100%',
-        '& + .PyExampleRow-root': {
+        '& + .PyInsideExampleRow-root': {
             mt: '2px',
         },
     },
