@@ -1,7 +1,6 @@
 import { Box, SxProps } from '@mui/material'
 import { useRef } from 'react'
 import ReactPlayer from 'react-player'
-import { arraySx } from 'src/lib/sx-props'
 
 type Props = {
     videoUrl: string
@@ -17,7 +16,7 @@ export default function SimpleVideoPlayer(props: Props) {
     }
 
     return (
-        <Box className="SimpleVideoPlayer-root" sx={[...arraySx(sx)]}>
+        <Box className="SimpleVideoPlayer-root" sx={sx}>
             <ReactPlayer ref={playerRef} width="100%" url={videoUrl} controls onReady={_handleOnReady} />
         </Box>
     )

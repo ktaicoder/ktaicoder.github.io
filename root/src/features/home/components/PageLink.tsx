@@ -1,6 +1,6 @@
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { Box, Button, SxProps, Typography } from '@mui/material'
-import { arraySx } from 'src/lib/sx-props'
+import { flatSx } from 'src/lib/sx-props'
 
 type Props = {
     imageSrc: string
@@ -16,7 +16,7 @@ export default function PageLink(props: Props) {
 
     return (
         <Box
-            sx={[
+            sx={flatSx(
                 {
                     display: 'flex',
                     border: '1px solid #CED5DB',
@@ -39,8 +39,8 @@ export default function PageLink(props: Props) {
                         },
                     },
                 },
-                ...arraySx(sx),
-            ]}
+                sx,
+            )}
             className={className}
         >
             <Box

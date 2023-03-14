@@ -1,10 +1,10 @@
-import { Box, SxProps, Typography } from "@mui/material"
+import { Box, SxProps, Typography } from '@mui/material'
 import clsx from 'clsx'
-import { arraySx } from "src/lib/sx-props"
-import { routerPush } from "src/lib/urls"
+import { flatSx } from 'src/lib/sx-props'
+import { routerPush } from 'src/lib/urls'
 import { EXAMPLE_DATAS } from './example-data'
-import { PyExample } from "./example-types"
-import PyExampleRow from "./PyExampleRow"
+import { PyExample } from './example-types'
+import PyExampleRow from './PyExampleRow'
 import { rootSx } from './style'
 
 type Props = {
@@ -18,20 +18,22 @@ export default function PyExampleLinkBox(props: Props) {
         routerPush(example.link)
     }
 
-    return <Box
-        className={clsx('PyExampleLinkBox-root', className)}
-        sx={[rootSx, ...arraySx(sx)]}
-    >
-        <Typography variant="body2" ml={3} color="#999" pb={1}>EXAMPLES</Typography>
-        <Box sx={{ borderTop: '1px solid #ddd' }}>
-            {EXAMPLE_DATAS.map((ex, i) => (
-                <PyExampleRow index={i}
-                    example={ex}
-                    selected={exampleId === ex.id}
-                    onClick={handleClickRow}
-                    key={ex.id} />
-            ))}
+    return (
+        <Box className={clsx('PyExampleLinkBox-root', className)} sx={flatSx(rootSx, sx)}>
+            <Typography variant="body2" ml={3} color="#999" pb={1}>
+                EXAMPLES
+            </Typography>
+            <Box sx={{ borderTop: '1px solid #ddd' }}>
+                {EXAMPLE_DATAS.map((ex, i) => (
+                    <PyExampleRow
+                        index={i}
+                        example={ex}
+                        selected={exampleId === ex.id}
+                        onClick={handleClickRow}
+                        key={ex.id}
+                    />
+                ))}
+            </Box>
         </Box>
-
-    </Box>
+    )
 }

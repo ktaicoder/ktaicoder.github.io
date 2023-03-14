@@ -1,8 +1,7 @@
-import { Box, ButtonBase, Stack, SxProps } from "@mui/material";
-import clsx from 'clsx';
-import { arraySx } from "src/lib/sx-props";
-import { PyExample } from "./example-types";
-
+import { Box, ButtonBase, Stack, SxProps } from '@mui/material'
+import clsx from 'clsx'
+import { flatSx } from 'src/lib/sx-props'
+import { PyExample } from './example-types'
 
 type Props = {
     sx?: SxProps
@@ -16,14 +15,14 @@ export default function PyExampleRow(props: Props) {
     const { sx, className, index, example, onClick, selected = false } = props
 
     const { label, hideLabel = false, title } = example
-    return <ButtonBase
-        className={clsx('PyExampleRow-root', className, {
-            'Mui-selected': selected
-        })}
-        component="div"
-        onClick={() => onClick?.(example)}
-        sx={
-            [
+    return (
+        <ButtonBase
+            className={clsx('PyExampleRow-root', className, {
+                'Mui-selected': selected,
+            })}
+            component="div"
+            onClick={() => onClick?.(example)}
+            sx={flatSx(
                 {
                     width: '100%',
                     pl: 0.5,
@@ -39,7 +38,7 @@ export default function PyExampleRow(props: Props) {
                         py: '4px',
                     },
                     '& .PyExampleRow-title': {
-                        fontSize: '0.85rem'
+                        fontSize: '0.85rem',
                     },
                     '&.Mui-selected': {
                         '& .PyExampleRow-num': {
@@ -49,23 +48,25 @@ export default function PyExampleRow(props: Props) {
                         '& .PyExampleRow-title': {
                             color: 'primary.main',
                             fontWeight: 'bold',
-                        }
+                        },
                     },
-
-
                 },
-                ...arraySx(sx)
-            ]
-        } >
-        <Stack direction="row" alignItems="center"
-            spacing={2}
-            sx={{
-                width: '100%'
-            }}>
-            {!hideLabel && <Box className="PyExampleRow-num">{label}</Box>}
-            <Box flex={1} className="PyExampleRow-title">
-                {title}
-            </Box>
-        </Stack>
-    </ButtonBase >
+                sx,
+            )}
+        >
+            <Stack
+                direction="row"
+                alignItems="center"
+                spacing={2}
+                sx={{
+                    width: '100%',
+                }}
+            >
+                {!hideLabel && <Box className="PyExampleRow-num">{label}</Box>}
+                <Box flex={1} className="PyExampleRow-title">
+                    {title}
+                </Box>
+            </Stack>
+        </ButtonBase>
+    )
 }

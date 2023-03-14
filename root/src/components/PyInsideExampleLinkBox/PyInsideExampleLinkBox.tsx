@@ -1,6 +1,6 @@
 import { Box, SxProps, Typography } from '@mui/material'
 import clsx from 'clsx'
-import { arraySx } from 'src/lib/sx-props'
+import { flatSx } from 'src/lib/sx-props'
 import { routerPush } from 'src/lib/urls'
 import { EXAMPLE_DATAS } from './example-data'
 import { PyExample } from './example-types'
@@ -19,7 +19,7 @@ export default function PyInsideExampleLinkBox(props: Props) {
     }
 
     return (
-        <Box className={clsx('PyInsideExampleLinkBox-root', className)} sx={[rootSx, ...arraySx(sx)]}>
+        <Box className={clsx('PyInsideExampleLinkBox-root', className)} sx={flatSx(rootSx, sx)}>
             <Typography variant="body2" ml={3} color="#999" pb={1}>
                 EXAMPLES
             </Typography>

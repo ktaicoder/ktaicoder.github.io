@@ -1,6 +1,6 @@
 import { Box, ButtonBase, Stack, SxProps } from '@mui/material'
 import clsx from 'clsx'
-import { arraySx } from 'src/lib/sx-props'
+import { flatSx } from 'src/lib/sx-props'
 import { PyExample } from './example-types'
 
 type Props = {
@@ -22,7 +22,7 @@ export default function PyInsideExampleRow(props: Props) {
             })}
             component="div"
             onClick={() => onClick?.(example)}
-            sx={[
+            sx={flatSx(
                 {
                     width: '100%',
                     pl: 0.5,
@@ -51,8 +51,8 @@ export default function PyInsideExampleRow(props: Props) {
                         },
                     },
                 },
-                ...arraySx(sx),
-            ]}
+                sx,
+            )}
         >
             <Stack
                 direction="row"

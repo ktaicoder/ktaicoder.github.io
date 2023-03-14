@@ -1,7 +1,7 @@
+import LaunchIcon from '@mui/icons-material/Launch'
 import { Box, Button, SxProps, Typography } from '@mui/material'
 import clsx from 'clsx'
-import { arraySx } from 'src/lib/sx-props'
-import LaunchIcon from '@mui/icons-material/Launch'
+import { flatSx } from 'src/lib/sx-props'
 import { rootSx } from './style'
 
 type Props = {
@@ -12,7 +12,7 @@ export default function PyGinsideLimit(props: Props) {
     const { sx, className } = props
 
     return (
-        <Box className={clsx('PyGinsideLimit-root', className)} sx={[rootSx, ...arraySx(sx)]}>
+        <Box className={clsx('PyGinsideLimit-root', className)} sx={flatSx(rootSx, sx)}>
             <Typography variant="body2" ml={3} color="#999" pb={1}>
                 예제의 한계와 그 이유
             </Typography>
