@@ -193,8 +193,18 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
             {
                 type: 'menu',
-                title: '하드웨어 추가하기',
+                title: '신규 하드웨어 등록',
                 href: '/post-frame/hw-pc-dev-how-to-add-new-hw',
+            },
+            {
+                type: 'menu',
+                title: '하드웨어 데이터 송신',
+                href: '/post-frame/hw-pc-dev-how-to-add-hw-data-send',
+            },
+            {
+                type: 'menu',
+                title: '하드웨어 데이터 수신',
+                href: '/post-frame/hw-pc-dev-how-to-add-hw-data-recv',
             },
             {
                 type: 'menu',

@@ -1,0 +1,78 @@
+---
+date: '2023-03-14'
+thumbnail: thumbnail.jpg
+title: PC 프로그램 하드웨어 데이터 송신
+description: PC 프로그램에서 하드웨어에 데이터를 송신하는 방법을 설명합니다
+---
+
+# PC 프로그램 하드웨어 데이터 송신
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600 }}>이 문서는 2023년 3월 14일에 작성되었습니다.</Box>
+</MdxTextBox>
+
+PC 프로그램에서 하드웨어에 데이터를 송신하는 소스 코드 작성법을 설명합니다.
+
+## 기본 내용
+
+PC 프로그램은 electron 기반으로 개발되었습니다.
+electron 기반의 프로그램은 두 개의 프로세스가 통신하는 방식으로 동작합니다.
+
+-   한 프로세스는 UI 부분을 처리하는 프로세스로, 웹페이지를 렌더링하는 역할을 합니다.
+    그래서 `렌더러 프로세스`라고 합니다.
+-   다른 하나의 프로세스는 `메인 프로세스`로 좀 더 권한이 필요한 기능을 실행할 수 있습니다.
+-   자세한 내용은 [electron process model 문서](https://www.electronjs.org/docs/latest/tutorial/process-model)를 참고하세요.
+
+### 메인 프로세스에서 하드웨어 접근
+
+-   메인 프로세스는 NodeJS의 API를 제약없이 사용할 수 있고,
+    렌더러 프로세스는 브라우저에서 할 수 있는 일만 가능합니다.
+-   하드웨어에 데이터를 송신하는 기능은 `메인 프로세스`에서 실행하게 됩니다.
+    `렌더러 프로세스`는 불가능합니다.
+-   하드웨어에 접근하는 것은 권한이 필요한 작업이기 때문입니다.
+
+## 송신하는 방법
+
+앞에서 살펴봤던 `Awesome` 하드웨어의 `digitalWrite()` 함수가 시리얼포트에 데이터를 송신하는 예제입니다.
+다시 한번 소스코드를 살펴보겠습니다.
+
+#### src/custom/hw/awesome/`AwesomeControl`.ts 파일
+
+```javascript
+// file: src/custom/hw/awesome/AwesomeControl.ts
+
+import { AbstractHwConrtol } from '../AbstractHwControl'
+import { IAwesomeControl } from './IAwesomeControl'
+
+const chr = (ch: string): number => ch.charCodeAt(0)
+
+export class AwesomeControl extends AbstractHwConrtol implements IAwesomeControl {
+    // ...다른 코드는 생략...
+
+    digitalWrite = async (ctx: any, pin: number, value: number): Promise<void> => {
+        value = value > 0 ? 1 : 0
+
+        const pkt = [chr('X'), chr('R'), 2, 0, 0, 0, 0, 0, chr('S')]
+        pkt[2 + pin] = value
+
+        // 시리얼포트에 데이터를 전송
+        await this.write_(ctx, pkt)
+    }
+}
+```
+
+-   위의 코드는 `digitalWrite()` 함수 외에 다른 함수들은 생략한 것입니다.
+-   시리얼포트에 데이터를 전송하는 부분은 `this.write_(ctx, pkt)` 부분입니다.
+-   위의 예제에서 pkt는 `number[]` 타입인데, `Buffer` 타입도 전송할 수 있습니다.
+
+#### 추가 설명
+
+-   `this.write_()` 함수는 `AwesomeControl` 클래스가 상속하고 있는 `AbstractHwConrtol` 클래스에 구현되어 있습니다.
+-   신규 하드웨어 등록 문서에서 작성한 `openDevice()` 함수를 기억하시나요?
+-   `this.write_()` 함수는 내부적으로, `openDevice()` 함수가 리턴한 SerialDevice 객체를 이용해서 시리얼 포트에 전송합니다.
+
+## 다음 단계
+
+-   시리얼포트에 데이터를 송신하는 코드 작성법을 살펴보았습니다.
+-   소스코드는 모두 공개되어 있으니 참고하시기 바랍니다.
+-   다음 `하드웨어 데이터 수신` 문서를 읽어주세요.

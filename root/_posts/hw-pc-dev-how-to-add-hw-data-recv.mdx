@@ -1,0 +1,316 @@
+---
+date: '2023-03-14'
+thumbnail: thumbnail.jpg
+title: PC 프로그램 하드웨어 데이터 수신
+description: PC 프로그램에서 하드웨어로부터 데이터를 수신하는 방법을 설명합니다
+---
+
+# PC 프로그램 하드웨어 데이터 수신
+
+<MdxTextBox>
+    <Box sx={{ color: 'secondary.main', fontWeight: 600 }}>이 문서는 2023년 3월 14일에 작성되었습니다.</Box>
+</MdxTextBox>
+
+PC 프로그램에서 하드웨어로부터 데이터를 수신하는 소스 코드 작성법을 설명합니다.
+
+## 개요
+
+수신된 데이터는 기본적으로 연속적인 형태입니다. 연속적인 바이트 스트림을 본인이 원하는 방식으로 잘라서 활용해야 합니다.
+
+하드웨어로부터 수신된 데이터를 파싱하는 방법에 대해서 나열해보겠습니다.
+
+1. 수신된 데이터들이 경계선 구분자(`delimiter`)로 분류하는 형태
+1. 수신된 데이터들이 시작문자와 종료문자를 가진 형태
+1. 특정 길이 단위로 구분되는 데이터 형태
+1. 커스텀한 파싱이 필요한 형태
+
+-   기타 다양하게 데이터를 파싱해야 할 수 있습니다.
+-   권장하는 파싱 방법은 파서를 만드는 것입니다.
+-   시리얼 포트로부터 전달된 데이터 스트림에 파서를 연결하여
+    파서로부터 하나씩 꺼내서 데이터를 처리하는 방식입니다.
+-   NodeJS의 스트림 API를 활용합니다.
+
+## 파서 예제
+
+`serialport` 라이브러리 사이트에는 10가지 정도의 잘 만들어진 파서가 이미 있습니다.
+
+https://serialport.io/docs/api-parsers-overview
+
+그리고 현재 PC 프로그램에 구현된 다른 하드웨어들을 참고하시면 좋을 것 같습니다.
+
+### wiseXboard
+
+-   `wiseXboard` 하드웨어는 `DelimiterParser`를 사용하고 있습니다.
+-   아래 소스코드에서 `DelimiterParser` 부분을 살펴보세요.
+
+```javascript
+// file: src/custom/hw/wiseXboard/openDevice.ts
+export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
+    const { serialPortPath, uiLogger } = params
+    console.log(DEBUG_TAG, 'openDevice()', serialPortPath)
+
+    // 시리얼 디바이스 생성, 시리얼포트를 감싸는 객체입니다.
+    // 실제 serial port의 상태를 관리하고, UI에 로그를 전송합니다.
+    const device = new SerialDevice(DEBUG_TAG, uiLogger)
+
+    // 시리얼 포트 생성
+    const port = new SerialPort({
+        path: serialPortPath,
+        baudRate: 38400,
+        autoOpen: false, // autoOpen은 반드시 false
+    })
+
+    // RX 데이터 파서
+    const parser = new DelimiterParser({
+        delimiter: Buffer.from([0x52, 0x58, 0x3d, 0x0, 0x0e]), // 구분 문자
+        includeDelimiter: false,
+    })
+
+    // 시리얼 디바이스 열기
+    device.open(port, parser) // 시리얼포트+파서
+
+    // open 중인 상태의 SerialDevice를 리턴합니다.
+    return device
+}
+```
+
+위의 예제에서는 `includeDelimiter:false`로 설정했으므로, 패킷을 읽을 때 구분 문자는 제거하고 읽어집니다.
+
+#### 읽는 함수 `readNext_()`
+
+위와 같이 오픈한 wiseXboard에서 데이터를 읽는 방법은 아래와 같습니다.
+데이터를 읽을 때는 `readNext_()` 함수로 읽을 수 있습니다.
+파서가 없어도 같은 함수로 읽습니다.
+
+```javascript
+export class WiseXboardControl extends AbstractHwConrtol implements IWiseXboardControl {
+    // ...
+
+    /**
+     * 주어진 pin 번호의 아날로그 값을 읽기
+     */
+    analogRead = async (ctx: any, pin: number): Promise<number> => {
+        const values = await this.readNext_(ctx)
+        const v = values[pin - 1]
+        return v
+    }
+
+    // ...
+}
+```
+
+#### 추가 설명
+
+-   `this.readNext_()` 함수는 `WiseXboardControl` 클래스가 상속하고 있는 `AbstractHwConrtol` 클래스에 구현되어 있습니다.
+    따라서 다른 하드웨어에서도 사용되는 함수입니다.
+-   `this.readNext_()` 함수는 내부적으로, `openDevice()` 함수가 리턴한 SerialDevice 객체를 이용해서 시리얼 포트로부터 값을 읽습니다.
+
+### saeonAltinoLite
+
+이번엔 `saeonAltinoLite` 하드웨어를 살펴보겠습니다.
+
+-   `saeonAltinoLite`는 자체 제작한 파서를 사용하고 있습니다.
+-   아래 소스코드에서 `AltinoLiteParser` 부분을 살펴보세요.
+
+```js
+export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
+    const { serialPortPath, uiLogger } = params
+    console.log(DEBUG_TAG, 'openDevice()', serialPortPath)
+
+    // 시리얼 디바이스 생성, 시리얼포트를 감싸는 객체입니다.
+    // 실제 serial port의 상태를 관리하고, UI에 로그를 전송합니다.
+    const device = new SerialDevice(DEBUG_TAG, uiLogger)
+
+    // 시리얼 포트 생성
+    const port = new SerialPort({
+        path: serialPortPath,
+        baudRate: 115200,
+        autoOpen: false, // autoOpen은 반드시 false
+    })
+
+    // RX 데이터 파서
+    const parser = new AltinoLiteParser() // 자체 제작한 파서입니다.
+
+    // 시리얼 디바이스 열기
+    device.open(port, parser) // 시리얼포트+자체 제작한 파서
+
+    // open 중인 상태의 SerialDevice를 리턴합니다.
+    return device
+}
+```
+
+#### 커스텀 파서 소스코드
+
+커스텀하게 직접 구현한 파서인 `AltinoLiteParser`의 소스코드가 길지 않으므로 여기에 적어보겠습니다.
+
+-   커스텀 파서는 `Transform` 클래스를 상속해서 `_transform()` 함수를 잘 구현하면 됩니다.
+-   아래 코드에서 구지 파싱 로직을 분석하기 보다는 `_transform()` 함수만 구현하면 된다는 것만 기억하면 좋을 것 같습니다.
+
+```js
+import { Transform, TransformCallback } from 'stream'
+
+const LOG_TAG = 'AltinoLiteParser'
+
+/**
+ * AltinoLiteParser입니다
+ * 지정된 패킷 크기의 시작/종료 마크를 찾아서 패킷을 전송합니다.
+ * Transform 클래스를 상속합니다
+ */
+export class AltinoLiteParser extends Transform {
+  // 중개 버퍼
+  private buffer: Buffer
+
+  // 중개 버퍼에 채워진 바이트수
+  private bufferByteCount = 0
+
+  // 시작 마크
+  private startMark = 0x02
+
+  // 종료 마크
+  private endMark = 0x03
+
+  // 22바이트를 채워서 보냅니다
+  private packetLength = 22
+
+  constructor() {
+    super()
+    this.buffer = Buffer.alloc(this.packetLength, 0)
+    this.bufferByteCount = 0
+    console.log(LOG_TAG, 'constructor()')
+  }
+
+  _transform(chunk: Buffer, _encoding: BufferEncoding, callback: TransformCallback) {
+    for (let i = 0; i < chunk.length; i++) {
+      if (this.bufferByteCount === 0) {
+        const byte = chunk[i]
+        if (byte === this.startMark) {
+          this.buffer[0] = byte
+          this.bufferByteCount = 1
+        }
+        continue
+      }
+
+      const byte = chunk[i]
+      this.buffer[this.bufferByteCount++] = byte
+
+      if (this.bufferByteCount === this.packetLength) {
+        if (byte === this.endMark) {
+          this.push(Buffer.from(this.buffer))
+          this.bufferByteCount = 0
+        } else {
+          console.log(LOG_TAG, 'end-mark mismatch')
+          const idx = this.buffer.indexOf(this.startMark, 1)
+          if (idx > 0) {
+            const tmpBuf = this.buffer.subarray(idx)
+            tmpBuf.copy(this.buffer)
+            this.bufferByteCount = tmpBuf.byteLength
+          }
+        }
+      }
+    }
+    callback()
+  }
+}
+
+```
+
+## `serialport` 라이브러리의 다른 파서들
+
+`serialport` 라이브러리에서 제공하는 여러가지 유용한 파서들이 있습니다.
+
+1.  [@serialport/parser-byte-length](https://serialport.io/docs/api-parser-byte-length)
+1.  [@serialport/parser-cctalk](https://serialport.io/docs/api-parser-cctalk)
+1.  [@serialport/parser-delimiter](https://serialport.io/docs/api-parser-delimiter)
+1.  [@serialport/parser-inter-byte-timeout](https://serialport.io/docs/api-parser-inter-byte-timeout)
+1.  [@serialport/parser-packet-length](https://serialport.io/docs/api-parser-packet-length)
+1.  [@serialport/parser-readline](https://serialport.io/docs/api-parser-readline)
+1.  [@serialport/parser-ready](https://serialport.io/docs/api-parser-ready)
+1.  [@serialport/parser-regex](https://serialport.io/docs/api-parser-regex)
+1.  [@serialport/parser-slip-encoder](https://serialport.io/docs/api-parser-slip-encoder)
+1.  [@serialport/parser-spacepacket](https://serialport.io/docs/api-parser-spacepacket)
+
+위의 소스코드는 모두 공개되어 있습니다. 정확히 원하는 파서가 없더라도, 조금 수정하여 원하는 것을 만들기에 좋습니다.
+
+## 어썸 하드웨어에 파서 연결하기
+
+이전에 살펴보았던 어썸 하드웨어에
+`DelimiterParser`를 연결해보겠습니다.
+
+```javascript
+import { DelimiterParser, SerialPort } from 'serialport'
+import { ISerialDeviceOpenParams, ISerialPortInfo } from 'src/custom-types'
+import { SerialDevice } from 'src/hw-server/serialport/SerialDevice'
+
+// 디버깅용 로그 태그
+const DEBUG_TAG = 'awesome'
+
+/**
+ * 지원하는 시리얼포트 여부 체크
+ *
+ * @param portInfo 포트 정보
+ * @returns 지원하는 포트라면 true를 리턴
+ */
+export function isPortMatch(port: ISerialPortInfo): boolean {
+    // const { manufacturer, productId, vendorId } = port
+    const { manufacturer = '' } = port
+
+    // silicon labs(CP210)만 허용
+    const matched = manufacturer.toLowerCase().indexOf('silicon labs') >= 0
+
+    return matched
+}
+
+/**
+ * 시리얼 디바이스 오픈
+ * open 중인 상태의 SerialDevice를 리턴합니다.
+ *
+ * 연결이 되기를 기다리려면
+ * await device.waitUntilOpen()
+ *
+ * @param serialPortPath 시리얼포트 Path, ex) COM1, /dev/ttyUSB0
+ * @param uiLogger UI 콘솔 로거, 사용자 화면에 로깅 메시지를 표시합니다
+ * @returns SerialDevice
+ */
+export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
+    const { serialPortPath, uiLogger } = params
+    console.log(DEBUG_TAG, 'openDevice()', serialPortPath)
+
+    // 시리얼 디바이스 생성, 시리얼포트를 감싸는 객체입니다.
+    // 실제 serial port의 상태를 관리하고, UI에 로그를 전송합니다.
+    const device = new SerialDevice(DEBUG_TAG, uiLogger)
+
+    // 시리얼 포트 생성
+    const port = new SerialPort({
+        path: serialPortPath,
+        baudRate: 38400,
+        autoOpen: false, // autoOpen은 반드시 false
+    })
+
+    // RX 데이터 파서
+    const parser = new DelimiterParser({
+        delimiter: Buffer.from([0x52, 0x58, 0x3d, 0x0, 0x0e]), // 구분 문자
+        includeDelimiter: false,
+    })
+
+    // 시리얼 디바이스 열기
+    device.open(port, parser)
+
+    // open 중인 상태의 SerialDevice를 리턴합니다.
+    return device
+}
+```
+
+## 요약
+
+요약하면,
+
+-   파싱이 필요하다면, `openDevice()` 함수에서 파서를 등록하기
+-   `readNext_()`로 파싱된 결과물 읽기
+-   파서가 없는 경우 `readNext_()`는 시리얼포트로부터 직접 읽습니다.
+-   `serialport` 사이트에서 제공하는 여러 파서들을 활용하세요.
+
+## 다음 단계
+
+-   시리얼포트에 데이터를 수신하는 코드 작성법을 살펴보았습니다.
+-   소스코드는 모두 공개되어 있으니 참고하시기 바랍니다.
+-   다음 `블록 공작소 연동` 문서를 읽어주세요.
