@@ -164,6 +164,11 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
             {
                 type: 'menu',
+                title: 'PC 프로그램 설치 가이드',
+                href: '/post-frame/hw-pc-install-guide',
+            },
+            {
+                type: 'menu',
                 title: '코디니팩 설정하기',
                 href: '/post-frame/hw-pc-how-to-codingpack-setup',
             },
