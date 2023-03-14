@@ -144,11 +144,14 @@ export const rootSx: SxProps = {
             display: 'table-header-group',
             verticalAlign: 'middle',
             '& > tr': {
-                bgcolor: 'rgb(237 240 242)',
+                bgcolor: '#e1e6ec',
             },
         },
         '& > tbody': {
             display: 'table-header-group',
+            '& > tr:nth-child(even)': {
+                bgcolor: '#f6f8fa',
+            },
         },
         '& tr': {
             display: 'table-row',
