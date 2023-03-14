@@ -1,5 +1,7 @@
 import { SxProps, Theme } from '@mui/material'
 
+export type SimpleSxProps = SxProps<Theme>
+
 /**
  * SxProps를 flatten 한 배열로 만든다.
  * @param sxArray SxProps의 배열

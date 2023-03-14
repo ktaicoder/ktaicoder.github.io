@@ -132,10 +132,20 @@ export const rootSx: SxProps = {
     },
 
     '& table': {
-        borderTop: '1px solid rgb(36, 36, 36)',
+        display: 'block',
         borderCollapse: 'collapse',
+        borderSpacing: 0,
+        width: 'max-content',
+        maxWidth: '100%',
+        overflow: 'auto',
+        mt: 0,
+        mb: 2,
         '& > thead': {
             display: 'table-header-group',
+            verticalAlign: 'middle',
+            '& > tr': {
+                bgcolor: 'rgb(237 240 242)',
+            },
         },
         '& > tbody': {
             display: 'table-header-group',
@@ -144,19 +154,18 @@ export const rootSx: SxProps = {
             display: 'table-row',
             verticalAlign: 'middle',
             outline: 0,
+            backgroundColor: '#fff',
+            borderTop: '1px solid #d0d7de',
             '& td,& th': {
                 display: 'table-cell',
                 cursor: 'default',
-                padding: '14px 40px 14px 24px',
+                padding: '12px 14px',
                 color: 'rgb(54,54,54)',
                 fontSize: '0.85rem',
-                lineHeight: '0.95rem',
+                lineHeight: 1.5,
                 letterSpacing: '-0.04px',
-                borderBottom: '1px solid rgb(224,224,224)',
+                border: '1px solid #d0d7de',
                 textAlign: 'left',
-            },
-            '& th': {
-                bgcolor: '#ededed',
             },
         },
     },
