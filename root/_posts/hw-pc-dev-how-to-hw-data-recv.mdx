@@ -24,11 +24,12 @@ PC 프로그램에서 하드웨어로부터 데이터를 수신하는 소스 코
 1. 특정 길이 단위로 구분되는 데이터 형태
 1. 커스텀한 파싱이 필요한 형태
 
--   기타 다양하게 데이터를 파싱해야 할 수 있습니다.
--   권장하는 파싱 방법은 파서를 만드는 것입니다.
+기타 다양하게 데이터를 파싱하는 상황이 있겠습니다만,
+`파서를 이용`하여 처리하는 것을 권장합니다.
+
 -   시리얼 포트로부터 전달된 데이터 스트림에 파서를 연결하여
-    파서로부터 하나씩 꺼내서 데이터를 처리하는 방식입니다.
--   NodeJS의 스트림 API를 활용합니다.
+-   파서로부터 하나씩 꺼내서 데이터를 처리할 수 있습니다.
+-   이때 NodeJS의 스트림 API를 활용합니다.
 
 ## 파서 예제
 
@@ -36,11 +37,12 @@ PC 프로그램에서 하드웨어로부터 데이터를 수신하는 소스 코
 
 https://serialport.io/docs/api-parsers-overview
 
-그리고 현재 PC 프로그램에 구현된 다른 하드웨어들을 참고하시면 좋을 것 같습니다.
+그리고 현재 PC 프로그램에 포함되어 있는, `다른 하드웨어들이 사용중인 파서`를 참고하는 것도 좋을 것 같습니다.
 
-### wiseXboard
+### 예제 1번 - wiseXboard 하드웨어
 
 -   `wiseXboard` 하드웨어는 `DelimiterParser`를 사용하고 있습니다.
+-   `DelimiterParser`는 [@serialport/parser-delimiter](https://serialport.io/docs/api-parser-delimiter) 라이브러리를 사용했습니다.
 -   아래 소스코드에서 `DelimiterParser` 부분을 살펴보세요.
 
 ```javascript
@@ -74,13 +76,13 @@ export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
 }
 ```
 
-위의 예제에서는 `includeDelimiter:false`로 설정했으므로, 패킷을 읽을 때 구분 문자는 제거하고 읽어집니다.
+위의 예제에서는 `includeDelimiter:false`로 설정했으므로, 패킷을 읽을 때 구분 문자는 제거하고 읽어져서 개발이 편리합니다.
 
 #### 읽는 함수 `readNext_()`
 
 위와 같이 오픈한 wiseXboard에서 데이터를 읽는 방법은 아래와 같습니다.
 데이터를 읽을 때는 `readNext_()` 함수로 읽을 수 있습니다.
-파서가 없어도 같은 함수로 읽습니다.
+파서가 없어도 `readNext_()`로 읽습니다.
 
 ```javascript
 export class WiseXboardControl extends AbstractHwConrtol implements IWiseXboardControl {
@@ -102,14 +104,14 @@ export class WiseXboardControl extends AbstractHwConrtol implements IWiseXboardC
 #### 추가 설명
 
 -   `this.readNext_()` 함수는 `WiseXboardControl` 클래스가 상속하고 있는 `AbstractHwConrtol` 클래스에 구현되어 있습니다.
-    따라서 다른 하드웨어에서도 사용되는 함수입니다.
+    따라서 다른 하드웨어에서도 동일하게 사용할 수 있는 함수입니다.
 -   `this.readNext_()` 함수는 내부적으로, `openDevice()` 함수가 리턴한 SerialDevice 객체를 이용해서 시리얼 포트로부터 값을 읽습니다.
 
-### 자체 제작한 파서 예제
+### 예제 2번 - altinoLite, 자체 제작한 파서
 
 `saeonAltinoLite` 하드웨어는 자체 제작한 파서를 사용하고 있습니다.
 
-아래 소스코드에서 `AltinoLiteParser` 부분을 살펴보세요.
+아래의 `openDevice()` 함수에서 `AltinoLiteParser` 부분을 살펴보세요.
 
 ```js
 export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
@@ -142,7 +144,7 @@ export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
 
 자체 제작한 파서인 `AltinoLiteParser`의 소스코드가 길지 않으므로 여기에 적어보겠습니다.
 
--   커스텀 파서는 `Transform` 클래스를 상속해서 `_transform()` 함수를 잘 구현하면 됩니다.
+-   커스텀 파서는 `Transform` 클래스를 상속해서 `_transform()` 함수를 구현하면 됩니다.
 -   아래 코드에서 구지 파싱 로직을 분석하기 보다는 `_transform()` 함수만 구현하면 된다는 것만 기억하면 좋을 것 같습니다.
 
 ```js
@@ -173,9 +175,9 @@ export class AltinoLiteParser extends Transform {
 
   constructor() {
     super()
+    console.log(LOG_TAG, 'constructor()')
     this.buffer = Buffer.alloc(this.packetLength, 0)
     this.bufferByteCount = 0
-    console.log(LOG_TAG, 'constructor()')
   }
 
   _transform(chunk: Buffer, _encoding: BufferEncoding, callback: TransformCallback) {
@@ -306,7 +308,8 @@ export function openDevice(params: ISerialDeviceOpenParams): SerialDevice {
 -   파싱이 필요하다면, `openDevice()` 함수에서 파서를 등록하기
 -   `readNext_()`로 파싱된 결과물 읽기
 -   파서가 없는 경우 `readNext_()`는 시리얼포트로부터 직접 읽습니다.
--   `serialport` 사이트에서 제공하는 여러 파서들을 활용하세요.
+-   `serialport` 사이트에서 제공하는 여러 파서들을 활용하거나
+-   다른 하드웨어의 파서를 복사해서 사용하세요.
 
 ## 다음 단계
 

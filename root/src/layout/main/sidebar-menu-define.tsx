@@ -204,12 +204,17 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             {
                 type: 'menu',
                 title: '하드웨어 데이터 송신',
-                href: '/post-frame/hw-pc-dev-how-to-add-hw-data-send',
+                href: '/post-frame/hw-pc-dev-how-to-hw-data-send',
             },
             {
                 type: 'menu',
                 title: '하드웨어 데이터 수신',
-                href: '/post-frame/hw-pc-dev-how-to-add-hw-data-recv',
+                href: '/post-frame/hw-pc-dev-how-to-hw-data-recv',
+            },
+            {
+                type: 'menu',
+                title: '블록 공작소 연동',
+                href: '/post-frame/hw-pc-dev-how-to-use-with-simul',
             },
             {
                 type: 'menu',
