@@ -29,6 +29,7 @@ const rootSx: SimpleSxProps = {
         px: 0,
         '& .MdxImageView-imageBox': {
             backgroundColor: 'transparent',
+            pb: 0,
         },
         '& .MdxImageView-caption': {
             mt: 1,
@@ -36,8 +37,7 @@ const rootSx: SimpleSxProps = {
     },
 
     '& .MdxImageView-imageBox': {
-        pt: 2,
-        pb: 2,
+        py: 2,
         px: 2,
         display: 'flex',
         alignItems: 'center',

@@ -213,13 +213,13 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
             {
                 type: 'menu',
-                title: '블록 공작소 연동',
-                href: '/post-frame/hw-pc-dev-how-to-use-with-simul',
+                title: '하드웨어 테스트하기',
+                href: '/post-frame/hw-pc-dev-how-to-test-hw',
             },
             {
                 type: 'menu',
-                title: '하드웨어 테스트하기',
-                href: '/post-frame/hw-pc-dev-how-to-test-hw',
+                title: '블록 공작소 연동',
+                href: '/post-frame/hw-pc-dev-how-to-use-with-simul',
             },
             {
                 type: 'menu',
