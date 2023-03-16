@@ -164,6 +164,11 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
             },
             {
                 type: 'menu',
+                title: '하드웨어 연동 개요',
+                href: '/post-frame/hw-pc-integration-guide',
+            },
+            {
+                type: 'menu',
                 title: 'PC 프로그램 설치 가이드',
                 href: '/post-frame/hw-pc-install-guide',
             },
