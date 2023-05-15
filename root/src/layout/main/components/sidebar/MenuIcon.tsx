@@ -21,6 +21,7 @@ import UsbIcon from '@mui/icons-material/Usb'
 import { SvgIconProps } from '@mui/material'
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined'
 import LogoDevIcon from '@mui/icons-material/LogoDev'
+import SmartToyIcon from '@mui/icons-material/SmartToy'
 
 type Props = {
     iconName: string
@@ -71,6 +72,8 @@ export default function MenuIcon(props: Props) {
             return <AutoAwesomeMosaicIcon {...restProps} />
         case 'home':
             return <HomeIcon {...restProps} />
+        case 'arduino':
+            return <SmartToyIcon {...restProps} />
         default:
             break
     }

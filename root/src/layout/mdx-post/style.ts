@@ -6,6 +6,7 @@ export const rootSx: SxProps = {
     pb: 10,
     pt: 3,
     fontSize: '1rem',
+    lineHeight: '1.75rem',
 
     '& h1:not(.MuiTypography-root)': {
         fontSize: '1.65rem',
@@ -21,7 +22,7 @@ export const rootSx: SxProps = {
         fontSize: '1.45rem',
         lineHeight: '2rem',
         fontWeight: 700,
-        mt: 4,
+        mt: 8,
         mb: 1,
     },
     '& h3:not(.MuiTypography-root)': {
@@ -29,7 +30,7 @@ export const rootSx: SxProps = {
         fontWeight: 600,
         ml: '2px',
         color: '#000',
-        mt: 4,
+        mt: 6,
         mb: 1,
     },
 
@@ -62,7 +63,7 @@ export const rootSx: SxProps = {
         mb: '0.5rem',
         fontSize: '0.95rem',
         fontWeight: 400,
-        lineHeight: '1.45rem',
+        lineHeight: '1.75rem',
     },
     '& > pre': {
         overflow: 'auto',

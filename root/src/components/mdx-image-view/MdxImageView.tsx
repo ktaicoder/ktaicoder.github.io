@@ -8,8 +8,7 @@ import ImageViewerContainer from '../image-viewer-container/ImageViewerContainer
 type Props = {
     src: string
     transparentBg?: boolean
-    caption?: string
-    source?: string
+    caption?: React.ReactNode
 } & Omit<BoxProps, 'src'>
 
 const rootSx: SimpleSxProps = {
@@ -45,6 +44,7 @@ const rootSx: SimpleSxProps = {
         width: '100%',
         backgroundColor: '#f0f0f0',
         borderRadius: 2,
+        flexDirection: 'column',
     },
 
     '& .MdxImageView-caption': {
@@ -73,7 +73,7 @@ export default function MdxImageView(props: Props) {
             className={clsx('MdxImageView-root', {
                 'MdxImageView-transparentBg': transparentBg,
             })}
-            sx={rootSx}
+            sx={[rootSx, ...(Array.isArray(sx) ? sx : [sx ?? false])]}
         >
             <Box className="MdxImageView-imageBox">
                 <Box
@@ -84,13 +84,13 @@ export default function MdxImageView(props: Props) {
                     {...rest}
                     alt={caption ?? ''}
                 />
+                {typeof caption === 'string' && (
+                    <Typography variant="caption" className="MdxImageView-caption">
+                        {caption}
+                    </Typography>
+                )}
+                {caption && typeof caption !== 'string' && caption}
             </Box>
-
-            {caption && (
-                <Typography variant="caption" className="MdxImageView-caption">
-                    {caption}
-                </Typography>
-            )}
 
             {enabled && rootRef.current && (
                 <ImageViewerContainer

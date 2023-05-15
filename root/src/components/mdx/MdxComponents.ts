@@ -13,6 +13,7 @@ const MdxComponents = {
     CodingpackSetupStepLinks: dynamic(
         () => import('src/components/codingpack-setup-step-links/CodingpackSetupStepLinks'),
     ),
+    ArduinoHelpLinks: dynamic(() => import('src/components/ArduinoHelpLinks')),
     MdxLink: dynamic(() => import('src/components/mdx-link/MdxLink')),
     MdxVideoPlayer: dynamic(() => import('src/components/mdx-video-player/MdxVideoPlayer')),
     PyExampleLinkBox: dynamic(() => import('src/components/PyExampleLinkBox')),

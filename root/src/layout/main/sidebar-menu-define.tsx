@@ -31,6 +31,7 @@ export interface ISection {
     submenus: (IDivider | IMenu)[]
 }
 
+
 export type ISideMenuItem = ILabel | IDivider | IMenu | ISection
 
 let seq = 0
@@ -188,6 +189,12 @@ const menusTemp: (ILabel | IDivider | IMenu | ISection)[] = [
                 href: '/post-frame/hw-pc-how-to-autorun',
             },
         ],
+    },
+    {
+        type: 'menu',
+        icon: 'arduino',
+        title: '아두이노란?',
+        href: '/post-frame/arduino-explained',
     },
     { type: 'label', title: '개발자 가이드', mt: 1 },
     {

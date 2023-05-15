@@ -1,0 +1,224 @@
+---
+date: '2023-05-04'
+thumbnail: thumbnail.jpg
+title: 아두이노 도움말
+description: 아두이노에 대한 도움말 입니다.
+---
+
+# 아두이노 우노 하드웨어
+
+<ArduinoHelpLinks currentChapter={4} next={false} sx={{ my: 10 }} />
+
+## USB 소켓
+
+<MdxImageView
+    src="/images/arduino/chapter4/socket.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            width: '60%',
+        },
+    }}
+    transparentBg
+    caption="USB 소켓"
+/>
+
+아두이노 우노의 USB 소켓은 두 가지 역할을 합니다.
+
+-   보드를 컴퓨터에 연결하여 대화하고 프로그래밍할 수 있습니다.
+-   컴퓨터의 USB 포트를 사용하여 보드의 전원을 켤 수 있습니다.
+
+<br />
+
+## ICSP 핀
+
+<MdxImageView
+    src="/images/arduino/chapter4/iscp.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            width: '60%',
+        },
+    }}
+    transparentBg
+    caption="ICSP 핀"
+/>
+UNO 보드에는 두 세트의 6개 핀이 있습니다
+
+-   첫 세트는 USB 포트를 제어하는 칩을 프로그래밍하는 데 사용되고
+
+-   마지막 세트는 보드를 제어하는 메인 칩을 프로그래밍하는 데 사용됩니다.
+    <br />
+
+## 리셋 버튼
+
+<MdxImageView
+    src="/images/arduino/chapter4/reset.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            width: '60%',
+        },
+    }}
+    transparentBg
+    caption="리셋 버튼"
+/>
+- 아두이노 우노의 촉각 스위치는 보드의 주요 부분을 재설정하는 데 사용됩니다.{' '}
+
+-   일반적으로 전기가 통하는 특수 핀에 연결되어
+    있는데 스위치를 누르면 전기가 멈추고 보드가 다시 시작됩니다.
+    <br />
+
+## USB-TTL 인터페이스 칩
+
+<MdxImageView
+    src="/images/arduino/chapter4/int_chip.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            width: '60%',
+        },
+    }}
+    transparentBg
+    caption="USB-TTL 인터페이스 칩"
+/>
+- 아두이노 우노는 USB-TTL 인터페이스라고 불리는 특별한 칩을 사용하여 컴퓨터와 대화합니다.{' '}
+
+-   우노모델에는 이 작업을 수행하기
+    위해 사용자 지정된 ATMega16U라는 칩이 있습니다.
+    <br />
+
+## 결정 진동기 / 자기 공진기
+
+<MdxImageView
+    src="/images/arduino/chapter4/crystal.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            maxWidth: 500,
+        },
+    }}
+    transparentBg
+    caption="결정 진동기 / 자기 공진기"
+/>
+
+-   마이크로컨트롤러는 어떤 일을 할 때를 알기 위해 클럭 소스가 필요합니다.
+
+-   그것은 내부 시계를 사용할 수 있지만, 그것은
+    약간의 문제가 있습니다.
+
+-   대신에, 우리는 특수 크리스탈이나 세라믹 부품과 같은 외부 시계를 사용하여 그것이 잘
+    작동하는지 확인할 수 있습니다.
+-   사진은 보드에 있는 이 부분들 중 두 개를 보여줍니다.
+
+<br />
+## Power Path control
+
+<MdxImageView
+    src="/images/arduino/chapter4/ppp.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            maxWidth: 500,
+        },
+    }}
+    transparentBg
+    caption="Power Path control"
+/>
+- 우노 내부에는 LM358이라는 작은 부품이 있어 보드를 보호하는 데 도움이 됩니다.{' '}
+
+-   배터리나 어댑터와 같은 전원을 배럴 잭 또는
+    Vin 핀에 연결할 때 LM358은 USB 포트가 아닌 전원이 공급되는지 확인합니다.
+
+-   이것은 USB 포트의 손상을 방지하는 데 도움이 되기
+    때문에 중요합니다
+    <br />
+
+## 전압 조정기
+
+<MdxImageView
+    src="/images/arduino/chapter4/volt_reg.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            maxWidth: 500,
+        },
+    }}
+    transparentBg
+    caption="전압 조정기"
+/>
+- 아두이노는 Vin 핀 또는 DC 배럴 잭과 같은 다양한 소스로부터 전력을 공급받을 수 있습니다.{' '}
+
+-   그러나 구성 요소가 처리할 수 있는 최대 전압은 약 5V입니다.
+-   5V 이상을 공급하는 전원을 사용하기 위해 아두이노에는 전압을 낮추는 두 개의 조절기가 탑재되어
+    있습니다.
+-   한 레귤레이터는 5V를 제공하고 다른 레귤레이터는 3.3V를 제공하여 일부 모듈 및 액세서리에 전원을 공급합니다.
+
+<br />
+
+## DC Barrel Jack
+
+<MdxImageView
+    src="/images/arduino/chapter4/dc.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            maxWidth: 500,
+        },
+    }}
+    transparentBg
+    caption="DC Barrel Jack"
+/>
+
+-   DC Barrel Jack은 우노의 전원 공급 장치를 연결하는 곳입니다.
+
+-   12V 또는 9V DC 어댑터와 같이 7~12V의 전원을 공급하는 어댑터를 사용하여 보드에 전원을 공급할 수 있습니다.
+
+<br />
+
+## 아날로그와 디지털 입출력
+
+<MdxImageView
+    src="/images/arduino/chapter4/analog_digital.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            maxWidth: 500,
+        },
+    }}
+    transparentBg
+    caption="아날로그와 디지털 입출력"
+/>
+- 아두이노 우노에는 신호를 주어 제어할 수 있는 14개의 특수 핀과 전기가 얼마나 들어오는지 감지할 수 있는 6개의 다른 핀이 있습니다.
+- 특수 핀은 0 또는 5V에서 작동하며, 다른 핀은 신호를 감지하거나 전송하는 데 사용할 수 있습니다. - 아두이노 우노는 또한 한
+번에 최대 6개의 다른 것에서 오는 신호를 이해할 수 있습니다.
+<br />
+## LED
+
+<MdxImageView
+    src="/images/arduino/chapter4/led.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            width: '60%',
+        },
+    }}
+    transparentBg
+    caption="LED"
+/>
+- 우노는 LED라고 불리는 4개의 작은 조명을 가지고 있습니다.{' '}
+
+-   그 중 하나는 보드의 전원이 켜져 있을 때 표시되고, 두 개는 보드가
+    정보를 보내거나 받을 때 깜박이며, 마지막 하나는 보드에 대해 작성한 프로그램으로 켜고 끌 수 있습니다.
+
+<br />
+## ATMega328P
+
+<MdxImageView
+    src="/images/arduino/chapter4/atmega.png"
+    sx={{
+        '& .MdxImageView-imageBox': {
+            width: '60%',
+        },
+    }}
+    transparentBg
+    caption="ATMega328P"
+/>
+- 아두이노 보드의 가장 중요한 부분은 ATMega328P 마이크로컨트롤러라고 불리는 작은 컴퓨터입니다.{' '}
+
+-   아두이노 우노버전은 이 컴퓨터의
+    28핀 버전을 사용합니다.
+
+-   특별한 도구 없이 일반 USB 케이블을 사용하여 새 프로그램을 쉽게 추가할 수 있는 특별한 소프트웨어가
+    이미 설치되어 있습니다.
+    <ArduinoHelpLinks currentChapter={4} next={false} sx={{ my: 10 }} />

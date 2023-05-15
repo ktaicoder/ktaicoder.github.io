@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { routerUrlOf } from 'src/lib/urls'
 import useStore from 'src/store/useStore'
-import { IMenu, isCurrentMenu, isCurrentSection, ISection, menus } from '../../sidebar-menu-define'
+import { IMenu, ISection, isCurrentMenu, isCurrentSection, menus } from '../../sidebar-menu-define'
 import DrawerHeader from '../drawer-header/DrawerHeader'
 import MenuItem from './MenuItem'
 import SectionMenu from './SectionMenu'
@@ -107,6 +107,7 @@ function Sidebar() {
                             />
                         )
                     }
+
                     return <div>{JSON.stringify(item)}</div>
                 })}
             </List>

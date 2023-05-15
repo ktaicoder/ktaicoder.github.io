@@ -6,6 +6,9 @@ import ImageViewLightbox, { ImageViewLightboxProps } from '../image-view-lightbo
 type DialogId = 'ImageViewLightbox'
 
 type Props = {
+    source?: string
+    author?: string
+    permission?: string
     parentElement?: HTMLElement
 
     /**
@@ -37,7 +40,7 @@ type Props = {
  * @returns
  */
 export default function ImageViewerContainer(props: Props) {
-    const { parentElement, cssSelector, multiple, onOpen, revision = 0 } = props
+    const { source, author, permission, parentElement, cssSelector, multiple, onOpen, revision = 0 } = props
     const [imageViewDialogProps, setImageViewDialogProps] = useState<Omit<ImageViewLightboxProps, 'open'>>()
     const [dialogId, setDialogId] = useState<DialogId>()
     const [imageElements, setImageElements] = useState<HTMLImageElement[]>([])
@@ -83,7 +86,7 @@ export default function ImageViewerContainer(props: Props) {
     }, [opened, onOpen])
 
     if (imageElements.length > 0 && dialogId === 'ImageViewLightbox' && imageViewDialogProps) {
-        return <ImageViewLightbox open {...imageViewDialogProps} />
+        return <ImageViewLightbox source={source} open {...imageViewDialogProps} />
     }
 
     return null

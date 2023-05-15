@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
+import { Box, BoxProps, Typography, Stack } from '@mui/material'
 import Lightbox from 'react-image-lightbox'
 import 'react-image-lightbox/style.css'
 
@@ -7,6 +8,9 @@ function clamp(num: number, min: number, max: number): number {
 }
 
 export type ImageViewLightboxProps = {
+    source?: string
+    author?: string
+    permission?: string
     open: boolean
     imageUrls: string[]
     startIndex: number
@@ -38,7 +42,17 @@ const makeLinkedList = (urls: string[]): ImageItem[] => {
 }
 
 export default function ImageViewLightbox(props: ImageViewLightboxProps) {
-    const { open, onClose, disableEscKeydown = false, title, imageUrls = [], startIndex = 0 } = props
+    const {
+        source,
+        author,
+        permission,
+        open,
+        onClose,
+        disableEscKeydown = false,
+        title,
+        imageUrls = [],
+        startIndex = 0,
+    } = props
     const [slidingIndex, setSlidingIndex] = useState(() => startIndex)
     const imageItems = useMemo(() => makeLinkedList(imageUrls), [imageUrls])
 
@@ -81,6 +95,16 @@ export default function ImageViewLightbox(props: ImageViewLightboxProps) {
 
     const currentItem: ImageItem = imageItems[slidingIndex]
     const pageNumText = imageItems.length > 1 ? `${slidingIndex + 1} / ${imageItems.length}` : undefined
+
+    const imageCaption = () => {
+        return (
+            <div>
+                <p>{author}</p>
+                <p>{permission}</p>
+            </div>
+        )
+    }
+
     return (
         currentItem && (
             <Lightbox
@@ -89,8 +113,7 @@ export default function ImageViewLightbox(props: ImageViewLightboxProps) {
                 nextSrc={currentItem.next}
                 onMoveNextRequest={_handleMoveNextRequest}
                 onMovePrevRequest={_handleMovePrevRequest}
-                imageTitle={title}
-                imageCaption={pageNumText}
+                imageTitle={source}
                 onCloseRequest={_handleClose}
                 reactModalStyle={{ overlay: { zIndex: 1500 } }}
             />
