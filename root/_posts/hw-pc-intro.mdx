@@ -8,11 +8,19 @@ description: PC 프로그램을 소개합니다.
 # PC 프로그램 소개
 
 <MdxTextBox>
-    <Box sx={{ color: 'secondary.main', fontWeight: 600, mb: 1 }}>
-        PC 프로그램은 2023년 3월 15일 v1.2.5 버전이 배포되었습니다.
-    </Box>
-    <Box component="a" href="https://aicodiny.com/download" sx={{ display: 'block' }} target="_blank">
-        다운로드
+    <Box
+        sx={{
+            color: 'secondary.main',
+            fontWeight: 600,
+            display: 'flex',
+            alignItems: 'baseline',
+        }}
+    >
+        PC 프로그램은
+        <Box component="a" href="https://aicodiny.com/download" sx={{ mx: 1 }} target="_blank" rel="noreferer">
+            AI 코디니
+        </Box>
+        사이트에서 다운로드 할 수 있습니다.
     </Box>
 </MdxTextBox>
 
